@@ -45,11 +45,11 @@ logs/
 *.bak*
 *.bak_pre_*
 ~$*
-paper/*.aux
-paper/*.bbl
-paper/*.blg
-paper/*.out
-paper/*.synctex.gz
+_archive/jedm_paper/*.aux
+_archive/jedm_paper/*.bbl
+_archive/jedm_paper/*.blg
+_archive/jedm_paper/*.out
+_archive/jedm_paper/*.synctex.gz
 
 # IJIET a2b rerun dumps (multi-GB; GitHub 100 MB file cap)
 IJIET_FINAL_REVISION/a2b/data/

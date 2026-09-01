@@ -1,0 +1,34 @@
+Cover letter — International Journal of Information and Education Technology
+
+Manuscript: Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing
+Corresponding author: Van-Hau Nguyen (haunv@utehy.edu.vn)
+Date: 1 September 2026
+
+Dear Editor,
+
+Please consider the enclosed 8-page manuscript for IJIET. The paper is a
+diagnostic evaluation of knowledge-tracing calibration on sparse concepts and
+a simulated mastery gate. It does not propose a new KT architecture or a
+classroom intervention.
+
+Exclusive submission. This manuscript is not under consideration elsewhere.
+A longer related write-up previously submitted to the Journal of Educational
+Data Mining (JEDM) has been withdrawn by the authors. The IJIET submission
+is the sole active version of this work.
+
+Double-blind files. Please send reviewers main_ijiet_blind.pdf together with
+supplementary.pdf and code_for_review_anonymous.zip. The named Word/PDF are
+for the editorial office only. The zip excludes identity-bearing JEDM sources.
+
+Data. Public code after review: https://github.com/trinhnkt/Sparse-Concept-and-Calibration
+Datasets: ASSISTments 2012, Junyi Academy, and XES3G5M (original providers).
+
+Generative AI. ChatGPT GPT-5.6, Claude Sonnet 5, Google Antigravity 2.11.0,
+and Cursor Grok 4.6 were used for language polishing, formatting, consistency
+checking, and reproducibility-prompt preparation. Versions are the public
+current identifiers as of 1 September 2026. AI was not used to fabricate or
+alter results. Generative AI is not a co-author.
+
+Sincerely,
+Van-Hau Nguyen
+Hung Yen University of Technology and Education

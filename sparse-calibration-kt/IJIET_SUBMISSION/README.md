@@ -1,18 +1,11 @@
-# IJIET submission workspace
+# IJIET submission copies
 
-This folder is the **only** place for IJIET conversion work.
-Original manuscripts are never overwritten:
+Current named/blind Word: `source/main_ijiet_full.*` and `source/main_ijiet_blind.*`  
+Current PDFs, supplementary, cover letter, anonymous zip: `output/`
 
-- JEDM: `paper/`, `REV_REVIEWER_CALIBRATION_v1/`
-- Earlier IEEE-style IJIET draft: `ijiet/` (content snapshot only; **not** the official template)
+Official template (formatting authority): `source/template/IJIET_template.doc`  
+Fig. 1 sources: `source/figures/`
 
-| Path | Role |
-|------|------|
-| `source/` | Working manuscript sources for IJIET |
-| `figures/` | Figures copied for this submission |
-| `tables/` | Numeric tables copied from validated artifacts |
-| `supplementary/` | Optional extra material (not required at submission) |
-| `audit/` | Change log, venue rules, scientific locks |
-| `output/` | Compiled PDFs and logs for this package |
+Living edits: `../IJIET_FINAL_REVISION/`. Packaged upload folder: `../IJIET_FINAL_REVISION/output/OJS_UPLOAD/`.
 
-**Do not submit** while the JEDM manuscript is under consideration (IJIET duplicate-submission policy).
+JEDM sources are in `../_archive/` and are not part of this submission.

@@ -1,4 +1,0 @@
-replaced 'pre-registered cuts' -> 'pre-specified cuts'
-replaced 'under the registered thresholds' -> 'under the protocol thresholds'
-replaced para containing 'Table 8 reports protocol endpoints (500 and 50 r'
-saved

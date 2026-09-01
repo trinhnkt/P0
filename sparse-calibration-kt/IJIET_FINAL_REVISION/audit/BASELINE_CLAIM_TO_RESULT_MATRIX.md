@@ -1,3 +1,5 @@
+> **Obsolete XES rows.** This matrix was frozen before padding exclusion. Manuscript XES ECE/AUC/ΔMiss/Table 8/regression follow `a2b/` (ECE 0.1176/0.1129/0.1254; ΔMiss −0.183). ASSISTments locks in this file remain valid.
+
 # Claim-to-result matrix (IJIET-11, Section IV)
 
 Every numerical statement in Results is traced to a table or CSV. Roundings in the manuscript are the **allowed wording**. Exact cells are the **source value**. Do not mix four-partition ECE (\(N=415\)) with seed-42 gate (\(N=444\)).

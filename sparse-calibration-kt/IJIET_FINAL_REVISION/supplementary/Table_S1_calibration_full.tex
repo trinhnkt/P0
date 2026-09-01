@@ -1,7 +1,8 @@
 \begin{table}[htbp]
-\caption{Four-unique-partition event-level calibration by train-only frequency stratum (same aggregation and $M=15$ equal-width bins as Table 4). $N$ is the mean test-event count across four unique learner partitions. Flags: Reliable (R) $N\ge 1000$; Limited (L) $100\le N<1000$. Junyi sparse is empty. T-KT is the local Transformer KT baseline. Brier $=$ UNC $-$ RES $+$ REL is the binned decomposition already used in the manuscript; components need not sum exactly to Brier. IRT RES $=0$ on these learner-based strata.}
+\caption{Four-unique-partition event-level calibration by train-only frequency stratum (same aggregation and $M=15$ equal-width bins as Table 4). $N$ is the mean test-event count across four unique learner partitions. Flags: Reliable (R) $N\ge 1000$; Limited (L) $100\le N<1000$. Junyi sparse is empty. T-KT is the local Transformer KT baseline. Brier $=$ UNC $-$ RES $+$ REL is the binned decomposition already used in the manuscript; components need not sum exactly to Brier. IRT RES $=0$ on these learner-based strata. Junyi T-KT dense $N$ (3,232,614) differs from IRT/DKT (3,226,541) because those models were scored on separately processed test files; ASSISTments and XES3G5M share $N$ across models.}
 \label{tab:s1_calibration_full}
-\centering\scriptsize
+\centering
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{lllrlccccc}
 \toprule
 Dataset & Model & Stratum & $N$ & Flag & ECE & Brier & UNC & REL & RES \\
@@ -33,5 +34,6 @@ XES3G5M & T-KT & dense & 1,269,345 & R & $0.1176\pm0.0014$ & $0.1562\pm0.0018$ &
 XES3G5M & T-KT & medium & 12,889 & R & $0.1129\pm0.0061$ & $0.1366\pm0.0051$ & $0.1695\pm0.0032$ & $0.0176\pm0.0018$ & $0.0493\pm0.0010$ \\
 XES3G5M & T-KT & sparse & 1,969 & R & $0.1254\pm0.0047$ & $0.1493\pm0.0043$ & $0.1856\pm0.0048$ & $0.0216\pm0.0023$ & $0.0567\pm0.0018$ \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}

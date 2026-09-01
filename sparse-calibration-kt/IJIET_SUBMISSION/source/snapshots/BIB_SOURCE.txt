@@ -1,2 +1,0 @@
-Bibliography source of truth: `paper/references.bib` (351 lines; not duplicated here to avoid drift).
-Do not invent citations. Working IJIET bibliography will be a **subset** of this file, copied in a later task after the template is in place.

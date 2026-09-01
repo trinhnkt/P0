@@ -1,4 +1,0 @@
-replaced para containing 'Table 8 reports key paired'
-replaced para containing 'Table 8. Within-KC controlled sparsification'
-Table 8 now 12 endpoint rows (500 and 50 for 6 dataset-model pairs)
-saved

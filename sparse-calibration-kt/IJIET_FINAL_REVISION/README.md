@@ -1,19 +1,28 @@
 # IJIET_FINAL_REVISION
 
-Isolated revision workspace. **Do not edit** `IJIET_SUBMISSION/source/` or `IJIET_SUBMISSION/output/`. Those are the accepted working sources.
+Living 8-page IJIET manuscript. Edit Word in `manuscript/`, then pack `output/OJS_UPLOAD/`.
+
+Official template: `../IJIET_SUBMISSION/source/template/IJIET_template.doc`.  
+Withdrawn JEDM sources: `../_archive/` (do not upload).
 
 | Path | Role |
 |------|------|
-| `manuscript/` | Working Word sources copied from the accepted pair |
-| `analysis/` | Locked numeric artifacts (copies; do not treat as new experiments) |
-| `audit/` | Changelogs, locks, compile reports |
-| `supplementary/` | Table S1 and extra material |
-| `figures/` | Fig. 1 generator and any extracted figure files |
-| `tables/` | Numeric table copies used by the manuscript |
-| `output/` | PDFs compiled **from this folder only** |
+| `manuscript/` | Named and blind Word |
+| `output/OJS_UPLOAD/` | Files to upload to IJIET OJS |
+| `analysis/` | Locked numeric artifacts |
+| `audit/` | Changelogs and scientific locks |
+| `supplementary/` | Tables S1–S4 sources |
+| `figures/` | Fig. 1 |
+| `tables/` | Numeric table copies |
+| `a2b/` | Masked XES3G5M series (source of truth for XES ECE) |
 
-Target manuscript: named `main_ijiet_full` (PDF + Word) and double-blind `main_ijiet_blind` (PDF + Word). Rebuild both with `build_a16_double_blind.py` after named edits.
+Target: named `main_ijiet_full` and double-blind `main_ijiet_blind`. Rebuild both with `build_a16_double_blind.py` after named edits.
 
+## Submit here
+
+OJS files: `output/OJS_UPLOAD/` (see `README_SUBMIT.md` there).
+
+Current PDFs/Word are A29 (title restored; A28 science kept). Copies also sit in `IJIET_SUBMISSION/`. Do not upload `_archive/`.
 
 ## Integrity
 

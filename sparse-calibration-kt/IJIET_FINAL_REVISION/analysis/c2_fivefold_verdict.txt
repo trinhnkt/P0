@@ -1,3 +1,4 @@
+OBSOLETE for XES3G5M gate rows in this file. Use a2b/analysis/c2_xes_verdict.txt (T-KT ΔFAR mean −0.017, ΔMiss mean −0.183). ASSISTments locked seed-42 CI [0.006, 0.138] below remains the manuscript source.
 C2 five-fold robustness (tau=0.7); C1–C3 not retuned.
 assist2012 dkt: dFM mean=0.033 sd=0.048 pos=3/5 dMiss mean=-0.063 sparse_n mean=413
 assist2012 simplekt: dFM mean=0.047 sd=0.033 pos=5/5 dMiss mean=0.012 sparse_n mean=413

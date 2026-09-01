@@ -1,79 +1,53 @@
 # Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing
 
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/release/python-380/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Paper](https://img.shields.io/badge/Paper-JEDM-green.svg)](#) <!-- Thêm link bài báo sau khi Accept -->
+Manuscript for the *International Journal of Information and Education Technology* (IJIET, [www.ijiet.org](https://www.ijiet.org)). Diagnostic evaluation of Knowledge Tracing calibration on sparse concepts and a simulated mastery gate. Not a new KT architecture and not a classroom trial.
 
-This repository contains the official PyTorch implementation and diagnostic evaluation protocol for the paper **"Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing"** (submitted to *Journal of Educational Data Mining - JEDM*).
+**T-KT** in the paper is a local Transformer KT baseline, not published SimpleKT.
 
-## 📌 Overview
-Current Knowledge Tracing (KT) evaluations often rely on aggregate predictive metrics (e.g., global AUC) that mask severe performance degradation on **sparse and cold-start knowledge components (KCs)**. This repository provides a dataset-agnostic diagnostic protocol that extends standard KT evaluation with:
-- KC-frequency stratification (Dense, Medium, Sparse, Very Sparse).
-- Per-stratum calibration diagnostics (Expected Calibration Error - ECE, Brier Score, NLL).
-- An **eight-channel leakage and predictive-sanity audit** to prevent data contamination (especially in temporal splits).
+## IJIET OJS upload
 
-## 🚀 1. Installation & Clean Environment Setup
+Use **`IJIET_FINAL_REVISION/output/OJS_UPLOAD/`**.
 
-We highly recommend using a clean virtual environment (Conda or venv) to ensure strict reproducibility.
+| File | Role |
+|------|------|
+| `main_ijiet_full.doc` / `.docx` / `.pdf` | Named manuscript (editor) |
+| `main_ijiet_blind.pdf` (optional `.doc`) | Double-blind review |
+| `supplementary.pdf` | Tables S1–S4 |
+| `code_for_review_anonymous.zip` | Anonymous code |
+| `cover_letter_ijiet.txt` | Editor only (records JEDM withdrawal) |
+
+Do not send reviewers the named PDF/Word. Do not upload `_archive/`.
+
+The same current Word/PDFs also sit in `IJIET_SUBMISSION/source/` and `IJIET_SUBMISSION/output/`. Official template: `IJIET_SUBMISSION/source/template/IJIET_template.doc`.
+
+## Repository layout
+
+| Path | Role |
+|------|------|
+| `IJIET_FINAL_REVISION/` | Living 8-page Word/PDF, figures, supplementary, locked analysis |
+| `IJIET_SUBMISSION/` | Current OJS copies + official template |
+| `src/` `scripts/` `configs/` `tests/` | Training and evaluation code |
+| `analysis/` `results/` | Numeric artifacts for reproduction |
+| `data/` | Place official ASSISTments 2012, Junyi Academy, XES3G5M dumps here |
+| `_archive/` | Withdrawn JEDM sources and conversion snapshots — **not for OJS** |
+
+## Reproduce experiments
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/anonymous-researcher-2026/sparse-calibration-kt.git
-cd sparse-calibration-kt
-
-# 2. Create and activate a virtual environment
 conda create -n sparse_kt python=3.9 -y
 conda activate sparse_kt
-
-# 3. Install dependencies
 pip install -r requirements.txt
-```
-*(All random seeds are strictly fixed across the codebase (e.g., `seed=42`) to guarantee identical outputs).*
-
-## 📊 2. Datasets & Preprocessing
-The experiments are conducted on three large-scale educational datasets (totalling ~26.8M interactions):
-1. **ASSISTments 2012**
-2. **Junyi Academy**
-3. **XES3G5M**
-
-**Data Setup:**
-Download the raw datasets from their official sources and place them in the `data/raw/` directory. Then, run the preprocessing pipeline to filter sequence lengths and build KC vocabularies without data leakage:
-```bash
 bash scripts/run_preprocessing.sh
 ```
 
-## ⚙️ 3. Training & Reproducing Results
-We provide out-of-the-box scripts to train and evaluate the baseline models (IRT, DKT, SimpleKT) under our rigorous diagnostic protocol.
+Baselines (CSV class `simplekt` = T-KT in the article):
 
-To reproduce the **Learner-based Split** (Zero-shot unseen learner evaluation) and the **Temporal Split**:
 ```bash
-# Run Item Response Theory (IRT)
 bash scripts/run_irt.sh
-
-# Run Deep Knowledge Tracing (DKT)
 bash scripts/run_dkt.sh
-
-# Run SimpleKT
 bash scripts/run_simplekt.sh
 ```
 
-To reproduce the **Eight-Channel Leakage Audit** and generate the calibration reliability diagrams:
-```bash
-bash scripts/run_8_channel_audit.sh
-```
-*Note: The evaluation logs containing Mean ± Std (over 5 random seeds) will be saved in the `results/` folder, which exactly matches the tables reported in the paper.*
+## License
 
-## 📖 Citation
-If you find this protocol or codebase useful for your research, please cite our paper:
-
-```bibtex
-@article{sparse_calibration_kt,
-  title={Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing},
-  author={Anonymous Authors},
-  journal={Journal of Educational Data Mining},
-  year={2026}
-}
-```
-
-## 📝 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Code is released for IJIET review in `code_for_review_anonymous.zip`. Public repo after review: https://github.com/trinhnkt/Sparse-Concept-and-Calibration

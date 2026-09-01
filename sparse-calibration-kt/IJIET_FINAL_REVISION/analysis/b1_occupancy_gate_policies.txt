@@ -1,0 +1,5 @@
+B1 occupancy/mixed-τ policies (T-KT=simplekt CSV; ASSISTments fold 0 seed 42)
+A global τ=0.7: pop Nadv=287164 FAR=0.19695 Miss=0.35037; sparse Nadv=235 FAR=0.26809
+B Reliable-only: pop Nadv=286921 FAR=0.19689 Miss=0.34996; sparse Nadv=0 FAR=NA Miss=0
+C sparse τ=0.8 else 0.7: pop Nadv=287147 FAR=0.19694 Miss=0.35033; sparse Nadv=218 FAR=0.26147
+Source: analysis/direction_c/threshold_rates.csv. No retrain.

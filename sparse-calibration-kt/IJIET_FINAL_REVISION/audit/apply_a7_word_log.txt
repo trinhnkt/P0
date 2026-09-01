@@ -1,7 +1,0 @@
-replaced para containing 'On the three datasets studied here, three empiri'
-replaced para containing 'Table 7. Empirical observations, on these three '
-restructured Table 7 to 9 rows with A/B blocks
-replaced para containing 'Table 7 records three observational pre-conditio'
-deleted para containing 'Sparse mass (share of KCs with f_train<100) is 1'
-replaced para containing 'The three logs differ on measured structural des'
-saved

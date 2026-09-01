@@ -1,0 +1,122 @@
+file=C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\manuscript\main_ijiet_full.docx
+pdf=C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\output\main_ijiet_full.pdf
+pages=8 words=6425 paras=537 tables=8 figs=1
+sec1 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=1 colw=501.75 gutter=0.00 header='' footer=''
+sec2 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=2 colw=243.64999389648438 gutter=14.40 header='' footer=''
+sec3 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=1 colw=501.75 gutter=0.00 header='' footer=''
+sec4 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=1 colw=501.75 gutter=0.00 header='' footer=''
+sec5 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=2 colw=243.64999389648438 gutter=14.40 header='' footer=''
+sec6 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=2 colw=243.64999389648438 gutter=14.40 header='' footer=''
+sec7 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=1 colw=501.75 gutter=0.00 header='' footer=''
+sec8 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=1 colw=501.75 gutter=0.00 header='' footer=''
+sec9 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=2 colw=243.64999389648438 gutter=14.40 header='' footer=''
+sec10 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=2 colw=243.64999389648438 gutter=14.40 header='' footer=''
+sec11 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=1 colw=501.75 gutter=0.00 header='' footer=''
+sec12 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=1 colw=501.75 gutter=0.00 header='' footer=''
+sec13 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=1 colw=501.75 gutter=0.00 header='' footer=''
+sec14 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=1 colw=501.75 gutter=0.00 header='' footer=''
+sec15 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=2 colw=243.64999389648438 gutter=14.40 header='' footer=''
+sec16 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=2 colw=243.64999389648438 gutter=14.40 header='' footer=''
+sec17 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=1 colw=501.75 gutter=0.00 header='' footer=''
+sec18 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=1 colw=501.75 gutter=0.00 header='' footer=''
+sec19 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=2 colw=243.64999389648438 gutter=14.40 header='' footer=''
+sec20 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=2 colw=243.64999389648438 gutter=14.40 header='' footer=''
+sec21 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=2 colw=243.64999389648438 gutter=14.40 header='' footer=''
+sec22 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=2 colw=243.64999389648438 gutter=14.40 header='' footer=''
+--- FRONT ---
+P1 'Text' Times New Roman 20.0pt b=0 i=0 center ind=0.0 sa=20.0 | Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing
+P2 'Style Author + (Asian) MS Mincho' Times New Roman 11.0pt b=0 i=0 center ind=0.0 sa=0.0 | Khanh-Trinh Nguyen1, Tuan Dao Minh1, Duong Nguyen Tien1, Chi Thanh Nguyen2, and Van-H
+P3 'Affiliation' Times New Roman 9.0pt b=0 i=0 center ind=0.0 sa=0.0 | 1 Hung Yen University of Technology and Education, Hung Yen, Vietnam
+P4 'Affiliation' Times New Roman 9.0pt b=0 i=0 center ind=0.0 sa=0.0 | 2 Academy of Military Science and Technology, Ha Noi, Vietnam
+P5 'Affiliation' Times New Roman 9.0pt b=0 i=0 center ind=0.0 sa=0.0 | Email: trinhnk@utehy.edu.vn (K.-T.N.); tuanymc@utehy.edu.vn (T.D.M.); duongnt@utehy.e
+P6 'Affiliation' Times New Roman 9.0pt b=0 i=0 center ind=0.0 sa=0.0 | *Corresponding author
+P7 'Affiliation' Times New Roman 9.0pt b=0 i=0 center ind=0.0 sa=0.0 | Manuscript received Month date, 2026; revised Month date, 2026; accepted Month date, 
+P10 'Abstract' Times New Roman 9.0pt b=-1 i=-1 justify ind=10.1 sa=0.0 | Abstract—Knowledge Tracing (KT) systems that skip, remediate, or advance practice typ
+P11 'IndexTerms' Times New Roman 9.0pt b=-1 i=-1 justify ind=10.1 sa=0.0 | Keywords—knowledge tracing, calibration, sparse concepts, learning analytics, evaluat
+P12 'Heading 1' Times New Roman 10.0pt b=0 i=0 center ind=0.0 sa=4.0 | I. INTRODUCTION
+P13 'Text'  10.0pt b=0 i=0 justify ind=10.1 sa=0.0 | Adaptive practice platforms and intelligent tutoring systems use Knowledge Tracing (K
+P14 'Text' Times New Roman 10.0pt b=0 i=0 justify ind=10.1 sa=0.0 | KT evaluations typically report population AUC and accuracy [4], [5]. Those metrics r
+P15 'Text' Times New Roman 10.0pt b=0 i=0 justify ind=10.1 sa=0.0 | This paper treats that mismatch as an evaluation problem for educational technology, 
+--- H1 / H2 / CAPTION / ENDHEAD ---
+H1 i=12 Times New Roman 10.0pt b=0 center | I. INTRODUCTION
+H1 i=18 Times New Roman 10.0pt b=0 center | II. LITERATURE REVIEW
+H2 i=19 Times New Roman 10.0pt i=-1 justify | A. Knowledge Tracing and benchmark models
+H2 i=21 Times New Roman 10.0pt i=-1 justify | B. Graph and self-supervised KT
+H2 i=23 Times New Roman 10.0pt i=-1 justify | C. Sparse-data and cold-start problems
+H2 i=26 Times New Roman 10.0pt i=-1 justify | D. Calibration and educational decision support
+H1 i=29 Times New Roman 10.0pt b=0 center | III. MATERIALS AND METHODS
+H2 i=30 Times New Roman 10.0pt i=-1 justify | A. Datasets
+CAP i=34 'figure caption' Times New Roman 8.0pt b=0 i=0 center | Table 1. Post-processing cohort statistics (learner-based split). Learner, knowl
+H2 i=59 Times New Roman 10.0pt i=-1 justify | B. Splits and seeds
+H2 i=62 Times New Roman 10.0pt i=-1 justify | C. Model settings
+CAP i=65 'figure caption' Times New Roman 8.0pt b=0 i=0 center | Table 2. Recovered training settings for the main baselines. NOT RECOVERED cells
+H2 i=118 Times New Roman 10.0pt i=-1 justify | D. Train-only frequency strata
+CAP i=122 'figure caption' Times New Roman 8.0pt b=0 i=-1 center | Fig. 1. Distribution of KCs across train-only frequency strata under learner-bas
+H2 i=125 Times New Roman 10.0pt i=-1 justify | E. Reliability flags
+H2 i=127 Times New Roman 10.0pt i=-1 justify | F. Calibration
+H2 i=131 Times New Roman 10.0pt i=-1 justify | G. Difficulty coupling
+H2 i=133 Times New Roman 10.0pt i=-1 justify | H. Simulated decision gate
+H1 i=136 Times New Roman 10.0pt b=0 center | IV. RESULTS
+H2 i=137 Times New Roman 10.0pt i=-1 justify | A. Aggregate discrimination
+CAP i=138 'Text' Times New Roman 10.0pt b=0 i=0 justify | Table 3 reports overall learner-based area under the ROC curve (AUC) and accurac
+CAP i=139 'figure caption' Times New Roman 8.0pt b=0 i=0 center | Table 3. Overall learner-based area under the ROC curve (AUC) and accuracy (ACC)
+H2 i=192 Times New Roman 10.0pt i=-1 justify | B. Calibration across frequency strata
+CAP i=193 'Text' Times New Roman 10.0pt b=0 i=0 justify | Table 4 reports event-level expected calibration error (ECE), not AUC. On ASSIST
+CAP i=196 'figure caption' Times New Roman 8.0pt b=0 i=0 center | Table 4. T-KT event-level expected calibration error (ECE) by train-only frequen
+H2 i=254 Times New Roman 10.0pt i=-1 justify | C. Threshold-based decision error
+CAP i=255 'Text' Times New Roman 10.0pt b=0 i=0 justify | Table 5 is a simulated gate at τ=0.7 on ASSISTments 2012 fold 0 (seed 42), not a
+CAP i=257 'figure caption' Times New Roman 8.0pt b=0 i=0 center | Table 5. Simulated gate at τ=0.7, ASSISTments 2012 fold 0 (seed 42); T-KT and DK
+CAP i=310 'Text' Times New Roman 10.0pt b=0 i=0 justify | Table 6 checks whether T-KT ΔFAR is a single-partition artifact. It is positive 
+CAP i=313 'figure caption' Times New Roman 8.0pt b=0 i=0 center | Table 6. Gate robustness at τ=0.7 on ASSISTments 2012 (primary unit: four unique
+H2 i=341 Times New Roman 10.0pt i=-1 justify | D. Dataset-dependent explanatory analysis
+CAP i=343 'Text' Times New Roman 10.0pt b=0 i=0 justify | Table 7 separates two questions. C1–C2 determine whether a sparse contrast can b
+CAP i=344 'figure caption' Times New Roman 8.0pt b=0 i=-1 center | Table 7. Empirical conditions associated with the availability and direction of 
+CAP i=388 'figure caption' Times New Roman 8.0pt b=0 i=0 center | Table 8. Within-KC controlled sparsification at protocol endpoints (500 and 50 t
+H2 i=482 Times New Roman 10.0pt i=-1 justify | E. Exploratory GKT/CL4KT result
+H1 i=484 Times New Roman 10.0pt b=0 center | V. DISCUSSION
+H2 i=485 Times New Roman 10.0pt i=-1 justify | A. Main empirical findings
+H2 i=487 Times New Roman 10.0pt i=-1 justify | B. Practical implications for educational technology
+H2 i=489 Times New Roman 10.0pt i=-1 justify | C. Why datasets differ
+H2 i=491 Times New Roman 10.0pt i=-1 justify | D. Limitations
+H1 i=493 Times New Roman 10.0pt b=0 center | VI. CONCLUSION
+RH i=495 Times New Roman 10.0pt b=0 center | Conflict of Interest
+RH i=497 Times New Roman 10.0pt b=0 center | Author Contributions
+RH i=499 Times New Roman 10.0pt b=0 center | Ethical Statement
+RH i=501 Times New Roman 10.0pt b=0 center | Data and Code Availability
+RH i=503 Times New Roman 10.0pt b=0 center | Generative AI Statement
+RH i=505 Times New Roman 10.0pt b=0 center | Acknowledgment
+RH i=507 Times New Roman 10.0pt b=0 center | References
+--- BODY Text ---
+body_fonts={'Times New Roman': 40, '(empty)': 2}
+body_sz={20.0: 1, 10.0: 41}
+indent={0.0: 1, 10.1: 41}
+line_spacing={12.0: 1, 12.6: 41}
+align={'center': 1, 'justify': 41}
+--- TABLES ---
+T1 4x5 fonts={'Times New Roman': 20} sz={7.0: 20}
+T2 10x4 fonts={'Times New Roman': 40} sz={8.0: 40}
+T3 10x4 fonts={'Times New Roman': 40} sz={7.0: 40}
+T4 9x5 fonts={'Times New Roman': 45} sz={7.0: 45}
+T5 5x9 fonts={'Times New Roman': 45} sz={7.0: 45}
+T6 3x7 fonts={'Times New Roman': 21} sz={7.0: 21}
+T7 9x4 fonts={'Times New Roman': 27, '(mixed)': 3} sz={7.0: 30}
+T8 13x6 fonts={'Times New Roman': 78} sz={7.0: 78}
+--- FIG ---
+fig1 w=501.8 h=352.5
+--- REFS ---
+REF 'Reference Head' Times New Roman 10.0pt hang=0.0 al=center | References
+REF 'References' Times New Roman 8.0pt hang=-18.0 al=justify | A. T. Corbett and J. R. Anderson, “Knowledge Tracing: Modeling the acq
+REF 'References' Times New Roman 8.0pt hang=-18.0 al=justify | C. Piech, J. Bassen, J. Huang, S. Ganguli, M. Sahami, L. J. Guibas, an
+REF 'References' Times New Roman 8.0pt hang=-18.0 al=justify | G. Abdelrahman, Q. Wang, and B. Nunes, “Knowledge Tracing: A survey,” 
+REF 'References' Times New Roman 8.0pt hang=-18.0 al=justify | Z. Liu, Q. Liu, J. Chen, S. Huang, and W. Luo, “SimpleKT: A simple but
+REF 'References' Times New Roman 8.0pt hang=-18.0 al=justify | Z. Liu, Q. Liu, J. Chen, S. Huang, J. Tang, and W. Luo, “pyKT: A Pytho
+REF 'References' Times New Roman 8.0pt hang=-18.0 al=justify | G. Rasch, Probabilistic Models for Some Intelligence and Attainment Te
+--- PDF P1 ---
+pdf_pages=8 rect=(0.0, 0.0, 595.32, 841.92)
+page1_span_fonts={('TimesNewRomanPSMT', 20.0): 2, ('TimesNewRomanPSMT', 11.0): 6, ('TimesNewRomanPSMT', 7.0): 6, ('TimesNewRomanPSMT', 6.0): 2, ('TimesNewRomanPSMT', 9.0): 6, ('TimesNewRomanPS-BoldItal', 9.0): 2, ('TimesNewRomanPS-ItalicMT', 9.0): 33, ('TimesNewRomanPSMT', 10.0): 82, ('PMingLiU', 10.0): 3}
+  20.0 TimesNewRomanPSMT | Reproducible Sparse-Concept and Calibration Diagnostics for
+  11.0 TimesNewRomanPSMT | Khanh-Trinh Nguyen
+   9.0 TimesNewRomanPSMT | Email: trinhnk@utehy.edu.vn (K.-T.N.); tuanymc@utehy.edu.vn (T.D.M.); 
+   9.0 TimesNewRomanPS-BoldItal | Abstract—
+   9.0 TimesNewRomanPS-BoldItal | Keywords—
+TPL={'page_w': 595.35, 'page_h': 841.95, 'T': 50.45, 'B': 50.45, 'L': 46.8, 'R': 46.8, 'col_w': 243.65, 'gutter': 14.4}
