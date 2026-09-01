@@ -6,7 +6,7 @@
 Git repository root: `C:/TRINH/Sparse-Concept and Calibration`  
 Tracked path of the class: `sparse-calibration-kt/src/baseline_runner.py`  
 Last commit that touched that file: `ad0884f0b5b9ed64c7c8b69499ef38c7ac11c04b` (`Lan 18`)  
-HEAD at snapshot time: recorded in `CHANGELOG_A5.md` after the A5 commit.
+HEAD at snapshot time: `eab9f6767a6b44752721e177c1e53b1609dce076` (this A5 commit).
 
 Official simpleKT / pyKT source is **not** in this repo. Reference read for the audit: public `pykt/models/simplekt.py` on GitHub `pykt-team/pykt-toolkit` master (not hashed here; not the training code).
 
