@@ -1,0 +1,62 @@
+\begin{table*}[htbp]
+\caption{Calibration Breakdown by Frequency Stratum under Temporal Splits. Values are computed from prediction-level outputs after the label-alignment correction documented in Appendix F. Very Sparse excludes Strict Cold-start KCs; Strict Cold-start is reported separately where applicable. This table provides the source calibration values used for Figure 3.}
+\label{tab:calibration_temporal}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lllrcccccc}
+\toprule
+Dataset & Model & Bucket & Rel. & \#Events & ECE & Brier & UNC & REL & RES \\
+\midrule
+ASSISTments 2012 & IRT & dense & R & 521,661 & $0.0194$ & $0.2074$ & $0.2138$ & $0.0007$ & $0.0069$ \\
+ &  & medium & R & 4,558 & $0.0853$ & $0.2425$ & $0.2347$ & $0.0101$ & $0.0027$ \\
+ &  & sparse & R & 3,030 & $0.1374$ & $0.2419$ & $0.2340$ & $0.0261$ & $0.0179$ \\
+ &  & Very Sparse & L & 843 & $0.2492$ & $0.2376$ & $0.2042$ & $0.0674$ & $0.0331$ \\
+ &  & Strict Cold-start & R & 1,407 & $0.1987$ & $0.2895$ & $0.2500$ & $0.0395$ & $0.0000$ \\
+ & DKT & dense & R & 521,661 & $0.0812$ & $0.2088$ & $0.2138$ & $0.0104$ & $0.0154$ \\
+ &  & medium & R & 4,558 & $0.2796$ & $0.3385$ & $0.2347$ & $0.1068$ & $0.0036$ \\
+ &  & sparse & R & 3,030 & $0.3149$ & $0.3433$ & $0.2340$ & $0.1228$ & $0.0127$ \\
+ &  & Very Sparse & L & 843 & $0.3553$ & $0.3967$ & $0.2042$ & $0.2100$ & $0.0162$ \\
+ &  & Strict Cold-start & R & 1,407 & $0.0598$ & $0.2523$ & $0.2500$ & $0.0046$ & $0.0026$ \\
+ & SimpleKT & dense & R & 521,661 & $0.1454$ & $0.2260$ & $0.2138$ & $0.0297$ & $0.0174$ \\
+ &  & medium & R & 4,558 & $0.2277$ & $0.2938$ & $0.2347$ & $0.0677$ & $0.0089$ \\
+ &  & sparse & R & 3,030 & $0.3069$ & $0.3363$ & $0.2340$ & $0.1120$ & $0.0093$ \\
+ &  & Very Sparse & L & 843 & $0.3879$ & $0.4172$ & $0.2042$ & $0.2322$ & $0.0189$ \\
+ &  & Strict Cold-start & R & 1,407 & $0.1856$ & $0.3005$ & $0.2500$ & $0.0604$ & $0.0101$ \\
+\midrule
+Junyi Academy & IRT & dense & R & 3,072,767 & $0.0233$ & $0.1926$ & $0.2070$ & $0.0008$ & $0.0150$ \\
+ &  & medium & R & 151,597 & $0.0625$ & $0.2328$ & $0.2479$ & $0.0051$ & $0.0201$ \\
+ &  & sparse & R & 16,206 & $0.0398$ & $0.2189$ & $0.2306$ & $0.0020$ & $0.0136$ \\
+ &  & Strict Cold-start & R & 2,545 & $0.1934$ & $0.2872$ & $0.2498$ & $0.0374$ & $0.0000$ \\
+ & DKT & dense & R & 3,072,767 & $0.0629$ & $0.1901$ & $0.2070$ & $0.0062$ & $0.0230$ \\
+ &  & medium & R & 151,597 & $0.2921$ & $0.3465$ & $0.2479$ & $0.1007$ & $0.0023$ \\
+ &  & sparse & R & 16,206 & $0.3131$ & $0.3430$ & $0.2306$ & $0.1130$ & $0.0010$ \\
+ &  & Strict Cold-start & R & 2,545 & $0.0494$ & $0.2465$ & $0.2498$ & $0.0051$ & $0.0080$ \\
+ & SimpleKT & dense & R & 3,072,767 & $0.0889$ & $0.1909$ & $0.2070$ & $0.0102$ & $0.0262$ \\
+ &  & medium & R & 151,597 & $0.1552$ & $0.2623$ & $0.2479$ & $0.0299$ & $0.0154$ \\
+ &  & sparse & R & 16,206 & $0.1624$ & $0.2472$ & $0.2306$ & $0.0324$ & $0.0158$ \\
+ &  & Strict Cold-start & R & 2,545 & $0.0841$ & $0.2536$ & $0.2498$ & $0.0155$ & $0.0106$ \\
+\midrule
+XES3G5M & IRT & dense & R & 1,191,744 & $0.0547$ & $0.1516$ & $0.1563$ & $0.0046$ & $0.0092$ \\
+ &  & medium & R & 129,494 & $0.1759$ & $0.2283$ & $0.1691$ & $0.0616$ & $0.0026$ \\
+ &  & sparse & R & 10,079 & $0.1823$ & $0.1490$ & $0.1202$ & $0.0368$ & $0.0080$ \\
+ &  & Very Sparse & R & 26,212 & $0.3189$ & $0.2380$ & $0.1404$ & $0.1061$ & $0.0085$ \\
+ &  & Strict Cold-start & R & 233,214 & $0.2193$ & $0.2154$ & $0.1673$ & $0.0481$ & $0.0000$ \\
+ & DKT & dense & R & 1,191,744 & $0.1315$ & $0.1787$ & $0.1563$ & $0.0324$ & $0.0099$ \\
+ &  & medium & R & 129,494 & $0.2573$ & $0.2720$ & $0.1691$ & $0.1097$ & $0.0065$ \\
+ &  & sparse & R & 10,079 & $0.1234$ & $0.1433$ & $0.1202$ & $0.0307$ & $0.0076$ \\
+ &  & Very Sparse & R & 26,212 & $0.1549$ & $0.1779$ & $0.1404$ & $0.0420$ & $0.0047$ \\
+ &  & Strict Cold-start & R & 233,214 & $0.2812$ & $0.2549$ & $0.1673$ & $0.0878$ & $0.0007$ \\
+ & SimpleKT & dense & R & 1,191,744 & $0.1756$ & $0.2006$ & $0.1563$ & $0.0532$ & $0.0085$ \\
+ &  & medium & R & 129,494 & $0.2855$ & $0.2994$ & $0.1691$ & $0.1349$ & $0.0044$ \\
+ &  & sparse & R & 10,079 & $0.1405$ & $0.1491$ & $0.1202$ & $0.0391$ & $0.0099$ \\
+ &  & Very Sparse & R & 26,212 & $0.1002$ & $0.1423$ & $0.1404$ & $0.0137$ & $0.0109$ \\
+ &  & Strict Cold-start & R & 233,214 & $0.2973$ & $0.2896$ & $0.1673$ & $0.1223$ & $0.0004$ \\
+\bottomrule
+
+\end{tabular}%
+}
+
+\vspace{1ex}
+{\scriptsize \textbf{Note:} Reliability flags (R/L/I) follow Section 3.5. These values serve as the numerical basis for Figure 3. Very Sparse excludes Strict Cold-start KCs; Strict Cold-start is reported separately where applicable. IRT calibration should be interpreted jointly with discrimination and Brier resolution: under learner-based splits, IRT behaves as a base-rate reference for unseen learners (Section 4.2); under temporal splits, it recovers non-zero resolution because learners are observed during training.\par}
+
+\end{table*}

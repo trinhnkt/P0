@@ -1,0 +1,2 @@
+dataset,processed_interactions,n_users,n_items,n_kcs,avg_seq_len,n_kc_minus1,n_item_minus1,correct_mean
+xes3g5m,6413353,18066,7652,865,354.9957378501052,0,0,0.795764399682974

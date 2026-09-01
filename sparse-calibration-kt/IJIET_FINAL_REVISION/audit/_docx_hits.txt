@@ -1,0 +1,132 @@
+--- 866 #1 @ 11107 ---
+and 5,549,635 question-level interactions [20]. Table 1 instead lists 866 KCs and 7.95M interactions because flattening kc_level sequences (i) 
+--- 866 #2 @ 11375 ---
+atching question_id=−1). Unique kc_id including that padding token is 866; excluding it is 865. Unique item_id including −1 is 7,653. Subsequen
+--- 866 #3 @ 11867 ---
+,8062652.66M534,150Junyi Academy71,0141,32616.2M3,269,022XES3G5M18,0668667.95M1,589,145B. Splits and seedsThe learner-based split is primary. U
+--- 7.95M #1 @ 11119 ---
+5 question-level interactions [20]. Table 1 instead lists 866 KCs and 7.95M interactions because flattening kc_level sequences (i) expands multi-
+--- 7.95M #2 @ 11870 ---
+62652.66M534,150Junyi Academy71,0141,32616.2M3,269,022XES3G5M18,0668667.95M1,589,145B. Splits and seedsThe learner-based split is primary. Users 
+--- 7,953,709 #1 @ 10266 ---
+als are 2,657,490 (ASSISTments 2012), 16,215,567 (Junyi Academy), and 7,953,709 (XES3G5M). Preprocessing drops rows with missing learner, KC, or labe
+--- 1,589,145 #1 @ 11875 ---
+.66M534,150Junyi Academy71,0141,32616.2M3,269,022XES3G5M18,0668667.95M1,589,145B. Splits and seedsThe learner-based split is primary. Users are shuff
+--- 0.1145 #1 @ 20360 ---
+leKT ECE is a counter-pattern: essentially flat from dense to sparse (0.1145, 0.1114, 0.1248) despite Reliable sparse occupancy (N=2,010). A flat 
+--- 0.1145 #2 @ 21043 ---
+792±0.0051Junyi Academymedium3,836R0.1073±0.0156XES3G5Mdense1,268,696R0.1145±0.0011XES3G5Mmedium12,980R0.1114±0.0076XES3G5Msparse2,010R0.1248±0.00
+--- 0.1145 #3 @ 35330 ---
+urvey,” ACM Computing Surveys, vol. 55, no. 11, pp. 1–37, 2023. doi: 10.1145/3569576Z. Liu, Q. Liu, J. Chen, S. Huang, and W. Luo, “SimpleKT: A si
+--- 0.1145 #4 @ 36076 ---
+Conf. Knowledge Discovery and Data Mining, 2020, pp. 2330–2339. doi: 10.1145/3394486.3403282H. Nakagawa, Y. Iwasawa, and Y. Matsuo, “Graph-based K
+--- 0.1145 #5 @ 36321 ---
+nternational Conference on Web Intelligence, 2019, pp. 156–163. doi: 10.1145/3350546.3352513W. Lee, J. Chun, Y. Lee, K. Park, and S. Park, “Contra
+--- 0.1145 #6 @ 36492 ---
+dge Tracing,” in Proc. ACM Web Conference, 2022, pp. 2330–2338. doi: 10.1145/3485447.3512105R. Pelánek, “Metrics for evaluation of student models,
+--- 0.1145 #7 @ 37796 ---
+. 46th International ACM SIGIR Conference, 2023, pp. 2441–2445. doi: 10.1145/3539618.3592073I. Bhattacharjee and C. Wayllace, “Cold start problem:
+--- 0.1114 #1 @ 20368 ---
+ is a counter-pattern: essentially flat from dense to sparse (0.1145, 0.1114, 0.1248) despite Reliable sparse occupancy (N=2,010). A flat ECE is n
+--- 0.1114 #2 @ 21076 ---
+6R0.1073±0.0156XES3G5Mdense1,268,696R0.1145±0.0011XES3G5Mmedium12,980R0.1114±0.0076XES3G5Msparse2,010R0.1248±0.0085C. Threshold-based decision err
+--- 0.1248 #1 @ 20376 ---
+unter-pattern: essentially flat from dense to sparse (0.1145, 0.1114, 0.1248) despite Reliable sparse occupancy (N=2,010). A flat ECE is not a lic
+--- 0.1248 #2 @ 21108 ---
+,696R0.1145±0.0011XES3G5Mmedium12,980R0.1114±0.0076XES3G5Msparse2,010R0.1248±0.0085C. Threshold-based decision errorTable 5 is a simulated gate at
+--- 2,010 #1 @ 20421 ---
+ sparse (0.1145, 0.1114, 0.1248) despite Reliable sparse occupancy (N=2,010). A flat ECE is not a license to skip occupancy reporting and is not 
+--- 2,010 #2 @ 21102 ---
+e1,268,696R0.1145±0.0011XES3G5Mmedium12,980R0.1114±0.0076XES3G5Msparse2,010R0.1248±0.0085C. Threshold-based decision errorTable 5 is a simulated 
+--- 2,010 #3 @ 25395 ---
+sJunyiXES3G5MSparse mass18.9% of KCs0%22.5% of KCsSparse N415 (L)empty2,010 (R)Difficulty couplingρ=−0.227 (sparse harder)ρ=−0.416ρ=+0.087 (weak,
+--- 2,010 #4 @ 26047 ---
+ Sparse test-event support is Limited (N=415), empty, and Reliable (N=2,010). Frequency–difficulty coupling (Spearman ρ of log(1+f_train) with 1−
+--- 2,010 #5 @ 31205 ---
+% of KCs; sparse test support Limited (N=415), empty, and Reliable (N=2,010); frequency–difficulty Spearman ρ=−0.227, −0.416, and +0.087. Item su
+--- 0.8171 #1 @ 19117 ---
+pleKT0.7231±0.00300.7274±0.0015XES3G5MIRT0.50000.7961±0.0031XES3G5MDKT0.8171±0.00220.8327±0.0032XES3G5MSimpleKT0.7557±0.00130.8067±0.0037On XES3G5
+--- 0.8327 #1 @ 19130 ---
+.00300.7274±0.0015XES3G5MIRT0.50000.7961±0.0031XES3G5MDKT0.8171±0.00220.8327±0.0032XES3G5MSimpleKT0.7557±0.00130.8067±0.0037On XES3G5M, sparse-str
+--- 0.7557 #1 @ 19158 ---
+0.50000.7961±0.0031XES3G5MDKT0.8171±0.00220.8327±0.0032XES3G5MSimpleKT0.7557±0.00130.8067±0.0037On XES3G5M, sparse-stratum AUC is higher than dens
+--- 0.8067 #1 @ 19171 ---
+0.0031XES3G5MDKT0.8171±0.00220.8327±0.0032XES3G5MSimpleKT0.7557±0.00130.8067±0.0037On XES3G5M, sparse-stratum AUC is higher than dense-stratum AUC
+--- 0.857 #1 @ 19253 ---
+7On XES3G5M, sparse-stratum AUC is higher than dense-stratum AUC (DKT 0.857 versus 0.817; SimpleKT 0.847 versus 0.755; Reliable occupancy). Lower
+--- 0.847 #1 @ 19282 ---
+UC is higher than dense-stratum AUC (DKT 0.857 versus 0.817; SimpleKT 0.847 versus 0.755; Reliable occupancy). Lower training frequency is theref
+--- 1,268,696 #1 @ 21033 ---
+32,614R0.0792±0.0051Junyi Academymedium3,836R0.1073±0.0156XES3G5Mdense1,268,696R0.1145±0.0011XES3G5Mmedium12,980R0.1114±0.0076XES3G5Msparse2,010R0.12
+--- 12,980 #1 @ 21069 ---
+ium3,836R0.1073±0.0156XES3G5Mdense1,268,696R0.1145±0.0011XES3G5Mmedium12,980R0.1114±0.0076XES3G5Msparse2,010R0.1248±0.0085C. Threshold-based decis
+--- 0.112 #1 @ 23235 ---
+s negative on all five runs, but ΔMiss is positive on all five (mean +0.112): among actual incorrect answers, the system still advances more ofte
+--- +0.112 #1 @ 23234 ---
+is negative on all five runs, but ΔMiss is positive on all five (mean +0.112): among actual incorrect answers, the system still advances more ofte
+--- 1,263 #1 @ 26694 ---
+error (ECE) on those five training-only covariates (n=478, 2,645, and 1,263 KCs) is a between-KC association: it compares different concepts. Sta
+--- 0.117 #1 @ 26890 ---
+0.097, −0.061] on ASSISTments, −0.010 [−0.014, −0.007] on Junyi, and −0.117 [−0.171, −0.063] on XES3G5M in the weighted fit. Difficulty is indepe
+--- 0.117 #2 @ 37196 ---
+bility,” Monthly Weather Review, vol. 78, no. 1, pp. 1–3, 1950. doi: 10.1175/1520-0493(1950)078&lt;0001:VOFEIT&gt;2.0.CO;2M. H. DeGroot and S. E.
+--- 0.008 #1 @ 19952 ---
+e direction on this dataset (dense 0.0602±0.0022 versus sparse 0.2333±0.0084). IRT dense ECE is 0.0031±0.0006, but resolution is zero: a near-con
+--- 0.008 #2 @ 21115 ---
+1145±0.0011XES3G5Mmedium12,980R0.1114±0.0076XES3G5Msparse2,010R0.1248±0.0085C. Threshold-based decision errorTable 5 is a simulated gate at τ=0.7
+--- 0.008 #3 @ 28572 ---
+demySimpleKT50 rows+0.135[+0.110, +0.161]ECE higherXES3G5MDKT500 rows−0.008[−0.019, +0.004]CI includes 0E. Exploratory GKT/CL4KT resultGKT (a tra
+--- 0.087 #1 @ 25458 ---
+L)empty2,010 (R)Difficulty couplingρ=−0.227 (sparse harder)ρ=−0.416ρ=+0.087 (weak, inverted)SimpleKT ECE0.114→0.228dense→medium onlyflat 0.114→0.
+--- 0.087 #2 @ 26223 ---
+.227 and ρ=−0.416 (rarer KCs harder) versus a weak opposite-signed ρ=+0.087 on XES3G5M. Item support: ASSISTments is item-rich (median 44.5 items
+--- 0.087 #3 @ 31266 ---
+iable (N=2,010); frequency–difficulty Spearman ρ=−0.227, −0.416, and +0.087. Item support is also heterogeneous (median items per KC 44.5, 18, an
+--- 7,653 #1 @ 11432 ---
+ing token is 866; excluding it is 865. Unique item_id including −1 is 7,653. Subsequent preprocessing dropped 0 rows. We do not retabulate Table 
+--- 0.114 #1 @ 1315 ---
+SSISTments 2012, SimpleKT expected calibration error (ECE) rises from 0.114 on dense KCs to 0.228 on sparse KCs (Limited occupancy, N≈415); Junyi
+--- 0.114 #2 @ 20360 ---
+leKT ECE is a counter-pattern: essentially flat from dense to sparse (0.1145, 0.1114, 0.1248) despite Reliable sparse occupancy (N=2,010). A flat
+--- 0.114 #3 @ 21043 ---
+792±0.0051Junyi Academymedium3,836R0.1073±0.0156XES3G5Mdense1,268,696R0.1145±0.0011XES3G5Mmedium12,980R0.1114±0.0076XES3G5Msparse2,010R0.1248±0.0
+--- 0.114 #4 @ 23453 ---
+] at τ=0.7 on seed 42 is 0.113, close to the four-partition dense ECE 0.114. They are different quantities.Table 6. Gate robustness at τ=0.7 on A
+--- 0.114 #5 @ 25492 ---
+gρ=−0.227 (sparse harder)ρ=−0.416ρ=+0.087 (weak, inverted)SimpleKT ECE0.114→0.228dense→medium onlyflat 0.114→0.125Table 7 records three observati
+--- 0.114 #6 @ 25525 ---
+ρ=+0.087 (weak, inverted)SimpleKT ECE0.114→0.228dense→medium onlyflat 0.114→0.125Table 7 records three observational pre-conditions under which a
+--- 0.114 #7 @ 27668 ---
+ The observational ASSISTments SimpleKT dense-to-sparse ECE gradient (0.114→0.228) is not reproduced by sparsifying originally dense ASSISTments 
+--- 0.114 #8 @ 35330 ---
+urvey,” ACM Computing Surveys, vol. 55, no. 11, pp. 1–37, 2023. doi: 10.1145/3569576Z. Liu, Q. Liu, J. Chen, S. Huang, and W. Luo, “SimpleKT: A s
+--- 0.114 #9 @ 36076 ---
+Conf. Knowledge Discovery and Data Mining, 2020, pp. 2330–2339. doi: 10.1145/3394486.3403282H. Nakagawa, Y. Iwasawa, and Y. Matsuo, “Graph-based 
+--- 0.114 #10 @ 36321 ---
+nternational Conference on Web Intelligence, 2019, pp. 156–163. doi: 10.1145/3350546.3352513W. Lee, J. Chun, Y. Lee, K. Park, and S. Park, “Contr
+--- 0.114 #11 @ 36492 ---
+dge Tracing,” in Proc. ACM Web Conference, 2022, pp. 2330–2338. doi: 10.1145/3485447.3512105R. Pelánek, “Metrics for evaluation of student models
+--- 0.114 #12 @ 37796 ---
+. 46th International ACM SIGIR Conference, 2023, pp. 2441–2445. doi: 10.1145/3539618.3592073I. Bhattacharjee and C. Wayllace, “Cold start problem
+--- flat #1 @ 1468 ---
+learner-based sparse stratum, and XES3G5M SimpleKT ECE is essentially flat. A locked global threshold at τ=0.7 raises the SimpleKT false-advance
+--- flat #2 @ 10900 ---
+el split: train_valid_sequences.csv and test.csv are concatenated and flattened to one row per sequence position.XES3G5M counts. The original da
+--- flat #3 @ 11146 ---
+ns [20]. Table 1 instead lists 866 KCs and 7.95M interactions because flattening kc_level sequences (i) expands multi-KC questions into one row 
+--- flat #4 @ 20333 ---
+73±0.0156. On XES3G5M, SimpleKT ECE is a counter-pattern: essentially flat from dense to sparse (0.1145, 0.1114, 0.1248) despite Reliable sparse
+--- flat #5 @ 20431 ---
+.1145, 0.1114, 0.1248) despite Reliable sparse occupancy (N=2,010). A flat ECE is not a license to skip occupancy reporting and is not the same 
+--- flat #6 @ 20510 ---
+is not a license to skip occupancy reporting and is not the same as a flat miss rate.Table 4. SimpleKT event-level expected calibration error (E
+--- flat #7 @ 25520 ---
+0.416ρ=+0.087 (weak, inverted)SimpleKT ECE0.114→0.228dense→medium onlyflat 0.114→0.125Table 7 records three observational pre-conditions under w
+--- flat #8 @ 29843 ---
+15); XES3G5M SimpleKT ECE is a counter-pattern that stays essentially flat despite Reliable sparse occupancy. Calibration is not guaranteed to w
+--- flat #9 @ 30257 ---
+ons; on XES3G5M, ΔFAR and ΔMiss can move in opposite directions, so a flat ECE is not a flat miss rate.B. Practical implications for educational
+--- flat #10 @ 30275 ---
+FAR and ΔMiss can move in opposite directions, so a flat ECE is not a flat miss rate.B. Practical implications for educational technologyBefore 
+--- flat #11 @ 32902 ---
+ner-based sparse bucket, and XES3G5M SimpleKT ECE remains essentially flat. Sparse-concept occupancy, calibration, and threshold-error checks ar

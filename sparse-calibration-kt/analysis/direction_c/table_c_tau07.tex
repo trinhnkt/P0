@@ -1,0 +1,23 @@
+\begin{table}[htbp]
+\caption{Simulated global-threshold decision error at $\tau=0.7$ on ASSISTments 2012, learner-based fold 0. FM $=P(y=0\mid p\ge\tau)$; $E[\mathrm{FM}]$ is $E[1-p\mid p\ge\tau]$ (calibrated advance error). Miss $=P(p\ge\tau\mid y=0)$. Sparse $N=444$ is Limited. GKT uses the train-only graph. CL4KT is a protocol adapter.}
+\label{tab:c_tau07}
+\centering
+\footnotesize
+\begin{tabular}{llrrrrrr}
+\toprule
+Model & Stratum & Flag & $N$ & FM & $E[\mathrm{FM}]$ & Miss & UR \\
+\midrule
+SimpleKT & dense & R & 528018 & 0.196 & 0.113 & 0.352 & 0.381 \\
+SimpleKT & sparse & L & 444 & 0.268 & 0.050 & 0.320 & 0.304 \\
+\midrule
+DKT & dense & R & 528018 & 0.200 & 0.147 & 0.398 & 0.316 \\
+DKT & sparse & L & 444 & 0.296 & 0.057 & 0.365 & 0.308 \\
+\midrule
+GKT (train-only) & dense & R & 528018 & 0.205 & 0.163 & 0.455 & 0.244 \\
+GKT (train-only) & sparse & L & 444 & 0.220 & 0.157 & 0.234 & 0.340 \\
+\midrule
+CL4KT (adapter) & dense & R & 528018 & 0.185 & 0.175 & 0.359 & 0.322 \\
+CL4KT (adapter) & sparse & L & 444 & 0.240 & 0.116 & 0.244 & 0.385 \\
+\bottomrule
+\end{tabular}
+\end{table}

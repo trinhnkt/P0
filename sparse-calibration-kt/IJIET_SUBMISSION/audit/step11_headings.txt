@@ -1,0 +1,160 @@
+Heading1	Introduction
+Heading1	Literature Review
+Heading2	Knowledge Tracing and benchmark models
+Heading2	Graph and self-supervised KT
+Heading2	Sparse-data and cold-start problems
+Heading2	Calibration and educational decision support
+Heading1	Materials and Methods
+Heading2	A. Datasets
+TableTitle	Table 1. Post-processing cohort statistics (learner-based split). Learner, knowledge-component (KC), interaction, and test-event counts are post-processing totals, not raw public-d
+Heading1	Dataset
+Heading1	Learners
+Heading1	KCs
+Heading1	Interactions
+Heading1	Test events
+Heading1	ASSISTments 2012
+Heading1	27,806
+Heading1	265
+Heading1	2.66M
+Heading1	534,150
+Heading1	Junyi Academy
+Heading1	71,014
+Heading1	1,326
+Heading1	16.2M
+Heading1	3,269,022
+Heading1	XES3G5M
+Heading1	18,066
+Heading1	866
+Heading1	7.95M
+Heading1	1,589,145
+Heading2	B. Splits and seeds
+Heading2	C. Model settings
+Heading1	Setting
+Heading1	IRT 1PL
+Heading1	DKT
+Heading1	SimpleKT
+Heading1	Implementation
+Heading1	local IRT
+Heading1	local DKT
+Heading1	local SimpleKT
+Heading1	Version/commit
+Heading1	NOT RECOVERED
+Heading1	NOT RECOVERED
+Heading1	NOT RECOVERED
+Heading1	Major hyperparameters
+Heading1	1PL: sigmoid(θ−β); L2 0.01
+Heading1	LSTM embed 64, hidden 128
+Heading1	Transformer 2 layers, 4 heads, embed 64
+Heading1	Optimizer
+Heading1	SGD
+Heading1	Adam
+Heading1	Adam
+Heading1	Learning rate
+Heading1	0.01
+Heading1	1e−3
+Heading1	1e−3
+Heading1	Early stopping
+Heading1	none (10 epochs)
+Heading1	none (50 epochs)
+Heading1	none (50 epochs)
+Heading1	Batch size
+Heading1	512
+Heading1	64
+Heading1	64
+Heading1	Max. sequence length
+Heading1	n/a
+Heading1	200
+Heading1	200
+Heading1	Selection metric
+Heading1	last epoch
+Heading1	validation AUC
+Heading1	validation AUC
+Heading2	D. Train-only frequency strata
+Heading2	E. Reliability flags
+Heading2	F. Calibration
+Heading2	G. Difficulty coupling
+Heading2	H. Simulated decision gate
+Heading1	IV. RESULT AND DISCUSSION
+Heading2	A. Aggregate discrimination
+Text	Table 2 reports overall learner-based area under the ROC curve (AUC) and accuracy (ACC), mean±sd over four unique partitions. This subsection is discrimination, not calibration. DK
+TableTitle	Table 2. Overall learner-based area under the ROC curve (AUC) and accuracy (ACC) (mean±sd over four unique partitions).
+Heading2	B. Calibration across frequency strata
+Text	Table 3 reports event-level expected calibration error (ECE), not AUC. On ASSISTments 2012, SimpleKT ECE increases from 0.1136±0.0066 (dense, Reliable, N=523,971) to 0.1541±0.0051 
+TableTitle	Table 3. SimpleKT event-level expected calibration error (ECE) by train-only frequency stratum. N is the mean test-event count across four unique learner partitions, not a single-p
+Heading2	C. Threshold-based decision error
+Text	Table 4 is a simulated gate at τ=0.7 on ASSISTments 2012 fold 0 (seed 42), not a classroom trial. For SimpleKT, false-advance rate (FAR) is 0.196 [0.186, 0.208] on dense KCs (N=528
+TableTitle	Table 4. Simulated gate at τ=0.7, ASSISTments 2012 fold 0. False-advance rate (FAR)=P(y=0 | p≥τ) among N_advance advances; Miss among N_incorrect incorrect responses; Excess FAR=FA
+Text	Table 5 checks whether SimpleKT ΔFAR is a one-fold accident. It is positive in all five training runs spanning four unique student partitions (mean 0.047, sd 0.033). Mean sparse de
+TableTitle	Table 5. Gate robustness at τ=0.7 on ASSISTments 2012. Five training runs (seeds 42, 2024, 2025, 2026, 2027) across four unique learner partitions (2025 and 2026 share a split). ΔF
+Heading2	Model
+Heading2	Mean ΔFAR
+Heading2	SD
+Heading2	Runs ΔFAR&gt;0
+Heading2	Mean N
+Heading2	Mean N_advance
+Heading2	Mean N_incorrect
+Heading2	SimpleKT
+Heading2	0.047
+Heading2	0.033
+Heading2	5/5 runs (4 partitions)
+Heading2	413
+Heading2	227
+Heading2	155
+Heading2	DKT
+Heading2	0.033
+Heading2	0.048
+Heading2	3/5 runs
+Heading2	413
+Heading2	226
+Heading2	155
+Heading2	D. Dataset-dependent explanatory analysis
+TableTitle	Table 6. Empirical observations, on these three datasets, of when a sparse-calibration contrast is estimable. These are not universal laws. Sparse mass: share of KCs with train-onl
+	Table 6 records three observational pre-conditions under which a sparse-calibration contrast is estimable on these logs. The same training-only file also yields item support, learn
+	Table 7. Within-KC controlled sparsification (seed 42; 30 originally dense KCs per dataset). Delta ECE = reduced−full; positive means worse calibration after keeping 500 or 50 trai
+Heading2	Dataset
+Heading2	Model
+Heading2	Reduction
+Heading2	Delta ECE
+Heading2	95% CI
+Heading2	Interpretation
+Heading2	ASSISTments 2012
+Heading2	DKT
+Heading2	500 rows
+Heading2	−0.047
+Heading2	[−0.060, −0.033]
+Heading2	ECE lower
+Heading2	ASSISTments 2012
+Heading2	SimpleKT
+Heading2	50 rows
+Heading2	+0.002
+Heading2	[−0.021, +0.025]
+Heading2	CI includes 0
+Heading2	Junyi Academy
+Heading2	DKT
+Heading2	500 rows
+Heading2	−0.021
+Heading2	[−0.041, −0.001]
+Heading2	ECE lower
+Heading2	Junyi Academy
+Heading2	SimpleKT
+Heading2	50 rows
+Heading2	+0.135
+Heading2	[+0.110, +0.161]
+Heading2	ECE higher
+Heading2	XES3G5M
+Heading2	DKT
+Heading2	500 rows
+Heading2	−0.008
+Heading2	[−0.019, +0.004]
+Heading2	CI includes 0
+Heading2	E. Exploratory GKT/CL4KT result
+Heading2	F. What this paper does not show
+Heading2	G. Implications for information and education technology
+Heading1	V. CONCLUSION
+References	A. T. Corbett and J. R. Anderson, “Knowledge Tracing: Modeling the acquisition of procedural knowledge,” User Modeling and User-Adapted Interaction, vol. 4, no. 4, pp. 253–278, 199
+References	C. Piech, J. Bassen, J. Huang, S. Ganguli, M. Sahami, L. J. Guibas, and J. Sohl-Dickstein, “Deep Knowledge Tracing,” in Advances in Neural Information Processing Systems, 2015, pp.
+References	G. Abdelrahman, Q. Wang, and B. Nunes, “Knowledge Tracing: A survey,” ACM Computing Surveys, vol. 55, no. 11, pp. 1–37, 2023.
+References	G. Rasch, Probabilistic Models for Some Intelligence and Attainment Tests. Danish Institute for Educational Research, 1960.
+References	A. Ghosh, N. Heffernan, and A. S. Lan, “Context-aware attentive Knowledge Tracing,” in Proc. ACM SIGKDD Conf. Knowledge Discovery and Data Mining, 2020, pp. 2330–2339.
+References	C. Guo, G. Pleiss, Y. Sun, and K. Q. Weinberger, “On calibration of modern neural networks,” in Proc. International Conference on Machine Learning, 2017, pp. 1321–1330.
+References	G. W. Brier, “Verification of forecasts expressed in terms of probability,” Monthly Weather Review, vol. 78, no. 1, pp. 1–3, 1950.

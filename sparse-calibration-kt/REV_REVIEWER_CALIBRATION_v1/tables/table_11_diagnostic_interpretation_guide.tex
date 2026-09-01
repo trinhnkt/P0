@@ -1,0 +1,25 @@
+﻿\begin{table}[htbp]
+\caption{Diagnostic Interpretation Guide for Sparse-Concept and Calibration Analysis}
+\label{tab:interpretation_guide}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{p{4cm}X}
+\toprule
+\textbf{Diagnostic Pattern} & \textbf{Interpretation / Recommendation} \\
+\midrule
+1. High overall AUC but high sparse-KC ECE & The model ranks responses well overall (good discrimination) but its predicted probabilities may be potentially unreliable (poor calibration) on low-frequency concepts. Educational interventions triggered by probability thresholds should be used with caution on these KCs. \\
+\midrule
+2. Dense AUC remains stable but very-sparse AUC is unstable or has high variance (e.g., high standard deviations) & Check the number of KCs and interaction events in the stratum. Volatility in metrics can be driven by small sample-size constraints (metric instability) rather than intrinsic model shifts. \\
+\midrule
+3. Brier reliability (REL) component increases in sparse buckets & Probabilistic calibration degrades under limited training evidence. Under our experimental conditions, deep sequence models tend to generate overconfident or under-confident probability predictions as concepts become scarcer. \\
+\midrule
+4. Temporal split AUC converges near random guess ($\approx 0.50$), especially on strict cold-start groups & Future-oriented concept generalization can be challenging, especially under strict temporal cold-start constraints. However, if near-random AUC occurs on warm or dense cohorts where sufficient training evidence exists, the L8 predictive sanity check should be triggered to audit possible prediction--label alignment, sequence cut-off, export, or metric-computation errors before interpreting the result as genuine model failure. \\
+\midrule
+5. strict, k5, and k10 cold-start groups show near-identical event counts or metrics & The dataset under study has very few genuinely cold-start concepts under the chosen split, or the KCs are densely linked, meaning the cold-start setting is not highly active for this cohort. \\
+\midrule
+6. ECE and Brier score model rankings differ from AUC discrimination rankings & Discrimination and calibration capture orthogonal model characteristics. They answer different diagnostic questions and should be reported separately. Models optimized purely for pairwise ranking (AUC) may not produce reliable soft posterior masteries. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+

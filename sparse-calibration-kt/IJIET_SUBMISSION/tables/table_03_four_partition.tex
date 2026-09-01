@@ -1,0 +1,28 @@
+% Copied from analysis/four_partition/table_03_four_partition.tex (Task 1).
+% Numeric source of truth for overall learner-based AUC/ACC. Do not edit numbers.
+\begin{table}[tbp]
+\caption{Overall Performance under Learner-based Split}
+\label{tab:overall_learner}
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lllcccc}
+\toprule
+Dataset & Split & Model & AUC & ACC & NLL & RMSE \\
+\midrule
+ASSISTments 2012 & Learner-based & IRT & $0.5000$ & $0.6973 \pm 0.0004$ & $0.6131 \pm 0.0003$ & $0.4594 \pm 0.0002$ \\
+ & Learner-based & DKT & $0.6979 \pm 0.0014$ & $0.7182 \pm 0.0014$ & $0.5836 \pm 0.0049$ & $0.4400 \pm 0.0012$ \\
+ & Learner-based & SimpleKT & $0.6837 \pm 0.0025$ & $0.6996 \pm 0.0032$ & $0.7013 \pm 0.0055$ & $0.4603 \pm 0.0020$ \\
+\midrule
+Junyi Academy & Learner-based & IRT & $0.5000$ & $0.7053 \pm 0.0018$ & $0.6063 \pm 0.0015$ & $0.4559 \pm 0.0008$ \\
+ & Learner-based & DKT & $0.7320 \pm 0.0009$ & $0.7343 \pm 0.0015$ & $0.5440 \pm 0.0021$ & $0.4248 \pm 0.0009$ \\
+ & Learner-based & SimpleKT & $0.7231 \pm 0.0030$ & $0.7274 \pm 0.0015$ & $0.6070 \pm 0.0145$ & $0.4340 \pm 0.0024$ \\
+\midrule
+XES3G5M & Learner-based & IRT & $0.5000$ & $0.7961 \pm 0.0031$ & $0.5625 \pm 0.0016$ & $0.4315 \pm 0.0009$ \\
+ & Learner-based & DKT & $0.8171 \pm 0.0022$ & $0.8327 \pm 0.0032$ & $0.3932 \pm 0.0083$ & $0.3495 \pm 0.0032$ \\
+ & Learner-based & SimpleKT & $0.7557 \pm 0.0013$ & $0.8067 \pm 0.0037$ & $0.6202 \pm 0.0152$ & $0.3930 \pm 0.0037$ \\
+\bottomrule
+\end{tabular}%
+}
+\vspace{1ex}
+{\scriptsize \textbf{Note:} Mean $\pm$ standard deviation over four unique learner-based partitions. Seeds 2025 and 2026 share one student split (\texttt{fold\_2}$=$\texttt{fold\_3}); their metrics are averaged into one partition value before the four-partition summary.\par}
+\end{table}

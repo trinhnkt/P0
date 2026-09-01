@@ -1,0 +1,104 @@
+\section{Threshold Sensitivity Protocol}
+\label{app:sensitivity}
+Threshold sensitivity analysis is implemented in the released artifact as an optional robustness check. The present manuscript does not use threshold-sensitivity results as primary evidence because the main diagnostic conclusions are based on the pre-registered KC-frequency thresholds used in Tables 5, 6, 9, and 10. The artifact evaluates three alternative threshold configurations: (i) an aggressive setting with thresholds \{10, 50, 250\} training interactions, (ii) a conservative setting with thresholds \{30, 150, 750\} training interactions, and (iii) a dynamic quantile-based bucketing scheme where buckets are defined by equal-quantile KCs. These checks are intended to help future users evaluate whether their conclusions are sensitive to the chosen KC-frequency thresholds.
+
+\FloatBarrier
+
+\section{Overall and Bucket-level Performance under Temporal Splits}
+\label{app:temporal_performance}
+In this section, we present the detailed overall performance (Table~\ref{tab:temporal_overall}) and strata-specific performance breakdowns (Table~\ref{tab:temporal_strata}) under the time-partitioned (temporal) split mode. As shown, deep learning baselines undergo noticeable predictive decay compared to their population-level learner-based counterparts, highlighting the increased difficulty of curriculum-level forecasting. Calibration degradation under temporal splits is reported separately in Appendix~\ref{app:calibration_performance}, Table~\ref{tab:calibration_temporal}.
+
+\input{tables/table_07_overall_performance_temporal}
+\input{tables/table_08_kc_strata_performance_temporal}
+
+\clearpage
+\section{Detailed Calibration Results}
+\label{app:calibration_performance}
+Detailed calibration results by frequency stratum for the learner-based split are reported in Table~\ref{tab:calibration_learner}. The corresponding temporal calibration breakdowns, computed after the label-alignment correction documented in Appendix~\ref{app:alignment} and used as the numerical basis for Figure~\ref{fig:reliability_junyi_temporal}, are reported in Table~\ref{tab:calibration_temporal}.
+
+\input{tables/table_09_calibration_breakdown_learner_based}
+\input{tables/table_10_calibration_breakdown_temporal}
+\clearpage
+
+\section{Diagnostic Interpretation Guide}
+\label{app:interpretation}
+To assist researchers and practitioners in applying our diagnostic protocol, we provide Table~\ref{tab:interpretation_guide} which maps common empirical diagnostic patterns observed during evaluation to their theoretical and operational educational interpretation.
+
+\input{tables/table_11_diagnostic_interpretation_guide}
+
+\section{Dataset Conditions for Sparse-KC Calibration Vulnerability}
+\label{app:dataset_conditions}
+Table~\ref{tab:a5_dataset_conditions} accompanies Section~\ref{sec:a5_dataset_dependent}. It reports only quantities that can be computed from training-fold frequencies, training-only KC covariates, and the event-level ECE already published in Table~\ref{tab:calibration_learner}.
+
+\input{tables/table_12_dataset_conditions}
+
+\section{When Sparse-Concept Diagnostics Are Informative}
+\label{app:a8_need}
+Tables~\ref{tab:a8_need_framework} and~\ref{tab:a8_dataset_need} accompany Section~\ref{sec:a8_when_needed}. Need levels reuse the protocol's pre-registered sparse threshold and reliability flags; C4 is qualitative intended use.
+
+\input{tables/table_14_need_framework}
+\input{tables/table_15_dataset_need}
+
+\section{Controlled Sparsification of Training Evidence}
+\label{app:a9_sparsify}
+The selection rule was recorded before reduced-evidence ECE was inspected (\path{controlled_sparsification_protocol.md}).
+On each dataset, eligible KCs had $f_{\mathrm{train}}\ge 500$, $N_{\mathrm{test}}\ge 100$, and at least 20 positive and 20 negative test labels.
+If more than 30 KCs qualified, ten were taken from each tertile of the training-only difficulty proxy $1-\bar{c}_{\mathrm{train}}$, sorted by \texttt{kc\_id}.
+ECE was not a selection criterion.
+
+Training rows of selected KCs were downsampled to 500, 100, or 50 interactions with a deterministic RNG; validation, test, KC identifiers, and non-selected training rows were unchanged.
+Official processed \path{train.csv} files were not overwritten.
+DKT and SimpleKT were retrained on ASSISTments 2012, Junyi Academy, and XES3G5M, learner-based fold 0, seed 42.
+The 100\% control is the published prediction export for that seed, not a second A9 retrain of the full fold.
+
+Primary outcomes are within-KC $\Delta$ECE and $\Delta$REL (Table~\ref{tab:a9_sparsification}, Figure~\ref{fig:a9_sparsify}).
+A within-KC ECE increase after reducing training rows is not universal: it is absent on ASSISTments 2012, large for SimpleKT on Junyi Academy, and modest for SimpleKT on XES3G5M.
+We do not claim that real-world sparsity always causes miscalibration.
+
+\input{tables/table_16_sparsification}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\linewidth]{figures/a9_ece_rel_vs_evidence.pdf}
+\caption{Selected-KC test ECE and REL versus training rows kept per selected KC on ASSISTments 2012, Junyi Academy, and XES3G5M (seed 42). The full points are the published models. This figure is descriptive; inference uses the paired within-KC bootstrap in Table~\ref{tab:a9_sparsification}.}
+\label{fig:a9_sparsify}
+\end{figure}
+
+\section[Bayesian Knowledge Tracing Numerical Instability and Transition]{Bayesian Knowledge Tracing Numerical Instability and Transition}
+\label{app:bkt_instability}
+During our initial protocol implementation, we instantiated Bayesian Knowledge Tracing (BKT) as the classical baseline utilizing the popular \texttt{pyBKT} library (v1.4.1). However, on all three large-scale datasets, BKT suffered from severe numerical instability during EM parameter estimation. Specifically, for sparse and very sparse concept strata, the scarcity of interaction logs triggered a divide-by-zero error in the M-step update equation for the prior parameter, resulting in \texttt{NaN} value assignments. Consequently, the model's predictions degenerated into deterministic binary outputs ($p_{pred} \in \{0.0, \text{NaN}\}$), yielding a flat $0.50$ AUC and extreme NLL values ranging between $23.7$ and $28.0$. To maintain scientific integrity and standard baseline comparison, we transitioned to Item Response Theory (IRT 1PL / Rasch Model) as the primary classical baseline. The raw prediction CSV files for the failed BKT runs are preserved within the codebase predictions directory for transparency.
+
+\section{Prediction--Label Alignment Audit for Temporal Splits}
+\label{app:alignment}
+During the temporal-split audit, we identified a prediction--label alignment issue in the temporal evaluation pipeline. The issue occurred when exported model predictions were matched back to temporal test instances after sequence construction and cohort filtering. In the affected code path, an alignment discrepancy in the temporal evaluation pipeline made some exported $p_{pred}$ values correspond to incorrect $y_{true}$ entries.
+
+The main symptom was not limited to strict cold-start KCs. Deep KT baselines produced near-random AUC even on warm temporal cohorts, where KCs had sufficient training-fold evidence. This behavior was a red flag because a static IRT baseline still achieved meaningful AUC on the same warm cohorts, whereas DKT and SimpleKT collapsed to approximately random ranking.
+
+We detected the issue using two sanity checks. First, we compared warm-cohort AUC against the IRT reference baseline; near-random deep KT AUC on warm KCs was treated as an alignment warning rather than as evidence of genuine temporal generalization failure. Second, we computed prediction--label correlation on warm-cohort slices and verified whether $\mathbb{E}[p_{pred}\mid y=1]$ exceeded $\mathbb{E}[p_{pred}\mid y=0]$. The correction preserves a stable test-instance identity through temporal splitting, sequence construction, prediction export, cohort filtering, and metric computation. Metrics are computed only after pairing predictions and labels by this stable identity rather than by transient row position.
+
+After applying the correction consistently across datasets, warm-cohort AUC for the affected deep KT baselines recovered above the sanity threshold, and prediction--label correlations became positive. These checks were then used before re-running the temporal diagnostics reported in the paper. This audit reinforces the central message of the protocol: temporal cold-start results should be accompanied by warm-cohort and prediction--label sanity checks to distinguish genuine concept-level cold-start difficulty from alignment artifacts.
+
+\clearpage
+\section{Controlled Fault Injection for Predictive-Sanity Validation}
+\label{app:l8_fault}
+The alignment case in Appendix~\ref{app:alignment} is one observed defect. A single catch does not by itself establish how L8 behaves under other alignment failures. This section reports a \emph{validation experiment}---not a pre-registered primary analysis---that injects controlled faults into \emph{in-memory copies} of the existing temporal prediction CSVs (DKT and SimpleKT, seed 42, three datasets). The original prediction files are never overwritten.
+
+\paragraph{Fault classes.}
+F1 and F2 pair $p_t$ with $y_{t+1}$ and $y_{t-1}$ within each learner. F3 shifts $p_{\mathrm{pred}}$ by one timestep within learner. F4 shuffles predictions within learner. F5 reassigns $p_{\mathrm{pred}}$ by row index after a different sort (a global position mismatch of the class that motivated the original L8 catch). F6 swaps a random $1\%$, $5\%$, $10\%$, $25\%$, or $50\%$ of rows.
+
+\paragraph{Detection signals and rule.}
+L8 records warm-cohort AUC, $\mathrm{corr}(p_{\mathrm{pred}},y)$, $\mathbb{E}[p_{\mathrm{pred}}\mid y=1]-\mathbb{E}[p_{\mathrm{pred}}\mid y=0]$, the fraction of missing or unmatched stable ids, and prediction--label identity consistency against the official temporal test split. A file is flagged if any of the following hold: warm AUC $< 0.55$; warm AUC more than $0.05$ below the clean IRT warm-cohort reference; non-positive correlation or conditional-mean gap; or an identity-mismatch rate more than $1$ percentage point above that same file's clean-pipeline identity-mismatch rate. The last clause uses the correct pipeline as the reference distribution: Junyi Academy has a small baseline identity collision ($\approx 0.9\%$) from duplicate stable ids, so an absolute zero-tolerance cutoff would false-positive the clean export. Thresholds were not chosen after inspecting the injected-fault outcomes.
+
+\paragraph{Results.}
+Table~\ref{tab:l8_fault_injection} reports detection rates over six files (two models $\times$ three datasets). The clean copies produced $0/6$ false positives. L8 detected all F1, F2, and F5 injections ($6/6$ each). F1 and F2 were caught by the identity check: adjacent-label shifts left warm AUC in the $0.60$--$0.81$ range because learner sequences are autocorrelated. F5---the row-index mismatch class---collapsed warm AUC to $\approx 0.50$ and fired the original Appendix~\ref{app:alignment} signals. F3 was never detected ($0/6$): shifting $p_{\mathrm{pred}}$ by one step does not change exported labels or ids, and residual association remains positive. F4 was detected on $2/6$ files (XES3G5M only, via collapse versus IRT). F6 was undetected at corruption rates $\le 25\%$ and reached $3/6$ at $50\%$ (Figure~\ref{fig:l8_fault_curve}). Overall detection was $23/60$ injected faults ($38.3\%$).
+
+L8 is therefore sensitive to the identity-shifted-label and global row-index-mismatch classes tested here, and only weakly sensitive to within-learner shuffles and high-rate partial swaps. It is \emph{not} sensitive to adjacent-timestep prediction shifts that preserve autocorrelation. We do not claim that L8 detects every evaluation bug.
+
+\input{tables/table_13_l8_fault_injection}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.72\linewidth]{figures/l8_fault_injection_detection_curve.pdf}
+\caption{L8 detection rate versus F6 partial-mismatch corruption, pooled over six temporal prediction files. Detection remains $0$ through $25\%$ and reaches $50\%$ ($3/6$ files) at $50\%$ corruption. This is a validation curve, not a tuned operating characteristic.}
+\label{fig:l8_fault_curve}
+\end{figure}

@@ -1,0 +1,27 @@
+\begin{table*}[htbp]
+\caption{Sparse-concept diagnostic need on the three evaluation datasets. Need is not the same as observed vulnerability: XES3G5M has high reporting priority because sparse mass and cold-start support are large, even though SimpleKT ECE is flat. Junyi has low learner-based sparse-stratum priority because those buckets are empty, not because calibration is known to be safe. C4 is the same qualitative intended-use condition for all three public benchmarks.}
+\label{tab:a8_dataset_need}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.8cm}XXX}
+\toprule
+\textbf{Condition} & \textbf{ASSISTments 2012} & \textbf{Junyi Academy} & \textbf{XES3G5M} \\
+\midrule
+C1 Sparse mass & High: 18.9\% of KCs below sparse threshold & Low: 0.0\% of KCs with $f_{\mathrm{train}}<100$ & High: 22.5\% of KCs below sparse threshold \\
+\midrule
+C2 Evaluation support & Moderate: sparse $N=403$ (L); very-sparse $N=19$ (I) & Low: 0 sparse/very-sparse test events & High: sparse $N=2{,}002$ (R); very-sparse $N=109$ (L) \\
+\midrule
+C3 Calibration susceptibility & High: monotonic ECE $0.113\to0.158\to0.225$; $\bar\rho=-0.60$ & Moderate: dense$\to$medium $\Delta$ECE$=+0.031$; sparse empty; $\bar\rho=-0.43$ & Moderate: SimpleKT flat $0.115\to0.124$; model-heterogeneous; $\bar\rho=-0.23$ \\
+\midrule
+C4 Deployment relevance & Use-dependent: not measured in logs; High if probabilities are thresholded & Use-dependent: not measured in logs; High if probabilities are thresholded & Use-dependent: not measured in logs; High if probabilities are thresholded \\
+\midrule
+C5 Temporal / cold-start & Moderate: 27 strict KCs / 1,407 events; 85 temporal sparse-like KCs & Moderate: 4 strict KCs / 2,545 events; 10 temporal sparse-like KCs & High: 117 strict KCs / 233,214 events (R); 273 temporal sparse-like KCs \\
+\midrule
+Overall sparse-diagnostic priority & High: C1+C3 high, C2 Limited but estimable; sparse ECE claims are informative & Low (learner-based); Moderate (temporal): empty sparse buckets under learner-based split; temporal split still exposes a small tail & High (reporting), Moderate (SimpleKT gradient): mass and support require the check; the check shows a flat/inverted pattern, not ASSISTments-like degradation \\
+\bottomrule
+\end{tabularx}
+
+\vspace{1ex}
+{\scriptsize \textbf{Note:} Learner-based occupancy and ECE from Tables~\ref{tab:a5_dataset_conditions} and~\ref{tab:calibration_learner}; temporal cold-start counts from Table~\ref{tab:cold_start_temporal}. Overall priority is a qualitative synthesis, not a numeric score.\par}
+\end{table*}

@@ -1,0 +1,29 @@
+012 [Heading 1] Introduction
+018 [Heading 1] Literature Review
+019 [Text] Classical KT uses Bayesian knowledge tracing or item-response models [1], [6]. Deep sequential models (DKT, attentive and transformer KT) improved aggregate prediction [2], [4], [7]. Graph and contrastive variants often motivate architecture by sparse or related skills [8], [9]. Those papers still report mainly population metrics.
+020 [Text] Educational measurement has long warned that ranking is not reliability [10]. Calibration error and reliability diagrams quantify whether predicted probabilities match empirical correctness [11]–[14]. Recent KT work has begun to study calibration and sparse-concept evaluation [15]–[17], but deployed tutoring systems still typically consume a single global p. This study sits in that gap: we keep standard models, stratify by training-only frequency, and ask whether a population gate would treat sparse skills more leniently—or more dangerously—than dense ones.
+021 [Heading 1] Materials and Methods
+022 [Heading 2] Datasets, Splits, and Models
+027 [Heading 2] Train-Only Frequency Strata
+030 [Heading 2] Calibration
+032 [Heading 2] Simulated Mastery Gate
+035 [Heading 1] Result and Discussion
+036 [Heading 2] Aggregate Ranking Is Not the Sparse Story
+040 [Heading 2] Calibration Can Move When Ranking Does Not
+044 [Heading 2] A Global Gate Can Turn the ASSISTments Gradient into a Decision Error
+050 [Heading 2] What a Designer Should Take Away
+054 [Heading 2] What This Paper Does Not Show
+056 [Heading 2] Implications for Information and Education Technology
+058 [Heading 1] Conclusion
+060 [Reference Head] Conflict of Interest
+062 [Reference Head] Author Contributions
+064 [Reference Head] Acknowledgment
+066 [Reference Head] References
+
+=== LITERATURE REVIEW FULL ===
+[Heading 1] Literature Review
+[Text] Classical KT uses Bayesian knowledge tracing or item-response models [1], [6]. Deep sequential models (DKT, attentive and transformer KT) improved aggregate prediction [2], [4], [7]. Graph and contrastive variants often motivate architecture by sparse or related skills [8], [9]. Those papers still report mainly population metrics.
+[Text] Educational measurement has long warned that ranking is not reliability [10]. Calibration error and reliability diagrams quantify whether predicted probabilities match empirical correctness [11]–[14]. Recent KT work has begun to study calibration and sparse-concept evaluation [15]–[17], but deployed tutoring systems still typically consume a single global p. This study sits in that gap: we keep standard models, stratify by training-only frequency, and ask whether a population gate would treat sparse skills more leniently—or more dangerously—than dense ones.
+STOP [Heading 1] Materials and Methods
+
+=== REFERENCES ===

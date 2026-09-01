@@ -1,0 +1,16 @@
+IJIET-19 numeric-audit compile
+PATCH_INTRO already applied
+H2_RESTORED=0
+FULL_TABLES=8 FIGS=1 SECTIONS=22
+ANON_AUTHORS i=2
+ANON_AFFIL i=3
+DEL_AFFIL2 i=4
+DEL_EMAIL i=5
+DEL_CORR i=6
+DEL_DATES i=7
+ANON_CONTRIB i=470
+ANON_ACK i=478
+H2_RESTORED=0
+FULL_PAGES=8 BLIND_PAGES=8
+CHECKS={'ece': True, 'far': True, 'mean_dfar': True, 'no_five_seed': True, 'intro_four_part': True, 'gkt_single': True, 'cl4kt_adapter': True, 'temporal': True, 'authors': True, 'blind': True, 'fig': True, 't8': True}
+KEEP={'ASSISTments': True, 'Junyi Academy': True, 'XES3G5M': True, 'https://anonymous.4open.science/r/Sparse-Concept-and-Calibration-6E5B/': True, 'Corbett': True}

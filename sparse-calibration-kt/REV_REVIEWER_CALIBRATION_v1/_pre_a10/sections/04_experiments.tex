@@ -1,0 +1,120 @@
+\section{Experiments and Diagnostic Analysis}
+\label{sec:experiments}
+
+As mapped in Section~\ref{sec:introduction}, our experimental investigation is structured around four Research Questions (RQs): RQ1 exercises Contribution 1, RQ2 exercises Contribution 2, RQ3 states the dataset conditions under which sparse-concept calibration diagnostics are informative, and RQ4 draws jointly on Contributions 1 and 3.
+
+\subsection{Experimental Setup and Datasets}
+We evaluate our protocol on three diverse, public, de-identified benchmark educational datasets: ASSISTments 2012 (assist2012) \citep{assistments2012data,liu2022pykt}, Junyi Academy (junyi) \citep{junyi2019kaggle}, and XES3G5M (xes3g5m) \citep{liu2023xes3g5m}. No personally identifiable learner information is processed in this study. The preprocessing pipeline (Section~\ref{sec:protocol}) retains only well-formed interaction records; Table~\ref{tab:dataset_stats} presents the resulting cohort statistics.
+
+\textbf{Dataset provenance.} ASSISTments 2012 was obtained from the ASSISTments 2012--2013 public release with affect predictions, as documented by ASSISTmentsData and the pyKT dataset documentation \citep{assistments2012data, liu2022pykt}. The Junyi Academy data used in this study corresponds to the Junyi Academy Online Learning Activity Dataset released on Kaggle \citep{junyi2019kaggle}, as reflected by the post-preprocessing cohort size in Table~\ref{tab:dataset_stats} (71,014 learners, 25,784 items, 1,326 KCs, and 16.2M interactions); it should not be confused with the earlier Junyi2015 release, which has different learner/item/KC counts. XES3G5M was obtained from the benchmark release of \citet{liu2023xes3g5m}. All counts in Table~\ref{tab:dataset_stats} are post-preprocessing counts produced by our normalization pipeline. Because these are processed rather than raw counts, they reflect dataset- and pipeline-specific steps that can shift totals in either direction relative to a raw interaction log: filtering of malformed records and short sequences reduces counts, whereas datasets distributed in a one-row-per-KC (KC-level) form, such as XES3G5M, contain more rows than a one-row-per-interaction count would suggest. Because the KC-frequency strata (Section~3.3) are computed on these processed training-fold counts, stratum membership is conditional on this pipeline. Consequently, the number of KCs appearing in bucket-level temporal tables can be smaller than the dataset-level \#KCs in Table~\ref{tab:dataset_stats} when some KCs have no valid evaluated prediction rows after temporal filtering and sequence construction; we report these evaluated-KC totals explicitly below Table~\ref{tab:temporal_strata}.
+
+Learner-based splits serve as the main predictive evaluation setting (reported in Tables~\ref{tab:overall_learner} and~\ref{tab:strata_learner}, \ifdefined\iscompact detailed calibration results are provided in Supplementary Table S2\else with detailed calibration results in Appendix~\ref{app:calibration_performance}, Table~\ref{tab:calibration_learner}\fi), because they test generalization to unseen learners while preserving enough interactions for stable bucket-level analysis. Temporal splits serve as a complementary stress test for future-oriented and cold-start diagnostics (reported in Table~\ref{tab:cold_start_temporal} and \ifdefined\iscompact Supplementary Table S3\else Appendix~\ref{app:temporal_performance}\fi). Keeping the two modes separate prevents learner-level and curriculum-level forecasting challenges from being conflated.
+
+For all deep baselines on learner-based splits, we report mean $\pm$ standard deviation across five evaluation runs (folds corresponding to seeds 42, 2024, 2025, 2026, 2027). For temporal splits, after the label-alignment correction documented in Appendix~\ref{app:alignment}, we report deterministic metrics from the single corrected evaluation run (seed 42) used to regenerate Figure~\ref{fig:reliability_junyi_temporal} and the temporal calibration tables. This single-run design is intentional but limited: unlike learner-based cross-validation, which randomly partitions students, the temporal split relies on a single deterministic chronological boundary (an 80/20 time cutoff) to simulate future forecasting. Because the partition is fixed, the reported temporal results constitute a fixed-cutoff stress test; they do not estimate variance across temporal cut-points or neural initializations. We do not claim that initialization variance is absent, and we return to this limitation in Section~\ref{sec:discussion}. IRT is deterministic given a fold, and its learner-based variation reflects fold differences only.
+
+\input{tables/table_02_dataset_splitting_cohort_statistics}
+
+Figure~\ref{fig:strata_dist} illustrates heterogeneous KC-frequency distributions across datasets. Although dense KCs dominate the interaction volume, sparse and very sparse KCs remain important diagnostic strata because they expose low-frequency regions where aggregate metrics may be less informative.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{figures/figure2_bucket_distribution.pdf}
+\caption{KC-frequency strata distribution across ASSISTments 2012, Junyi Academy, and XES3G5M. \textbf{Strict Cold-start}: $f_{\mathrm{train}} = 0$; \textbf{Very Sparse}: $0 < f_{\mathrm{train}} < 20$; \textbf{Sparse}: $20 \le f_{\mathrm{train}} < 100$; \textbf{Medium}: $100 \le f_{\mathrm{train}} < 500$; \textbf{Dense}: $f_{\mathrm{train}} \ge 500$. Strict cold-start KCs are plotted separately from very sparse KCs to avoid conflating zero-frequency concepts with low-frequency concepts.}
+\label{fig:strata_dist}
+\end{figure}
+\FloatBarrier
+
+\subsection{Baseline Implementations}
+We initially evaluated BKT but replaced it with IRT after observing numerical instability in Expectation-Maximization (EM)-based \texttt{pyBKT} estimation; details are provided in Appendix~\ref{app:bkt_instability}. We evaluate three representative classes of KT models:
+\begin{enumerate}
+    \item \textbf{Item Response Theory (IRT 1PL):} a classical logistic baseline (one-parameter logistic Rasch model) estimating a static learner ability and concept difficulty from training interactions. Because the model relies on learner identities, unseen learners in learner-based splits have no estimated ability parameters; in our implementation the prediction then falls back to a global, base-rate-like probability. Under learner-based splits we therefore treat IRT as a base-rate reference rather than as a discriminative baseline ($\text{AUC} = 0.50$ by construction). Under temporal splits, where learners are observed during training, IRT functions as a genuine classical baseline and serves as the static reference for audit channel L8 (Appendix~\ref{app:alignment}).
+    \item \textbf{Deep Knowledge Tracing (DKT):} The pioneering recurrent neural network KT architecture mapping student sequential states via Long Short-Term Memory (LSTM) or Recurrent Neural Network (RNN) cells.
+    \item \textbf{SimpleKT:} A modern, self-attention-based model utilizing key-query similarities between concept embeddings to track mastery.
+\end{enumerate}
+
+All deep learning models are trained with validation-based early stopping to prevent hyperparameter leakage.
+
+\subsection{RQ1: Stratum-level Predictive Heterogeneity}
+To address RQ1, we first inspect the overall performance of all three baselines in Table~\ref{tab:overall_learner}. We report AUC, ACC, the negative log-likelihood (NLL), and the root mean squared error (RMSE). SimpleKT and DKT achieve competitive aggregate AUC scores under learner-based splits, with DKT slightly leading SimpleKT on ASSISTments 2012 ($0.6980 \pm 0.0013$ vs. $0.6840 \pm 0.0025$). As discussed, IRT performs at random (AUC $= 0.5000$) on learner-based splits due to its base-rate-like prediction for unseen learners. Consequently, discriminative comparison under the learner-based split effectively contrasts the two deep baselines, with IRT serving only as a base-rate anchor; the temporal split (Section~\ref{sec:rq4_coldstart} and Appendix~\ref{app:temporal_performance}), where IRT becomes a genuine classical baseline, complements this setting, and the need for a classical baseline that exploits item difficulty for unseen learners is flagged as a limitation in Section~5.3. Under temporal splits (Table~\ref{tab:temporal_overall} in Appendix~\ref{app:temporal_performance}), where learners are observed, IRT's AUC rises to $0.5913$ on ASSISTments 2012, while SimpleKT ($0.6731$) slightly outperforms DKT ($0.6606$).
+
+\input{tables/table_03_overall_performance_learner_based}
+
+\input{tables/table_04_delong_tests_dkt_vs_simplekt}
+
+Table~4 reports paired DeLong tests for the overall learner-based AUC comparison between DKT and SimpleKT.
+
+All three comparisons are statistically significant after Bonferroni correction, confirming that aggregate predictive quality differs between the two deep baselines.
+
+The stratum-level breakdown in Table~\ref{tab:strata_learner} serves as descriptive diagnostic evidence of heterogeneous stratum behavior. It reveals that predictive performance varies substantially by dataset and stratum, rather than following a simple monotonic AUC degradation. Specifically, ASSISTments 2012 exhibits partial non-monotonic degradation; Junyi Academy, under the learner-based split, does not even activate the sparse or very sparse strata at the pre-registered thresholds; and XES3G5M presents an inverted counter-pattern. This demonstrates that training frequency is not a universal predictor of AUC degradation, and RQ1 should not be interpreted as proving a universal sparse failure. Instead, it highlights that aggregate metrics consistently hide dataset-specific, heterogeneous stratum-level behavior.
+
+\input{tables/table_05_kc_strata_performance_learner_based}
+
+The evaluated-KC totals are reported in the note below Table~\ref{tab:strata_learner} to clarify that bucket-level analyses cover only KCs with valid evaluated prediction rows. Furthermore, the sum of evaluated events across all strata is strictly smaller than the raw test partition sizes reported in Table~\ref{tab:dataset_stats}. This data attrition (e.g., $0.8\%$ in ASSISTments 2012, $1.1\%$ in Junyi Academy, and $19.2\%$ in XES3G5M) strongly correlates with average sequence length (Table~\ref{tab:dataset_stats}). It occurs because sequence-based evaluation pipelines drop initial interactions to establish prior hidden states---especially when slicing exceptionally long sequences into multiple fixed-length windows---and routinely filter out sequences that fall below a minimum length threshold.
+
+We note that the behavior observed in sparse and very sparse strata represents a combination of true performance differences and metric instability. Therefore, bucket-level diagnostics must be interpreted jointly with sample size, as formalized by our reliability flags. For example, DKT achieves an apparently excellent AUC of $0.9045 \pm 0.0667$ on the ASSISTments 2012 very sparse stratum; however, because this evaluates only 19 test events across 7 KCs, it triggers an Insufficient (I) flag, indicating the metric is purely descriptive and highly unstable.
+
+An instructive counter-pattern emerges on XES3G5M. Even after separating strict cold-start KCs from the very sparse stratum, DKT and SimpleKT show higher AUC on sparse KCs than on dense KCs (DKT: 0.8547 vs. 0.8168; SimpleKT: 0.8455 vs. 0.7548), and the very sparse stratum remains competitive for both (DKT: 0.8172; SimpleKT: 0.8188), subject to its Limited flag. Strict cold-start rows are reported for completeness only. Several non-exclusive explanations are plausible:
+\begin{itemize}
+    \item XES3G5M's hierarchical KC tree may place sparse KCs among advanced concepts reached only by learners who have mastered prerequisites, creating a ceiling effect.
+    \item Item-level features may carry more signal than KC-level features, partially decoupling KC frequency from predictive difficulty.
+    \item Multi-skill expansion may concentrate predictions on items whose primary skill is well trained even when the auxiliary skill is sparse.
+\end{itemize}
+Disambiguating these explanations requires item-level error analysis beyond the scope of this protocol paper. However, the counter-pattern itself reinforces the central point: frequency is not a universal predictor of AUC degradation, and bucket-level diagnostics reveal heterogeneous phenomena that overall AUC cannot.
+
+\subsection{RQ2: Calibration Profiles by Frequency}
+To answer RQ2, we analyze Expected Calibration Error (ECE) and Brier Score decomposition across frequency strata. On Junyi Academy under the learner-based split, the sparse and very sparse buckets are empty because all KCs have training-fold frequency at least 100. This absence is itself a diagnostic observation: Junyi does not exhibit learner-based sparse-KC concerns under the pre-registered thresholds.
+
+Detailed calibration results are reported in \ifdefined\iscompact Supplementary Table S2\else Appendix~\ref{app:calibration_performance}, Table~\ref{tab:calibration_learner}\fi.
+
+Notably, IRT exhibits very low ECE on several dense strata (e.g., $0.0033$ on ASSISTments 2012) yet has zero Brier resolution (RES $= 0$) across strata and random discrimination (AUC $= 0.50$) on learner-based splits. This occurs because IRT lacks ability estimates for unseen learners and predicts close to the global correctness rate, yielding low reliability error (REL $\approx 0$) but no discriminative power. This illustrates a critical point: a model can appear well-calibrated precisely by being uninformative.
+
+\textit{Calibration gradient on ASSISTments 2012.}
+Under our experimental conditions, ASSISTments 2012 provides the clearest example of the calibration gradient the protocol targets. For SimpleKT, ECE increases from $0.1131 \pm 0.0076$ (dense) to $0.1578$ (medium) and $0.2254 \pm 0.0204$ (sparse), and reaches $0.2464 \pm 0.0679$ in the very sparse stratum; the sparse and very sparse figures carry Limited and Insufficient flags, respectively, and are interpreted accordingly. A similar monotonic pattern appears in DKT's reliability component, with REL rising from $0.0053$ (dense) to $0.0316$ (medium) and $0.0623$ (sparse). Since lower ECE and lower REL indicate better calibration, probability reliability deteriorates as KC training evidence decreases, even while aggregate predictive metrics remain competitive. On the same dense stratum, IRT reports far lower ECE ($0.0033$) than DKT ($0.0602$) and SimpleKT ($0.1131$), but per the base-rate analysis above this does not indicate superior predictive reliability: IRT has $\text{RES} = 0$ and $\text{AUC} = 0.50$ there.
+
+Because temporal splits stress future-concept generalization, we use the Junyi temporal split in Figure~\ref{fig:reliability_junyi_temporal} to visualize calibration behavior. The dense stratum has a lower ECE (0.0889), whereas the sparse stratum shows higher ECE (0.1624) while retaining meaningful discrimination (AUC = 0.6529). This comparison highlights why calibration and discrimination must be interpreted jointly.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[t]{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{figures/junyi_temporal_simplekt_dense.pdf}
+    \caption{Reliability diagram of SimpleKT on Junyi temporal split for Dense KCs.}
+    \label{fig:reliability_dense}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{figures/junyi_temporal_simplekt_sparse.pdf}
+    \caption{Reliability diagram of SimpleKT on Junyi temporal split for Sparse KCs.}
+    \label{fig:reliability_sparse}
+  \end{subfigure}
+  \caption{Reliability diagrams of SimpleKT on the Junyi temporal split after the label-alignment correction (Appendix~\ref{app:alignment}). The dashed diagonal denotes perfect calibration; source values are in Table~\ref{tab:calibration_temporal}. The sparse stratum has higher calibration error than the dense stratum while retaining meaningful discrimination ($\text{AUC} = 0.6529$), illustrating that calibration and discrimination should be interpreted jointly.}
+  \label{fig:reliability_junyi_temporal}
+\end{figure}
+\FloatBarrier
+
+\subsection{RQ3: Explanatory Conditions}
+\label{sec:rq3_explanatory}
+RQ2 shows that a sparse-stratum ECE rise is visible on some datasets and absent on others. RQ3 asks when that rise is estimable at all. Using only training-fold frequencies, training-only KC covariates, and the event-level SimpleKT ECE already reported in Table~\ref{tab:calibration_learner}, Section~\ref{sec:a5_dataset_dependent} isolates three measurable pre-conditions: (1)~a non-empty low-frequency tail under the split and thresholds actually used; (2)~enough sparse test events for at least a Limited-flag ECE; and (3)~a frequency--difficulty coupling that is not inverted. ASSISTments 2012 meets all three and shows a monotonic ECE increase ($0.113\to 0.158\to 0.225$). Junyi Academy fails (1) and (2) on the learner-based split, so the protocol leaves sparse ECE blank rather than imputing stability. XES3G5M meets (1) and (2) but not (3); SimpleKT ECE is flat, while IRT is inverted and DKT increases. These are diagnostic pre-conditions, not a claim that training frequency causes miscalibration.
+
+That answer is still about \emph{observed vulnerability}. Whether sparse-concept diagnostics are \emph{worth running as a high-priority analysis} additionally depends on evaluation support, intended use of probabilities, and temporal cold-start exposure. Section~\ref{sec:a8_when_needed} states that distinction as a conditional-use framework (Tables~\ref{tab:a8_need_framework} and~\ref{tab:a8_dataset_need}). Occupancy reporting remains useful even when the empirical priority of sparse-stratum claims is low.
+
+\subsection{RQ4: Limited Cold-start Concept Diagnostics}
+\label{sec:rq4_coldstart}
+How do baseline KT models behave on KCs with zero or limited training-fold frequency under temporal splits? We address this by evaluating models on limited cold-start concepts (strict, k5, k10, warm) under temporal splitting in Table~\ref{tab:cold_start_temporal}.
+
+\input{tables/table_06_cold_start_temporal_validation}
+\FloatBarrier
+
+Temporal splits expose a demanding generalization setting. Both DKT and SimpleKT generalize poorly to KCs with zero or limited training-fold history, yielding highly degraded, mostly near-random or worse-than-random performance (AUC $\approx 0.41$--$0.59$) on strict and limited cold-start groups (e.g., DKT $0.5055$ and SimpleKT $0.4318$ on ASSISTments 2012 strict cold-start)---expected, since the models lack parameter history for unseen concepts. Notably, on XES3G5M, the strict cold-start stratum encompasses a massive $233,214$ test events across $117$ KCs (carrying the Reliable flag R). Despite this large sample size, both deep models systematically yield worse-than-random discrimination (DKT: $0.4642$; SimpleKT: $0.4773$). With such a large $N$, this underperformance is unlikely to be attributable to statistical noise. One plausible explanation---consistent with, but not directly evidenced by, our current diagnostics---is a difficulty confound in which unseen concepts in this dataset follow a different difficulty distribution from the training concepts. Confirming this would require item-level difficulty analysis, which lies beyond the scope of this diagnostic protocol and is left to future work. For IRT, the model lacks difficulty parameters for unseen concepts; our implementation thus falls back to a constant base-rate prediction, yielding exactly $\text{AUC} = 0.5000$ on the strict cold-start stratum across all datasets, even though the temporal learner abilities are already known from the training phase. In contrast, the limited cold-start groups k5 and k10 ($f_{\mathrm{train}} \le 5$ and $\le 10$) additionally include concepts with small but nonzero training frequency, providing just enough interactions for IRT to estimate noisy difficulty parameters for those concepts, resulting in non-constant predictions and AUCs that deviate from $0.5000$. After the label-alignment correction of Appendix~\ref{app:alignment} was applied consistently across datasets, the deep baselines recover meaningful signal on warm temporal cohorts: DKT and SimpleKT reach $0.6949$ and $0.7167$ on Junyi Academy, $0.6626$ and $0.6615$ on XES3G5M, and $0.6606$ and $0.6734$ on ASSISTments 2012. The contrast is the diagnostic payoff: the dominant temporal difficulty lies in generalizing to unseen or low-frequency KCs, not in forecasting familiar ones, and the warm-cohort recovery is what distinguishes genuine concept-level cold-start failure from pipeline-induced random predictions (channel L8).
+
+L8 is the only audit channel in this study with a positive empirical demonstration rather than a preventative PASS.
+Before correction, deep KT models produced near-random ranking on \emph{warm} temporal cohorts---KCs with ample training-fold evidence---while IRT on the same cohorts remained informative.
+That pattern is a pipeline warning, not a scientific result about concept-level cold-start.
+After pairing predictions and labels by a stable test-instance identity (Appendix~\ref{app:alignment}), warm-cohort AUC recovered to the values above.
+We report this as evidence that an operational predictive-sanity check can prevent a corrupted temporal conclusion; we do not present L1--L8 as a new auditing methodology.
+
+To move beyond a single catch, Appendix~\ref{app:l8_fault} injects six controlled alignment-fault classes into copies of the existing temporal prediction CSVs and applies the L8 rule without retuning thresholds on those faults. Detection was $23/60$ injected faults ($38.3\%$), with $0/6$ false positives on the clean copies. L8 flagged every label-identity shift (F1, F2) and every global row-index mismatch (F5), and none of the adjacent-timestep prediction shifts (F3). That last miss is expected: learner sequences are autocorrelated, so pairing $p_t$ with a neighboring outcome often leaves warm AUC well above $0.55$. L8 is therefore an empirically evaluated sanity mechanism for the fault classes we tested, not a general bug detector.
+
+\subsection{Threshold Sensitivity Analysis}
+Threshold sensitivity analysis is provided as an optional robustness check in the released artifact. The main conclusions rest on the pre-registered KC-frequency thresholds reported in Tables~\ref{tab:strata_learner}, \ref{tab:cold_start_temporal}, \ref{tab:calibration_learner}, and \ref{tab:calibration_temporal}.

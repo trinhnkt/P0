@@ -1,0 +1,57 @@
+BEFORE TABLES=6 PICS=1
+AFTER_DELETE_PICS=0
+METHODS_H2_NUMBERS=A. D,B. S,C. M,D. T,E. R,F. C,G. D,H. S
+H2_LABELS=
+  A. Knowledge Tracing and benchmark models
+  B. Graph and self-supervised KT
+  C. Sparse-data and cold-start problems
+  D. Calibration and educational decision support
+  A. Datasets
+  B. Splits and seeds
+  C. Model settings
+  D. Train-only frequency strata
+  E. Reliability flags
+  F. Calibration
+  G. Difficulty coupling
+  H. Simulated decision gate
+  A. Aggregate Ranking Is Not the Sparse Story
+  B. Calibration Can Move When Ranking Does Not
+  C. A Global Gate Can Turn the ASSISTments Gradient into a Decision Error
+  D. What a Designer Should Take Away
+  E. What This Paper Does Not Show
+  F. Implications for Information and Education Technology
+results=True
+table2_caption=True
+table3_caption=True
+post_processing=True
+xes_official=True
+xes_padding=True
+learner_primary=True
+temporal_comp=True
+disjoint=True
+train_only_buckets=True
+five_seeds=True
+four_partitions=True
+not_five_folds=True
+no_bare_independent_folds=True
+not_recovered=True
+strata_strict=True
+strata_vs=True
+strata_sparse=True
+flags_descriptive=True
+not_inferential=True
+ece=True
+brier=True
+rel_res_unc=True
+difficulty=True
+not_irt_diff=True
+spearman=True
+far=True
+h2_a=True
+h2_settings=True
+table1_assist=True
+table1_junyi=True
+table1_xes=True
+PAGES=5 WORDS=4392 TABLES=7 PICS=1
+  pic 1 start=14226 para='\x01  '
+PDF_EXISTS=True SIZE=364805

@@ -1,0 +1,11 @@
+C2 five-fold robustness (tau=0.7); C1–C3 not retuned.
+assist2012 dkt: dFM mean=0.033 sd=0.048 pos=3/5 dMiss mean=-0.063 sparse_n mean=413
+assist2012 simplekt: dFM mean=0.047 sd=0.033 pos=5/5 dMiss mean=0.012 sparse_n mean=413
+junyi dkt: sparse empty on 5/5 folds
+junyi simplekt: sparse empty on 5/5 folds
+xes3g5m dkt: dFM mean=0.004 sd=0.009 pos=4/5 dMiss mean=0.154 sparse_n mean=2000
+xes3g5m simplekt: dFM mean=-0.018 sd=0.008 pos=0/5 dMiss mean=0.112 sparse_n mean=2000
+boot seed42 dkt kc: point=0.096 CI=[0.019, 0.175] excludes 0
+boot seed42 dkt event: point=0.096 CI=[0.042, 0.158] excludes 0
+boot seed42 simplekt kc: point=0.072 CI=[0.006, 0.138] excludes 0
+boot seed42 simplekt event: point=0.072 CI=[0.015, 0.130] excludes 0

@@ -1,0 +1,6 @@
+condition,low_need,moderate_need,high_need,cutoff_source
+C1 Sparse mass,No KCs with f_train<100,"Tail only under an alternate split, or tiny","Non-empty sparse-like KC share (observed 18.9%, 22.5%)",pre-registered protocol threshold f_train<100
+C2 Evaluation support,Empty or Insufficient N<100,Limited 100<=N<1000,Reliable N>=1000,protocol reliability flags (Section 3.5)
+C3 Calibration susceptibility,No stratum ECE/REL rise and weak KC-level association,KC-level association without a clear stratum gradient,"Monotonic ECE/REL rise dense to sparse, at least Limited N",qualitative on published Table 9 ECE; no new cutoff
+C4 Deployment relevance,Rankings only,"Probabilities reported, not gated",Threshold-based educational decisions,qualitative intended-use; not estimated from logs
+C5 Temporal/cold-start exposure,No strict/limited cold-start groups,Small cold-start KC count,Large Reliable cold-start test mass,qualitative on Table 6 occupancy; flags reused

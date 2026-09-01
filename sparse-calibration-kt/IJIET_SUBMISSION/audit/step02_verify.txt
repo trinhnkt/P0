@@ -1,0 +1,15 @@
+﻿pages=4 words=3229 tables=6 pics=1
+title=Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing
+p2=Khanh-Trinh Nguyen1, Tuan Dao Minh1, Duong Nguyen Tien1, Chi Thanh Nguyen2, and Van-Hau Nguyen1,*
+sec1 header=[] footer=[]
+sec2 header=[] footer=[]
+sec3 header=[] footer=[]
+sec4 header=[] footer=[]
+HIT=False Manuscript received
+HIT=False 10.18178
+HIT=False International Journal of Information
+HIT=True Conflict of Interest
+HIT=True Fig. 1.
+HIT=True Table 3.
+HIT=True *Corresponding author
+HIT=True Copyright

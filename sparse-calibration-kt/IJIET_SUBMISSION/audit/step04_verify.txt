@@ -1,0 +1,17 @@
+ABSTRACT=Abstract—Knowledge Tracing (KT) systems that skip, remediate, or advance practice typically consume a predicted probability rather than an area-under-the-curve (AUC) score, so population ranking can look acceptable while probabilities are poorly calibrated on rarely practiced knowledge components (KCs). This paper reports a diagnostic evaluation—not a new KT architecture—of train-only KC-frequency strata on three public logs (ASSISTments 2012, Junyi Academy, and XES3G5M) with IRT, DKT, and Simpl
+ABS_LEN=1354
+bounded_claim=True
+ece_dense=True
+ece_sparse=True
+N415=True
+simulated_gate=True
+false_advance=True
+no_gt_non_mastery=True
+no_gkt=True
+stratum=True
+results_untouched=True
+one_abstract=True
+gkt_in_abstract=False
+universal_cal_fail=False
+PAGES=4 WORDS=3214
+PDF_EXISTS=True SIZE=312843

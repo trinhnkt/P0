@@ -1,0 +1,17 @@
+C1 assist2012 SimpleKT tau=0.7: sparse N=444 flag=L dFM=0.072 dMiss=-0.032 -> PASS (co-primary dFM)
+    DKT same tau: dFM=0.096 dMiss=-0.032 flag=L
+C2 GKT train-only vs SimpleKT on dFM: GKT 0.015 vs SimpleKT 0.072 -> PASS
+    CL4KT descriptive: dFM=0.055 dMiss=-0.115 flag=L
+C3(i) Junyi SimpleKT sparse empty -> C1 not applicable (PASS emptiness)
+C3(ii) XES |dFM|=0.016 |dMiss|=0.118 vs ASSISTments |dFM|=0.072 |dMiss|=0.032 -> no
+C3 overall: no (need emptiness AND smaller XES gaps)
+C3 not retuned after seeing XES |dMiss|; ECE-flat does not imply Miss-flat.
+Direction C punchline this run: YES (C1)
+excess_FM assist2012 simplekt dense: FM=0.196 E[FM]=0.113 excess=0.084 n_advance=284326
+excess_FM assist2012 simplekt sparse: FM=0.268 E[FM]=0.050 excess=0.218 n_advance=235
+excess_FM assist2012 dkt dense: FM=0.200 E[FM]=0.147 excess=0.053 n_advance=315650
+excess_FM assist2012 dkt sparse: FM=0.296 E[FM]=0.057 excess=0.239 n_advance=243
+excess_FM assist2012 gkt_train_only dense: FM=0.205 E[FM]=0.163 excess=0.042 n_advance=351503
+excess_FM assist2012 gkt_train_only sparse: FM=0.220 E[FM]=0.157 excess=0.063 n_advance=209
+excess_FM assist2012 cl4kt dense: FM=0.185 E[FM]=0.175 excess=0.010 n_advance=307479
+excess_FM assist2012 cl4kt sparse: FM=0.240 E[FM]=0.116 excess=0.124 n_advance=200

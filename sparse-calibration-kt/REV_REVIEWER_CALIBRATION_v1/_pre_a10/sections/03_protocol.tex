@@ -1,0 +1,98 @@
+\section{Diagnostic Protocol}
+\label{sec:protocol}
+
+This section specifies the protocol in dataset-agnostic terms; its instantiation on three datasets follows in Section~\ref{sec:experiments}.
+
+\subsection{Data Schema}
+Each dataset is normalized into a common interaction schema
+\begin{equation}
+(u_t, i_t, c_t, r_t, \tau_t),
+\end{equation}
+where $u_t$ is the learner, $i_t$ the item, $c_t$ the knowledge component (KC), $r_t \in \{0,1\}$ the correctness, and $\tau_t$ the timestamp. Multi-skill items are represented by a one-row-per-KC convention: each interaction involving multiple KCs is pre-expanded into one row per KC by the dataset source, so that each processed row corresponds to exactly one (learner, item, KC, correctness, timestamp) tuple. Specifically, XES3G5M is loaded from the \texttt{kc\_level} split provided by the dataset authors \citep{liu2023xes3g5m}, which already stores one KC per row; ASSISTments 2012 \citep{assistments2012data} is read from the standard release file in which each row carries a single \texttt{skill\_id}; Junyi Academy \citep{junyi2019kaggle} items are inherently single-skill. Our \texttt{preprocess.py} pipeline performs no additional expansion. KC-frequency stratification (Section~\ref{sec:kc-strat}) is computed on these pre-expanded rows using training-fold counts only.
+
+\subsection{Split Modes and Cold-start Groups}
+The protocol evaluates under three split modes, which answer different diagnostic questions and must not be conflated. The learner-based split assigns learners disjointly to train/validation/test partitions and tests generalization to unseen learners. The temporal split trains on earlier interactions and evaluates on later ones, testing future-oriented forecasting. The limited cold-start concept analysis evaluates KCs by their training-fold frequency under the temporal split, using four groups: strict cold-start KCs ($f_{\mathrm{train}}(c) = 0$), the limited cold-start groups \textbf{k5} ($f_{\mathrm{train}}(c) \le 5$) and \textbf{k10} ($f_{\mathrm{train}}(c) \le 10$), and the complementary warm group. The strict group isolates concepts with no training evidence; \textbf{k5} and \textbf{k10} probe near-zero evidence regimes; the warm group serves as the within-split sanity reference used by audit channel L8 (Section~\ref{sec:audit}).
+
+\subsection{KC-frequency Stratification}
+\label{sec:kc-strat}
+For each training fold, we compute the training frequency of a KC $c$ as
+\begin{equation}
+f_{\mathrm{train}}(c)=\sum_{(u,i,c',r,\tau)\in D_{\mathrm{train}}}\mathbb{I}[c'=c].
+\end{equation}
+KCs are assigned to five pre-registered groups:
+\begin{align}
+\text{Strict Cold-start:} &\quad f_{\mathrm{train}}(c) = 0,\\
+\text{Very Sparse:} &\quad 0 < f_{\mathrm{train}}(c) < 20,\\
+\text{Sparse:} &\quad 20 \le f_{\mathrm{train}}(c) < 100,\\
+\text{Medium:} &\quad 100 \le f_{\mathrm{train}}(c) < 500,\\
+\text{Dense:} &\quad f_{\mathrm{train}}(c) \ge 500.
+\end{align}
+The assignment must use only training-fold counts. Validation and test frequencies may be logged for auditing but must not determine the bucket. It is important to acknowledge a conceptual caveat regarding this definition: sparsity is not an absolute property of the underlying knowledge itself. Rather, it is partially an artifact of human authorship in the Q-Matrix construction. A concept might appear sparse not because the fundamental knowledge is rarely practiced, but because domain experts defined it at an overly granular level or tagged it inconsistently across items. Consequently, while our strata reliably isolate low-frequency training patterns, they reflect the operational sparsity of the dataset's specific KC mapping rather than an ontological truth about the learning domain. This operational sparsity is additionally conditioned on the preprocessing pipeline: filtering of malformed or below-minimum-length sequences and dataset-specific multi-skill handling alter per-KC training-fold counts, so stratum membership should be read as a property of the processed dataset under our pipeline, not of the raw logs.
+
+\subsection{Calibration Metrics}
+Given predictions $p\_i$ and labels $y\_i$, ECE with $M=15$ bins is
+\begin{equation}
+\ece = \sum\_{m=1}^{M}\frac{|B\_m|}{N}\left|\mathrm{acc}(B\_m)-\mathrm{conf}(B\_m)\right|,
+\end{equation}
+where $\mathrm{acc}(B\_m)$ is empirical correctness and $\mathrm{conf}(B\_m)$ is average predicted confidence in bin $B\_m$.
+
+The Brier score is
+\begin{equation}
+\brier = \frac{1}{N}\sum\_{i=1}^{N}(p\_i-y\_i)^2.
+\end{equation}
+We use the standard decomposition
+\begin{equation}
+\brier = \unc - \res + \rel,
+\end{equation}
+where the three components are defined as follows. Let $\bar{y}$ denote the global correctness rate, $M=15$ the number of calibration bins, $n_m$ the number of samples in bin $m$, $\mathrm{acc}_m$ the empirical accuracy in bin $m$, $\mathrm{conf}_m$ the average predicted confidence in bin $m$, and $N$ the total number of samples.
+\begin{equation}
+\unc = \bar{y}(1-\bar{y}).
+\end{equation}
+\begin{equation}
+\rel = \frac{1}{N}\sum_{m=1}^{M} n_m
+\left(\mathrm{conf}_m - \mathrm{acc}_m\right)^2.
+\end{equation}
+\begin{equation}
+\res = \frac{1}{N}\sum_{m=1}^{M} n_m
+\left(\mathrm{acc}_m - \bar{y}\right)^2.
+\end{equation}
+$\unc$ measures the intrinsic uncertainty of the prediction task and is independent of the model; $\rel$ measures the deviation between predicted probabilities and observed frequencies, where lower values indicate better reliability; $\res$ measures how well the model separates events with different outcome rates from the global mean, where higher values indicate better resolution. Note that because this formulation bins continuous probabilities into $M$ discrete bins, the resulting decomposition is an empirical approximation and components need not sum exactly to the directly computed Brier score.
+Calibration is reported both overall and per KC stratum.
+
+Discrimination and calibration answer different questions. AUC measures whether a model ranks correct responses above incorrect ones, whereas calibration measures whether predicted probabilities correspond to empirical correctness rates. The distinction matters operationally because probability thresholds are often used to trigger remediation, suggest additional practice, or license concept advancement: a model with high AUC can still exhibit substantial miscalibration and thereby induce inappropriate instructional interventions. The converse also holds---a model can appear well calibrated while being uninformative---which is why the protocol requires calibration to be interpreted jointly with discrimination and resolution, never in isolation.
+
+\subsection{Sample-size-aware Reliability Flags}
+To ensure methodological rigor, we introduce sample-size-aware reliability flags that reflect the stability of the metric estimates:
+\begin{itemize}
+    \item \textbf{R (Reliable):} $N \ge 1000$
+    \item \textbf{L (Limited):} $100 \le N < 1000$
+    \item \textbf{I (Insufficient):} $N < 100$
+\end{itemize}
+These flags provide descriptive context about the stability of the evaluation metrics and do not certify whether sufficient training evidence was provided to the model. Metrics for Insufficient strata ($N < 100$) are reported descriptively but should not be used as stable evidence of model behavior.
+
+\subsection{Eight-channel Leakage \& Predictive Sanity Audit}
+\label{sec:audit}
+Table~\ref{tab:leakage} summarizes the workflow. We do not propose L1--L7 as a new auditing methodology: they operationalize standard evaluation safeguards---disjoint splits, train-only transforms and group definitions, and validation-only selection---as named KT checks with inspectable artifacts. Their value is reproducibility (every reported table can be paired with a PASS/FAIL log), not theoretical novelty. Channel L8 is different in kind: it is a predictive-sanity test that compares warm-cohort temporal AUC against a static IRT reference, so that near-random deep-KT performance on well-evidenced concepts is treated as a pipeline warning rather than as a scientific finding. In this instantiation L8 detected a real defect (Appendix~\ref{app:alignment}); a later fault-injection validation measures sensitivity on additional alignment-fault classes (Appendix~\ref{app:l8_fault}).
+
+\input{tables/table1_leakage_audit}
+
+\subsection{Diagnostic Pipeline}
+Figure~\ref{fig:pipeline} illustrates the pipeline.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.98\linewidth]{figures/figure1_pipeline.pdf}
+\caption{Overview of the reproducible sparse-concept and calibration diagnostic pipeline for Knowledge Tracing. (\textit{Note: In the figure, the term ``k-shot'' denotes ``limited'' cold-start KCs where $f_{\mathrm{train}} \le 5$ or $\le 10$, as discussed in the text.})}
+\label{fig:pipeline}
+\end{figure}
+\FloatBarrier
+
+\subsection{Design Principles}
+\label{sec:principles}
+To ensure the mathematical validity and operational reproducibility of the diagnostics, our protocol is governed by four core design principles:
+\begin{itemize}
+    \item \textbf{P1. Train-only Definitions:} All knowledge component (KC) buckets and limited cold-start groups must be defined using training-fold information only. This prevents sparse-bucket leakage.
+    \item \textbf{P2. Prediction-level Export:} Rather than computing downstream diagnostics in-memory during baseline training, our protocol mandates exporting raw prediction probabilities and ground-truth labels directly to disk. All metrics are computed post-hoc from these standardized artifacts.
+    \item \textbf{P3. Sample-size-aware Interpretation:} Bucket-level metrics must never be reported in isolation. They must be accompanied by the exact number of KCs and interaction events, contextualized by the Reliability Flags (R, L, I), to differentiate between true performance degradation and metric instability.
+    \item \textbf{P4. Leakage-audited Reporting:} No diagnostic result is considered complete unless accompanied by an explicit, verifiable check. This is operationalized as the L1--L8 reproducible audit workflow (an operational checklist with predictive-sanity validation), not as a new auditing theory.
+\end{itemize}

@@ -1,0 +1,28 @@
+\begin{table}[htbp]
+\caption{Controlled fault-injection validation of channel L8 (temporal warm cohort). This is a validation experiment, not a pre-registered primary analysis. Detection uses the Appendix~\ref{app:alignment} signals plus identity consistency against official test-split labels on a stable instance id: warm AUC $< 0.55$, or warm AUC more than $0.05$ below the clean IRT warm-cohort reference, or non-positive $\mathrm{corr}(p,y)$ / conditional-mean gap, or exported $y$ elevated more than $1$ percentage point above the same file's clean-pipeline identity-mismatch rate. Thresholds were not tuned on the injected faults. L8 is sensitive to some of the tested alignment-fault classes; it is not claimed to detect all bugs.}\label{tab:l8_fault_injection}
+\centering
+\small
+\begin{tabular}{lc}
+\toprule
+\textbf{Condition} & \textbf{Detection rate} \\
+\midrule
+Clean pipeline (false-positive check) & 0/6 \\
+F1 label shift $+1$ & 100\% (6/6) \\
+F2 label shift $-1$ & 100\% (6/6) \\
+F3 prediction shift & 0\% (0/6) \\
+F4 within-learner shuffle & 33\% (2/6) \\
+F5 row-index mismatch & 100\% (6/6) \\
+\midrule
+F6 partial mismatch $1\%$ & 0\% (0/6) \\
+F6 partial mismatch $5\%$ & 0\% (0/6) \\
+F6 partial mismatch $10\%$ & 0\% (0/6) \\
+F6 partial mismatch $25\%$ & 0\% (0/6) \\
+F6 partial mismatch $50\%$ & 50\% (3/6) \\
+\midrule
+All injected faults & 23/60 (38.3\%) \\
+\bottomrule
+\end{tabular}
+
+\vspace{1ex}
+{\scriptsize \textbf{Note:} Counts pool DKT and SimpleKT $\times$ three datasets (six files). Original prediction CSVs are not modified. Adjacent-timestep prediction shifts (F3) often retain warm AUC because learner sequences are autocorrelated; L8 as specified does not treat that residual association as a failure.\par}
+\end{table}

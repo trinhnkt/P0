@@ -1,0 +1,21 @@
+A16 double-blind build
+REPO={"url": "https://anonymous.4open.science/r/Sparse-Concept-and-Calibration-6E5B/", "reachable": true, "readme_github_owner": "git clone https://github.com/anonymous-researcher-2026/sparse-calibration-kt.git", "named_jedm_hits": ["utehy.edu.vn", "Hung Yen", "haunv@", "Khanh-Trinh", "Van-Hau", "ioit.ai.vn", "thanhnc@", "0009-0004"], "github_trinhnkt": false, "files_with_identity": [{"path": "sparse-calibration-kt/paper/main_jedm.tex", "hits": ["utehy.edu.vn", "Hung Yen", "haunv@", "Khanh-Trinh", "Van-Hau", "ioit.ai.vn", "thanhnc@", "0009-0004"]}, {"path": "sparse-calibration-kt/jedm_upload_folder/main_jedm.tex", "hits": ["utehy.edu.vn", "Hung Yen", "haunv@", "Khanh-Trinh", "Van-Hau", "ioit.ai.vn", "thanhnc@", "0009-0004"]}], "error": "HTTPError: HTTP Error 429: Too Many Requests", "root_names": [".gitignore", "setup_EXPERIMENT_P0.md", "sparse-calibration-kt"]}
+FULL_TABLES=8 FIGS=1
+ANON_AUTHORS i=2
+ANON_AFFIL i=3
+DEL_AFFIL2 i=4
+DEL_EMAIL i=5
+DEL_CORR i=6
+ANON_CONTRIB i=533
+ANON_ACK i=541
+BLIND_TABLES=8 FIGS=1
+FULL_PAGES=8
+BLIND_PAGES=8
+FULL_META_AUTHOR='Khanh-Trinh Nguyen, Tuan Dao Minh, Duong Nguyen Tien, Chi Thanh Nguyen, Van-Hau Nguyen'
+BLIND_META_AUTHOR=''
+FULL_HITS=['Khanh-Trinh', 'Tuan Dao Minh', 'Duong Nguyen Tien', 'Chi Thanh Nguyen', 'Van-Hau', 'Hung Yen', 'utehy.edu.vn', 'trinhnk', 'tuanymc', 'duongnt@', 'thanhnc', 'haunv@', 'ioit.ai.vn', 'Military Science', 'Academy of Military', 'K.-T.N.', 'T.D.M.', 'D.N.T.', 'C.T.N.', 'V.-H.N.']
+BLIND_HITS=[]
+BLIND_BYTE_HITS=[]
+KEEP={'ASSISTments': True, 'Junyi Academy': True, 'XES3G5M': True, 'https://anonymous.4open.science/r/Sparse-Concept-and-Calibration-6E5B/': True, 'Corbett': True}
+FULL_LOCKS={'pages_8': True, 'ece_1136': True, 'ece_2280': True, 'far_196': True, 'far_268': True, 'fig1': True, 'ref21': True, 'ref22': True}
+BLIND_LOCKS={'pages_8': True, 'ece_1136': True, 'ece_2280': True, 'far_196': True, 'far_268': True, 'fig1': True, 'ref21': True, 'ref22': True}

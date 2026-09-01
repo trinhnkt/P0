@@ -1,0 +1,8 @@
+replaced 'sparse advances are dirtier than dense advances'
+replaced 'Table 3 is the wrong dashboard'
+replaced 'the cautionary case'
+replaced 'advances more dirty sparse attempts'
+replaced 'the opposite caution'
+replaced 'a one-fold accident'
+replaced 'while ranking nothing'
+saved

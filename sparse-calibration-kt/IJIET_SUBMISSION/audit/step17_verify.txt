@@ -1,0 +1,19 @@
+ETHICS i=469
+AI i=473
+ECE_EQ_ALREADY i=125
+GATE_CAP i=251
+ROBUST_CAP i=347
+TABLE_SHIFTS=17 CAPTIONS_PATCHED=2
+FULL_TABLES=8 FIGS=1
+ANON_AUTHORS i=2
+ANON_AFFIL i=3
+DEL_AFFIL2 i=4
+DEL_EMAIL i=5
+DEL_CORR i=6
+DEL_DATES i=7
+ANON_CONTRIB i=467
+ANON_ACK i=475
+BLIND_TABLES=8 FIGS=1
+FULL_PAGES=9 BLIND_PAGES=9
+CHECKS={'no_author_action': True, 'no_ai_placeholder': True, 'table2_settings': True, 'table3_auc': True, 'table8': True, 'no_table2_auc': True, 'ece_eq': True, 'ethics_ok': True, 'ece_cells': True, 'far_cells': True, 'authors': True, 'blind_clean': True, 'blind_anon': True, 'blind_no_blank_email': True}
+KEEP={'ASSISTments': True, 'Junyi Academy': True, 'XES3G5M': True, 'https://anonymous.4open.science/r/Sparse-Concept-and-Calibration-6E5B/': True, 'Corbett': True}

@@ -1,0 +1,14 @@
+\subsection{When Are Sparse-Concept Diagnostics Necessary?}
+\label{sec:a8_when_needed}
+
+Conditional statement: sparse diagnostics are most informative when a dataset contains a meaningful low-frequency tail, those strata have sufficient evaluation support, and calibration reliability varies systematically with training evidence or deployment involves concept cold-start.
+
+\paragraph{Hygiene vs priority.}
+Occupancy, empty-bucket notes, and R/L/I flags are universally useful. High-priority sparse-ECE/cold-start \emph{claims} require C1--C5 (Tables~\ref{tab:a8_need_framework},~\ref{tab:a8_dataset_need}).
+
+\paragraph{Dataset application.}
+ASSISTments 2012: High (tail + Limited $N$ + monotonic ECE).
+Junyi Academy: Low learner-based (empty sparse buckets); Moderate temporal (10 sparse-like KCs).
+XES3G5M: High reporting need (mass + Reliable $N$ + large cold-start); Moderate SimpleKT gradient (flat/inverted). Need $\neq$ vulnerability.
+
+C4 is qualitative intended use, not estimated from logs.

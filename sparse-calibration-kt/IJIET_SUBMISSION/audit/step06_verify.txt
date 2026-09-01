@@ -1,0 +1,46 @@
+METHODS_H2_BEFORE_RESTART='A.'
+METHODS_H2_AFTER='A.'
+FIXED_REF5_PYKT_36TH=True
+FIXED_REF9_CL4KT_AUTHOR=True
+LIT_BODY_PARAS=10
+H2_LABELS=
+  A. Knowledge Tracing and benchmark models
+  B. Graph and self-supervised KT
+  C. Sparse-data and cold-start problems
+  D. Calibration and educational decision support
+  A. Datasets, Splits, and Models
+  B. Train-Only Frequency Strata
+  C. Calibration
+  D. Simulated Mastery Gate
+  A. Aggregate Ranking Is Not the Sparse Story
+  B. Calibration Can Move When Ranking Does Not
+  C. A Global Gate Can Turn the ASSISTments Gradient into a Decision Error
+  D. What a Designer Should Take Away
+  E. What This Paper Does Not Show
+  F. Implications for Information and Education Technology
+LIT_CITES=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 20]
+intro_order=True
+lit_order=True
+results=True
+intro_far=True
+h2_a=True
+h2_b=True
+h2_c=True
+h2_d=True
+bkt_irt=True
+dkt=True
+attention=True
+simplekt=True
+gkt_not_contrib=True
+sparse_attn_neq=True
+new_student_neq=True
+ece=True
+brier=True
+reliability=True
+gap=True
+no_new_cite=True
+cite_max=20
+no_new_arch=True
+no_causal=True
+PAGES=5 WORDS=3671 TABLES=6 PICS=1
+PDF_EXISTS=True SIZE=320026

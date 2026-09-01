@@ -1,0 +1,43 @@
+CAP1=True CAP2=True CAP3=True CAP6=True
+FIG_INSERTED width0=243.0
+FIG_CAPTION=True
+FIG_SEC_PROBE s=3 pic_in=True cap_in=True head=''
+FIG_SECTION=3 COLS=1 WIDTH=470.2 HEIGHT=337.5 HEAD=''
+FIG_NEXT_COLS=2
+T3_SECTION=5 COLS=1
+T3_NEXT_COLS=2
+T4_SECTION=7 COLS=1
+T4_NEXT_COLS=2
+T5_SECTION=9 COLS=1
+T5_NEXT_COLS=2
+H1_FIX 'Result and Discussion' -> IV. RESULT AND DISCUSSION
+H1_FIX 'Conclusion' -> V. CONCLUSION
+results=True
+fig_caption_kcs=True
+fig_not_infer=True
+no_old_figcap=True
+t1_post=True
+t2_auc_acc=True
+t3_mean_n=True
+t3_not_single=True
+t4_nadv=True
+t4_ci=True
+t4_excess=True
+t5_runs=True
+t5_not_indep_seeds=True
+t6_not_law=True
+auc_untouched=True
+ece_untouched=True
+h1_results=True
+h1_conclusion=True
+titles_above=True
+TABLE1_CAPTION_PARA=34 FIG_CAPTION_PARA=120
+FIG_CAPTION_BELOW_PIC=True
+TITLE_ABOVE_TABLE1=True
+TITLE_ABOVE_TABLE2=True
+TITLE_ABOVE_TABLE3=True
+TITLE_ABOVE_TABLE4=True
+TITLE_ABOVE_TABLE5=True
+TITLE_ABOVE_TABLE6=True
+PAGES=7 WORDS=4670 TABLES=7 PICS=1 SECTIONS=12
+PDF_EXISTS=True SIZE=465497

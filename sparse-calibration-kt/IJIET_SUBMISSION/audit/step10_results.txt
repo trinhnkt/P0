@@ -1,0 +1,274 @@
+110 [Heading1] IV. RESULT AND DISCUSSION
+111 [Heading2] Aggregate Ranking Is Not the Sparse Story
+112 [Text] Table 2 shows learner-based AUC. DKT is slightly above SimpleKT on all three datasets. IRT AUC is 0.50 for the reason given above. These numbers would look like a routine KT bake-off. They do not tell a designer whether p is trustworthy on the tail.
+113 [TableTitle] Table 2. Overall learner-based area under the ROC curve (AUC) and accuracy (ACC) (mean±sd over four unique partitions).
+114 [FigureCaption] Dataset
+115 [FigureCaption] Model
+116 [FigureCaption] AUC
+117 [FigureCaption] ACC
+118 [FigureCaption] ASSISTments 2012
+119 [FigureCaption] IRT
+120 [FigureCaption] 0.5000
+121 [FigureCaption] 0.6973±0.0004
+122 [FigureCaption] ASSISTments 2012
+123 [FigureCaption] DKT
+124 [FigureCaption] 0.6979±0.0014
+125 [FigureCaption] 0.7182±0.0014
+126 [FigureCaption] ASSISTments 2012
+127 [FigureCaption] SimpleKT
+128 [FigureCaption] 0.6837±0.0025
+129 [FigureCaption] 0.6996±0.0032
+130 [FigureCaption] Junyi Academy
+131 [FigureCaption] IRT
+132 [FigureCaption] 0.5000
+133 [FigureCaption] 0.7053±0.0018
+134 [FigureCaption] Junyi Academy
+135 [FigureCaption] DKT
+136 [FigureCaption] 0.7320±0.0009
+137 [FigureCaption] 0.7343±0.0015
+138 [FigureCaption] Junyi Academy
+139 [FigureCaption] SimpleKT
+140 [FigureCaption] 0.7231±0.0030
+141 [FigureCaption] 0.7274±0.0015
+142 [FigureCaption] XES3G5M
+143 [FigureCaption] IRT
+144 [FigureCaption] 0.5000
+145 [FigureCaption] 0.7961±0.0031
+146 [FigureCaption] XES3G5M
+147 [FigureCaption] DKT
+148 [FigureCaption] 0.8171±0.0022
+149 [FigureCaption] 0.8327±0.0032
+150 [FigureCaption] XES3G5M
+151 [FigureCaption] SimpleKT
+152 [FigureCaption] 0.7557±0.0013
+153 [FigureCaption] 0.8067±0.0037
+154 [Text] On XES3G5M, sparse AUC is higher than dense AUC (DKT 0.857 vs. 0.817; SimpleKT 0.847 vs. 0.755; Reliable occupancy). Lower frequency is therefore not a universal ranking failure. Junyi’s learner-based sparse bucket is empty under the pre-registered cuts—a protocol outcome, not a missing cell to impute.
+155 [Heading2] Calibration Can Move When Ranking Does Not
+156 [Text] Table 3 is the calibration punchline. On ASSISTments 2012, SimpleKT ECE increases from 0.1136±0.0066 (dense, Reliable, N=523,971) to 0.1541 (medium) to 0.2280±0.0197 (sparse, Limited, N=415). DKT shows the same direction (dense ECE 0.060 vs. sparse 0.233). IRT dense ECE is tiny (0.003) but resolution is zero: a constant-like predictor can look “calibrated” while ranking nothing.
+157 [Text] On Junyi, only dense and medium strata exist; SimpleKT ECE rises modestly from 0.079 to 0.107. On XES3G5M, SimpleKT ECE is essentially flat (0.114→0.111→0.125 dense/medium/sparse) despite Reliable sparse occupancy (N=2,010). ECE-flat is not a license to skip occupancy reporting, and—as the gate results show—it is not the same as a flat miss rate.
+158 [TableTitle] Table 3. SimpleKT event-level expected calibration error (ECE) by train-only frequency stratum. N is the mean test-event count across four unique learner partitions, not a single-partition count. Flags: Reliable (R) N≥1000; Limited (L) 100≤N<1000. Junyi sparse is empty.
+159 [FigureCaption] Dataset
+160 [FigureCaption] Stratum
+161 [FigureCaption] N
+162 [FigureCaption] Flag
+163 [FigureCaption] ECE
+164 [FigureCaption] ASSISTments 2012
+165 [FigureCaption] dense
+166 [FigureCaption] 523,971
+167 [FigureCaption] R
+168 [FigureCaption] 0.1136±0.0066
+169 [FigureCaption] ASSISTments 2012
+170 [FigureCaption] medium
+171 [FigureCaption] 5,963
+172 [FigureCaption] R
+173 [FigureCaption] 0.1541±0.0051
+174 [FigureCaption] ASSISTments 2012
+175 [FigureCaption] sparse
+176 [FigureCaption] 415
+177 [FigureCaption] L
+178 [FigureCaption] 0.2280±0.0197
+179 [FigureCaption] Junyi Academy
+180 [FigureCaption] dense
+181 [FigureCaption] 3,232,614
+182 [FigureCaption] R
+183 [FigureCaption] 0.0792±0.0051
+184 [FigureCaption] Junyi Academy
+185 [FigureCaption] medium
+186 [FigureCaption] 3,836
+187 [FigureCaption] R
+188 [FigureCaption] 0.1073±0.0156
+189 [FigureCaption] XES3G5M
+190 [FigureCaption] dense
+191 [FigureCaption] 1,268,696
+192 [FigureCaption] R
+193 [FigureCaption] 0.1145±0.0011
+194 [FigureCaption] XES3G5M
+195 [FigureCaption] medium
+196 [FigureCaption] 12,980
+197 [FigureCaption] R
+198 [FigureCaption] 0.1114±0.0076
+199 [FigureCaption] XES3G5M
+200 [FigureCaption] sparse
+201 [FigureCaption] 2,010
+202 [FigureCaption] R
+203 [FigureCaption] 0.1248±0.0085
+204 [Heading2] A Global Gate Can Turn the ASSISTments Gradient into a Decision Error
+205 [Text] Table 4 applies τ=0.7 on ASSISTments fold 0 (seed 42; sparse N_total=444, Limited). SimpleKT FAR is 0.196 on dense KCs and 0.268 on sparse KCs (ΔFAR=+0.072). The FAR denominator is N_advance (284,326 dense; 235 sparse), not N_total (528,018 and 444); N_incorrect is 158,623 dense and 197 sparse. Expected FAR on sparse advances is 0.050, so Excess FAR is 0.218. DKT shows a similar FAR gap. Train-only GKT shrinks ΔFAR to +0.015 (FAR 0.205→0.220; Excess FAR 0.063 on sparse). The CL4KT adapter is int
+206 [TableTitle] Table 4. Simulated gate at τ=0.7, ASSISTments 2012 fold 0. False-advance rate (FAR)=P(y=0 | p≥τ) among N_advance advances; Miss among N_incorrect incorrect responses; Excess FAR=FAR−E[FAR]. FAR 95% CIs: KC-cluster percentile, B=2000. Not latent mastery; not a classroom trial.
+207 [Text] Model
+208 [Text] Stratum
+209 [Text] N
+210 [Text] N_advance
+211 [Text] N_incorrect
+212 [Text] FAR [95% CI]
+213 [Text] E[FAR]
+214 [Text] Excess FAR
+215 [Text] Miss
+216 [Text] SimpleKT
+217 [Text] dense
+218 [Text] 528,018
+219 [Text] 284,326
+220 [Text] 158,623
+221 [Text] 0.196 [0.186, 0.208]
+222 [Text] 0.113
+223 [Text] 0.083
+224 [Text] 0.352
+225 [Text] SimpleKT
+226 [Text] sparse
+227 [Text] 444
+228 [Text] 235
+229 [Text] 197
+230 [Text] 0.268 [0.202, 0.337]
+231 [Text] 0.050
+232 [Text] 0.218
+233 [Text] 0.320
+234 [Text] DKT
+235 [Text] dense
+236 [Text] 528,018
+237 [Text] 315,650
+238 [Text] 158,623
+239 [Text] 0.200 [0.190, 0.211]
+240 [Text] 0.147
+241 [Text] 0.053
+242 [Text] 0.398
+243 [Text] DKT
+244 [Text] sparse
+245 [Text] 444
+246 [Text] 243
+247 [Text] 197
+248 [Text] 0.296 [0.221, 0.383]
+249 [Text] 0.057
+250 [Text] 0.239
+251 [Text] 0.365
+252 [Text] GKT (train-only)
+253 [Text] dense
+254 [Text] 528,018
+255 [Text] 351,503
+256 [Text] 158,623
+257 [Text] 0.205 [0.194, 0.217]
+258 [Text] 0.163
+259 [Text] 0.042
+260 [Text] 0.455
+261 [Text] GKT (train-only)
+262 [Text] sparse
+263 [Text] 444
+264 [Text] 209
+265 [Text] 197
+266 [Text] 0.220 [0.149, 0.295]
+267 [Text] 0.157
+268 [Text] 0.063
+269 [Text] 0.234
+270 [Text] CL4KT (adapter)
+271 [Text] dense
+272 [Text] 528,018
+273 [Text] 307,479
+274 [Text] 158,623
+275 [Text] 0.185 [0.176, 0.194]
+276 [Text] 0.175
+277 [Text] 0.010
+278 [Text] 0.359
+279 [Text] CL4KT (adapter)
+280 [Text] sparse
+281 [Text] 444
+282 [Text] 200
+283 [Text] 197
+284 [Text] 0.240 [0.159, 0.330]
+285 [Text] 0.116
+286 [Text] 0.124
+287 [Text] 0.244
+288 [Text] Seed-42 ΔFAR 95% CI (KC-cluster, B=2000): SimpleKT [0.006, 0.138] (locked C2); DKT [0.019, 0.175]; GKT [−0.054, 0.092]; CL4KT [−0.018, 0.142].
+289 [Text] Table 5 checks whether SimpleKT ΔFAR is a one-fold accident. It is positive on all five training runs across four unique learner partitions (mean 0.047, sd 0.033). Mean sparse denominators are N_total=413, N_advance=227, N_incorrect=155. A KC-clustered bootstrap on seed 42 yields a 95% interval [0.006, 0.138] for ΔFAR—excluding 0, but wide, as Limited occupancy and N_advance=235 require. DKT ΔFAR is positive on only three of five seeds and is not treated as a five-run finding. On XES3G5M, Simple
+290 [Text] Coincidence of digits: SimpleKT dense E[FAR] at τ=0.7 on seed 42 is 0.113, close to the four-partition dense ECE 0.114. They are different quantities.
+291 [TableTitle] Table 5. Gate robustness at τ=0.7 on ASSISTments 2012. Five training runs (seeds 42, 2024, 2025, 2026, 2027) across four unique learner partitions (2025 and 2026 share a split). ΔFAR=FAR_sparse−FAR_dense. Mean N, N_advance, and N_incorrect are sparse-stratum denominators. SimpleKT: ΔFAR>0 on 5/5 training runs and on all four unique partitions. DKT: ΔFAR>0 on 3/5 training runs (the shared partition is mixed in sign) and is not a five-run finding. GKT/CL4KT remain seed 42 only.
+292 [Heading2] Model
+293 [Heading2] Mean ΔFAR
+294 [Heading2] SD
+295 [Heading2] Runs ΔFAR>0
+296 [Heading2] Mean N
+297 [Heading2] Mean N_advance
+298 [Heading2] Mean N_incorrect
+299 [Heading2] SimpleKT
+300 [Heading2] 0.047
+301 [Heading2] 0.033
+302 [Heading2] 5/5 runs (4 partitions)
+303 [Heading2] 413
+304 [Heading2] 227
+305 [Heading2] 155
+306 [Heading2] DKT
+307 [Heading2] 0.033
+308 [Heading2] 0.048
+309 [Heading2] 3/5 runs
+310 [Heading2] 413
+311 [Heading2] 226
+312 [Heading2] 155
+313 [Heading2] What a Designer Should Take Away
+314 [Text] If a learning platform uses KT probabilities only to sort students, Table 2 may suffice. If it uses p to skip practice or declare mastery, Table 2 is the wrong dashboard. The ASSISTments SimpleKT cell is the cautionary case: competitive AUC, Limited-but-estimable sparse occupancy (about 19% of KCs fall below the sparse threshold on fold 0), a monotonic ECE rise, and a gate that advances more dirty
+315 [Text] On the three datasets studied here, three empirical conditions track when a sparse-calibration contrast is estimable rather than empty (Table 6): (1) a non-empty low-frequency tail under the split actually used; (2) enough sparse test events for at least a Limited-flag ECE; (3) frequency–difficulty coupling that is not inverted. ASSISTments 2012 meets all three. That is a diagnostic pre-condition 
+316 [TableTitle] Table 6. Empirical observations, on these three datasets, of when a sparse-calibration contrast is estimable. These are not universal laws. Sparse mass: share of KCs with train-only frequency f_train<100.
+317 [FigureCaption] Condition
+318 [FigureCaption] ASSISTments
+319 [FigureCaption] Junyi
+320 [FigureCaption] XES3G5M
+321 [FigureCaption] Sparse mass
+322 [FigureCaption] 18.9% of KCs
+323 [FigureCaption] 0%
+324 [FigureCaption] 22.5% of KCs
+325 [FigureCaption] Sparse N
+326 [FigureCaption] 415 (L)
+327 [FigureCaption] empty
+328 [FigureCaption] 2,010 (R)
+329 [FigureCaption] Difficulty coupling
+330 [FigureCaption] ρ=−0.227 (sparse harder)
+331 [FigureCaption] ρ=−0.416
+332 [FigureCaption] ρ=+0.087 (weak, inverted)
+333 [FigureCaption] SimpleKT ECE
+334 [FigureCaption] 0.114→0.228
+335 [FigureCaption] dense→medium only
+336 [FigureCaption] flat 0.114→0.125
+337 [Heading2] Explanatory Analysis of Dataset-Dependent Calibration
+338 [Heading2] Table 6 records three observational pre-conditions under which a sparse-calibration contrast is estimable on these logs. The same training-only file also yields item support, learner exposure, and a curriculum-position proxy. This subsection reports those descriptors and two distinct estimands. Neither is a causal claim.
+339 [Heading2] Sparse mass (share of KCs with f_train<100) is 18.9% on ASSISTments 2012, 0% on Junyi Academy, and 22.5% on XES3G5M. Sparse test-event support is Limited (N=415), empty, and Reliable (N=2,010). Frequency–difficulty coupling (Spearman ρ of log(1+f_train) with 1−mean_train_correctness) is ρ=−0.227 and ρ=−0.416 (rarer KCs harder) versus a weak opposite-signed ρ=+0.087 on XES3G5M. Item support: ASSISTments is item-rich (median 44.5 items/KC; dense 205 vs sparse 1); Junyi is nearly uniform (median 18
+340 [Heading2] A test-event-weighted KC-level regression of SimpleKT expected calibration error (ECE) on those five training-only covariates (n=478, 2,645, and 1,263 KCs) is a between-KC association: it compares different concepts. Standardized log(1+f_train) coefficients are −0.079 [−0.097, −0.061] on ASSISTments, −0.010 [−0.014, −0.007] on Junyi, and −0.117 [−0.171, −0.063] on XES3G5M in the weighted fit. Difficulty is independently associated on ASSISTments and Junyi. Learner exposure is independently assoc
+341 [Heading2] Within-KC controlled sparsification holds KC identity, the test set, labels, and all other KCs’ training rows fixed, and reduces training rows for 30 originally dense KCs (f_train≥500; pre-registered selection, seed 42, fold 0) to 500 or 50 rows. Table 7 reports key paired ΔECE (reduced−full), with KC-bootstrap 95% CIs. Reducing training evidence for the same KC does not universally worsen calibration: several CIs lie below 0 or include 0. The observational ASSISTments SimpleKT dense-to-sparse E
+342 [Heading2] Table 7. Within-KC controlled sparsification (seed 42; 30 originally dense KCs per dataset). Delta ECE = reduced−full; positive means worse calibration after keeping 500 or 50 training rows for the same KC. 95% CIs bootstrap over KCs. Not a causal law for real-world sparsity.
+343 [Heading2] Dataset
+344 [Heading2] Model
+345 [Heading2] Reduction
+346 [Heading2] Delta ECE
+347 [Heading2] 95% CI
+348 [Heading2] Interpretation
+349 [Heading2] ASSISTments 2012
+350 [Heading2] DKT
+351 [Heading2] 500 rows
+352 [Heading2] −0.047
+353 [Heading2] [−0.060, −0.033]
+354 [Heading2] ECE lower
+355 [Heading2] ASSISTments 2012
+356 [Heading2] SimpleKT
+357 [Heading2] 50 rows
+358 [Heading2] +0.002
+359 [Heading2] [−0.021, +0.025]
+360 [Heading2] CI includes 0
+361 [Heading2] Junyi Academy
+362 [Heading2] DKT
+363 [Heading2] 500 rows
+364 [Heading2] −0.021
+365 [Heading2] [−0.041, −0.001]
+366 [Heading2] ECE lower
+367 [Heading2] Junyi Academy
+368 [Heading2] SimpleKT
+369 [Heading2] 50 rows
+370 [Heading2] +0.135
+371 [Heading2] [+0.110, +0.161]
+372 [Heading2] ECE higher
+373 [Heading2] XES3G5M
+374 [Heading2] DKT
+375 [Heading2] 500 rows
+376 [Heading2] −0.008
+377 [Heading2] [−0.019, +0.004]
+378 [Heading2] CI includes 0
+379 [Heading2] What This Paper Does Not Show
+380 [Text] The gate is not a classroom policy and not an A/B test of remediation. GKT and the CL4KT adapter are single-fold, ASSISTments-only instantiations. Temporal results are a single corrected cutoff (seed 42), not a multi-cutoff variance estimate. IRT is not a fair ranking baseline on unseen learners. We did not tune τ on sparse events, and we do not recommend doing so in deployment without a separate 
+381 [Heading2] Implications for Information and Education Technology
+382 [Text] IJIET’s audience includes operators of educational platforms, not only KT researchers. For that audience, the operational recommendation is narrow: (i) log train-only KC frequency with every prediction; (ii) report ECE and occupancy on dense vs. sparse slices before enabling a global mastery threshold; (iii) if a threshold must be global, simulate FAR and Miss on the sparse slice at the same τ use
+383 [Heading1] V. CONCLUSION

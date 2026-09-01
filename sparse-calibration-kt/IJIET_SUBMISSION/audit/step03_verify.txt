@@ -1,0 +1,12 @@
+TITLE=Sparse-Concept Calibration of Knowledge Tracing Models for Threshold-Based Educational Decisions
+TITLE_BOLD=0 SIZE=20.0
+AUTHORS=Khanh-Trinh Nguyen1, Tuan Dao Minh1, Duong Nguyen Tien1, Chi Thanh Nguyen2, and Van-Hau Nguyen1,*
+SUPERSCRIPTS=11121*
+P3=1 Hung Yen University of Technology and Education, Hung Yen, Vietnam
+P4=2 Academy of Military Science and Technology, Ha Noi, Vietnam
+P5=Email: trinhnk@utehy.edu.vn (K.-T.N.); tuanymc@utehy.edu.vn (T.D.M.); duongnt@utehy.edu.vn (D.N.T.); thanhnc@ioit.ai.vn (C.T.N.); haunv@utehy.edu.vn (V.-H.N.)
+P6=*Corresponding author
+KEYWORDS=Keywords—knowledge tracing, calibration, sparse concepts, learning analytics, educational decision support, mastery threshold
+PAGES=4
+WORDS=3231
+PDF=C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_SUBMISSION\output\main_ijiet_step03.pdf EXISTS=True SIZE=345161

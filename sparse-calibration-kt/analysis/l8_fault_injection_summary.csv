@@ -1,0 +1,2 @@
+n_injected,n_detected,detection_rate,clean_false_positives,n_clean,detection_rule,note
+60,23,0.38333333333333336,0,6,"warm_AUC < 0.55 OR warm_AUC + 0.05 < IRT_warm_AUC OR pearson(p,y) <= 0 OR (E[p|y=1]-E[p|y=0]) <= 0 OR identity_mismatch_rate > clean_identity_mismatch + 0.01",validation experiment; thresholds not tuned on injected faults

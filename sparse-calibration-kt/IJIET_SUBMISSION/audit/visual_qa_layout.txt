@@ -1,0 +1,209 @@
+pages=8 size=Rect(0.0, 0.0, 595.3200073242188, 841.9199829101562)
+
+=== PAGE 1 rect=Rect(0.0, 0.0, 595.3200073242188, 841.9199829101562) n_blocks=19 n_imgs=0 ===
+  (46.8,22.0)-(49.3,33.0) w=2.5 |   | 
+  (46.8,809.5)-(49.3,820.6) w=2.5 BOTTOM |   | 
+  (66.3,51.1)-(544.0,73.3) w=477.7 | Sparse-Concept Calibration of Knowledge Tracing Models  | 
+  (56.5,75.3)-(540.8,111.4) w=484.3 | for Threshold-Based Educational Decisions  | Khanh-Trinh Nguyen1, Tuan Dao Minh1, Duong Nguyen Tien1, Chi Thanh Nguyen2, and Van-Hau Nguyen1,*  | 
+  (207.5,110.8)-(390.7,121.9) w=183.1 | 1 Hung Yen University of Technology and Education, Hung Yen, Vietnam  | 
+  (47.2,121.1)-(550.0,142.4) w=502.8 | 2 Academy of Military Science and Technology, Ha Noi, Vietnam  | Email: trinhnk@utehy.edu.vn (K.-T.N.); tuanymc@utehy.edu.vn (T.D.M.); duongnt@utehy.edu.vn (D.N.T.); thanhnc@ioit.a
+  (240.5,141.7)-(357.6,152.8) w=117.0 | haunv@utehy.edu.vn (V.-H.N.)  | 
+  (46.8,152.2)-(342.1,173.4) w=295.3 | *Corresponding author  |   | 
+  (46.8,175.4)-(292.7,445.0) w=245.9 | Abstract—Knowledge Tracing (KT) systems that skip,  | remediate, or advance practice typically consume a predicted  | probability rather than an area-under-the-curve (AUC) score,  
+  (46.8,445.4)-(292.7,465.7) w=245.9 | Keywords—knowledge tracing, calibration, sparse concepts,  | learning analytics, educational decision support, mastery threshold  | 
+  (131.5,478.0)-(208.2,489.2) w=76.7 | I. INTRODUCTION  | 
+  (46.8,493.6)-(292.9,640.5) w=246.1 | Adaptive practice platforms and intelligent tutoring  | systems use Knowledge Tracing (KT) to estimate a learner’s  | command of a skill and to decide whether to skip, remediate,  
+  (46.8,641.6)-(292.9,785.4) w=246.1 | KT evaluations typically report population AUC and  | accuracy [4], [5]. Those metrics rank models, but they can  | conceal miscalibration on low-frequency KCs—skills with  | littl
+  (304.9,174.4)-(550.9,282.0) w=246.0 | This paper treats that mismatch as an evaluation problem  | for educational technology, not as a reason to propose  | another KT architecture. The study is organized around three  
+  (304.9,283.0)-(551.0,438.9) w=246.1 | The empirical answers are bounded. Lower KC training  | frequency does not universally degrade discrimination: on  | XES3G5M, sparse AUC is higher than dense AUC for DKT  | and Sim
+  (304.9,439.9)-(551.0,607.7) w=246.1 | Contributions  | are  | conservative:  | (i)  | a  | train-only  | KC-frequency protocol with an explicit strict cold-start  | group, so the definition of “sparse” cannot leak test
+  (376.0,620.7)-(479.8,631.9) w=103.8 | II. LITERATURE REVIEW  | 
+  (304.9,642.2)-(497.7,653.4) w=192.9 | A. Knowledge Tracing and benchmark models  | 
+  (304.9,656.7)-(551.0,788.5) w=246.1 | Knowledge Tracing (KT) models a learner’s evolving  | proficiency from historical interactions in order to predict the  | next response [3]. Classical approaches include Bayesian  
+
+=== PAGE 2 rect=Rect(0.0, 0.0, 595.3200073242188, 841.9199829101562) n_blocks=26 n_imgs=0 ===
+  (46.8,22.0)-(49.3,33.0) w=2.5 |   | 
+  (46.8,809.5)-(49.3,820.6) w=2.5 BOTTOM |   | 
+  (46.8,50.9)-(292.8,122.3) w=246.0 | task while substituting self-attention for recurrence.  | Benchmarking libraries such as pyKT have standardized  | preprocessing and comparison, and have shown that  | evaluation c
+  (46.8,129.2)-(186.0,140.4) w=139.2 | B. Graph and self-supervised KT  | 
+  (46.8,143.8)-(292.9,251.4) w=246.1 | Graph-based  | KT  | (GKT)  | represents  | knowledge  | components as nodes of a graph and updates proficiency with  | a graph neural network [8]. Contrastive learning for KT  | (
+  (46.8,258.3)-(212.5,269.4) w=165.7 | C. Sparse-data and cold-start problems  | 
+  (46.8,272.9)-(292.9,416.7) w=246.1 | The term “sparse” is used in several incompatible senses in  | the KT literature. This paper distinguishes four. (1) Sparse  | attention: sparseKT applies k-sparse attention so tha
+  (46.8,417.7)-(292.9,525.3) w=246.1 | These  | four  | problems  | are  | not  | interchangeable.  | sparseKT-style sparse attention is not equivalent to  | low-frequency KCs: attention can be sparsified on a  | freque
+  (46.8,532.1)-(249.1,543.3) w=202.3 | D. Calibration and educational decision support  | 
+  (46.8,546.8)-(292.9,726.8) w=246.1 | When predicted probabilities are consumed as educational  | decisions, ranking is not a sufficient evaluation [10].  | Calibration asks whether the predicted probability p matches 
+  (46.8,727.8)-(292.7,787.0) w=245.9 | Existing KT benchmarks mainly emphasize aggregate  | discrimination. Sparse frequency, calibration, sample  | support, and threshold-based decision error are rarely  | examined tog
+  (304.9,50.9)-(550.9,74.0) w=246.1 | result can be read as an educational-technology decision  | rather than only as a leaderboard rank.  | 
+  (362.1,86.9)-(493.6,98.1) w=131.5 | III. MATERIALS AND METHODS  | 
+  (304.9,108.6)-(353.4,119.7) w=48.6 | A. Datasets  | 
+  (304.9,123.0)-(550.9,266.8) w=246.1 | We use three de-identified public logs after a common  | interaction schema: ASSISTments 2012 [18], [5], Junyi  | Academy [19], and XES3G5M [20]. Table 1 reports  | post-processing
+  (304.9,267.9)-(550.9,363.4) w=246.1 | Provenance. ASSISTments 2012 is the 2012–2013 public  | release with affect [18], documented for KT use in pyKT [5];  | each retained row already carries one skill_id. Junyi  | Aca
+  (304.9,364.4)-(550.9,496.0) w=246.1 | XES3G5M counts. The original dataset paper reports  | 18,066 students, 7,652 questions, 865 KCs, and 5,549,635  | question-level interactions [20]. Table 1 instead lists 866 KCs  |
+  (305.0,497.0)-(549.9,515.0) w=244.9 | TABLE 1. POST-PROCESSING COHORT STATISTICS (LEARNER-BASED SPLIT).  | LEARNER, KNOWLEDGE-COMPONENT (KC), INTERACTION, AND TEST-EVENT  | 
+  (304.9,515.4)-(547.0,549.3) w=242.2 | COUNTS ARE POST-PROCESSING TOTALS, NOT RAW PUBLIC-DUMP COUNTS.  | Dataset  | Learners  | KCs  | Interactions  | Test events  | ASSISTments  | 2012  | 
+  (355.9,533.5)-(533.1,541.2) w=177.2 | 27,806  | 265  | 2.66M  | 534,150  | 
+  (304.9,550.1)-(333.5,565.8) w=28.6 | Junyi  | Academy  | 
+  (355.9,550.1)-(538.2,557.8) w=182.4 | 71,014  | 1,326  | 16.2M  | 3,269,022  | 
+  (304.9,566.7)-(538.2,574.5) w=233.4 | XES3G5M  | 18,066  | 866  | 7.95M  | 1,589,145  | 
+  (304.9,581.5)-(382.4,592.5) w=77.5 | B. Splits and seeds  | 
+  (304.9,596.0)-(550.8,703.5) w=245.9 | The learner-based split is primary. Users are shuffled with  | the fold seed; 20% of learners are held out as test, 10% as  | validation, and the remainder as training. Within a fo
+  (304.9,704.5)-(550.7,788.0) w=245.9 | Deep models are trained in five runs at seeds 42, 2024,  | 2025, 2026, and 2027 (fold_0 through fold_4). Seeds 2025  | and 2026 share one student partition (fold_2 = fold_3) on all
+
+=== PAGE 3 rect=Rect(0.0, 0.0, 595.3200073242188, 841.9199829101562) n_blocks=16 n_imgs=0 ===
+  (46.8,22.0)-(49.3,33.0) w=2.5 |   | 
+  (46.8,809.5)-(49.3,820.6) w=2.5 BOTTOM |   | 
+  (46.8,50.9)-(292.7,74.0) w=245.9 | first. The gate-robustness table still lists all five training runs  | across four unique learner partitions.  | 
+  (46.8,81.0)-(119.6,92.1) w=72.8 | C. Model settings  | 
+  (46.8,95.5)-(292.7,178.9) w=245.9 | Main tables use local IRT, DKT, and SimpleKT  | implementations, not a pinned pyKT commit (training  | snapshot commit: NOT RECOVERED). The local SimpleKT  | class is a two-layer T
+  (48.4,179.9)-(290.5,198.0) w=242.2 | RECOVERED TRAINING SETTINGS FOR THE MAIN BASELINES. NOT  | RECOVERED CELLS WERE NOT IMPUTED. THIS LISTING IS NOT A RESULTS  | 
+  (46.8,198.3)-(283.9,240.7) w=237.1 | TABLE.  | Setting  | IRT 1PL  | DKT  | SimpleKT  | Implementation  | local IRT  | local DKT  | local SimpleKT  | Version/commit  | NOT  | RECOVERED  | 
+  (174.0,224.9)-(217.8,240.7) w=43.8 | NOT  | RECOVERED  | 
+  (46.8,224.9)-(281.4,257.4) w=234.6 | NOT  | RECOVERED  | Major  | hyperparameters  | 
+  (110.4,241.6)-(161.6,265.4) w=51.1 | 1PL:  | sigmoid(θ−β); L2  | 0.01  | 
+  (174.0,241.6)-(225.3,257.4) w=51.3 | LSTM embed 64,  | hidden 128  | 
+  (46.8,241.6)-(287.6,316.2) w=240.8 | Transformer 2  | layers, 4 heads,  | embed 64  | Optimizer  | SGD  | Adam  | Adam  | Learning rate  | 0.01  | 1e−3  | 1e−3  | Early stopping  | none (10 epochs)  | none (50 epochs)
+  (110.4,300.4)-(250.0,308.2) w=139.5 | n/a  | 200  | 200  | 
+  (46.8,317.0)-(292.9,469.5) w=246.1 | Selection metric  | last epoch  | validation AUC  | validation AUC  | On ASSISTments fold 0 only we also score a train-only  | GKT graph [8] (pyKT GKT; Adam, learning rate 1e−3, ba
+  (46.8,476.5)-(172.1,487.5) w=125.3 | D. Train-only frequency strata  | 
+  (46.8,491.0)-(292.8,574.4) w=246.0 | For each fold, KC frequency f_train is counted on the  | training file only. Buckets: strict cold-start (f=0), very sparse  | (0<f<20), sparse (20≤f<100), medium (100≤f<500), dense
+
+=== PAGE 4 rect=Rect(0.0, 0.0, 595.3200073242188, 841.9199829101562) n_blocks=16 n_imgs=1 ===
+  (46.8,22.0)-(49.3,33.0) w=2.5 |   | 
+  (46.8,809.5)-(49.3,820.6) w=2.5 BOTTOM |   | 
+  (56.9,50.9)-(59.4,61.9) w=2.5 |   | 
+  (527.0,391.1)-(529.5,402.2) w=2.5 |   | 
+  (50.8,418.9)-(546.6,427.8) w=495.8 | Fig. 1. Distribution of KCs across train-only frequency strata under learner-based and temporal splits. Bottom: verified training-interaction counts (sum of  | 
+  (140.3,428.0)-(457.2,436.9) w=316.9 | train-only f_train on fold 0); volume is not inferred from KC counts. Bottom y-axis is logarithmic.  | 
+  (46.8,451.5)-(124.1,462.5) w=77.3 | E. Reliability flags  | 
+  (46.8,465.9)-(292.8,561.4) w=246.0 | Occupancy flags follow test-event count N: Reliable (R)  | N≥1000; Limited (L) 100≤N<1000; Insufficient (I) N<100.  | We call R, L, and I descriptive sample-support flags. They  | 
+  (46.8,568.5)-(107.2,579.5) w=60.4 | F. Calibration  | 
+  (46.8,583.3)-(292.9,702.8) w=246.1 | Let y∈{0,1} be next-response correctness and p∈[0,1] the  | predicted probability. With M=15 equal-width bins, ECE =  | Σ_m (n_m / N) |acc_m − conf_m|. The Brier score is (1/N)  | 
+  (46.8,709.9)-(136.8,720.9) w=90.0 | G. Difficulty coupling  | 
+  (46.8,724.4)-(292.8,783.7) w=246.0 | For each KC c we define a training-only difficulty proxy  | difficulty(c) = 1 − mean_train_correctness(c). The mean is  | taken on the training file only. This is an observational 
+  (304.9,445.5)-(551.0,528.9) w=246.1 | association is ρ(log(1+f_train), difficulty), computed on  | training-fold KC summaries. The same file yields item  | support (distinct items per KC), learner exposure (distinct  |
+  (304.9,536.0)-(415.1,547.0) w=110.3 | H. Simulated decision gate  | 
+  (304.9,550.4)-(550.8,609.7) w=245.9 | For a locked global threshold τ, the system advances (skips  | remediation) if p≥τ and triggers remediation otherwise.  | Sparse events never receive their own tuned τ. The display
+  (304.9,610.8)-(551.0,790.6) w=246.1 | Let A={p≥τ}. The false-advance rate (FAR) is P(y=0 |  | p≥τ): among responses for which the simulated system would  | advance the learner, the proportion whose observed next  | res
+
+=== PAGE 5 rect=Rect(0.0, 0.0, 595.3200073242188, 841.9199829101562) n_blocks=45 n_imgs=0 ===
+  (46.8,22.0)-(49.3,33.0) w=2.5 |   | 
+  (46.8,809.5)-(49.3,820.6) w=2.5 BOTTOM |   | 
+  (46.8,50.9)-(292.6,74.0) w=245.8 | advances. This is a simulated decision error, not an  | instructional RCT.  | 
+  (142.2,87.0)-(197.5,98.1) w=55.3 | IV. RESULT  | 
+  (46.8,108.6)-(163.0,119.7) w=116.2 | A. Aggregate discrimination  | 
+  (46.8,123.0)-(292.9,218.5) w=246.1 | Table 2 reports overall learner-based area under the ROC  | curve (AUC) and accuracy (ACC), mean±sd over four unique  | partitions. This subsection is discrimination, not calibrati
+  (47.9,219.4)-(290.9,228.3) w=243.0 | TABLE 2. OVERALL LEARNER-BASED AREA UNDER THE ROC CURVE (AUC)  | 
+  (46.8,228.7)-(280.8,262.5) w=234.0 | AND ACCURACY (ACC) (MEAN±SD OVER FOUR UNIQUE PARTITIONS).  | Dataset  | Model  | AUC  | ACC  | ASSISTments  | 2012  | 
+  (110.4,246.8)-(281.8,254.5) w=171.3 | IRT  | 0.5000  | 0.6973±0.0004  | 
+  (46.8,263.4)-(88.5,279.1) w=41.7 | ASSISTments  | 2012  | 
+  (110.4,263.4)-(281.8,271.1) w=171.3 | DKT  | 0.6979±0.0014  | 0.7182±0.0014  | 
+  (46.8,280.0)-(88.5,295.8) w=41.7 | ASSISTments  | 2012  | 
+  (110.4,280.0)-(281.8,287.8) w=171.3 | SimpleKT  | 0.6837±0.0025  | 0.6996±0.0032  | 
+  (46.8,296.6)-(292.8,359.1) w=246.0 | Junyi Academy  | IRT  | 0.5000  | 0.7053±0.0018  | Junyi Academy  | DKT  | 0.7320±0.0009  | 0.7343±0.0015  | Junyi Academy  | SimpleKT  | 0.7231±0.0030  | 0.7274±0.0015  | XES3G5M 
+  (304.9,50.9)-(551.0,122.3) w=246.1 | dense-stratum AUC (DKT 0.857 versus 0.817; SimpleKT  | 0.847 versus 0.755; Reliable occupancy). Lower training  | frequency is therefore not a universal ranking failure. Junyi’s  |
+  (304.9,129.4)-(461.5,140.4) w=156.6 | B. Calibration across frequency strata  | 
+  (304.9,143.8)-(550.8,263.4) w=246.0 | Table 3 reports event-level expected calibration error  | (ECE), not AUC. On ASSISTments 2012, SimpleKT ECE  | increases from 0.1136±0.0066 (dense, Reliable, N=523,971)  | to 0.154
+  (49.7,264.5)-(550.8,391.1) w=501.1 | Calibration does not universally worsen. On Junyi  | Academy the learner-based sparse bucket is empty; only  | dense and medium exist, and SimpleKT ECE rises from  | 0.0792±0.0051 
+  (46.8,391.3)-(501.0,477.0) w=454.2 | EMPTY.  | Dataset  | Stratum  | N  | Flag  | ECE  | ASSISTments 2012  | dense  | 523,971  | R  | 0.1136±0.0066  | ASSISTments 2012  | medium  | 5,963  | R  | 0.1541±0.0051  | ASSIS
+  (46.8,484.0)-(187.7,495.1) w=140.9 | C. Threshold-based decision error  | 
+  (46.8,498.6)-(292.8,569.9) w=246.0 | Table 4 is a simulated gate at τ=0.7 on ASSISTments 2012  | fold 0 (seed 42), not a classroom trial. For SimpleKT,  | false-advance rate (FAR) is 0.196 [0.186, 0.208] on dense  | K
+  (304.9,478.0)-(550.7,549.4) w=245.9 | (N=444,  | Limited;  | N_advance=235;  | N_incorrect=197;  | E[FAR]=0.050;  | Excess  | FAR=0.218;  | Miss=0.320).  | ΔFAR=+0.072. DKT FAR is 0.200 [0.190, 0.211] dense and  | 0.29
+  (46.8,570.9)-(550.2,601.0) w=503.4 |   | TABLE 4. SIMULATED GATE AT Τ=0.7, ASSISTMENTS 2012 FOLD 0. FALSE-ADVANCE RATE (FAR)=P(Y=0 | P≥Τ) AMONG N_ADVANCE ADVANCES; MISS  | AMONG N_INCORRECT INCORRECT RESPONSES; EXCESS
+  (46.8,601.3)-(517.7,635.2) w=470.9 | A CLASSROOM TRIAL.  | Model  | Stratum  | N  | N_advance  | N_incorrect  | FAR [95% CI]  | E[FAR]  | Excess FAR  | Miss  | SimpleKT  | dense  | 528,018  | 284,326  | 158,623  | 0.1
+  (388.4,619.5)-(519.9,627.2) w=131.5 | 0.113  | 0.083  | 0.352  | 
+  (46.8,636.0)-(370.4,651.8) w=323.6 | SimpleKT  | sparse  | 444  | 235  | 197  | 0.268 [0.202,  | 0.337]  | 
+  (388.4,636.0)-(519.9,643.7) w=131.5 | 0.050  | 0.218  | 0.320  | 
+  (46.8,652.6)-(370.4,668.3) w=323.6 | DKT  | dense  | 528,018  | 315,650  | 158,623  | 0.200 [0.190,  | 0.211]  | 
+  (388.4,652.6)-(519.9,660.3) w=131.5 | 0.147  | 0.053  | 0.398  | 
+  (46.8,669.3)-(370.4,685.0) w=323.6 | DKT  | sparse  | 444  | 243  | 197  | 0.296 [0.221,  | 0.383]  | 
+  (388.4,669.3)-(519.9,677.0) w=131.5 | 0.057  | 0.239  | 0.365  | 
+  (46.8,685.8)-(80.8,701.6) w=34.0 | GKT  | (train-only)  | 
+  (103.8,685.8)-(370.4,701.6) w=266.6 | dense  | 528,018  | 351,503  | 158,623  | 0.205 [0.194,  | 0.217]  | 
+  (388.4,685.8)-(519.9,693.5) w=131.5 | 0.163  | 0.042  | 0.455  | 
+  (46.8,702.4)-(80.8,718.1) w=34.0 | GKT  | (train-only)  | 
+  (103.8,702.4)-(370.4,718.1) w=266.6 | sparse  | 444  | 209  | 197  | 0.220 [0.149,  | 0.295]  | 
+  (388.4,702.4)-(519.9,710.1) w=131.5 | 0.157  | 0.063  | 0.234  | 
+  (46.8,718.9)-(73.9,734.7) w=27.1 | CL4KT  | (adapter)  | 
+  (103.8,718.9)-(370.4,734.7) w=266.6 | dense  | 528,018  | 307,479  | 158,623  | 0.185 [0.176,  | 0.194]  | 
+  (388.4,718.9)-(519.9,726.6) w=131.5 | 0.175  | 0.010  | 0.359  | 
+  (46.8,735.5)-(73.9,751.2) w=27.1 | CL4KT  | (adapter)  | 
+  (103.8,735.5)-(370.4,751.2) w=266.6 | sparse  | 444  | 200  | 197  | 0.240 [0.159,  | 0.330]  | 
+  (388.4,735.5)-(519.9,743.2) w=131.5 | 0.116  | 0.124  | 0.244  | 
+  (46.8,752.4)-(292.8,787.5) w=246.0 | Seed-42 ΔFAR 95% CI (KC-cluster, B=2000): SimpleKT  | [0.006, 0.138] (locked C2); DKT [0.019, 0.175]; GKT  | [−0.054, 0.092]; CL4KT [−0.018, 0.142].  | 
+  (304.9,752.4)-(551.0,787.5) w=246.1 | Table 5 checks whether SimpleKT ΔFAR is a one-fold  | accident. It is positive in all five training runs spanning four  | unique student partitions (mean 0.047, sd 0.033). Mean  | 
+
+=== PAGE 6 rect=Rect(0.0, 0.0, 595.3200073242188, 841.9199829101562) n_blocks=19 n_imgs=0 ===
+  (46.8,22.0)-(49.3,33.0) w=2.5 |   | 
+  (46.8,809.5)-(49.3,820.6) w=2.5 BOTTOM |   | 
+  (46.8,50.9)-(292.9,134.4) w=246.1 | sparse  | denominators  | are  | N=413,  | N_advance=227,  | N_incorrect=155. A KC-clustered bootstrap on seed 42  | yields a 95% interval [0.006, 0.138] for ΔFAR—excluding 0,  | b
+  (304.9,50.9)-(550.7,86.1) w=245.8 | five (mean +0.112): among actual incorrect answers, the  | system still advances more often on sparse than on dense  | KCs.  | 
+  (304.9,87.1)-(550.9,122.3) w=246.0 | Coincidence of digits: SimpleKT dense E[FAR] at τ=0.7  | on seed 42 is 0.113, close to the four-partition dense ECE  | 0.114.  | They  | are  | different  | quantities. | 
+  (51.7,135.4)-(545.3,156.2) w=493.6 |   | TABLE 5. GATE ROBUSTNESS AT Τ=0.7 ON ASSISTMENTS 2012. FIVE TRAINING RUNS (SEEDS 42, 2024, 2025, 2026, 2027) ACROSS FOUR UNIQUE LEARNER  | 
+  (49.3,156.5)-(547.6,174.7) w=498.3 | PARTITIONS (2025 AND 2026 SHARE A SPLIT). ΔFAR=FAR_SPARSE−FAR_DENSE. MEAN N, N_ADVANCE, AND N_INCORRECT ARE SPARSE-STRATUM  | DENOMINATORS. SIMPLEKT: ΔFAR>0 ON 5/5 TRAINING RUNS AN
+  (46.8,174.9)-(539.1,209.4) w=492.3 | PARTITION IS MIXED IN SIGN) AND IS NOT A FIVE-RUN FINDING. GKT/CL4KT REMAIN SEED 42 ONLY.  | Model  | Mean ΔFAR  | SD  | Runs ΔFAR>0  | Mean N  | Mean N_advance  | Mean N_incorrect
+  (46.8,216.4)-(222.6,227.4) w=175.8 | D. Dataset-dependent explanatory analysis  | 
+  (46.8,230.9)-(292.8,374.7) w=246.0 | If a learning platform uses KT probabilities only to sort  | students, Table 2 may suffice. If it uses p to skip practice or  | declare mastery, Table 2 is the wrong dashboard. The
+  (46.8,375.7)-(292.9,493.0) w=246.1 | On the three datasets studied here, three empirical  | conditions track when a sparse-calibration contrast is  | estimable rather than empty (Table 6): (1) a non-empty  | low-frequ
+  (60.3,493.3)-(278.6,511.4) w=218.4 | A SPARSE-CALIBRATION CONTRAST IS ESTIMABLE. THESE ARE NOT  | UNIVERSAL LAWS. SPARSE MASS: SHARE OF KCS WITH TRAIN-ONLY  | 
+  (46.8,511.7)-(279.2,562.7) w=232.4 | FREQUENCY F_TRAIN<100.  | Condition  | ASSISTments  | Junyi  | XES3G5M  | Sparse mass  | 18.9% of KCs  | 0%  | 22.5% of KCs  | Sparse N  | 415 (L)  | empty  | 2,010 (R)  | Difficul
+  (110.4,546.9)-(160.8,562.7) w=50.4 | ρ=−0.227 (sparse  | harder)  | 
+  (46.8,546.9)-(287.1,580.3) w=240.3 | ρ=−0.416  | ρ=+0.087 (weak,  | inverted)  | SimpleKT ECE  | 0.114→0.228  | dense→medium  | only  | 
+  (237.6,563.7)-(288.9,571.5) w=51.3 | flat 0.114→0.125  | 
+  (46.8,581.4)-(292.8,649.9) w=246.0 | Table 6 records three observational pre-conditions under  | which a sparse-calibration contrast is estimable on these logs.  | The same training-only file also yields item support,
+  (304.9,210.4)-(550.8,659.6) w=245.9 | Sparse mass (share of KCs with f_train<100) is 18.9% on  | ASSISTments 2012, 0% on Junyi Academy, and 22.5% on  | XES3G5M. Sparse test-event support is Limited (N=415),  | empty, a
+  (46.8,666.1)-(546.7,765.8) w=499.9 |   | Table 7. Within-KC controlled sparsification (seed 42; 30 originally dense KCs per dataset). Delta ECE = reduced−full;  | positive means worse calibration after keeping 500 or 
+
+=== PAGE 7 rect=Rect(0.0, 0.0, 595.3200073242188, 841.9199829101562) n_blocks=21 n_imgs=0 ===
+  (46.8,22.0)-(49.3,33.0) w=2.5 |   | 
+  (46.8,809.5)-(49.3,820.6) w=2.5 BOTTOM |   | 
+  (46.8,56.9)-(292.8,197.3) w=246.0 | E. Exploratory GKT/CL4KT result  | GKT (a train-only graph) and a CL4KT protocol adapter are  | scored only on ASSISTments 2012 fold 0 (seed 42). They are  | exploratory, single-fo
+  (133.3,209.8)-(206.4,220.8) w=73.1 | V. DISCUSSION  | 
+  (46.8,231.3)-(292.8,452.2) w=246.0 | A. Main empirical findings  | Three empirical regularities, not laws, structure the results.  | First, training frequency is not a universal predictor of AUC  | failure: on XES3G5M
+  (46.8,458.7)-(292.7,610.5) w=245.9 | B. Practical implications for educational technology  | Before using one global KT probability threshold for  | remediation or advancement, four checks are warranted  | under the e
+  (46.8,617.0)-(292.9,768.9) w=246.1 | C. Why datasets differ  | The three logs differ on measured structural descriptors  | (Table 6): sparse mass 18.9%, 0%, and 22.5% of KCs; sparse  | test support Limited (N=415), em
+  (304.9,50.9)-(545.8,73.4) w=240.9 | hypotheses unless experimentally isolated, which this study  | does not do.  | 
+  (304.9,79.9)-(547.4,231.9) w=242.5 | D. Limitations  | Next-response correctness is not latent mastery: y=0 is an  | incorrect next attempt, not a latent-skill diagnosis. The  | threshold gate is simulated at a locked
+  (387.0,244.3)-(468.9,255.4) w=82.0 | VI. CONCLUSION  | 
+  (304.9,259.7)-(550.9,397.2) w=246.1 | Under the evaluated conditions, KT probabilities that look  | adequate on aggregate AUC can still be poorly calibrated on  | sparse KCs in some dataset-model settings, and a global
+  (380.1,409.7)-(475.8,420.8) w=95.6 | CONFLICT OF INTEREST  | 
+  (315.0,425.2)-(487.1,436.2) w=172.2 | The authors declare no conflict of interest.  | 
+  (375.3,449.2)-(480.4,460.3) w=105.1 | AUTHOR CONTRIBUTIONS  | 
+  (304.9,464.7)-(551.0,536.1) w=246.1 | K.-T.N.: Conceptualization, Methodology, Software,  | Formal analysis, and Writing (led diagnostic design,  | experiments, and manuscript). T.D.M. and D.N.T.: Software  | (data pro
+  (383.6,549.2)-(472.3,560.2) w=88.7 | ETHICAL STATEMENT  | 
+  (304.9,564.7)-(550.7,636.0) w=245.9 | This study is a secondary analysis of publicly released  | benchmark educational datasets (ASSISTments 2012, Junyi  | Academy, and XES3G5M). The processed records used here  | are 
+  (362.5,649.1)-(493.4,660.1) w=130.9 | DATA AND CODE AVAILABILITY  | 
+  (304.9,664.5)-(550.9,735.9) w=246.0 | Anonymized  | code,  | data-preprocessing  | scripts,  | and  | evaluation pipelines are available for peer review at  | https://anonymous.4open.science/r/Sparse-Concept-and-Cali |
+  (369.0,748.9)-(486.8,759.9) w=117.8 | GENERATIVE AI STATEMENT  | 
+  (304.9,764.4)-(550.7,787.5) w=245.8 | During manuscript preparation, the authors used ChatGPT  | [version to be confirmed], Claude [version to be confirmed],  | 
+
+=== PAGE 8 rect=Rect(0.0, 0.0, 595.3200073242188, 841.9199829101562) n_blocks=29 n_imgs=0 ===
+  (46.8,22.0)-(49.3,33.0) w=2.5 |   | 
+  (46.8,809.5)-(49.3,820.6) w=2.5 BOTTOM |   | 
+  (46.8,50.9)-(292.6,134.4) w=245.8 | and Google Antigravity [version to be confirmed] to support  | language polishing, formatting, consistency checking, and  | reproducibility prompt preparation. These tools were not
+  (127.8,147.4)-(211.8,158.4) w=84.0 | ACKNOWLEDGMENT  | 
+  (46.8,162.9)-(292.6,186.0) w=245.8 | This work was supported by the authors’ respective  | institutions.  | 
+  (142.8,199.0)-(196.9,210.0) w=54.1 | REFERENCES  | 
+  (46.8,214.3)-(292.2,223.3) w=245.4 | [1] A. T. Corbett and J. R. Anderson, “Knowledge Tracing: Modeling the  | 
+  (46.8,223.6)-(292.4,260.0) w=245.6 | acquisition of  | procedural knowledge,”  | User Modeling and  | User-Adapted Interaction, vol. 4, no. 4, pp. 253–278, 1994. doi:  | 10.1007/BF01099821  | [2] C. Piech, J. Bassen, 
+  (46.8,260.4)-(292.4,287.6) w=245.6 | J. Sohl-Dickstein, “Deep Knowledge Tracing,” in Advances in Neural  | Information Processing Systems, vol. 28, 2015, pp. 505–513.  | [3] G. Abdelrahman, Q. Wang, and B. Nunes, “Kno
+  (46.8,288.0)-(292.4,315.2) w=245.6 | survey,” ACM Computing Surveys, vol. 55, no. 11, pp. 1–37, 2023. doi:  | 10.1145/3569576  | [4] Z. Liu, Q. Liu, J. Chen, S. Huang, and W. Luo, “SimpleKT: A simple  | 
+  (46.8,315.6)-(292.2,342.8) w=245.4 | but tough-to-beat baseline for Knowledge Tracing,” in The Eleventh  | International Conference on Learning Representations, 2023.  | [5] Z. Liu, Q. Liu, J. Chen, S. Huang, J. Tang,
+  (46.8,343.0)-(292.3,379.5) w=245.5 | python library to benchmark deep learning based Knowledge Tracing  | models,” in Proc. 36th Conference on Neural Information Processing  | Systems Datasets and Benchmarks Track, 20
+  (46.8,379.9)-(292.4,397.9) w=245.6 | Tests. Danish Institute for Educational Research, 1960.  | [7] A. Ghosh, N. Heffernan, and A. S. Lan, “Context-aware attentive  | 
+  (46.8,398.2)-(292.4,434.7) w=245.6 | Knowledge Tracing,” in Proc. ACM SIGKDD Conf. Knowledge  | Discovery  | and  | Data  | Mining,  | 2020,  | pp.  | 2330–2339.  | doi:  | 10.1145/3394486.3403282  | [8] H. Nakagawa, 
+  (46.8,435.0)-(292.2,471.5) w=245.4 | Tracing: Modeling student proficiency using graph neural network,” in  | Proc. IEEE/WIC/ACM International Conference on Web Intelligence,  | 2019, pp. 156–163. doi: 10.1145/3350546
+  (64.8,471.8)-(292.1,489.8) w=227.3 | for Knowledge Tracing,” in Proc. ACM Web Conference, 2022, pp.  | 2330–2338. doi: 10.1145/3485447.3512105  | 
+  (304.9,50.7)-(550.5,59.7) w=245.6 | [10] R. Pelánek, “Metrics for evaluation of student models,” Journal of  | 
+  (304.9,60.0)-(550.5,87.3) w=245.6 | Educational Data Mining, vol. 7, no. 2, pp. 1–19, 2015. doi:  | 10.5281/zenodo.3554665  | [11] C. Guo, G. Pleiss, Y. Sun, and K. Q. Weinberger, “On calibration of  | 
+  (304.9,87.5)-(550.2,114.9) w=245.4 | modern neural networks,” in Proc. 34th International Conference on  | Machine Learning, vol. 70, 2017, pp. 1321–1330.  | [12] M. P. Naeini, G. Cooper, and M. Hauskrecht, “Obtaining
+  (304.9,115.1)-(550.2,151.6) w=245.4 | calibrated probabilities using Bayesian binning,” in Proc. AAAI  | Conference on Artificial Intelligence, vol. 29, no. 1, 2015. doi:  | 10.1609/aaai.v29i1.9602  | [13] G. W. Brier,
+  (304.9,152.0)-(550.5,179.2) w=245.6 | probability,” Monthly Weather Review, vol. 78, no. 1, pp. 1–3, 1950.  | doi: 10.1175/1520-0493(1950)078<0001:VOFEIT>2.0.CO;2  | [14] M. H. DeGroot and S. E. Fienberg, “The comparis
+  (304.9,179.5)-(550.5,206.8) w=245.6 | forecasters,” The Statistician, vol. 32, no. 1/2, pp. 12–22, 1983. doi:  | 10.2307/2987588  | [15] X. Yan, C. Tang, and A. Shimada, “Recovering stranded  | 
+  (304.9,207.1)-(550.4,243.6) w=245.6 | discrimination in Knowledge Tracing: Per-item bias correction via  | empirical-Bayes  | shrinkage,”  | arXiv:2606.14123,  | 2026.  | doi:  | 10.48550/arXiv.2606.14123  | [16] S. Hu
+  (304.9,243.9)-(550.5,280.3) w=245.6 | Knowledge Tracing models via k-sparse attention,” in Proc. 46th  | International ACM SIGIR Conference, 2023, pp. 2441–2445. doi:  | 10.1145/3539618.3592073  | [17] I. Bhattacharjee
+  (304.9,280.6)-(550.5,326.3) w=245.6 | experimental study of Knowledge Tracing models with new students,”  | in Artificial Intelligence in Education (AIED 2025), Lecture Notes in  | Computer Science, vol. 15880. Springe
+  (304.9,326.6)-(550.3,363.1) w=245.4 | affect,” ASSISTments Public Datasets, 2012. [Online]. Available:  | https://sites.google.com/site/assistmentsdata/datasets/2012-13-school- | data-with-affect  | [19] Junyi Academy,
+  (304.9,363.3)-(550.3,399.8) w=245.5 | Kaggle,  | 2019.  | [Online].  | Available:  | https://www.kaggle.com/datasets/junyiacademy/learning-activity-publ | ic-dataset-by-junyi-academy  | [20] Z. Liu, Q. Liu, T. Guo, J. 
+  (304.9,400.2)-(550.3,482.6) w=245.4 | and J. Weng, “XES3G5M: A Knowledge Tracing benchmark dataset  | with auxiliary information,” in Proc. 37th Conference on Neural  | Information Processing Systems Datasets and Bench
+  (46.8,490.2)-(48.8,508.3) w=2.0 |   |   | 
+  LINK {'kind': 2, 'xref': 49, 'from': Rect(377.69000244140625, 464.0999755859375, 417.9800109863281, 473.28997802734375), 'uri': 'https://creativecommons.org/licenses/by/4.0/', 'id': ''}

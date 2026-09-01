@@ -1,0 +1,51 @@
+# IJIET-08 recovered gate denominators and CIs
+
+Source: `results/predictions/*` plus `analysis/direction_c/threshold_rates.csv`.
+Bootstrap: KC-cluster percentile, B=2000, RNG seed 0 (same as C2).
+tau=0.7. Not retuned on sparse events.
+
+## Seed-42 points vs published 3-decimal table
+ N_total  N_advance  N_incorrect      FAR    E_FAR  Excess_FAR     Miss            model stratum
+  528018     284326       158623 0.196327 0.112505    0.083823 0.351910         SimpleKT   dense
+     444        235          197 0.268085 0.049905    0.218180 0.319797         SimpleKT  sparse
+  528018     315650       158623 0.199924 0.147161    0.052763 0.397836              DKT   dense
+     444        243          197 0.296296 0.057376    0.238920 0.365482              DKT  sparse
+  528018     351503       158623 0.205344 0.163410    0.041933 0.455035 GKT (train-only)   dense
+     444        209          197 0.220096 0.157197    0.062899 0.233503 GKT (train-only)  sparse
+  528018     307479       158623 0.185190 0.175150    0.010040 0.358977  CL4KT (adapter)   dense
+     444        200          197 0.240000 0.115909    0.124091 0.243655  CL4KT (adapter)  sparse
+
+## KC-cluster 95% CI
+           model   quantity    point     ci_lo    ci_hi  n_valid
+        SimpleKT  FAR_dense 0.196327  0.185630 0.207684     2000
+        SimpleKT FAR_sparse 0.268085  0.202012 0.336848     2000
+        SimpleKT  Delta_FAR 0.071758  0.008792 0.141431     2000
+             DKT  FAR_dense 0.199924  0.189987 0.210745     2000
+             DKT FAR_sparse 0.296296  0.220584 0.382778     2000
+             DKT  Delta_FAR 0.096372  0.022258 0.182296     2000
+GKT (train-only)  FAR_dense 0.205344  0.193929 0.216801     2000
+GKT (train-only) FAR_sparse 0.220096  0.148832 0.294807     2000
+GKT (train-only)  Delta_FAR 0.014752 -0.053742 0.092269     2000
+ CL4KT (adapter)  FAR_dense 0.185190  0.176132 0.193909     2000
+ CL4KT (adapter) FAR_sparse 0.240000  0.159220 0.330103     2000
+ CL4KT (adapter)  Delta_FAR 0.054810 -0.017695 0.142235     2000
+
+## Existing C2 Delta-FM CI (should match SimpleKT Delta_FAR)
+   dataset    model  seed  mode  dFM_point  n_valid     mean    ci_lo    ci_hi
+assist2012      dkt    42    kc   0.096372     2000 0.096020 0.018506 0.175195
+assist2012      dkt    42 event   0.096372     2000 0.097350 0.041814 0.157552
+assist2012 simplekt    42    kc   0.071758     2000 0.071220 0.005966 0.138438
+assist2012 simplekt    42 event   0.071758     2000 0.071683 0.015309 0.129830
+
+## Five-seed sparse denominators (assist2012)
+   model  seed  sparse_n  sparse_n_advance  N_incorrect_sparse       dFM
+     dkt    42       444               243               197.0  0.096372
+simplekt    42       444               235               197.0  0.071758
+     dkt  2024       439               234               181.0  0.071040
+simplekt  2024       439               246               181.0  0.086663
+     dkt  2025       402               217               138.0 -0.003224
+simplekt  2025       402               213               138.0  0.010029
+     dkt  2026       402               239               138.0  0.012369
+simplekt  2026       402               224               138.0  0.019917
+     dkt  2027       376               199               123.0 -0.010661
+simplekt  2027       376               219               123.0  0.048955

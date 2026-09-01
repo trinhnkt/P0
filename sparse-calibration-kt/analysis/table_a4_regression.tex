@@ -1,0 +1,30 @@
+\begin{table}[htbp]
+\caption{Multivariable Regression: Standardized Coefficients for ECE (SimpleKT, weighted by test events). Bootstrap 95\% CIs.}
+\label{tab:a4_regression}
+\centering\small
+\begin{tabular}{llrrrr}
+\toprule
+Dataset & Covariate & $\hat\beta$ (std.) & SE & 95\% CI & $p$ \\
+\midrule
+ASSISTments 2012 & $\log(1+f_{\text{train}})$ & $-0.0791^{***}$ & $0.0090$ & $[-0.097,\ -0.061]$ & $0.000$ \\
+ & Difficulty proxy & $+0.0271^{***}$ & $0.0045$ & $[0.018,\ 0.036]$ & $0.000$ \\
+ & $N_{\text{items/KC}}$ & $-0.0060$ & $0.0039$ & $[-0.014,\ 0.002]$ & $0.124$ \\
+ & $N_{\text{learners}}$ & $+0.0186^{***}$ & $0.0045$ & $[0.010,\ 0.027]$ & $0.000$ \\
+ & Median seq.\ position & $-0.0050$ & $0.0040$ & $[-0.013,\ 0.003]$ & $0.208$ \\
+\midrule
+Junyi Academy & $\log(1+f_{\text{train}})$ & $-0.0103^{***}$ & $0.0018$ & $[-0.014,\ -0.007]$ & $0.000$ \\
+ & Difficulty proxy & $+0.0037^{***}$ & $0.0010$ & $[0.002,\ 0.006]$ & $0.000$ \\
+ & $N_{\text{items/KC}}$ & $-0.0011$ & $0.0006$ & $[-0.002,\ 0.000]$ & $0.079$ \\
+ & $N_{\text{learners}}$ & $-0.0005$ & $0.0011$ & $[-0.003,\ 0.002]$ & $0.640$ \\
+ & Median seq.\ position & $-0.0041^{***}$ & $0.0008$ & $[-0.006,\ -0.002]$ & $0.000$ \\
+\midrule
+XES3G5M & $\log(1+f_{\text{train}})$ & $-0.1170^{***}$ & $0.0275$ & $[-0.171,\ -0.063]$ & $0.000$ \\
+ & Difficulty proxy & $+0.0185$ & $0.0301$ & $[-0.040,\ 0.078]$ & $0.539$ \\
+ & $N_{\text{items/KC}}$ & $+0.0086$ & $0.0081$ & $[-0.007,\ 0.025]$ & $0.287$ \\
+ & $N_{\text{learners}}$ & $+0.0181$ & $0.0118$ & $[-0.005,\ 0.041]$ & $0.127$ \\
+ & Median seq.\ position & $-0.0033$ & $0.0071$ & $[-0.017,\ 0.011]$ & $0.648$ \\
+\midrule
+\bottomrule
+\multicolumn{6}{l}{\scriptsize ${}^{*}p<0.05$, ${}^{**}p<0.01$, ${}^{***}p<0.001$. Standardized $\hat\beta$. Weighted by test events.} \\
+\end{tabular}
+\end{table}

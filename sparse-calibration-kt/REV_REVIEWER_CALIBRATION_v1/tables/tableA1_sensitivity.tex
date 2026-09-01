@@ -1,0 +1,61 @@
+\begin{table}[H]
+\caption{Threshold sensitivity by dataset and model group (learner-based split). Deep baselines denote the mean over DKT and SimpleKT; standard deviations reflect between-baseline and between-seed variation. IRT is omitted because its learner-based AUC is constant at 0.50 and insensitive to bucket thresholds. Main: $\{20, 100, 500\}$; Alt\_1: $\{10, 50, 250\}$; Alt\_2: $\{30, 150, 750\}$; Quantile: equal-quantile bucketing.}
+\label{tab:sensitivity}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lllcc}
+\toprule
+ &  &  & \multicolumn{2}{c}{Deep baselines} \\
+\cmidrule(lr){4-5}
+Dataset & Setting & Bucket & AUC & ECE \\
+\midrule
+ASSISTments 2012 & Main & dense & $0.6901$ & $0.0880$ \\
+ &  & medium & $0.7554$ & $0.1536$ \\
+ &  & sparse & $0.7355$ & $0.2223$ \\
+ &  & Very Sparse & $0.9167$ & $0.1922$ \\
+ & Alt\_1 & dense & $0.6912$ & $0.0885$ \\
+ &  & medium & $0.7213$ & $0.1627$ \\
+ &  & sparse & $0.7431$ & $0.2383$ \\
+ &  & Very Sparse & $1.0000$ & $0.2258$ \\
+ & Alt\_2 & dense & $0.6901$ & $0.0879$ \\
+ &  & medium & $0.7411$ & $0.1541$ \\
+ &  & sparse & $0.7325$ & $0.2085$ \\
+ &  & Very Sparse & $0.7134$ & $0.2650$ \\
+ & Quantile & dense & $0.6893$ & $0.0839$ \\
+ &  & medium & $0.6991$ & $0.1139$ \\
+ &  & sparse & $0.7372$ & $0.1551$ \\
+ &  & Very Sparse & $0.7314$ & $0.1859$ \\
+\midrule
+Junyi Academy & Main & dense & $0.7268 \pm 0.0039$ & $0.0615 \pm 0.0051$ \\
+ &  & medium & $0.6381 \pm 0.0369$ & $0.1809 \pm 0.0247$ \\
+ & Alt\_1 & dense & $0.7268 \pm 0.0039$ & $0.0616 \pm 0.0050$ \\
+ &  & medium & $0.6351 \pm 0.0221$ & $0.2059 \pm 0.0387$ \\
+ & Alt\_2 & dense & $0.7269 \pm 0.0039$ & $0.0614 \pm 0.0051$ \\
+ &  & medium & $0.6480 \pm 0.0194$ & $0.1640 \pm 0.0178$ \\
+ &  & sparse & $0.7840 \pm 0.0933$ & $0.2175 \pm 0.0194$ \\
+ & Quantile & dense & $0.7302 \pm 0.0042$ & $0.0547 \pm 0.0047$ \\
+ &  & medium & $0.7143 \pm 0.0021$ & $0.0641 \pm 0.0046$ \\
+ &  & sparse & $0.7153 \pm 0.0064$ & $0.0737 \pm 0.0080$ \\
+ &  & Very Sparse & $0.7008 \pm 0.0070$ & $0.1001 \pm 0.0090$ \\
+\midrule
+XES3G5M & Main & dense & $0.9036$ & $0.0602$ \\
+ &  & medium & $0.8535$ & $0.0875$ \\
+ &  & sparse & $0.8503$ & $0.1098$ \\
+ &  & Very Sparse & $0.8822$ & $0.1536$ \\
+ & Alt\_1 & dense & $0.9034$ & $0.0603$ \\
+ &  & medium & $0.8607$ & $0.0905$ \\
+ &  & sparse & $0.8498$ & $0.1146$ \\
+ &  & Very Sparse & $0.8684$ & $0.1736$ \\
+ & Alt\_2 & dense & $0.9038$ & $0.0600$ \\
+ &  & medium & $0.8436$ & $0.0897$ \\
+ &  & sparse & $0.8566$ & $0.0976$ \\
+ &  & Very Sparse & $0.8549$ & $0.1534$ \\
+ & Quantile & dense & $0.9086$ & $0.0577$ \\
+ &  & medium & $0.8328$ & $0.0820$ \\
+ &  & sparse & $0.8563$ & $0.0824$ \\
+ &  & Very Sparse & $0.8521$ & $0.1110$ \\
+\bottomrule
+\multicolumn{5}{p{14cm}}{\scriptsize \textbf{Note:} ASSISTments 2012 values are from single seed runs; Junyi and XES3G5M report mean $\pm$ std across multiple seeds where available. Main thresholds are \{20, 100, 500\}; Alt\_1: \{10, 50, 250\}; Alt\_2: \{30, 150, 750\}; Quantile: equal-quantile KC bucketing. Broadly, calibration error (ECE) tends to be higher in sparser buckets across all threshold settings, though the exact monotonicity varies.} \\
+\end{tabular}%
+}
+\end{table}

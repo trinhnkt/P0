@@ -1,0 +1,19 @@
+\begin{table}[htbp]
+\caption{Same ASSISTments 2012 learner-based fold (seed~42) as the threshold simulation. Metrics are a single run, not the four-partition means in Tables~\ref{tab:overall_learner} and~\ref{tab:calibration_learner}. GKT uses a train-only transition graph. CL4KT is a protocol adapter (Lee et al.\ contrastive views on \emph{training} sequences only), not a byte-identical official checkpoint. Sparse $N=444$ is Limited. Very-sparse $N=11$ is omitted (Insufficient).}
+\label{tab:gkt_cl4kt_fold0}
+\centering
+\footnotesize
+\begin{tabular}{lcccc}
+\toprule
+Model & AUC (all) & ECE (all) & AUC (sparse) & ECE (sparse) \\
+\midrule
+DKT & 0.699 & 0.060 & 0.726 & 0.234 \\
+SimpleKT & 0.684 & 0.118 & 0.745 & 0.210 \\
+GKT (train-only) & 0.716 & 0.037 & 0.783 & 0.098 \\
+CL4KT (adapter) & 0.721 & 0.009 & 0.761 & 0.119 \\
+\bottomrule
+\end{tabular}
+
+\vspace{1ex}
+{\scriptsize \textbf{Note:} A full-log GKT graph (pyKT default: train+test transitions) adds 1{,}050 edges that are absent from the train-only graph. Valid AUC is essentially unchanged ($0.730$ vs.\ $0.730$); test AUC rises from $0.716$ to $0.730$. Reported GKT numbers use the train-only graph.\par}
+\end{table}

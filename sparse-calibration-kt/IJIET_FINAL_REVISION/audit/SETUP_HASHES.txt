@@ -1,0 +1,59 @@
+# Hashes of originals (must be unchanged after copy)
+COPIED C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_SUBMISSION\source\main_ijiet_full.docx -> C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\manuscript\main_ijiet_full.docx
+  src_sha256=ba8665a5c943d5297540f3b789cdc12106a65f38ef5dcd507a5fc1c52e18cacb
+  dst_sha256=ba8665a5c943d5297540f3b789cdc12106a65f38ef5dcd507a5fc1c52e18cacb
+COPIED C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_SUBMISSION\source\main_ijiet_full.doc -> C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\manuscript\main_ijiet_full.doc
+  src_sha256=fa6e7bbcb634e874e3ea02cbcda2674803a2dc8804a930d2fedc8bcce030c874
+  dst_sha256=fa6e7bbcb634e874e3ea02cbcda2674803a2dc8804a930d2fedc8bcce030c874
+COPIED C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_SUBMISSION\output\main_ijiet_full.pdf -> C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\output\baseline_from_ijiet_submission.pdf
+  src_sha256=2302e26c31584e9fc3cf79ccd64c4aaff82ae9ae8bcfe7528d12a4ef4ddb34a3
+  dst_sha256=2302e26c31584e9fc3cf79ccd64c4aaff82ae9ae8bcfe7528d12a4ef4ddb34a3
+COPIED C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_SUBMISSION\source\generate_ijiet_fig1.py -> C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\figures\generate_ijiet_fig1.py
+  src_sha256=803c160d113fae46dbb8f85f43f74d53f38a782c2aeef643f376e310dfce81da
+  dst_sha256=803c160d113fae46dbb8f85f43f74d53f38a782c2aeef643f376e310dfce81da
+COPIED C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_SUBMISSION\tables\punchline_ece.csv -> C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\tables\punchline_ece.csv
+  src_sha256=8a47f6a8b5072693d79bd9e51939df52484fe2c43336012dd396e3f26379eeac
+  dst_sha256=8a47f6a8b5072693d79bd9e51939df52484fe2c43336012dd396e3f26379eeac
+COPIED C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_SUBMISSION\tables\compare_published.csv -> C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\tables\compare_published.csv
+  src_sha256=78c869e1290122fbad389eec661b96e525daaa6dbf916007247b00fc45292d65
+  dst_sha256=78c869e1290122fbad389eec661b96e525daaa6dbf916007247b00fc45292d65
+COPIED C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_SUBMISSION\tables\table_03_four_partition.tex -> C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\tables\table_03_four_partition.tex
+  src_sha256=135d367f75ee0014a4a83d602d002894c4ad7ef407edd4f5088be4fad3f3b9cb
+  dst_sha256=135d367f75ee0014a4a83d602d002894c4ad7ef407edd4f5088be4fad3f3b9cb
+COPIED C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_SUBMISSION\tables\README.md -> C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\tables\README.md
+  src_sha256=3cbd19877eacb5af3ac33b05d20ab2c0e2648b6cae06773dccdac28250b74457
+  dst_sha256=3cbd19877eacb5af3ac33b05d20ab2c0e2648b6cae06773dccdac28250b74457
+COPIED C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_SUBMISSION\supplementary\TABLE_S1_MODEL_SETTINGS.md -> C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\supplementary\TABLE_S1_MODEL_SETTINGS.md
+  src_sha256=1d5d201b3cb316971b0b611b8c08040a8499f5a5aba32f9e41e4a8466072beab
+  dst_sha256=1d5d201b3cb316971b0b611b8c08040a8499f5a5aba32f9e41e4a8466072beab
+COPIED C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_SUBMISSION\audit\FINAL_NUMERIC_AUDIT.md -> C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\audit\BASELINE_FINAL_NUMERIC_AUDIT.md
+  src_sha256=a658d7c82e528c61b598093371137e5e7080d69709d2398322d1e88eaca57b16
+  dst_sha256=a658d7c82e528c61b598093371137e5e7080d69709d2398322d1e88eaca57b16
+COPIED C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_SUBMISSION\audit\CLAIM_TO_RESULT_MATRIX.md -> C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\audit\BASELINE_CLAIM_TO_RESULT_MATRIX.md
+  src_sha256=35c1b1cc0b1d4f37c5612c41297fc6c510e2438a578dbf90b96ec8e95fb84b83
+  dst_sha256=35c1b1cc0b1d4f37c5612c41297fc6c510e2438a578dbf90b96ec8e95fb84b83
+COPIED C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_SUBMISSION\audit\REFERENCE_LIVE_AUDIT.md -> C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\audit\BASELINE_REFERENCE_LIVE_AUDIT.md
+  src_sha256=38b2ffdb98fb75adccba56cee478a3775bf983ba76c6d4bf6d29ca35a1079aed
+  dst_sha256=38b2ffdb98fb75adccba56cee478a3775bf983ba76c6d4bf6d29ca35a1079aed
+COPIED C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_SUBMISSION\audit\ijiet08_fivefold_denominators.csv -> C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\analysis\ijiet08_fivefold_denominators.csv
+  src_sha256=da5b657176de024b04dcc2e85b9a0f7f3c34b0e86b64cd107e86bdffabf227d5
+  dst_sha256=da5b657176de024b04dcc2e85b9a0f7f3c34b0e86b64cd107e86bdffabf227d5
+COPIED C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_SUBMISSION\audit\ijiet08_seed42_kc_cluster_ci.csv -> C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\analysis\ijiet08_seed42_kc_cluster_ci.csv
+  src_sha256=1778eae969906e104139abcc38dc11ea8fbb37c2943efc61ad5f144965f417b3
+  dst_sha256=1778eae969906e104139abcc38dc11ea8fbb37c2943efc61ad5f144965f417b3
+COPIED C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_SUBMISSION\audit\ijiet08_seed42_gate_points.csv -> C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\analysis\ijiet08_seed42_gate_points.csv
+  src_sha256=370f85c8b2df855a5c6e884221e84f0d7307d2a970757cd72ce442220a0cb135
+  dst_sha256=370f85c8b2df855a5c6e884221e84f0d7307d2a970757cd72ce442220a0cb135
+COPIED C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_SUBMISSION\audit\ijiet08_table4_from_threshold_rates.csv -> C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\analysis\ijiet08_table4_from_threshold_rates.csv
+  src_sha256=f210233cc66af04d2cc2ad2139c099d5997b8213a0a6c812669ced65fcad8b13
+  dst_sha256=f210233cc66af04d2cc2ad2139c099d5997b8213a0a6c812669ced65fcad8b13
+COPIED C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\analysis\four_partition\punchline_ece.csv -> C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\analysis\four_partition_punchline_ece.csv
+  src_sha256=8a47f6a8b5072693d79bd9e51939df52484fe2c43336012dd396e3f26379eeac
+  dst_sha256=8a47f6a8b5072693d79bd9e51939df52484fe2c43336012dd396e3f26379eeac
+COPIED C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\analysis\four_partition\summary_4part_bucket.csv -> C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\analysis\summary_4part_bucket.csv
+  src_sha256=81f98afc64d02d411da8b6b1b6696fd3b958bc99909db7d3234db6ad3674f67d
+  dst_sha256=81f98afc64d02d411da8b6b1b6696fd3b958bc99909db7d3234db6ad3674f67d
+COPIED C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\analysis\direction_c\c2_fivefold_verdict.txt -> C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\analysis\c2_fivefold_verdict.txt
+  src_sha256=97e0e7bcdc034f96ccebb453bb2bd7a897f4a8e003b9c5959e8f24c4bb6cafe7
+  dst_sha256=97e0e7bcdc034f96ccebb453bb2bd7a897f4a8e003b9c5959e8f24c4bb6cafe7
+ORIGINALS_UNCHANGED=True

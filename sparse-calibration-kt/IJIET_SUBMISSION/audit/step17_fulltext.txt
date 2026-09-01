@@ -1,0 +1,1105 @@
+ 
+ 
+Sparse-Concept Calibration of Knowledge Tracing Models 
+for Threshold-Based Educational Decisions 
+Khanh-Trinh Nguyen1, Tuan Dao Minh1, Duong Nguyen Tien1, Chi Thanh Nguyen2, and Van-Hau Nguyen1,* 
+1 Hung Yen University of Technology and Education, Hung Yen, Vietnam 
+2 Academy of Military Science and Technology, Ha Noi, Vietnam 
+Email: trinhnk@utehy.edu.vn (K.-T.N.); tuanymc@utehy.edu.vn (T.D.M.); duongnt@utehy.edu.vn (D.N.T.); thanhnc@ioit.ai.vn (C.T.N.); 
+haunv@utehy.edu.vn (V.-H.N.) 
+*Corresponding author 
+Manuscript received Month date, 2026; revised Month date, 2026; accepted Month date, 2026 
+ 
+Abstract—Knowledge Tracing (KT) systems that skip, remediate, 
+or advance practice typically consume a predicted probability 
+rather than an area-under-the-curve (AUC) score, so population 
+ranking can look acceptable while probabilities are poorly 
+calibrated on rarely practiced knowledge components (KCs). This 
+paper 
+reports 
+a 
+diagnostic 
+evaluation—not 
+a 
+new 
+KT 
+architecture—of train-only KC-frequency strata on three public 
+logs (ASSISTments 2012, Junyi Academy, and XES3G5M) with IRT, 
+DKT, and SimpleKT. Lower KC training frequency does not 
+universally degrade discrimination, but calibration can become less 
+reliable in some sparse-concept regimes. On ASSISTments 2012, 
+SimpleKT expected calibration error (ECE) rises from 0.114 on 
+dense KCs to 0.228 on sparse KCs (Limited occupancy, N≈415); 
+Junyi has no learner-based sparse stratum, and XES3G5M 
+SimpleKT ECE is essentially flat. A locked global threshold at τ=0.7 
+raises the SimpleKT false-advance rate (incorrect-response rate 
+among advance decisions) from 0.196 (dense) to 0.268 (sparse) on 
+one ASSISTments fold; the sparse–dense gap stays positive on all 
+five training runs across four unique learner partitions (mean 
+0.047). This is a simulated decision gate, not a classroom 
+intervention. Probability-threshold decisions should be validated by 
+KC-frequency stratum rather than on population AUC or ECE 
+alone. 
+ 
+Keywords—knowledge tracing, calibration, sparse concepts, 
+learning analytics, educational decision support, mastery threshold 
+I. INTRODUCTION 
+Adaptive practice platforms and intelligent tutoring 
+systems use Knowledge Tracing (KT) to estimate a learner’s 
+command of a skill and to decide whether to skip, remediate, 
+or advance practice [1]–[3]. Those systems rarely consume a 
+population area-under-the-curve (AUC) statistic. They 
+consume a predicted probability p, which is then compared 
+with a threshold τ. If p≥τ, the platform typically withholds 
+additional practice on that skill. The operational chain is 
+therefore population AUC → predicted probability → 
+calibration → threshold-based educational decisions, with 
+particular diagnostic risk on sparsely trained knowledge 
+components (KCs). 
+KT evaluations typically report population AUC and 
+accuracy [4], [5]. Those metrics rank models, but they can 
+conceal miscalibration on low-frequency KCs—skills with 
+little training-fold evidence—because most test events lie on 
+dense, frequently practiced concepts. A model can 
+discriminate well in aggregate and still assign overconfident 
+probabilities on the sparse tail. When a fixed threshold is 
+applied to p, that overconfidence appears as an advance 
+decision followed by an incorrect next response. We term this 
+the false-advance rate (FAR). Section III defines FAR as 
+P(y=0 | p≥τ); y denotes observed next-response correctness, 
+not latent mastery truth. 
+This paper treats that mismatch as an evaluation problem 
+for educational technology, not as a reason to propose 
+another KT architecture. The study is organized around three 
+research questions. RQ1: Does lower KC training frequency 
+systematically degrade predictive discrimination? RQ2: How 
+does calibration vary across KC-frequency strata and 
+datasets? RQ3: When a fixed probability threshold is applied, 
+does decision-error behavior differ between sparse and dense 
+KCs? 
+The empirical answers are bounded. Lower KC training 
+frequency does not universally degrade discrimination: on 
+XES3G5M, sparse AUC is higher than dense AUC for DKT 
+and SimpleKT. Calibration can, however, become less 
+reliable in some sparse-concept regimes. On ASSISTments 
+2012, SimpleKT expected calibration error (ECE) increases 
+from dense to sparse KCs, and a locked gate at τ=0.7 yields a 
+higher FAR on sparse than on dense advances. The same 
+ECE gradient is absent on Junyi, where the learner-based 
+sparse stratum is empty, and is essentially absent for 
+SimpleKT on XES3G5M. We therefore do not claim that 
+sparse KCs always fail, and we do not claim a causal effect of 
+training frequency on calibration. 
+Contributions 
+are 
+conservative: 
+(i) 
+a 
+train-only 
+KC-frequency protocol with an explicit strict cold-start 
+group, so the definition of “sparse” cannot leak test-fold 
+counts; (ii) per-stratum calibration (ECE and Brier 
+decomposition) on three public datasets, with occupancy 
+flags 
+(Reliable 
+/ 
+Limited 
+/ 
+Insufficient); 
+(iii) 
+a 
+locked-threshold simulation of FAR and miss rates, with a 
+five-seed check of the sparse–dense FAR gap on 
+ASSISTments 2012. We do not propose a new KT 
+architecture, a new calibration algorithm, or a new auditing 
+theory, and we do not report a classroom intervention. A 
+graph-KT (GKT) model and a CL4KT-style adapter appear 
+only 
+as 
+an 
+exploratory 
+single-fold 
+diagnostic 
+on 
+ASSISTments. 
+II. LITERATURE REVIEW 
+A. Knowledge Tracing and benchmark models 
+Knowledge Tracing (KT) models a learner’s evolving 
+proficiency from historical interactions in order to predict the 
+next response [3]. Classical approaches include Bayesian 
+Knowledge Tracing (BKT), which tracks a latent mastery 
+state for each skill [1], and item-response theory (IRT), of 
+which the one-parameter Rasch model is the canonical form 
+used in this study [6]. Deep Knowledge Tracing (DKT) 
+replaced hand-specified mastery dynamics with a recurrent 
+sequence model and established the modern next-response 
+prediction task [2]. Attention-based successors, including 
+context-aware attentive KT [7] and SimpleKT [4], retain that 
+
+ 
+ 
+task while substituting self-attention for recurrence. 
+Benchmarking libraries such as pyKT have standardized 
+preprocessing and comparison, and have shown that 
+evaluation choices can distort reported discrimination [5]. 
+Across this line of work, the primary reported statistic 
+remains population AUC. 
+B. Graph and self-supervised KT 
+Graph-based 
+KT 
+(GKT) 
+represents 
+knowledge 
+components as nodes of a graph and updates proficiency with 
+a graph neural network [8]. Contrastive learning for KT 
+(CL4KT) trains representations from augmented views of 
+learning histories [9]. These models are related architectures, 
+not the contribution of the present paper. They are included 
+later only as an exploratory single-fold diagnostic on 
+ASSISTments 2012, not as a proposed method and not as a 
+state-of-the-art comparison. 
+C. Sparse-data and cold-start problems 
+The term “sparse” is used in several incompatible senses in 
+the KT literature. This paper distinguishes four. (1) Sparse 
+attention: sparseKT applies k-sparse attention so that only a 
+subset of historical interactions receives nonzero weight [16]. 
+(2) Sparse KC frequency: a knowledge component with few 
+training-fold observations. (3) New-student cold start: 
+prediction for learners who have little or no interaction 
+history at test time [17]. (4) Concept-level cold start: a 
+knowledge component with zero training-fold frequency, 
+regardless of whether the learner is new. Educational 
+interaction logs additionally exhibit a long tail in which a 
+small set of dense KCs dominates event volume [20]. 
+These 
+four 
+problems 
+are 
+not 
+interchangeable. 
+sparseKT-style sparse attention is not equivalent to 
+low-frequency KCs: attention can be sparsified on a 
+frequently practiced skill. New-student cold start is not the 
+same as concept-level zero-frequency cold start: a previously 
+observed learner may still encounter a concept that never 
+appeared in the training fold. The protocol in Section III 
+operationalizes (2) and (4) through train-only KC-frequency 
+strata with an explicit strict cold-start group (f=0). 
+D. Calibration and educational decision support 
+When predicted probabilities are consumed as educational 
+decisions, ranking is not a sufficient evaluation [10]. 
+Calibration asks whether the predicted probability p matches 
+the empirical frequency of a correct next response. Expected 
+calibration error (ECE) is the usual bin-wise summary of that 
+mismatch [12]; modern neural networks can remain poorly 
+calibrated even when they discriminate well [11]. The Brier 
+score [13] and its reliability, resolution, and uncertainty 
+decomposition [14] separate miscalibration from task 
+difficulty, and reliability diagrams display the same 
+probability-level comparison. Complementary post-hoc work 
+has begun to correct per-item bias after a frozen KT backbone 
+[15]. Probability-level evaluation of this kind is still typically 
+reported on the pooled population, not on train-only 
+frequency strata. 
+Existing KT benchmarks mainly emphasize aggregate 
+discrimination. Sparse frequency, calibration, sample 
+support, and threshold-based decision error are rarely 
+examined together. This study keeps standard models and 
+reports those four quantities jointly, so that a population AUC 
+result can be read as an educational-technology decision 
+rather than only as a leaderboard rank. 
+III. MATERIALS AND METHODS 
+A. Datasets 
+We use three de-identified public logs after a common 
+interaction schema: ASSISTments 2012 [18], [5], Junyi 
+Academy [19], and XES3G5M [20]. Table 1 reports 
+post-processing counts: processed learners, processed KCs, 
+processed interactions, and learner-based test events. Exact 
+processed interaction totals are 2,657,490 (ASSISTments 
+2012), 16,215,567 (Junyi Academy), and 7,953,709 
+(XES3G5M). Preprocessing drops rows with missing learner, 
+KC, or label identifiers, binarizes correctness, parses 
+timestamps, and keeps learners with at least two interactions. 
+Those filters—not the raw public dumps—are what Table 1 
+counts. 
+Provenance. ASSISTments 2012 is the 2012–2013 public 
+release with affect [18], documented for KT use in pyKT [5]; 
+each retained row already carries one skill_id. Junyi 
+Academy is the Kaggle Online Learning Activity Dataset 
+[19] (not Junyi2015); the KC field is ucid. XES3G5M [20] is 
+loaded 
+from 
+the 
+authors’ 
+kc_level 
+split: 
+train_valid_sequences.csv and test.csv are concatenated and 
+flattened to one row per sequence position. 
+XES3G5M counts. The original dataset paper reports 
+18,066 students, 7,652 questions, 865 KCs, and 5,549,635 
+question-level interactions [20]. Table 1 instead lists 866 KCs 
+and 7.95M interactions because flattening kc_level 
+sequences (i) expands multi-KC questions into one row per 
+listed concept and (ii) retains sequence-padding tokens coded 
+skill_id=−1 (with matching question_id=−1). Unique kc_id 
+including that padding token is 866; excluding it is 865. 
+Unique item_id including −1 is 7,653. Subsequent 
+preprocessing dropped 0 rows. We do not retabulate Table 1 
+to the question-level official totals. 
+TABLE 1. POST-PROCESSING COHORT STATISTICS (LEARNER-BASED SPLIT). 
+LEARNER, KNOWLEDGE-COMPONENT (KC), INTERACTION, AND TEST-EVENT 
+COUNTS ARE POST-PROCESSING TOTALS, NOT RAW PUBLIC-DUMP COUNTS. 
+Dataset 
+Learners 
+KCs 
+Interactions 
+Test events 
+ASSISTments 
+2012 
+27,806 
+265 
+2.66M 
+534,150 
+Junyi 
+Academy 
+71,014 
+1,326 
+16.2M 
+3,269,022 
+XES3G5M 
+18,066 
+866 
+7.95M 
+1,589,145 
+B. Splits and seeds 
+The learner-based split is primary. Users are shuffled with 
+the fold seed; 20% of learners are held out as test, 10% as 
+validation, and the remainder as training. Within a fold, train, 
+validation, and test learners are disjoint. The temporal split is 
+complementary: all interactions are sorted by timestamp; the 
+earliest 70% are training, the next 10% validation, and the 
+latest 20% test. Gate numbers below are not taken from the 
+temporal split. KC-frequency buckets are constructed from 
+the training file only. 
+Deep models are trained in five runs at seeds 42, 2024, 
+2025, 2026, and 2027 (fold_0 through fold_4). Seeds 2025 
+and 2026 share one student partition (fold_2 = fold_3) on all 
+three datasets. These are five training runs and four unique 
+student partitions, not five independent folds. Tables that 
+report mean±sd therefore summarize four unique partitions: 
+the two initializations on the duplicated split are averaged 
+
+ 
+ 
+first. The gate-robustness table still lists all five training runs 
+across four unique learner partitions. 
+C. Model settings 
+Main tables use local IRT, DKT, and SimpleKT 
+implementations, not a pinned pyKT commit (training 
+snapshot commit: NOT RECOVERED). The local SimpleKT 
+class is a two-layer Transformer encoder and is not 
+byte-identical to the official SimpleKT checkpoint [4]. 
+Recovered hyperparameters follow; missing fields are 
+marked NOT RECOVERED and are not imputed. 
+TABLE 2. RECOVERED TRAINING SETTINGS FOR THE MAIN BASELINES. NOT 
+RECOVERED CELLS WERE NOT IMPUTED. 
+Setting 
+IRT 1PL 
+DKT 
+SimpleKT 
+Implementation 
+local IRT 
+local DKT 
+local SimpleKT 
+Version/commit 
+NOT 
+RECOVERED 
+NOT 
+RECOVERED 
+NOT 
+RECOVERED 
+Major 
+hyperparameters 
+1PL: 
+sigmoid(θ−β); L2 
+0.01 
+LSTM embed 64, 
+hidden 128 
+Transformer 2 
+layers, 4 heads, 
+embed 64 
+Optimizer 
+SGD 
+Adam 
+Adam 
+Learning rate 
+0.01 
+1e−3 
+1e−3 
+Early stopping 
+none (10 epochs) 
+none (50 epochs) 
+none (50 epochs) 
+Batch size 
+512 
+64 
+64 
+Max. sequence 
+length 
+n/a 
+200 
+200 
+Selection metric 
+last epoch 
+validation AUC 
+validation AUC 
+On ASSISTments fold 0 only we also score a train-only 
+GKT graph [8] (pyKT GKT; Adam, learning rate 1e−3, batch 
+size 16, maximum length 100, hidden and embedding size 32, 
+dropout 0.5, 20 epochs, patience 4, selection by validation 
+AUC) and a CL4KT protocol adapter [9] (contrastive views 
+on training sequences; not an official CL4KT checkpoint; 
+Adam, learning rate 1e−3, batch size 64, maximum length 
+100, hidden size 64, 4 heads, 2 layers, dropout 0.2, 20 epochs, 
+patience 6, selection by validation AUC). IRT under 
+learner-based splits has no ability parameter for unseen 
+students, so its AUC is 0.50 by construction; we report it as a 
+base-rate reference, not as a ranking competitor. 
+For each fold, KC frequency f_train is counted on the 
+training file only. Buckets: strict cold-start (f=0), very sparse 
+(0<f<20), sparse (20≤f<100), medium (100≤f<500), dense 
+(f≥500). Fig. 1 (top) shows the number of KCs in each 
+stratum. Training-interaction volume is shown separately in 
+the bottom row from summed f_train, not inferred from KC 
+counts.
+ 
+
+ 
+ 
+ 
+Fig. 1. Distribution of KCs across train-only frequency strata under learner-based and temporal splits. Bottom: verified training-interaction counts (sum of 
+train-only f_train on fold 0); volume is not inferred from KC counts. Bottom y-axis is logarithmic. 
+E. Reliability flags 
+Occupancy flags follow test-event count N: Reliable (R) 
+N≥1000; Limited (L) 100≤N<1000; Insufficient (I) N<100. 
+We call R, L, and I descriptive sample-support flags. They 
+are not inferential guarantees, confidence intervals, or 
+hypothesis tests. Success claims require Limited or Reliable 
+occupancy. 
+Insufficient 
+cells 
+are 
+descriptive 
+only. 
+Very-sparse ASSISTments cells are Insufficient and 
+descriptive only. 
+F. Calibration 
+Let y∈{0,1} be next-response correctness and p∈[0,1] the 
+predicted probability. With M=15 equal-width bins, expected 
+calibration error (ECE) is 
+ 
+ECE = Σ_m (n_m / N) |acc_m − conf_m| 
+(1) 
+The Brier score is (1/N) Σ_i (p_i − y_i)². We use the binned 
+decomposition Brier = UNC − RES + REL [14], with UNC = 
+ȳ(1−ȳ), REL = (1/N) Σ_m n_m (conf_m − acc_m)², and RES 
+= (1/N) Σ_m n_m (acc_m − ȳ)². Because probabilities are 
+binned, the three components are an empirical approximation 
+and need not sum exactly to the directly computed Brier 
+score. Lower ECE is better calibration; it is not a substitute 
+for AUC. 
+G. Difficulty coupling 
+For each KC c we define a training-only difficulty proxy 
+difficulty(c) = 1 − mean_train_correctness(c). The mean is 
+taken on the training file only. This is an observational proxy 
+for how often c is answered incorrectly in training; it is not a 
+latent IRT difficulty parameter. The reported Spearman 
+association is ρ(log(1+f_train), difficulty), computed on 
+training-fold KC summaries. The same file yields item 
+support (distinct items per KC), learner exposure (distinct 
+learners per KC), and a curriculum-position proxy (median 
+normalized sequence position). Results report between-KC 
+associations and a within-KC sparsification check; neither 
+identifies a causal frequency effect. 
+H. Simulated decision gate 
+For a locked global threshold τ, the system advances (skips 
+remediation) if p≥τ and triggers remediation otherwise. 
+Sparse events never receive their own tuned τ. The display 
+threshold is τ=0.7; the grid {0.5, 0.6, 0.7, 0.8} is recorded in 
+the artifact and is not a search over sparse error. 
+Let A={p≥τ}. The false-advance rate (FAR) is P(y=0 | 
+p≥τ): among responses for which the simulated system would 
+advance the learner, the proportion whose observed next 
+response is incorrect. This is not a measurement of latent 
+mastery. It is a next-response decision-error proxy under a 
+simulated threshold gate. Miss = P(p≥τ | y=0). Expected FAR 
+under the model probabilities is E[1−p | p≥τ]. Excess FAR = 
+FAR − E[1−p | p≥τ]. ΔFAR = FAR_sparse − FAR_dense. 
+FAR is a proportion of N_advance = count(p≥τ) events, not 
+of N_total; Miss is a proportion of N_incorrect = count(y=0). 
+N_total alone does not imply the precision of FAR. Where 
+
+ 
+ 
+prediction-level exports exist, 95% intervals use the 
+KC-clustered percentile bootstrap already used for this gate 
+(B=2000, resample KCs within sparse and within dense). 
+Positive ΔFAR means sparse advances are dirtier than dense 
+advances. This is a simulated decision error, not an 
+instructional RCT. 
+IV. RESULT 
+A. Aggregate discrimination 
+Table 2 reports overall learner-based area under the ROC 
+curve (AUC) and accuracy (ACC), mean±sd over four unique 
+partitions. This subsection is discrimination, not calibration. 
+DKT is slightly above SimpleKT on all three datasets 
+(ASSISTments DKT 0.6979±0.0014 versus SimpleKT 
+0.6837±0.0025). IRT AUC is 0.5000 because unseen test 
+learners have no ability parameter; it is a base-rate reference, 
+not a ranking competitor. 
+TABLE 2. OVERALL LEARNER-BASED AREA UNDER THE ROC CURVE (AUC) 
+AND ACCURACY (ACC) (MEAN±SD OVER FOUR UNIQUE PARTITIONS). 
+Dataset 
+Model 
+AUC 
+ACC 
+ASSISTments 
+2012 
+IRT 
+0.5000 
+0.6973±0.0004 
+ASSISTments 
+2012 
+DKT 
+0.6979±0.0014 
+0.7182±0.0014 
+ASSISTments 
+2012 
+SimpleKT 
+0.6837±0.0025 
+0.6996±0.0032 
+Junyi Academy 
+IRT 
+0.5000 
+0.7053±0.0018 
+Junyi Academy 
+DKT 
+0.7320±0.0009 
+0.7343±0.0015 
+Junyi Academy 
+SimpleKT 
+0.7231±0.0030 
+0.7274±0.0015 
+XES3G5M 
+IRT 
+0.5000 
+0.7961±0.0031 
+XES3G5M 
+DKT 
+0.8171±0.0022 
+0.8327±0.0032 
+XES3G5M 
+SimpleKT 
+0.7557±0.0013 
+0.8067±0.0037 
+On XES3G5M, sparse-stratum AUC is higher than 
+dense-stratum AUC (DKT 0.857 versus 0.817; SimpleKT 
+0.847 versus 0.755; Reliable occupancy). Lower training 
+frequency is therefore not a universal ranking failure. Junyi’s 
+learner-based sparse bucket is empty under the pre-registered 
+cuts—a protocol outcome, not a missing cell and not a 
+zero-ECE claim. 
+B. Calibration across frequency strata 
+Table 3 reports event-level expected calibration error 
+(ECE), not AUC. On ASSISTments 2012, SimpleKT ECE 
+increases from 0.1136±0.0066 (dense, Reliable, N=523,971) 
+to 0.1541±0.0051 (medium) to 0.2280±0.0197 (sparse, 
+Limited, N=415). That sparse cell is Limited support, not a 
+high-N finding. DKT moves in the same direction on this 
+dataset (dense 0.0602±0.0022 versus sparse 0.2333±0.0084). 
+IRT dense ECE is 0.0031±0.0006, but resolution is zero: a 
+near-constant predictor can look calibrated while ranking 
+nothing. 
+Calibration does not universally worsen. On Junyi 
+Academy the learner-based sparse bucket is empty; only 
+dense and medium exist, and SimpleKT ECE rises from 
+0.0792±0.0051 to 0.1073±0.0156. On XES3G5M, SimpleKT 
+ECE is a counter-pattern: essentially flat from dense to sparse 
+(0.1145, 0.1114, 0.1248) despite Reliable sparse occupancy 
+(N=2,010). A flat ECE is not a license to skip occupancy 
+reporting and is not the same as a flat miss rate.
+ 
+TABLE 3. SIMPLEKT EVENT-LEVEL EXPECTED CALIBRATION ERROR (ECE) BY TRAIN-ONLY FREQUENCY STRATUM. N IS THE MEAN TEST-EVENT COUNT 
+ACROSS FOUR UNIQUE LEARNER PARTITIONS, NOT A SINGLE-PARTITION COUNT. FLAGS: RELIABLE (R) N≥1000; LIMITED (L) 100≤N<1000. JUNYI SPARSE IS 
+EMPTY. 
+Dataset 
+Stratum 
+N 
+Flag 
+ECE 
+ASSISTments 2012 
+dense 
+523,971 
+R 
+0.1136±0.0066 
+ASSISTments 2012 
+medium 
+5,963 
+R 
+0.1541±0.0051 
+ASSISTments 2012 
+sparse 
+415 
+L 
+0.2280±0.0197 
+Junyi Academy 
+dense 
+3,232,614 
+R 
+0.0792±0.0051 
+Junyi Academy 
+medium 
+3,836 
+R 
+0.1073±0.0156 
+XES3G5M 
+dense 
+1,268,696 
+R 
+0.1145±0.0011 
+XES3G5M 
+medium 
+12,980 
+R 
+0.1114±0.0076 
+XES3G5M 
+sparse 
+2,010 
+R 
+0.1248±0.0085 
+C. Threshold-based decision error 
+Table 4 is a simulated gate at τ=0.7 on ASSISTments 2012 
+fold 0 (seed 42), not a classroom trial. For SimpleKT, 
+false-advance rate (FAR) is 0.196 [0.186, 0.208] on dense 
+KCs 
+(N=528,018; 
+N_advance=284,326; 
+N_incorrect=158,623; E[FAR]=0.113; Excess FAR=0.083; 
+Miss=0.352) and 0.268 [0.202, 0.337] on sparse KCs 
+(N=444, 
+Limited; 
+N_advance=235; 
+N_incorrect=197; 
+E[FAR]=0.050; 
+Excess 
+FAR=0.218; 
+Miss=0.320). 
+ΔFAR=+0.072. DKT FAR is 0.200 [0.190, 0.211] dense and 
+0.296 [0.221, 0.383] sparse. Exploratory GKT/CL4KT rows 
+of the same table are discussed in subsection E, not as 
+main-model 
+findings.
+ 
+TABLE 4. SIMULATED GATE AT Τ=0.7, ASSISTMENTS 2012 FOLD 0. FALSE-ADVANCE RATE (FAR)=P(Y=0 | P≥Τ) AMONG N_ADVANCE ADVANCES; MISS 
+AMONG N_INCORRECT INCORRECT RESPONSES; EXCESS FAR=FAR−E[FAR]. FAR 95% CIS: KC-CLUSTER PERCENTILE, B=2000. NOT LATENT MASTERY; NOT 
+A CLASSROOM TRIAL. 
+Model 
+Stratum 
+N 
+N_advance 
+N_incorrect 
+FAR [95% CI] 
+E[FAR] 
+Excess FAR 
+Miss 
+SimpleKT 
+dense 
+528,018 
+284,326 
+158,623 
+0.196 [0.186–0.208] 
+0.113 
+0.083 
+0.352 
+SimpleKT 
+sparse 
+444 
+235 
+197 
+0.268 [0.202–0.337] 
+0.050 
+0.218 
+0.320 
+DKT 
+dense 
+528,018 
+315,650 
+158,623 
+0.200 [0.190–0.211] 
+0.147 
+0.053 
+0.398 
+DKT 
+sparse 
+444 
+243 
+197 
+0.296 [0.221–0.383] 
+0.057 
+0.239 
+0.365 
+GKT (train-only) 
+dense 
+528,018 
+351,503 
+158,623 
+0.205 [0.194–0.217] 
+0.163 
+0.042 
+0.455 
+GKT (train-only) 
+sparse 
+444 
+209 
+197 
+0.220 [0.149–0.295] 
+0.157 
+0.063 
+0.234 
+CL4KT (adapter) 
+dense 
+528,018 
+307,479 
+158,623 
+0.185 [0.176–0.194] 
+0.175 
+0.010 
+0.359 
+CL4KT (adapter) 
+sparse 
+444 
+200 
+197 
+0.240 [0.159–0.330] 
+0.116 
+0.124 
+0.244 
+Seed-42 ΔFAR 95% CI (KC-cluster, B=2000): SimpleKT 
+[0.006, 0.138] (locked C2); DKT [0.019, 0.175]; GKT 
+[−0.054, 0.092]; CL4KT [−0.018, 0.142]. 
+Table 5 checks whether SimpleKT ΔFAR is a one-fold 
+accident. It is positive in all five training runs spanning four 
+unique student partitions (mean 0.047, sd 0.033). Mean 
+sparse 
+denominators 
+are 
+N=413, 
+N_advance=227, 
+N_incorrect=155. A KC-clustered bootstrap on seed 42 
+yields a 95% interval [0.006, 0.138] for ΔFAR—excluding 0, 
+but wide, as Limited occupancy and N_advance=235 require. 
+
+ 
+ 
+DKT ΔFAR is positive on only three of five runs and is not 
+treated as a five-run finding. On XES3G5M, SimpleKT 
+ΔFAR is negative on all five runs, but ΔMiss is positive on all 
+five (mean +0.112): among actual incorrect answers, the 
+system still advances more often on sparse than on dense 
+KCs. 
+Coincidence of digits: SimpleKT dense E[FAR] at τ=0.7 
+on seed 42 is 0.113, close to the four-partition dense ECE 
+0.114. 
+They 
+are 
+different 
+quantities.
+ 
+TABLE 5. GATE ROBUSTNESS AT Τ=0.7 ON ASSISTMENTS 2012. FIVE TRAINING RUNS (SEEDS 42, 2024, 2025, 2026, 2027) ACROSS FOUR UNIQUE LEARNER 
+PARTITIONS (2025 AND 2026 SHARE A SPLIT). ΔFAR=FAR_SPARSE−FAR_DENSE. MEAN N, N_ADVANCE, AND N_INCORRECT ARE SPARSE-STRATUM 
+DENOMINATORS. SIMPLEKT: ΔFAR>0 ON 5/5 TRAINING RUNS AND ON ALL FOUR UNIQUE PARTITIONS. DKT: ΔFAR>0 ON 3/5 TRAINING RUNS (THE SHARED 
+PARTITION IS MIXED IN SIGN) AND IS NOT A FIVE-RUN FINDING. GKT/CL4KT REMAIN SEED 42 ONLY. 
+Model 
+Mean ΔFAR 
+SD 
+Runs ΔFAR>0 
+Mean N 
+Mean N_advance 
+Mean N_incorrect 
+SimpleKT 
+0.047 
+0.033 
+5/5 runs (4 partitions) 
+413 
+227 
+155 
+DKT 
+0.033 
+0.048 
+3/5 runs 
+413 
+226 
+155 
+D. Dataset-dependent explanatory analysis 
+If a learning platform uses KT probabilities only to sort 
+students, Table 2 may suffice. If it uses p to skip practice or 
+declare mastery, Table 2 is the wrong dashboard. The 
+ASSISTments SimpleKT cell is the cautionary case: 
+competitive AUC, Limited-but-estimable sparse occupancy 
+(about 19% of KCs fall below the sparse threshold on fold 0), 
+a monotonic ECE rise, and a gate that advances more dirty 
+sparse attempts. The XES3G5M cell is the opposite caution: 
+plenty of sparse mass and Reliable occupancy, yet SimpleKT 
+ECE does not degrade—while miss rates still can. Junyi 
+shows that the protocol can refuse a sparse claim when the 
+bucket is empty. 
+On the three datasets studied here, three empirical 
+conditions track when a sparse-calibration contrast is 
+estimable rather than empty (Table 6): (1) a non-empty 
+low-frequency tail under the split actually used; (2) enough 
+sparse test events for at least a Limited-flag ECE; (3) 
+frequency–difficulty 
+coupling 
+that 
+is 
+not 
+inverted. 
+ASSISTments 2012 meets all three. That is a diagnostic 
+pre-condition on these logs, not a universal law and not a 
+claim that training frequency causes miscalibration. 
+TABLE 6. EMPIRICAL OBSERVATIONS, ON THESE THREE DATASETS, OF WHEN 
+A SPARSE-CALIBRATION CONTRAST IS ESTIMABLE. THESE ARE NOT 
+UNIVERSAL LAWS. SPARSE MASS: SHARE OF KCS WITH TRAIN-ONLY 
+FREQUENCY F_TRAIN<100. 
+Condition 
+ASSISTments 
+Junyi 
+XES3G5M 
+Sparse mass 
+18.9% of KCs 
+0% 
+22.5% of KCs 
+Sparse N 
+415 (L) 
+empty 
+2,010 (R) 
+Difficulty 
+coupling 
+ρ=−0.227 (sparse 
+harder) 
+ρ=−0.416 
+ρ=+0.087 (weak, 
+inverted) 
+SimpleKT ECE 
+0.114→0.228 
+dense→medium 
+only 
+flat 0.114→0.125 
+Table 6 records three observational pre-conditions under 
+which a sparse-calibration contrast is estimable on these logs. 
+The same training-only file also yields item support, learner 
+exposure, and a curriculum-position proxy. This subsection 
+reports those descriptors and two distinct estimands. Neither 
+is a causal claim. 
+Sparse mass (share of KCs with f_train<100) is 18.9% on 
+ASSISTments 2012, 0% on Junyi Academy, and 22.5% on 
+XES3G5M. Sparse test-event support is Limited (N=415), 
+empty, and Reliable (N=2,010). Frequency–difficulty 
+coupling (Spearman ρ of log(1+f_train) with 
+1−mean_train_correctness) is ρ=−0.227 and ρ=−0.416 (rarer 
+KCs harder) versus a weak opposite-signed ρ=+0.087 on 
+XES3G5M. Item support: ASSISTments is item-rich 
+(median 44.5 items/KC; dense 205 vs sparse 1); Junyi is 
+nearly uniform (median 18, IQR 5); XES3G5M is thin 
+(median 3; dense 9 vs sparse 1). Learner exposure is the count 
+of distinct training learners per KC. Curriculum-position 
+coupling is ρ=−0.308, −0.324, and −0.125. 
+A test-event-weighted KC-level regression of SimpleKT 
+expected calibration error (ECE) on those five training-only 
+covariates (n=478, 2,645, and 1,263 KCs) is a between-KC 
+association: it compares different concepts. Standardized 
+log(1+f_train) coefficients are −0.079 [−0.097, −0.061] on 
+ASSISTments, −0.010 [−0.014, −0.007] on Junyi, and 
+−0.117 [−0.171, −0.063] on XES3G5M in the weighted fit. 
+Difficulty is independently associated on ASSISTments and 
+Junyi. Learner exposure is independently associated only on 
+ASSISTments (+0.019 [0.010, 0.027]). These signs do not 
+test a frequency dose on a fixed KC. 
+Within-KC controlled sparsification holds KC identity, the 
+test set, labels, and all other KCs’ training rows fixed, and 
+reduces training rows for 30 originally dense KCs 
+(f_train≥500; pre-registered selection, seed 42, fold 0) to 500 
+or 50 rows. Table 7 reports key paired ΔECE (reduced−full), 
+with KC-bootstrap 95% CIs. Reducing training evidence for 
+the same KC does not universally worsen calibration: several 
+CIs lie below 0 or include 0. The observational ASSISTments 
+SimpleKT dense-to-sparse ECE gradient (0.114→0.228) is 
+not reproduced by sparsifying originally dense ASSISTments 
+KCs (SimpleKT, 50 rows: +0.002 [−0.021, +0.025]). 
+Frequency alone is therefore not a universal causal 
+explanation. Junyi SimpleKT at 50 rows does show a large 
+positive ΔECE; that cell shows a within-KC increase is 
+possible, not that it is a law.
+ 
+TABLE 7. WITHIN-KC CONTROLLED SPARSIFICATION (SEED 42; 30 ORIGINALLY DENSE KCS PER DATASET). DELTA ECE = REDUCED−FULL; POSITIVE MEANS 
+WORSE CALIBRATION AFTER KEEPING 500 OR 50 TRAINING ROWS FOR THE SAME KC. 95% CIS BOOTSTRAP OVER KCS. NOT A CAUSAL LAW FOR REAL-WORLD 
+SPARSITY. 
+Dataset 
+Model 
+Reduction 
+Delta ECE 
+95% CI 
+Interpretation 
+ASSISTments 2012 
+DKT 
+500 rows 
+−0.047 
+[−0.060, −0.033] 
+ECE lower 
+ASSISTments 2012 
+SimpleKT 
+50 rows 
++0.002 
+[−0.021, +0.025] 
+CI includes 0 
+Junyi Academy 
+DKT 
+500 rows 
+−0.021 
+[−0.041, −0.001] 
+ECE lower 
+Junyi Academy 
+SimpleKT 
+50 rows 
++0.135 
+[+0.110, +0.161] 
+ECE higher 
+XES3G5M 
+DKT 
+500 rows 
+−0.008 
+[−0.019, +0.004] 
+CI includes 0 
+E. Exploratory GKT/CL4KT result 
+GKT (a train-only graph) and a CL4KT protocol adapter are 
+scored only on ASSISTments 2012 fold 0 (seed 42). They are 
+exploratory, single-fold, ASSISTments-only instantiations: 
+not a state-of-the-art comparison, not a proposed method, and 
+not an official CL4KT checkpoint. Table 4: GKT FAR is 
+0.205 [0.194, 0.217] dense versus 0.220 [0.149, 0.295] sparse 
+(ΔFAR=+0.015; 95% CI [−0.054, 0.092] includes 0). The 
+
+ 
+ 
+CL4KT adapter FAR is 0.185 [0.176, 0.194] versus 0.240 
+[0.159, 0.330] (ΔFAR 95% CI [−0.018, 0.142] includes 0). A 
+CI that includes 0 is not evidence that either architecture is 
+safer in production. 
+V. DISCUSSION 
+A. Main empirical findings 
+Three empirical regularities, not laws, structure the results. 
+First, training frequency is not a universal predictor of AUC 
+failure: on XES3G5M, sparse-stratum AUC is higher than 
+dense-stratum AUC for DKT and SimpleKT (Reliable 
+occupancy), and Junyi’s learner-based sparse bucket is empty 
+rather than a ranking collapse. Second, calibration 
+vulnerability is dataset-dependent. ASSISTments 2012 
+SimpleKT ECE is associated with a dense-to-sparse rise 
+under Limited sparse support (Table 3, N=415); XES3G5M 
+SimpleKT ECE is a counter-pattern that stays essentially flat 
+despite Reliable sparse occupancy. Calibration is not 
+guaranteed to worsen as frequency falls. Third, threshold 
+behavior can differ by frequency stratum. The simulated 
+ASSISTments gate (Tables 4–5) can raise SimpleKT FAR on 
+sparse KCs relative to dense KCs, with ΔFAR positive in all 
+five training runs spanning four unique student partitions; on 
+XES3G5M, ΔFAR and ΔMiss can move in opposite 
+directions, so a flat ECE is not a flat miss rate. 
+B. Practical implications for educational technology 
+Before using one global KT probability threshold for 
+remediation or advancement, four checks are warranted 
+under the evaluated conditions: (i) inspect KC-frequency 
+occupancy on the training fold actually used, including empty 
+buckets; (ii) evaluate per-stratum calibration separately from 
+AUC; (iii) evaluate threshold-error metrics (FAR, expected 
+FAR, Excess FAR, and Miss) with their denominators; (iv) 
+ensure sufficient sample support before treating a slice as 
+actionable. R/L/I flags are descriptive occupancy labels, not 
+inferential guarantees. A population AUC win, or an 
+exploratory GKT/CL4KT run, is not by itself evidence that a 
+global gate is safer on the tail. 
+C. Why datasets differ 
+The three logs differ on measured structural descriptors 
+(Table 6): sparse mass 18.9%, 0%, and 22.5% of KCs; sparse 
+test support Limited (N=415), empty, and Reliable 
+(N=2,010); frequency–difficulty Spearman ρ=−0.227, 
+−0.416, and +0.087. Item support is also heterogeneous 
+(median items per KC 44.5, 18, and 3). A curriculum-position 
+proxy (median normalized sequence position) yields 
+ρ=−0.308, −0.324, and −0.125. Within-KC sparsification 
+(Table 7) does not reproduce the observational ASSISTments 
+SimpleKT ECE gradient. These are associations on these 
+datasets. Untested explanations—curriculum hierarchy, 
+tagging granularity, ceiling effects, and item semantics—are 
+hypotheses unless experimentally isolated, which this study 
+does not do. 
+D. Limitations 
+Next-response correctness is not latent mastery: y=0 is an 
+incorrect next attempt, not a latent-skill diagnosis. The 
+threshold gate is simulated at a locked τ and is not a 
+classroom policy. There is no classroom RCT. GKT and the 
+CL4KT adapter are exploratory, single-fold, 
+ASSISTments-only instantiations, not a state-of-the-art 
+comparison. Temporal evaluation uses a single corrected 
+cutoff (seed 42), not a multi-cutoff variance estimate. Main 
+multi-run summaries use only four unique learner partitions 
+(seeds 2025 and 2026 share a split). R/L/I are descriptive 
+support flags. ECE depends on binning. Three datasets 
+cannot establish a universal diagnostic law. 
+VI. CONCLUSION 
+Under the evaluated conditions, KT probabilities that look 
+adequate on aggregate AUC can still be poorly calibrated on 
+sparse KCs in some dataset-model settings, and a global 
+threshold can then raise the false-advance rate on those skills. 
+That association appears for SimpleKT on ASSISTments 
+2012 (Limited sparse support). It is not reported for Junyi’s 
+empty learner-based sparse bucket, and XES3G5M 
+SimpleKT ECE remains essentially flat. Sparse-concept 
+occupancy, calibration, and threshold-error checks are 
+therefore conditionally useful for educational-technology 
+gates. This paper is a simulated decision-error check, not a 
+new KT model and not a classroom intervention. 
+CONFLICT OF INTEREST 
+The authors declare no conflict of interest. 
+AUTHOR CONTRIBUTIONS 
+K.-T.N.: Conceptualization, Methodology, Software, 
+Formal analysis, and Writing (led diagnostic design, 
+experiments, and manuscript). T.D.M. and D.N.T.: Software 
+(data processing and baseline runs). C.T.N.: Methodology 
+(methodological review). V.-H.N.: Supervision and Writing 
+(manuscript revision). All authors approved the final version. 
+ETHICAL STATEMENT 
+This study is a secondary analysis of publicly released, 
+de-identified benchmark educational datasets (ASSISTments 
+2012, Junyi Academy, and XES3G5M). No new human 
+participants were recruited and no classroom intervention 
+was conducted. The work uses only records already released 
+by the original dataset providers. 
+DATA AND CODE AVAILABILITY 
+Anonymized 
+code, 
+data-preprocessing 
+scripts, 
+and 
+evaluation pipelines are available for peer review at https://
+anonymous.4open.science/r/
+Sparse-Concept-and-Calibration-6E5B/. Source benchmark 
+datasets are publicly released by their original providers. A 
+public repository will be released upon acceptance. 
+GENERATIVE AI STATEMENT 
+During manuscript preparation, the authors used ChatGPT, 
+Claude, and Google Antigravity for language polishing, 
+formatting, consistency checking, and reproducibility prompt 
+preparation. Tool versions were not recorded. These tools 
+were not used to fabricate or alter experimental results. After 
+using these tools, the authors reviewed and edited the content. 
+The authors remain responsible for all content. Generative AI 
+is not listed as a co-author. 
+ACKNOWLEDGMENT 
+This work was supported by the authors’ respective 
+
+ 
+ 
+institutions. 
+REFERENCES 
+[1] A. T. Corbett and J. R. Anderson, “Knowledge Tracing: Modeling the 
+acquisition of 
+procedural knowledge,” 
+User Modeling and 
+User-Adapted Interaction, vol. 4, no. 4, pp. 253–278, 1994. doi: 
+10.1007/BF01099821 
+[2] C. Piech, J. Bassen, J. Huang, S. Ganguli, M. Sahami, L. J. Guibas, and 
+J. Sohl-Dickstein, “Deep Knowledge Tracing,” in Advances in Neural 
+Information Processing Systems, vol. 28, 2015, pp. 505–513. 
+[3] G. Abdelrahman, Q. Wang, and B. Nunes, “Knowledge Tracing: A 
+survey,” ACM Computing Surveys, vol. 55, no. 11, pp. 1–37, 2023. doi: 
+10.1145/3569576 
+[4] Z. Liu, Q. Liu, J. Chen, S. Huang, and W. Luo, “SimpleKT: A simple 
+but tough-to-beat baseline for Knowledge Tracing,” in The Eleventh 
+International Conference on Learning Representations, 2023. 
+[5] Z. Liu, Q. Liu, J. Chen, S. Huang, J. Tang, and W. Luo, “pyKT: A 
+python library to benchmark deep learning based Knowledge Tracing 
+models,” in Proc. 36th Conference on Neural Information Processing 
+Systems Datasets and Benchmarks Track, 2022. 
+[6] G. Rasch, Probabilistic Models for Some Intelligence and Attainment 
+Tests. Danish Institute for Educational Research, 1960. 
+[7] A. Ghosh, N. Heffernan, and A. S. Lan, “Context-aware attentive 
+Knowledge Tracing,” in Proc. ACM SIGKDD Conf. Knowledge 
+Discovery 
+and 
+Data 
+Mining, 
+2020, 
+pp. 
+2330–2339. 
+doi: 
+10.1145/3394486.3403282 
+[8] H. Nakagawa, Y. Iwasawa, and Y. Matsuo, “Graph-based Knowledge 
+Tracing: Modeling student proficiency using graph neural network,” in 
+Proc. IEEE/WIC/ACM International Conference on Web Intelligence, 
+2019, pp. 156–163. doi: 10.1145/3350546.3352513 
+[9] W. Lee, J. Chun, Y. Lee, K. Park, and S. Park, “Contrastive learning 
+for Knowledge Tracing,” in Proc. ACM Web Conference, 2022, pp. 
+2330–2338. doi: 10.1145/3485447.3512105 
+[10] R. Pelánek, “Metrics for evaluation of student models,” Journal of 
+Educational Data Mining, vol. 7, no. 2, pp. 1–19, 2015. doi: 
+10.5281/zenodo.3554665 
+[11] C. Guo, G. Pleiss, Y. Sun, and K. Q. Weinberger, “On calibration of 
+modern neural networks,” in Proc. 34th International Conference on 
+Machine Learning, vol. 70, 2017, pp. 1321–1330. 
+[12] M. P. Naeini, G. Cooper, and M. Hauskrecht, “Obtaining well 
+calibrated probabilities using Bayesian binning,” in Proc. AAAI 
+Conference on Artificial Intelligence, vol. 29, no. 1, 2015. doi: 
+10.1609/aaai.v29i1.9602 
+[13] G. W. Brier, “Verification of forecasts expressed in terms of 
+probability,” Monthly Weather Review, vol. 78, no. 1, pp. 1–3, 1950. 
+doi: 10.1175/1520-0493(1950)078<0001:VOFEIT>2.0.CO;2 
+[14] M. H. DeGroot and S. E. Fienberg, “The comparison and evaluation of 
+forecasters,” The Statistician, vol. 32, no. 1/2, pp. 12–22, 1983. doi: 
+10.2307/2987588 
+[15] X. Yan, C. Tang, and A. Shimada, “Recovering stranded 
+discrimination in Knowledge Tracing: Per-item bias correction via 
+empirical-Bayes 
+shrinkage,” 
+arXiv:2606.14123, 
+2026. 
+doi: 
+10.48550/arXiv.2606.14123 
+[16] S. Huang, Z. Liu, X. Zhao, W. Luo, and J. Weng, “Towards robust 
+Knowledge Tracing models via k-sparse attention,” in Proc. 46th 
+International ACM SIGIR Conference, 2023, pp. 2441–2445. doi: 
+10.1145/3539618.3592073 
+[17] I. Bhattacharjee and C. Wayllace, “Cold start problem: An 
+experimental study of Knowledge Tracing models with new students,” 
+in Artificial Intelligence in Education (AIED 2025), Lecture Notes in 
+Computer Science, vol. 15880. Springer, 2025, pp. 425–432. doi: 
+10.1007/978-3-031-98459-4_30 
+[18] ASSISTmentsData, “ASSISTments 2012–2013 school data with 
+affect,” ASSISTments Public Datasets, 2012. [Online]. Available: 
+https://sites.google.com/site/assistmentsdata/datasets/
+2012-13-school-data-with-affect 
+[19] Junyi Academy, “Junyi Academy online learning activity dataset,” 
+Kaggle, 2019. [Online]. Available: https://www.kaggle.com/datasets/
+junyiacademy/learning-activity-public-dataset-by-junyi-academy 
+[20] Z. Liu, Q. Liu, T. Guo, J. Chen, S. Huang, X. Zhao, J. Tang, W. Luo, 
+and J. Weng, “XES3G5M: A Knowledge Tracing benchmark dataset 
+with auxiliary information,” in Proc. 37th Conference on Neural 
+Information Processing Systems Datasets and Benchmarks Track, 
+2023. 
+Copyright © 2026 by the authors. This is an open access article distributed 
+under the Creative Commons Attribution License which permits unrestricted 
+use, distribution, and reproduction in any medium, provided the original 
+work is properly cited (CC BY 4.0). 
+ 
+ 
+ 

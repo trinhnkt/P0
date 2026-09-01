@@ -1,0 +1,16 @@
+FULL_PAGES=8
+ANON_AUTHORS i=2
+ANON_AFFIL1 i=3
+ANON_AFFIL2 i=4
+ANON_EMAIL i=5
+ANON_CORR i=6
+ANON_CONTRIB i=465
+ANON_ACK i=473
+BLIND_PAGES=6
+FULL_META_AUTHOR='Khanh-Trinh Nguyen, Tuan Dao Minh, Duong Nguyen Tien, Chi Thanh Nguyen, Van-Hau Nguyen'
+BLIND_META_AUTHOR=''
+FULL_HITS=['Khanh-Trinh', 'Tuan Dao Minh', 'Duong Nguyen Tien', 'Chi Thanh Nguyen', 'Van-Hau', 'Hung Yen', 'utehy.edu.vn', 'trinhnk', 'tuanymc', 'duongnt@', 'thanhnc', 'haunv@', 'ioit.ai.vn', 'Military Science', 'K.-T.N.', 'T.D.M.', 'D.N.T.', 'C.T.N.', 'V.-H.N.']
+BLIND_HITS=[]
+BLIND_BYTE_HITS=[]
+KEEP={'ASSISTments': True, 'Junyi Academy': True, 'XES3G5M': True, 'https://anonymous.4open.science/r/Sparse-Concept-and-Calibration-6E5B/': True, 'Corbett': True}
+PASS

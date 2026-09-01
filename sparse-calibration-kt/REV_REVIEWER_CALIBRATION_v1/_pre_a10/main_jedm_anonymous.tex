@@ -1,0 +1,131 @@
+% -----------------------------------------------------------------------------
+% JEDM LaTeX Format - ANONYMOUS PEER REVIEW
+% Title: Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing
+% -----------------------------------------------------------------------------
+\documentclass[12pt,a4paper]{jedm}
+
+% --- JEDM Formatting ---
+\usepackage[left=2.75cm, right=2.75cm, top=2.25cm, bottom=2.25cm]{geometry}
+\usepackage{mathptmx} % Times Roman for body
+\usepackage[scaled=0.92]{helvet} % Helvetica for sans-serif
+\usepackage{titlesec} % For heading fonts
+\titleformat*{\section}{\Large\bfseries\sffamily}
+\titleformat*{\subsection}{\large\bfseries\sffamily}
+\titleformat*{\subsubsection}{\normalsize\bfseries\sffamily}
+
+\usepackage{caption}
+\captionsetup[table]{position=top, skip=5pt}
+\captionsetup[figure]{position=bottom, skip=5pt}
+
+% Packages
+% \usepackage{cite} % For numerical citations [1], [2] (Standard/Robust)
+% If you prefer JEDM's official author-year citations, comment the line above and uncomment the line below:
+\usepackage[round,authoryear]{natbib}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{listings}
+\usepackage[hidelinks]{hyperref}
+\usepackage{subcaption}
+\usepackage{placeins}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{makecell}
+\usepackage{adjustbox}
+
+% Float control parameters to prevent whitespace gaps
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.95}
+
+% Code listing style
+\lstdefinestyle{codestyle}{
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true,
+  frame=single,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  tabsize=2
+}
+\lstset{style=codestyle}
+
+% Macros
+\newcommand{\kt}{Knowledge Tracing}
+\newcommand{\kc}{Knowledge Component}
+\newcommand{\kcs}{Knowledge Components}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\ece}{\mathrm{ECE}}
+\newcommand{\brier}{\mathrm{Brier}}
+\newcommand{\unc}{\mathrm{UNC}}
+\newcommand{\rel}{\mathrm{REL}}
+\newcommand{\res}{\mathrm{RES}}
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+
+% For compatibility with tables that use tableorg
+\let\tableorg\table
+\let\endtableorg\endtable
+
+\begin{document}
+
+\title{\sffamily\bfseries Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing\\
+{\large A Protocol and Diagnostic Study}}
+
+\author{
+\sffamily Anonymous Authors\\[8pt]
+\normalsize \textit{Anonymous Affiliation}\\
+\normalsize Email: anonymous@example.com
+}
+\date{}
+
+\maketitle
+
+\begin{abstract}
+Knowledge Tracing (KT) models are typically evaluated with aggregate predictive metrics such as the area under the ROC curve (AUC) and accuracy. Such metrics can mask how a model behaves on sparse and cold-start Knowledge Components (KCs)---concepts with limited or no training-fold evidence---even though reliable probability estimates on these concepts are precisely what educational decision support depends on. Rather than proposing a new model, we treat KT evaluation as a reproducibility and diagnostic problem. We present a reproducible diagnostic protocol that combines learner-based and temporal splits, train-only KC-frequency stratification with an explicit strict cold-start group, per-stratum calibration analysis via the Expected Calibration Error (ECE) and a Brier-score decomposition, reliability diagrams, sample-size-aware reporting, and an operational leakage and predictive-sanity workflow (L1--L8). We instantiate the protocol on three datasets---ASSISTments 2012, Junyi Academy, and XES3G5M---with IRT (Item Response Theory), DKT (Deep Knowledge Tracing), and SimpleKT baselines. Under our experimental conditions, rather than a universal degradation in discrimination (AUC), we find that calibration susceptibility is a more informative, yet dataset-dependent, vulnerability on sparse concepts: ASSISTments 2012 shows a pronounced ECE rise on less-frequent concepts, whereas other datasets exhibit inverted or flat trends. The predictive-sanity channel additionally flagged a prediction--label misalignment that aggregate metrics alone would not reveal. Sparse-concept diagnostics are most informative when a dataset contains a meaningful low-frequency tail, those strata have sufficient evaluation support, and calibration reliability varies systematically with training evidence or deployment involves concept cold-start. Occupancy reporting remains useful even when that empirical priority is low. We provide an anonymized reproducibility artifact for peer review and will release the public version upon acceptance.
+\end{abstract}
+
+\vspace{10pt}
+\noindent\textbf{Keywords:} Knowledge Tracing; Educational Data Mining; Calibration; Sparse Concepts; Cold-start Knowledge Components; Reproducibility
+
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_protocol}
+\input{sections/04_experiments}
+\input{sections/05_discussion_limitations}
+\input{sections/06_conclusion}
+
+\section*{Artifact Availability \& Reproducibility Checklist}
+\begin{sloppypar}
+The anonymized code, data preprocessing scripts, and reproducible evaluation pipelines are available for peer review at \url{https://anonymous.4open.science/r/Sparse-Concept-and-Calibration-6E5B/}. The public repository will be released upon acceptance. Consistent with the design principles of Section~\ref{sec:protocol}, the artifact includes the following standardized components:
+\end{sloppypar}
+\begin{itemize}
+  \item \textbf{Dataset Preprocessing:} Scripts that normalize raw data into the schema defined in Section~\ref{sec:protocol}.
+  \item \textbf{Split Construction:} Reproducible partition logs and multi‑seed split constructors.
+  \item \textbf{Prediction‑level Exports:} CSV files containing baseline predicted probabilities and ground‑truth labels.
+  \item \textbf{KC‑Strata Assignment:} Code mapping training‑fold frequencies to strata buckets.
+  \item \textbf{Calibration Verification:} Scripts computing Expected Calibration Error (ECE).
+  \item \textbf{Brier Decomposition:} Implementation of Uncertainty, Reliability, and Resolution equations.
+  \item \textbf{Reliability Diagrams:} Plotting utilities for multi‑strata calibration curves.
+  \item \textbf{Leakage \& Predictive-Sanity Workflow:} Automated logs for the L1--L8 operational checklist, including the L8 warm-cohort sanity check.
+  \item \textbf{LaTeX Table Exporters:} Python exporters generating book‑tabs tables.
+  \item \textbf{One‑Command Reproduction:} Unified script ensuring machine‑independent reproducibility.
+\end{itemize}
+
+\appendix
+\input{appendix/appendix_a_sensitivity}
+
+\section*{Declaration of Generative AI Software Tools in the Writing Process}
+During the preparation of this work, the authors used ChatGPT, Claude and Google Antigravity to support language polishing, LaTeX formatting, consistency checking, and preparation of reproducibility prompts in the Abstract, Introduction, Methods, Results, Discussion, and Appendix sections. These tools were not used to generate, fabricate, or alter experimental results. After using these tools, the authors reviewed and edited the content as needed and take full responsibility for the content of the publication.
+
+\section*{Acknowledgements}
+Omitted for double-blind review.
+
+\bibliographystyle{apalike-jedm}
+\bibliography{references}
+% \input{references.bbl}
+\end{document}

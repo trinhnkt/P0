@@ -1,0 +1,20 @@
+1 [Text] 'Sparse-Concept Calibration of Knowledge Tracing Models for Threshold-Based Educational Decisions'
+2 [Style Author + (Asian) MS Mincho] 'Khanh-Trinh Nguyen1, Tuan Dao Minh1, Duong Nguyen Tien1, Chi Thanh Nguyen2, and Van-Hau Nguyen1,*'
+3 [Affiliation] '1 Hung Yen University of Technology and Education, Hung Yen, Vietnam'
+4 [Affiliation] '2 Academy of Military Science and Technology, Ha Noi, Vietnam'
+5 [Affiliation] 'Email: trinhnk@utehy.edu.vn (K.-T.N.); tuanymc@utehy.edu.vn (T.D.M.); duongnt@utehy.edu.vn (D.N.T.); thanhnc@ioit.ai.vn (C.T.N.); haunv@utehy.edu.vn (V.-H.N.)'
+6 [Affiliation] '*Corresponding author'
+7 [Text] ''
+8 [Authors] ''
+9 [Abstract] 'Abstract—Knowledge Tracing (KT) systems that drive practice, remediation, or advancement typically consume a predicted probability, not an area-under-the-curve (AUC) score. Aggregate ranking metrics c'
+11 [IndexTerms] 'Keywords—knowledge tracing, calibration, sparse concepts, learning analytics, educational decision support, mastery threshold'
+12 [Heading 1] 'Introduction'
+13 [Text] 'Adaptive practice engines and intelligent tutoring systems increasingly use Knowledge Tracing (KT) to estimate whether a learner has mastered a skill and to decide whether to skip, remediate, or advan'
+14 [Text] 'KT papers typically report population AUC and accuracy [4], [5]. Those metrics are useful for ranking models, but they can hide reliability problems on low-frequency knowledge components (KCs)—concept'
+15 [Text] 'This paper treats that mismatch as an evaluation problem for educational technology, not as a reason to propose another KT backbone. We ask three questions that a system designer can act on: (1) Does '
+HAS_INDEX_TERMS=False
+HAS_KEYWORDS_EM=True
+HAS_GATES_TITLE=False
+HAS_PREFERRED=True
+HAS_JEDM_TITLE=False
+ABSTRACT_START='Abstract—Knowledge Tracing (KT) systems that drive practice, remediation, or adv'

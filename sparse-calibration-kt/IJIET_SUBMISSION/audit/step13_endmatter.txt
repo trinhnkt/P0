@@ -1,0 +1,36 @@
+Heading1	VI. CONCLUSION
+	Under the evaluated conditions, KT probabilities that look adequate on aggregate AUC can still be poorly calibrated on sparse KCs in some dataset-model settings, and a global threshold can then raise the false-advance rate on those skills. 
+ReferenceHead	Conflict of Interest
+Text	The authors declare no conflict of interest.
+ReferenceHead	Author Contributions
+Text	K.-T.N.: Conceptualization, Methodology, Software, Formal analysis, and Writing (led diagnostic design, experiments, and manuscript). T.D.M. and D.N.T.: Software (data processing and baseline runs). C.T.N.: Methodology (methodological revie
+ReferenceHead	Ethical Statement
+Text	This study is a secondary analysis of publicly released benchmark educational datasets (ASSISTments 2012, Junyi Academy, and XES3G5M). The processed records used here are de-identified. No new participants were recruited, and no interventio
+ReferenceHead	Data and Code Availability
+Text	Anonymized code, data-preprocessing scripts, and evaluation pipelines are available for peer review at https://anonymous.4open.science/r/Sparse-Concept-and-Calibration-6E5B/. Source benchmark datasets are publicly released by their original
+ReferenceHead	Generative AI Statement
+Text	During manuscript preparation, the authors used ChatGPT [version to be confirmed], Claude [version to be confirmed], and Google Antigravity [version to be confirmed] to support language polishing, formatting, consistency checking, and repro
+ReferenceHead	Acknowledgment
+Text	This work was supported by the authors’ respective institutions.
+ReferenceHead	References
+References	A. T. Corbett and J. R. Anderson, “Knowledge Tracing: Modeling the acquisition of procedural knowledge,” User Modeling and User-Adapted Interaction, vol. 4, no. 4, pp. 253–278, 1994.
+References	C. Piech, J. Bassen, J. Huang, S. Ganguli, M. Sahami, L. J. Guibas, and J. Sohl-Dickstein, “Deep Knowledge Tracing,” in Advances in Neural Information Processing Systems, 2015, pp. 505–513.
+References	G. Abdelrahman, Q. Wang, and B. Nunes, “Knowledge Tracing: A survey,” ACM Computing Surveys, vol. 55, no. 11, pp. 1–37, 2023.
+References	Z. Liu, Q. Liu, J. Chen, S. Huang, and W. Luo, “SimpleKT: A simple but tough-to-beat baseline for Knowledge Tracing,” in The Eleventh International Conference on Learning Representations, 2023.
+References	Z. Liu, Q. Liu, J. Chen, S. Huang, J. Tang, and W. Luo, “pyKT: A python library to benchmark deep learning based Knowledge Tracing models,” in Thirty-sixth Conference on Neural Information Processing Systems Datasets and Benchmarks Track, 2
+References	G. Rasch, Probabilistic Models for Some Intelligence and Attainment Tests. Danish Institute for Educational Research, 1960.
+References	A. Ghosh, N. Heffernan, and A. S. Lan, “Context-aware attentive Knowledge Tracing,” in Proc. ACM SIGKDD Conf. Knowledge Discovery and Data Mining, 2020, pp. 2330–2339.
+References	H. Nakagawa, Y. Iwasawa, and Y. Matsuo, “Graph-based Knowledge Tracing: Modeling student proficiency using graph neural network,” in IEEE/WIC/ACM International Conference on Web Intelligence, 2019, pp. 156–163.
+References	W. Lee, J. Chun, Y. Lee, K. Park, and S. Park, “Contrastive learning for Knowledge Tracing,” in Proc. ACM Web Conference, 2022, pp. 2330–2338.
+References	R. Pelánek, “Metrics for evaluation of student models,” Journal of Educational Data Mining, vol. 7, no. 2, pp. 1–19, 2015.
+References	C. Guo, G. Pleiss, Y. Sun, and K. Q. Weinberger, “On calibration of modern neural networks,” in Proc. International Conference on Machine Learning, 2017, pp. 1321–1330.
+References	M. P. Naeini, G. Cooper, and M. Hauskrecht, “Obtaining well calibrated probabilities using Bayesian binning,” in Proc. AAAI Conference on Artificial Intelligence, vol. 29, no. 1, 2015.
+References	G. W. Brier, “Verification of forecasts expressed in terms of probability,” Monthly Weather Review, vol. 78, no. 1, pp. 1–3, 1950.
+References	M. H. DeGroot and S. E. Fienberg, “The comparison and evaluation of forecasters,” The Statistician, vol. 32, no. 1/2, pp. 12–22, 1983.
+References	X. Yan, C. Tang, and A. Shimada, “Recovering stranded discrimination in Knowledge Tracing: Per-item bias correction via empirical-Bayes shrinkage,” arXiv:2606.14123, 2026.
+References	S. Huang, Z. Liu, X. Zhao, W. Luo, and J. Weng, “Towards robust Knowledge Tracing models via k-sparse attention,” in Proc. 46th International ACM SIGIR Conference, 2023, pp. 2441–2445.
+References	I. Bhattacharjee and C. Wayllace, “Cold start problem: An experimental study of Knowledge Tracing models with new students,” in Artificial Intelligence in Education (AIED 2025), LNCS vol. 15880, Springer, 2025, pp. 425–432.
+References	ASSISTmentsData, “ASSISTments 2012–2013 school data with affect,” ASSISTments Public Datasets, 2012. [Online]. Available: https://sites.google.com/site/assistmentsdata/datasets/2012-13-school-data-with-affect
+References	Junyi Academy, “Junyi Academy online learning activity dataset,” Kaggle, 2019. [Online]. Available: https://www.kaggle.com/datasets/junyiacademy/learning-activity-public-dataset-by-junyi-academy
+References	Z. Liu, Q. Liu, T. Guo, J. Chen, S. Huang, X. Zhao, J. Tang, W. Luo, and J. Weng, “XES3G5M: A Knowledge Tracing benchmark dataset with auxiliary information,” in Thirty-seventh Conference on Neural Information Processing Systems Datasets an
+FigureCaption	Copyright © 2026 by the authors. This is an open access article distributed under the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original work is properly 

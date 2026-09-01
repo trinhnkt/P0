@@ -1,0 +1,2 @@
+xes3g5m dkt: dFM mean=0.007 sd=0.010 pos=3/5 dMiss mean=-0.062 sparse_n mean=1957
+xes3g5m simplekt: dFM mean=-0.017 sd=0.012 pos=0/5 dMiss mean=-0.183 sparse_n mean=1957

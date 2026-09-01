@@ -1,0 +1,30 @@
+COPIED
+Reproducible_Sparse_Concept_and_Calibration_Diagnostics_for_Knowledge_Tracing.docx -> source/main_ijiet_step02.docx
+Reproducible_Sparse_Concept_and_Calibration_Diagnostics_for_Knowledge_Tracing.doc -> source/main_ijiet_step02.doc (pre-clean copy)
+audit/IJIET_template.doc -> source/template/IJIET_template.doc
+paper/references.bib -> source/bibliography/references.bib
+figures/figure2_bucket_distribution.png -> source/figures/
+paper/figures/figure2_bucket_distribution.pdf -> source/figures/
+REMOVED_PARAS
+Manuscript received Month date, 2026; revised Month date, 2026; accepted Month date, 2026
+HITS_BEFORE
+Manuscript received=True
+International Journal of Information=False
+INTERNATIONAL JOURNAL=False
+10.18178=False
+doi:=False
+DOI=True
+Vol.=True
+No.=True
+HITS_AFTER
+Manuscript received=False
+International Journal of Information=False
+INTERNATIONAL JOURNAL=False
+10.18178=False
+doi:=False
+Vol. 16=False
+PAGES=4
+WORDS=3229
+PDF_EXISTS=True SIZE=347879
+WARNINGS
+(none)

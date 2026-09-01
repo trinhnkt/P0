@@ -1,0 +1,25 @@
+\begin{table*}[htbp]
+\caption{Decision framework for when sparse-concept diagnostics are informative. Levels reuse the protocol's pre-registered sparse threshold ($f_{\mathrm{train}}<100$) and reliability flags (R/L/I); they are not new cutoffs tuned on these three datasets. C4 is an intended-use condition, not a quantity estimated from the interaction logs. Reporting occupancy and reliability flags remains useful even when the empirical priority of sparse-stratum claims is Low.}
+\label{tab:a8_need_framework}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.6cm}XXX}
+\toprule
+\textbf{Condition} & \textbf{Low need} & \textbf{Moderate need} & \textbf{High need} \\
+\midrule
+C1 Sparse mass & No KCs below the pre-registered sparse threshold ($f_{\mathrm{train}}<100$) & Sparse-like KCs appear only under an alternate split, or the tail is present but tiny relative to the dense mass & A non-empty sparse-like share of KCs under the split actually used (observed here: $18.9\%$ and $22.5\%$) \\
+\midrule
+C2 Evaluation support & Sparse strata empty or Insufficient ($N<100$) & Sparse stratum Limited ($100\le N<1000$) & Sparse stratum Reliable ($N\ge 1000$) \\
+\midrule
+C3 Calibration susceptibility & No stratum-level ECE/REL rise and only a weak KC-level frequency--ECE association & KC-level association present, but the stratum gradient is flat, inverted, or model-heterogeneous & Monotonic ECE/REL increase from dense to sparse with at least Limited support \\
+\midrule
+C4 Deployment relevance (qualitative) & Rankings only; probabilities are not thresholded & Probabilities are reported but not used as gates & Remediation, practice, or mastery decisions use probability thresholds \\
+\midrule
+C5 Temporal / cold-start exposure & Temporal split does not populate strict or limited cold-start groups & Cold-start groups exist but are small in KC count & Large cold-start test mass (Reliable $N$) or worse-than-random discrimination on unseen KCs \\
+\bottomrule
+\end{tabularx}
+
+\vspace{1ex}
+{\scriptsize \textbf{Note:} Low/Moderate/High describe the priority of \emph{sparse-concept diagnostic claims}, not whether the protocol should be run. Occupancy reporting (empty buckets, reliability flags) is universally useful hygiene.\par}
+\end{table*}

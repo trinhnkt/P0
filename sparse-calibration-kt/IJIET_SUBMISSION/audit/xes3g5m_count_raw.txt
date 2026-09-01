@@ -1,0 +1,20 @@
+questions.json n=7652
+question fields=['analysis', 'answer', 'content', 'kc_routes', 'options', 'type']
+guessed_kc_field=kc_routes
+unique_kcs_in_questions.json=1240
+processed rows=7953709 cols=['user_id', 'item_id', 'kc_id', 'correct']
+  user_id: unique=18066 na=0
+  item_id: unique=7653 na=0
+  kc_id: unique=866 na=0
+  correct: unique=2 na=0
+  kc_id weird_count=1540356 examples=['-1']
+raw_flat rows=7953709 cols=['user_id', 'question_id', 'skill_id', 'correct']
+  user_id: unique=18066 na=0
+  question_id: unique=7653 na=0
+  skill_id: unique=866 na=0
+  correct: unique=3 na=0
+  skill_id weird_count=1540356 examples=['-1']
+data/raw/xes3g5m/kc_level/train_valid_sequences.csv sequences=33397 cols=['fold', 'uid', 'questions', 'concepts', 'responses', 'timestamps', 'selectmasks', 'is_repeat']
+  expanded_tokens~=6679400 unique_concepts=865 unique_questions=7618 empty_concept_tokens=1540356
+data/raw/xes3g5m/kc_level/test.csv sequences=3613 cols=['fold', 'uid', 'questions', 'concepts', 'responses', 'timestamps', 'is_repeat', 'cidxs']
+  expanded_tokens~=1274309 unique_concepts=828 unique_questions=7052 empty_concept_tokens=0

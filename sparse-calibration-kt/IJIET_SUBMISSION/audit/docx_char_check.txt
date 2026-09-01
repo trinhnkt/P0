@@ -1,0 +1,15 @@
+'Table 2. Overall learner-based AUC (mean±sd over four unique partitions)'
+
+T2 'Table 2. Overall learner-based AUC (mean±sd over four unique partitions)'
+'Table 3 is the calibration punchline. On ASSISTments 2012, SimpleKT ECE increases from 0.1136±0.0066 (dense, Reliable, N=523,971) to 0.1541 (medium) to 0.2280±0.0197 (sparse, Limited, N=415). DKT shows the same direction (dense ECE 0.060 vs. sparse 0.233). IRT dense ECE is tiny (0.003) but resolution is zero: a constant-like predictor can look “calibrated” while ranking nothing.'
+U+0066 U+0072 U+006F U+006D U+0020 U+0030 U+002E U+0031 U+0031 U+0033 U+0036 U+00B1 U+0030 U+002E U+0030 U+0030 U+0036 U+0036 U+0020 U+0028 U+0064 U+0065 U+006E U+0073 U+0065
+T4 'Table 4. Simulated gate at τ=0.7, ASSISTments 2012 fold 0. Advance if p≥τ. Not a classroom trial.'
+REF1 A. T. Corbett and J. R. Anderson, “Knowledge Tracing: Modeling the acquisition of procedural knowled
+REF2 C. Piech, J. Bassen, J. Huang, S. Ganguli, M. Sahami, L. J. Guibas, and J. Sohl-Dickstein, “Deep Kno
+REF3 G. Abdelrahman, Q. Wang, and B. Nunes, “Knowledge Tracing: A survey,” ACM Computing Surveys, vol. 55
+REF18 ASSISTmentsData, “ASSISTments 2012–2013 school data with affect,” ASSISTments Public Datasets, 2012.
+REF19 Junyi Academy, “Junyi Academy online learning activity dataset,” Kaggle, 2019. [Online]. Available: 
+REF20 Z. Liu, Q. Liu, T. Guo, J. Chen, S. Huang, X. Zhao, J. Tang, W. Luo, and J. Weng, “XES3G5M: A Knowle
+nref=20
+T2r2c3='0.5000'
+T2r2c4='0.6973±0.0004'

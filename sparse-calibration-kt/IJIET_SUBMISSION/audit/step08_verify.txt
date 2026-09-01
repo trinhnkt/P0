@@ -1,0 +1,25 @@
+TEXT_REPLACED_PARAS=8
+results=True
+far_def=True
+not_latent=True
+next_response_proxy=True
+e_far=True
+excess=True
+delta_far=True
+n_advance=True
+n_incorrect=True
+not_n_total_precision=True
+tau07=True
+grid=True
+no_sparse_tune=True
+table4_nadv=True
+table4_ninc=True
+table5_nadv=True
+ci_locked=True
+no_fm_header=True
+no_dfm=True
+far_in_results=True
+ece_untouched=True
+no_bare_fm=True
+PAGES=6 WORDS=4593 TABLES=7 PICS=1
+PDF_EXISTS=True SIZE=418577

@@ -1,0 +1,17 @@
+\begin{table}[htbp]
+\caption{DeLong Tests for Overall AUC, DKT vs. SimpleKT (Learner-based Split)}
+\label{tab:delong_overall}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lc}
+\toprule
+\textbf{Dataset} & \textbf{DKT vs SimpleKT} \\
+\midrule
+ASSISTments 2012 & $p = 7.10 \times 10^{-82*}$ \\
+Junyi Academy    & $p = 8.07 \times 10^{-144*}$ \\
+XES3G5M          & $p < 0.001^{*}$ \\
+\bottomrule
+\multicolumn{2}{p{11.5cm}}{\textit{Note:} One test per dataset; Bonferroni-corrected significance threshold $\alpha = 0.05/3 \approx 0.0167$. $^{*}$ indicates significance after correction. DeLong tests are computed from paired prediction-level outputs aligned on stable test-instance identities via an inner join, so that only instances present in both models' exported predictions are compared; rows appearing in only one model, due to model-specific sequence filtering, are discarded before the test statistic is computed. Comparisons against the IRT reference are not reported: because IRT produces a constant, base-rate-like prediction for unseen learners under learner-based splits (Section 4.2), DeLong tests against it are degenerate.} \\
+\end{tabular}
+\end{table}

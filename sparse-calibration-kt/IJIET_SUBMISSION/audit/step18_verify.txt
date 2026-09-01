@@ -1,0 +1,125 @@
+RESTORED_FROM_SNAP
+CAP i=35 'Table 1. Post-processing cohort statistics (learner-based split). Learner, knowl'
+CAP i=65 'Table 2. Recovered training settings for the main baselines. NOT RECOVERED cells'
+CAP i=119 'Fig. 1. Distribution of KCs across train-only frequency strata under learner-bas'
+CAP i=134 'Table 3 reports overall learner-based area under the ROC curve (AUC) and accurac'
+CAP i=135 'Table 3. Overall learner-based area under the ROC curve (AUC) and accuracy (ACC)'
+CAP i=188 'Table 4 reports event-level expected calibration error (ECE), not AUC. On ASSIST'
+CAP i=190 'Table 4. SimpleKT event-level expected calibration error (ECE) by train-only fre'
+CAP i=247 'Table 5 is a simulated gate at τ=0.7 on ASSISTments 2012 fold 0 (seed 42), not a'
+CAP i=248 'Table 5. Simulated gate at τ=0.7, ASSISTments 2012 fold 0 (seed 42). FAR, Excess'
+CAP i=341 'Table 6 checks whether SimpleKT ΔFAR is a one-fold accident. It is positive in a'
+CAP i=343 'Table 6. Gate robustness at τ=0.7 on ASSISTments 2012. Five training runs (seeds'
+CAP i=372 'Table 7. Empirical observations, on these three datasets, of when a sparse-calib'
+CAP i=398 'Table 7 records three observational pre-conditions under which a sparse-calibrat'
+CAP i=402 'Table 8. Within-KC controlled sparsification (seed 42; 30 originally dense KCs p'
+DEL_JUNK=1 sections=14 (was 14)
+H2_D_INSERTED i=116
+TITLE_SEC1_COLS=1 sections=14
+BODY_2COL sections=14
+CAP i=34 'Table 1. Post-processing cohort statistics (learner-based split). Learner, knowl'
+CAP i=64 'Table 2. Recovered training settings for the main baselines. NOT RECOVERED cells'
+CAP i=119 'Fig. 1. Distribution of KCs across train-only frequency strata under learner-bas'
+CAP i=134 'Table 3 reports overall learner-based area under the ROC curve (AUC) and accurac'
+CAP i=135 'Table 3. Overall learner-based area under the ROC curve (AUC) and accuracy (ACC)'
+CAP i=188 'Table 4 reports event-level expected calibration error (ECE), not AUC. On ASSIST'
+CAP i=190 'Table 4. SimpleKT event-level expected calibration error (ECE) by train-only fre'
+CAP i=247 'Table 5 is a simulated gate at τ=0.7 on ASSISTments 2012 fold 0 (seed 42), not a'
+CAP i=248 'Table 5. Simulated gate at τ=0.7, ASSISTments 2012 fold 0 (seed 42). FAR, Excess'
+CAP i=341 'Table 6 checks whether SimpleKT ΔFAR is a one-fold accident. It is positive in a'
+CAP i=343 'Table 6. Gate robustness at τ=0.7 on ASSISTments 2012. Five training runs (seeds'
+CAP i=372 'Table 7. Empirical observations, on these three datasets, of when a sparse-calib'
+CAP i=398 'Table 7 records three observational pre-conditions under which a sparse-calibrat'
+CAP i=402 'Table 8. Within-KC controlled sparsification (seed 42; 30 originally dense KCs p'
+--- AFTER_FLATTEN tables=8 ---
+  T1 prev='Table 1. Post-processing cohort statistics (learner-based split). Learner, '
+  T2 prev='Table 2. Recovered training settings for the main baselines. NOT RECOVERED '
+  T3 prev='Table 3. Overall learner-based area under the ROC curve (AUC) and accuracy '
+  T4 prev='Table 4. SimpleKT event-level expected calibration error (ECE) by train-onl'
+  T5 prev='Table 5. Simulated gate at τ=0.7, ASSISTments 2012 fold 0 (seed 42). FAR, E'
+  T6 prev='Table 6. Gate robustness at τ=0.7 on ASSISTments 2012. Five training runs ('
+  T7 prev='Table 7. Empirical observations, on these three datasets, of when a sparse-'
+  T8 prev='Table 8. Within-KC controlled sparsification (seed 42; 30 originally dense '
+T2FIG 1col_sections=2
+--- T2FIG tables=8 ---
+  T1 prev='Table 1. Post-processing cohort statistics (learner-based split). Learner, '
+  T2 prev='Table 2. Recovered training settings for the main baselines. NOT RECOVERED '
+  T3 prev='Table 3. Overall learner-based area under the ROC curve (AUC) and accuracy '
+  T4 prev='Table 4. SimpleKT event-level expected calibration error (ECE) by train-onl'
+  T5 prev='Table 5. Simulated gate at τ=0.7, ASSISTments 2012 fold 0 (seed 42). FAR, E'
+  T6 prev='Table 6. Gate robustness at τ=0.7 on ASSISTments 2012. Five training runs ('
+  T7 prev='Table 7. Empirical observations, on these three datasets, of when a sparse-'
+  T8 prev='Table 8. Within-KC controlled sparsification (seed 42; 30 originally dense '
+T4 1col_sections=2
+T4 cap='Table 4. SimpleKT event-level expected calibration error (ECE) by trai'
+--- T4 tables=8 ---
+  T1 prev='Table 1. Post-processing cohort statistics (learner-based split). Learner, '
+  T2 prev='Table 2. Recovered training settings for the main baselines. NOT RECOVERED '
+  T3 prev='Table 3. Overall learner-based area under the ROC curve (AUC) and accuracy '
+  T4 prev='Table 4. SimpleKT event-level expected calibration error (ECE) by train-onl'
+  T5 prev='Table 5. Simulated gate at τ=0.7, ASSISTments 2012 fold 0 (seed 42). FAR, E'
+  T6 prev='Table 6. Gate robustness at τ=0.7 on ASSISTments 2012. Five training runs ('
+  T7 prev='Table 7. Empirical observations, on these three datasets, of when a sparse-'
+  T8 prev='Table 8. Within-KC controlled sparsification (seed 42; 30 originally dense '
+T5T6 1col_sections=4
+T5T6 cap='Table 6. Gate robustness at τ=0.7 on ASSISTments 2012. Five training r'
+--- T5T6 tables=8 ---
+  T1 prev='Table 1. Post-processing cohort statistics (learner-based split). Learner, '
+  T2 prev='Table 2. Recovered training settings for the main baselines. NOT RECOVERED '
+  T3 prev='Table 3. Overall learner-based area under the ROC curve (AUC) and accuracy '
+  T4 prev='Table 4. SimpleKT event-level expected calibration error (ECE) by train-onl'
+  T5 prev='Table 5. Simulated gate at τ=0.7, ASSISTments 2012 fold 0 (seed 42). FAR, E'
+  T6 prev='Table 6. Gate robustness at τ=0.7 on ASSISTments 2012. Five training runs ('
+  T7 prev='Table 7. Empirical observations, on these three datasets, of when a sparse-'
+  T8 prev='Table 8. Within-KC controlled sparsification (seed 42; 30 originally dense '
+T7T8 1col_sections=2
+T7T8 cap='Table 8. Within-KC controlled sparsification (seed 42; 30 originally d'
+--- T7T8 tables=8 ---
+  T1 prev='Table 1. Post-processing cohort statistics (learner-based split). Learner, '
+  T2 prev='Table 2. Recovered training settings for the main baselines. NOT RECOVERED '
+  T3 prev='Table 3. Overall learner-based area under the ROC curve (AUC) and accuracy '
+  T4 prev='Table 4. SimpleKT event-level expected calibration error (ECE) by train-onl'
+  T5 prev='Table 5. Simulated gate at τ=0.7, ASSISTments 2012 fold 0 (seed 42). FAR, E'
+  T6 prev='Table 6. Gate robustness at τ=0.7 on ASSISTments 2012. Five training runs ('
+  T7 prev='Table 7. Empirical observations, on these three datasets, of when a sparse-'
+  T8 prev='Table 8. Within-KC controlled sparsification (seed 42; 30 originally dense '
+CAP i=34 'Table 1. Post-processing cohort statistics (learner-based split). Learner, knowl'
+CAP i=65 'Table 2. Recovered training settings for the main baselines. NOT RECOVERED cells'
+CAP i=120 'Fig. 1. Distribution of KCs across train-only frequency strata under learner-bas'
+CAP i=136 'Table 3 reports overall learner-based area under the ROC curve (AUC) and accurac'
+CAP i=137 'Table 3. Overall learner-based area under the ROC curve (AUC) and accuracy (ACC)'
+CAP i=191 'Table 4 reports event-level expected calibration error (ECE), not AUC. On ASSIST'
+CAP i=193 'Table 4. SimpleKT event-level expected calibration error (ECE) by train-only fre'
+CAP i=252 'Table 5 is a simulated gate at τ=0.7 on ASSISTments 2012 fold 0 (seed 42), not a'
+CAP i=253 'Table 5. Simulated gate at τ=0.7, ASSISTments 2012 fold 0 (seed 42). FAR, Excess'
+CAP i=346 'Table 6 checks whether SimpleKT ΔFAR is a one-fold accident. It is positive in a'
+CAP i=348 'Table 6. Gate robustness at τ=0.7 on ASSISTments 2012. Five training runs (seeds'
+CAP i=379 'Table 7. Empirical observations, on these three datasets, of when a sparse-calib'
+CAP i=405 'Table 7 records three observational pre-conditions under which a sparse-calibrat'
+CAP i=409 'Table 8. Within-KC controlled sparsification (seed 42; 30 originally dense KCs p'
+FORCE_SPAN_1COL=0
+DEL_LEADING_EMPTY=0 DEL_BEFORE_CAP=0
+T1 cols=5 w=235.3 sec_cols=2
+T2 cols=4 w=493.2 sec_cols=1
+T3 cols=4 w=235.2 sec_cols=2
+T4 cols=5 w=501.7 sec_cols=1
+T5 cols=9 w=501.8 sec_cols=1
+T6 cols=7 w=501.9 sec_cols=1
+T7 cols=4 w=493.2 sec_cols=1
+T8 cols=6 w=501.9 sec_cols=1
+CAPTION_TIGHTEN=9
+H2_RESTORED=4
+FULL_TABLES=8 FIGS=1 SECTIONS=22
+ANON_AUTHORS i=2
+ANON_AFFIL i=3
+DEL_AFFIL2 i=4
+DEL_EMAIL i=5
+DEL_CORR i=6
+DEL_DATES i=7
+ANON_CONTRIB i=470
+ANON_ACK i=478
+H2_RESTORED=0
+FULL_PAGES=8
+GAP p1R y=185 gap=149 | another KT architecture. The study is organized around three
+GAP p6R y=488 gap=452 | SimpleKT ECE is a counter-pattern that stays essentially fla
+CHECKS={'t8': True, 'h2d': True, 'ece': True, 'far': True, 'blind': True, 'authors': True, 'fig': True}

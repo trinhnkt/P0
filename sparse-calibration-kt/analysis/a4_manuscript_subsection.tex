@@ -1,0 +1,24 @@
+\subsection{What Explains Calibration Degradation Across KC-Frequency Strata?}
+\label{sec:a4_confounding}
+
+The reviewer correctly noted that the calibration pattern observed across KC-frequency strata may reflect differences in difficulty, curriculum position, item structure, or concept tagging rather than training frequency itself.
+To address this, we conducted a KC-level confounding analysis, using exclusively training-split information to construct all explanatory variables, thereby preserving the no-leakage guarantee of the protocol.
+
+\subsubsection*{Covariates}
+For each KC, we extracted the following training-only characteristics: (i)~training frequency, $\log(1 + f_{\text{train}})$; (ii)~a difficulty proxy, $1 - \bar{c}_{\text{train}}$ (the complement of mean correctness on the training fold; this is an observational proxy and is \emph{not} a latent IRT difficulty estimate); (iii)~the number of distinct items associated with the KC in training ($N_{\text{items/KC}}$); (iv)~the number of distinct learners exposed in training ($N_{\text{learners}}$); and (v)~a curriculum-position proxy (median normalized sequence position across training interactions).
+
+\subsubsection*{Univariate Associations}
+Spearman correlations between $\log(1 + f_{\text{train}})$ and ECE at the KC level were: ASSISTments 2012 ($\bar{\rho} = -0.60$, negative, strong; 3/3 models significant); Junyi Academy ($\bar{\rho} = -0.43$, negative, moderate; 3/3 models significant); XES3G5M ($\bar{\rho} = -0.23$, negative, weak; 3/3 models significant). The negative sign indicates that lower training frequency is associated with higher ECE, but the strength of this association varies substantially across datasets.
+
+\subsubsection*{Multivariable Adjustment}
+We fit weighted linear regressions (weights proportional to test-event count) with ECE as outcome and all covariates entered simultaneously, fit separately per dataset using SimpleKT as the primary model of interest. A sensitivity analysis with unweighted OLS was also performed.
+After adjusting for difficulty, curriculum position, and item structure, $\log(1 + f_{\text{train}})$ remained independently associated with calibration degradation in: ASSISTments 2012, Junyi Academy, XES3G5M. 
+
+\subsubsection*{Matched Analysis Within Difficulty Strata}
+In the difficulty-stratified matched analysis, lower-frequency KCs had significantly higher ECE than higher-frequency KCs within the same difficulty tertile in 8 of 9 stratum comparisons across datasets.
+
+\subsubsection*{Summary}
+Taken together, these analyses indicate that the observed calibration gradient across KC-frequency strata is not fully explained by observable KC characteristics.
+However, the results are heterogeneous: frequency retains an independent association in some datasets but not all.
+We therefore describe the calibration vulnerability as \emph{dataset-dependent}, with training frequency being \emph{one contributing factor} rather than a universal explanation.
+Practitioners should apply the diagnostic protocol to their own datasets rather than assuming the pattern will generalise from any single dataset.

@@ -1,0 +1,18 @@
+prose 'Manuscript received Month date, 2026; revised Month dat'
+prose 'and 7,953,709 (XES3G5M)'
+prose 'flattened to one row per sequence position.'
+prose 'Table 1 instead lists 866 KCs and 7.95M interactions be'
+prose 'DKT 0.857 versus 0.817; T-KT 0.847 versus 0.755'
+prose '(0.1145, 0.1114, 0.1248) despite Reliable sparse occupa'
+prose 'On XES3G5M, T-KT ΔFAR is negative on all five runs, but'
+prose 'yet T-KT ECE does not degrade—while miss rates still ca'
+prose 'and 1,263 representing 830)'
+prose 'and −0.069 [−0.123, −0.015] on XES3G5M'
+prose 'Difficulty is independently associated on ASSISTments a'
+prose 'XES3G5M T-KT shows a positive Delta ECE at 50 rows (+0.'
+prose 'on XES3G5M, ΔFAR and ΔMiss can move in opposite directi'
+prose '[AUTHOR ACTION REQUIRED: confirm exact AI tool/model/ve'
+split IRT from GKT/CL4KT
+table cells updated=27
+fig1 489.8x352.5
+saved

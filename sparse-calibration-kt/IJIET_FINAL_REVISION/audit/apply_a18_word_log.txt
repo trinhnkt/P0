@@ -1,0 +1,23 @@
+A18
+patched i=10
+patched i=17
+patched i=425
+patched i=542
+count 'the sparse–dense gap stays positive on all five '=1
+count '(478 KC-fold observations representing 261 uniqu'=1
+count 'Learner exposure is independently associated on '=1
+count 'and we do not report a classroom intervention.'=1
+count 'A public repository will be released upon accept'=1
+ANON_AUTHORS i=2
+ANON_AFFIL i=3
+DEL_AFFIL2 i=4
+DEL_EMAIL i=5
+DEL_CORR i=6
+ANON_CONTRIB i=538
+ANON_ACK i=546
+FULL_PAGES=8 BLIND_PAGES=8
+FULL_LOCKS={'pages_8': True, 'ece_1136': True, 'ece_2280': True, 'far_196': True, 'far_268': True, 'fig1': True, 'ref21': True, 'ref22': True}
+BLIND_LOCKS={'pages_8': True, 'ece_1136': True, 'ece_2280': True, 'far_196': True, 'far_268': True, 'fig1': True, 'ref21': True, 'ref22': True}
+4of4=False
+XES_EXP=True
+EVAL_SYS=True

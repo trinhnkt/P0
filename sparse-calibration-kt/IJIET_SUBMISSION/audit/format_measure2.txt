@@ -1,0 +1,26 @@
+﻿HIT=True Fig. 1.
+HIT=True Copyright
+HIT=False Type sizes
+HIT=False Paper Title
+HIT=False radial basis
+HIT=False Appendix
+HIT=False Funding
+HIT=True ECE =
+HIT=True (1)
+HIT=False I. Introduction
+--- Fig/Copyright/Equation paras ---
+P54 style=figure caption align=1 size=8 bold=0 italic=0 | Fig. 1. Train-only KC-frequency strata. Dense concepts dominate interactions; sparse and cold-start KCs remain the diagnostic tail.
+P56 style=Text align=3 size=10 bold=0 italic=0 | Let y∈{0,1} be correctness and p∈[0,1] the predicted probability. With M=15 equal-width bins, ECE = Σ_m (n_m / N) |acc_m − conf_m|. We also 
+P295 style=Reference Head align=1 size=10 bold=0 italic=0 | Conflict of Interest
+P297 style=Reference Head align=1 size=10 bold=0 italic=0 | Author Contributions
+P299 style=Reference Head align=1 size=10 bold=0 italic=0 | Acknowledgment
+P301 style=Reference Head align=1 size=10 bold=0 italic=0 | References
+AUTHOR TEXT: Khanh-Trinh Nguyen1, Tuan Dao Minh1, Duong Nguyen Tien1, Chi Thanh Nguyen2, and Van-Hau Nguyen1,*
+SUPERSCRIPTS: 1,1,1,2,1
+Table1 rows=4 cols=5 preferredW=100 auto=True
+T1 header style=Figure Caption size=8 bold=-1 font=Times New Roman
+T1 width pt=283
+Title lines approx: font=Times New Roman size=20 bold=-1 linespacing=12.6 rule=5
+Abstract word1='Abstract' bold=-1 italic=-1
+Abstract word5='(' bold=-1 italic=-1
+LAST style=Figure Caption | 

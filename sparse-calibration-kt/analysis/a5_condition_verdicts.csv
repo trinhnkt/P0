@@ -1,0 +1,4 @@
+dataset,meaningful_sparse_mass,sufficient_test_support,frequency_difficulty_coupling,curriculum_position_coupling,item_support_imbalance,observed_calibration_gradient
+ASSISTments 2012,Present (18.9% of KCs),Partial (sparse $N=403$ L; very-sparse $N=19$ I),"Present, expected dir.\ ($\rho=-0.227$; sparse harder)",Present ($\rho=-0.308$),High (dense 205.0 vs sparse 1.0 items/KC),Monotonic increase (0.113$\to$0.158$\to$0.225)
+Junyi Academy,Absent (0.0% of KCs),Absent (0 sparse/very-sparse test events),"Present, expected dir.\ ($\rho=-0.416$; sparse harder)",Present ($\rho=-0.324$),Median 18.0 items/KC (no sparse contrast),Dense$\to$medium only ($\Delta$ECE$=+0.031$); sparse empty
+XES3G5M,Present (22.5% of KCs),"Present (sparse $N=2,002$ R; very-sparse $N=109$ L)","Weak, opposite-signed ($\rho=+0.087$)",Weak ($\rho=-0.125$),High (dense 9.0 vs sparse 1.0 items/KC),Flat dense$\to$sparse (0.115$\to$0.112$\to$0.124)

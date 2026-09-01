@@ -1,0 +1,11 @@
+﻿diff --git "a/REV_REVIEWER_CALIBRATION_v1\\_pre_a10\\sections\\03_protocol.tex" "b/REV_REVIEWER_CALIBRATION_v1\\sections\\03_protocol.tex"
+index b7f03a8..ebfa901 100644
+--- "a/REV_REVIEWER_CALIBRATION_v1\\_pre_a10\\sections\\03_protocol.tex"
++++ "b/REV_REVIEWER_CALIBRATION_v1\\sections\\03_protocol.tex"
+@@ -96,3 +96,6 @@ To ensure the mathematical validity and operational reproducibility of the diagn
+     \item \textbf{P3. Sample-size-aware Interpretation:} Bucket-level metrics must never be reported in isolation. They must be accompanied by the exact number of KCs and interaction events, contextualized by the Reliability Flags (R, L, I), to differentiate between true performance degradation and metric instability.
+     \item \textbf{P4. Leakage-audited Reporting:} No diagnostic result is considered complete unless accompanied by an explicit, verifiable check. This is operationalized as the L1--L8 reproducible audit workflow (an operational checklist with predictive-sanity validation), not as a new auditing theory.
+ \end{itemize}
++
++\subsection{Explanatory Analyses}
++After prediction-level exports are written, two additional analyses speak to RQ3 without changing stratum definitions or official training files. First, a KC-level confounding analysis (Section~\ref{sec:a4_confounding}) relates ECE to training-only covariates (frequency, a difficulty proxy, item support, learner exposure, and a curriculum-position proxy). These associations are observational. Second, a controlled sparsification experiment (Appendix~\ref{app:a9_sparsify}) downsamples training rows of originally dense KCs while holding the test set, labels, KC identifiers, and all other KCs fixed, then retrains DKT and SimpleKT. That experiment tests whether reducing training count for the \emph{same} KC is followed by a within-KC ECE increase; it does not identify a causal law for real-world sparsity.

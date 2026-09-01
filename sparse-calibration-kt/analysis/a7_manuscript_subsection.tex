@@ -1,0 +1,15 @@
+% Source snippet for Appendix~\ref{app:l8_fault}.
+% Integrated into REV_REVIEWER_CALIBRATION_v1/appendix/appendix_a_sensitivity.tex.
+
+\section{Controlled Fault Injection for Predictive-Sanity Validation}
+\label{app:l8_fault}
+The alignment case in Appendix~\ref{app:alignment} is one observed defect. A single catch does not by itself establish how L8 behaves under other alignment failures. This section reports a \emph{validation experiment}---not a pre-registered primary analysis---that injects controlled faults into \emph{in-memory copies} of the existing temporal prediction CSVs (DKT and SimpleKT, seed 42, three datasets). The original prediction files are never overwritten.
+
+\paragraph{Fault classes.}
+F1 and F2 pair $p_t$ with $y_{t+1}$ and $y_{t-1}$ within each learner. F3 shifts $p_{\mathrm{pred}}$ by one timestep within learner. F4 shuffles predictions within learner. F5 reassigns $p_{\mathrm{pred}}$ by row index after a different sort (a global position mismatch of the class that motivated the original L8 catch). F6 swaps a random $1\%$, $5\%$, $10\%$, $25\%$, or $50\%$ of rows.
+
+\paragraph{Detection signals and rule.}
+L8 records warm-cohort AUC, $\mathrm{corr}(p_{\mathrm{pred}},y)$, $\mathbb{E}[p_{\mathrm{pred}}\mid y=1]-\mathbb{E}[p_{\mathrm{pred}}\mid y=0]$, the fraction of missing or unmatched stable ids, and prediction--label identity consistency against the official temporal test split. A file is flagged if any of the following hold: warm AUC $< 0.55$; warm AUC more than $0.05$ below the clean IRT warm-cohort reference; non-positive correlation or conditional-mean gap; or an identity-mismatch rate more than $1$ percentage point above that same file's clean-pipeline identity-mismatch rate. Thresholds were not chosen after inspecting the injected-fault outcomes.
+
+\paragraph{Results.}
+Detection was $23/60$ injected faults ($38.3\%$), with $0/6$ false positives on the clean copies. L8 detected all F1, F2, and F5 injections and none of the F3 prediction shifts. F4 was $2/6$; F6 reached $3/6$ only at $50\%$ corruption. L8 is sensitive to some of the tested alignment-fault classes; it is not claimed to detect all bugs.

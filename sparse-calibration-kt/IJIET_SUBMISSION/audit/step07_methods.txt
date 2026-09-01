@@ -1,0 +1,86 @@
+[Heading 1] Materials and Methods
+[Heading 2] A. Datasets
+[Text] We use three de-identified public logs after a common interaction schema: ASSISTments 2012 [18], [5], Junyi Academy [19], and XES3G5M [20]. Table 1 reports post-processing counts: processed learners, processed KCs, processed interactions, and learner-based test events. Exact processed interaction totals are 2,657,490 (ASSISTments 2012), 16,215,567 (Junyi Academy), and 7,953,709 (XES3G5M). Preprocessing drops rows with missing learner, KC, or label identifiers, binarizes correctness, parses timestamps, and keeps learners with at least two interactions. Those filters—not the raw public dumps—are what Table 1 counts.
+[Text] Provenance. ASSISTments 2012 is the 2012–2013 public release with affect [18], documented for KT use in pyKT [5]; each retained row already carries one skill_id. Junyi Academy is the Kaggle Online Learning Activity Dataset [19] (not Junyi2015); the KC field is ucid. XES3G5M [20] is loaded from the authors’ kc_level split: train_valid_sequences.csv and test.csv are concatenated and flattened to one row per sequence position.
+[Text] XES3G5M counts. The original dataset paper reports 18,066 students, 7,652 questions, 865 KCs, and 5,549,635 question-level interactions [20]. Table 1 instead lists 866 KCs and 7.95M interactions because flattening kc_level sequences (i) expands multi-KC questions into one row per listed concept and (ii) retains sequence-padding tokens coded skill_id=−1 (with matching question_id=−1). Unique kc_id including that padding token is 866; excluding it is 865. Unique item_id including −1 is 7,653. Subsequent preprocessing dropped 0 rows. We do not retabulate Table 1 to the question-level official totals.
+[Table Title] Table 1. Post-processing cohort statistics (learner-based split). Displayed interaction totals match the processed counts 2.66M, 16.2M, and 7.95M.
+[Heading 1] Dataset
+[Heading 1] Learners
+[Heading 1] KCs
+[Heading 1] Interactions
+[Heading 1] Test events
+[Heading 1] ASSISTments 2012
+[Heading 1] 27,806
+[Heading 1] 265
+[Heading 1] 2.66M
+[Heading 1] 534,150
+[Heading 1] Junyi Academy
+[Heading 1] 71,014
+[Heading 1] 1,326
+[Heading 1] 16.2M
+[Heading 1] 3,269,022
+[Heading 1] XES3G5M
+[Heading 1] 18,066
+[Heading 1] 866
+[Heading 1] 7.95M
+[Heading 1] 1,589,145
+[Heading 2] B. Splits and seeds
+[Text] The learner-based split is primary. Users are shuffled with the fold seed; 20% of learners are held out as test, 10% as validation, and the remainder as training. Within a fold, train, validation, and test learners are disjoint. The temporal split is complementary: all interactions are sorted by timestamp; the earliest 70% are training, the next 10% validation, and the latest 20% test. Gate numbers below are not taken from the temporal split. KC-frequency buckets are constructed from the training file only.
+[Text] Deep models are trained in five runs at seeds 42, 2024, 2025, 2026, and 2027 (fold_0 through fold_4). Seeds 2025 and 2026 share one student partition (fold_2 = fold_3) on all three datasets. These are five training runs and four unique student partitions, not five independent folds. Tables that report mean±sd therefore summarize four unique partitions: the two initializations on the duplicated split are averaged first. The gate-robustness table still lists all five training seeds.
+[Heading 2] C. Model settings
+[Text] Main tables use local IRT, DKT, and SimpleKT implementations, not a pinned pyKT commit (training snapshot commit: NOT RECOVERED). The local SimpleKT class is a two-layer Transformer encoder and is not byte-identical to the official SimpleKT checkpoint [4]. Recovered hyperparameters follow; missing fields are marked NOT RECOVERED and are not imputed.
+[Table Title] Recovered training settings for the main baselines. NOT RECOVERED cells were not imputed. This listing is not a Results table.
+[Heading 1] Setting
+[Heading 1] IRT 1PL
+[Heading 1] DKT
+[Heading 1] SimpleKT
+[Heading 1] Implementation
+[Heading 1] local IRT
+[Heading 1] local DKT
+[Heading 1] local SimpleKT
+[Heading 1] Version/commit
+[Heading 1] NOT RECOVERED
+[Heading 1] NOT RECOVERED
+[Heading 1] NOT RECOVERED
+[Heading 1] Major hyperparameters
+[Heading 1] 1PL: sigmoid(θ−β); L2 0.01
+[Heading 1] LSTM embed 64, hidden 128
+[Heading 1] Transformer 2 layers, 4 heads, embed 64
+[Heading 1] Optimizer
+[Heading 1] SGD
+[Heading 1] Adam
+[Heading 1] Adam
+[Heading 1] Learning rate
+[Heading 1] 0.01
+[Heading 1] 1e−3
+[Heading 1] 1e−3
+[Heading 1] Early stopping
+[Heading 1] none (10 epochs)
+[Heading 1] none (50 epochs)
+[Heading 1] none (50 epochs)
+[Heading 1] Batch size
+[Heading 1] 512
+[Heading 1] 64
+[Heading 1] 64
+[Heading 1] Max. sequence length
+[Heading 1] n/a
+[Heading 1] 200
+[Heading 1] 200
+[Heading 1] Selection metric
+[Heading 1] last epoch
+[Heading 1] validation AUC
+[Heading 1] validation AUC
+[Text] On ASSISTments fold 0 only we also score a train-only GKT graph [8] (pyKT GKT; Adam, learning rate 1e−3, batch size 16, maximum length 100, hidden and embedding size 32, dropout 0.5, 20 epochs, patience 4, selection by validation AUC) and a CL4KT protocol adapter [9] (contrastive views on training sequences; not an official CL4KT checkpoint; Adam, learning rate 1e−3, batch size 64, maximum length 100, hidden size 64, 4 heads, 2 layers, dropout 0.2, 20 epochs, patience 6, selection by validation AUC). IRT under learner-based splits has no ability parameter for unseen students, so its AUC is 0.50 by construction; we report it as a base-rate reference, not as a ranking competitor.
+[Heading 2] D. Train-only frequency strata
+[Text] For each fold, KC frequency f_train is counted on the training file only. Buckets: strict cold-start (f=0), very sparse (0<f<20), sparse (20≤f<100), medium (100≤f<500), dense (f≥500). Dense KCs dominate event volume while a non-empty sparse-like tail exists on ASSISTments and XES3G5M.
+[Text] 
+[figure caption] Fig. 1. Train-only KC-frequency strata. Dense concepts dominate interactions; sparse and cold-start KCs remain the diagnostic tail.
+[Heading 2] E. Reliability flags
+[Text] Occupancy flags follow test-event count N: Reliable (R) N≥1000; Limited (L) 100≤N<1000; Insufficient (I) N<100. We call R, L, and I descriptive sample-support flags. They are not inferential guarantees, confidence intervals, or hypothesis tests. Success claims require Limited or Reliable occupancy. Insufficient cells are descriptive only. Very-sparse ASSISTments cells are Insufficient and descriptive only.
+[Heading 2] F. Calibration
+[Text] Let y∈{0,1} be next-response correctness and p∈[0,1] the predicted probability. With M=15 equal-width bins, ECE = Σ_m (n_m / N) |acc_m − conf_m|. The Brier score is (1/N) Σ_i (p_i − y_i)². We use the binned decomposition Brier = UNC − RES + REL [14], with UNC = ȳ(1−ȳ), REL = (1/N) Σ_m n_m (conf_m − acc_m)², and RES = (1/N) Σ_m n_m (acc_m − ȳ)². Because probabilities are binned, the three components are an empirical approximation and need not sum exactly to the directly computed Brier score. Lower ECE is better calibration; it is not a substitute for AUC.
+[Heading 2] G. Difficulty coupling
+[Text] For each KC c we define a training-only difficulty proxy difficulty(c) = 1 − mean_train_correctness(c). The mean is taken on the training file only. This is an observational proxy for how often c is answered incorrectly in training; it is not a latent IRT difficulty parameter. The reported Spearman association is ρ(log(1+f_train), difficulty), computed on training-fold KC summaries. The association is descriptive and is not a causal effect of frequency on difficulty or on calibration.
+[Heading 2] H. Simulated decision gate
+[Text] For a locked global threshold τ, the system advances (skips remediation) if p≥τ and triggers remediation otherwise. Sparse events never receive their own tuned τ. The display threshold is τ=0.7; the grid {0.5, 0.6, 0.7, 0.8} is recorded in the artifact and is not a search over sparse error.
+[Text] Let A={p≥τ}. The false-advance rate (FAR) is P(y=0 | A): among advances, how often the next response was incorrect. y is observed next-response correctness, not latent mastery. Miss is P(A | y=0): among incorrect answers, how often the system still skipped help. Result tables label FAR as false mastery (FM); the definition is the same. If the model were calibrated on the advance set, FAR would match E[1−p | A]. We report ΔFM = FM_sparse − FM_dense. Positive ΔFM means sparse advances are dirtier than dense advances. This is a simulated decision error, not an instructional RCT.

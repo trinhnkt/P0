@@ -1,0 +1,17 @@
+\begin{table}[htbp]
+\caption{Five-run robustness of the simulated gate at $\tau=0.7$ on ASSISTments 2012 (seeds 42, 2024, 2025, 2026, 2027). Seeds 2025 and 2026 share one learner partition; unique splits are four. $\Delta\mathrm{FM}=\mathrm{FM}_{\mathrm{sparse}}-\mathrm{FM}_{\mathrm{dense}}$. Sparse occupancy is Limited on every seed (mean $N=413$ on the prediction export; Table~\ref{tab:calibration_learner} reports four-partition mean $N=415$). GKT and the CL4KT adapter remain a single-seed check (Table~\ref{tab:c_tau07}).}
+\label{tab:c_fivefold}
+\centering
+\footnotesize
+\begin{tabular}{lcccccc}
+\toprule
+Model & Mean $\Delta$FM & SD & Seeds $\Delta$FM$>0$ & Mean $\Delta$Miss & SD & Mean sparse $N$ \\
+\midrule
+SimpleKT & 0.047 & 0.033 & 5/5 seeds & 0.012 & 0.054 & 413 \\
+DKT & 0.033 & 0.048 & 3/5 seeds & $-0.063$ & 0.030 & 413 \\
+\bottomrule
+\end{tabular}
+
+\vspace{1ex}
+{\scriptsize \textbf{Note:} On seed~42, a KC-clustered percentile bootstrap ($B=2000$) for SimpleKT $\Delta$FM is $[0.006, 0.138]$; the event-level interval is $[0.015, 0.130]$. Both exclude 0. DKT $\Delta$FM is not stable across seeds and is not treated as a five-run finding. Seeds 2025 and 2026 share a split; both SimpleKT $\Delta$FM values on that split are positive.\par}
+\end{table}

@@ -1,0 +1,21 @@
+[Heading 1] Materials and Methods
+[Heading 2] Datasets, Splits, and Models
+[Text] We use three de-identified public logs after a common schema: ASSISTments 2012 [18], [5], Junyi Academy [19], and XES3G5M [20]. Table 1 summarizes processed cohort size. Learner-based splits (unseen students) are the primary setting. Temporal splits are a complementary stress test and are not the source of the gate numbers below.
+[Table Title] Table 1. Processed cohort statistics (learner-based split)
+[Text] Baselines: one-parameter IRT [6] as a classical reference, DKT [2], and SimpleKT [4]. On ASSISTments fold 0 only we also score a train-only GKT graph [8] and a CL4KT protocol adapter [9] (contrastive views on training sequences; not an official CL4KT checkpoint). IRT under learner-based splits has no ability parameter for unseen students, so its AUC is 0.50 by construction; we report it as a base-rate reference, not as a ranking competitor.
+[Text] Deep models are trained at seeds 42, 2024, 2025, 2026, and 2027. The processed partitions for seeds 2025 and 2026 are identical (fold_2 = fold_3) on all three datasets. Tables that report mean±sd therefore summarize four unique student partitions: the two initializations on the duplicated split are averaged first. The gate-robustness table still lists all five training seeds without dropping one after the fact.
+[Heading 2] Train-Only Frequency Strata
+[Text] For each fold, KC frequency f_train is counted on the training file only. Buckets: strict cold-start (f=0), very sparse (0<f<20), sparse (20≤f<100), medium (100≤f<500), dense (f≥500). Dense KCs dominate event volume while a non-empty sparse-like tail exists on ASSISTments and XES3G5M. Occupancy flags follow test-event count N: Reliable (N≥1000), Limited (100≤N<1000), Insufficient (N<100). Success claims require Limited or Reliable occupancy. Very-sparse ASSISTments cells are Insufficient and descriptive only.
+[figure caption] Fig. 1. Train-only KC-frequency strata. Dense concepts dominate interactions; sparse and cold-start KCs remain the diagnostic tail.
+[Heading 2] Calibration
+[Text] Let y∈{0,1} be correctness and p∈[0,1] the predicted probability. With M=15 equal-width bins, ECE = Σ_m (n_m / N) |acc_m − conf_m|. We also report the Brier score and its reliability / resolution / uncertainty decomposition [14]. Lower ECE is better calibration; it is not a substitute for AUC.
+[Heading 2] Simulated Mastery Gate
+[Text] For a locked global threshold τ, the system advances (skips remediation) if p≥τ and triggers remediation otherwise. Sparse events never receive their own tuned τ. The display threshold is τ=0.7; the grid {0.5, 0.6, 0.7, 0.8} is recorded in the artifact and is not a search over sparse error.
+[Text] Let A={p≥τ}. False mastery (FM) is P(y=0 | A): among advances, how often was the answer wrong. Miss is P(A | y=0): among wrong answers, how often the system still skipped help. If the model were calibrated on the advance set, FM would match E[1−p | A]. We report ΔFM = FM_sparse − FM_dense. Positive ΔFM means sparse advances are dirtier than dense advances. This is a simulated decision error, not an instructional RCT.
+STOP [Heading 1] Result and Discussion
+
+=== TABLE 1 ===
+Dataset | Learners | KCs | Interactions | Test events
+ASSISTments 2012 | 27,806 | 265 | 2.66M | 534,150
+Junyi Academy | 71,014 | 1,326 | 16.2M | 3,269,022
+XES3G5M | 18,066 | 866 | 7.95M | 1,589,145

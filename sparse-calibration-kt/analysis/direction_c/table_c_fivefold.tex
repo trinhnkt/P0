@@ -1,0 +1,14 @@
+\begin{table}[htbp]
+\caption{Five-fold robustness of the simulated gate at $\tau=0.7$ on ASSISTments 2012 (learner-based seeds 42, 2024, 2025, 2026, 2027). $\Delta\mathrm{FM}=\mathrm{FM}_{\mathrm{sparse}}-\mathrm{FM}_{\mathrm{dense}}$. GKT and the CL4KT adapter remain a single-seed instantiation (Table~\ref{tab:c_tau07}).}
+\label{tab:c_fivefold}
+\centering
+\footnotesize
+\begin{tabular}{lcccccc}
+\toprule
+Model & Mean $\Delta$FM & SD & Folds $\Delta$FM$>0$ & Mean $\Delta$Miss & SD & Mean sparse $N$ \\
+\midrule
+SimpleKT & 0.047 & 0.033 & 5/5 & 0.012 & 0.054 & 413 \\
+DKT & 0.033 & 0.048 & 3/5 & -0.063 & 0.030 & 413 \\
+\bottomrule
+\end{tabular}
+\end{table}

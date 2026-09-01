@@ -1,0 +1,9 @@
+Dataset,Stratum,Best_AUC,Best_ACC,Best_NLL,Best_RMSE,Best_ECE,Best_REL,Best_Brier,Ranking_Disagreement
+ASSISTments 2012,Dense,DKT,DKT,DKT,DKT,IRT,IRT,DKT,YES
+ASSISTments 2012,Medium,DKT,SimpleKT,IRT,SimpleKT,SimpleKT,SimpleKT,SimpleKT,YES
+ASSISTments 2012,Sparse,DKT,DKT,IRT,IRT,IRT,IRT,IRT,YES
+Junyi Academy,Dense,DKT,DKT,DKT,DKT,IRT,IRT,DKT,YES
+Junyi Academy,Medium,SimpleKT,SimpleKT,SimpleKT,SimpleKT,IRT,IRT,SimpleKT,YES
+XES3G5M,Dense,DKT,DKT,DKT,DKT,DKT,DKT,DKT,NO
+XES3G5M,Medium,DKT,DKT,DKT,DKT,DKT,DKT,DKT,NO
+XES3G5M,Sparse,DKT,DKT,IRT,DKT,IRT,IRT,DKT,YES

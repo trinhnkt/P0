@@ -1,0 +1,73 @@
+sections=14 tables=8 shapes=1
+SEC 1 start=2 cols=1 colw=501.75 space=9999999.00 width=595.35 ml=46.80 mr=46.80
+SEC 2 start=0 cols=2 colw=243.65 space=14.40 width=595.35 ml=46.80 mr=46.80
+SEC 3 start=2 cols=1 colw=501.75 space=9999999.00 width=595.35 ml=46.80 mr=46.80
+SEC 4 start=0 cols=2 colw=243.65 space=14.40 width=595.35 ml=46.80 mr=46.80
+SEC 5 start=0 cols=1 colw=501.75 space=9999999.00 width=595.35 ml=46.80 mr=46.80
+SEC 6 start=0 cols=2 colw=243.65 space=14.40 width=595.35 ml=46.80 mr=46.80
+SEC 7 start=0 cols=1 colw=501.75 space=9999999.00 width=595.35 ml=46.80 mr=46.80
+SEC 8 start=0 cols=2 colw=243.65 space=14.40 width=595.35 ml=46.80 mr=46.80
+SEC 9 start=0 cols=1 colw=501.75 space=9999999.00 width=595.35 ml=46.80 mr=46.80
+SEC 10 start=0 cols=2 colw=243.65 space=14.40 width=595.35 ml=46.80 mr=46.80
+SEC 11 start=0 cols=1 colw=501.75 space=9999999.00 width=595.35 ml=46.80 mr=46.80
+SEC 12 start=0 cols=2 colw=243.65 space=14.40 width=595.35 ml=46.80 mr=46.80
+SEC 13 start=0 cols=1 colw=501.75 space=9999999.00 width=595.35 ml=46.80 mr=46.80
+SEC 14 start=0 cols=2 colw=243.65 space=14.40 width=595.35 ml=46.80 mr=46.80
+TBL 1 rows=4 cols=5 prefW=100.0 auto=True capstyle=Table Title capsize=8.0 allcaps=0
+     CAP Table 1. Post-processing cohort statistics (learner-based split). Learner, knowledge-component (KC), interaction, and test-event counts are post-processing tota
+     H1 style=Table Grid size=7.0 w0=50.9
+     widths=['50.9', '50.8', '50.9', '50.9', '50.9'] sum=254.5
+TBL 2 rows=10 cols=4 prefW=100.0 auto=True capstyle=Table Title capsize=8.0 allcaps=0
+     CAP Recovered training settings for the main baselines. NOT RECOVERED cells were not imputed. This listing is not a Results table.
+     H1 style=Table Grid size=7.0 w0=63.7
+     widths=['63.7', '63.6', '63.6', '63.6'] sum=254.4
+TBL 3 rows=10 cols=4 prefW=100.0 auto=True capstyle=Table Title capsize=8.0 allcaps=0
+     CAP Table 2. Overall learner-based area under the ROC curve (AUC) and accuracy (ACC) (mean±sd over four unique partitions).
+     H1 style=Table Grid size=7.0 w0=63.7
+     widths=['63.7', '63.6', '63.6', '63.6'] sum=254.4
+TBL 4 rows=9 cols=5 prefW=100.0 auto=True capstyle=Table Title capsize=8.0 allcaps=0
+     CAP Table 3. SimpleKT event-level expected calibration error (ECE) by train-only frequency stratum. N is the mean test-event count across four unique learner partit
+     H1 style=Table Grid size=7.0 w0=102.4
+     widths=['102.4', '102.6', '102.6', '102.5', '102.5'] sum=512.6
+TBL 5 rows=9 cols=9 prefW=100.0 auto=True capstyle=Table Title capsize=8.0 allcaps=0
+     CAP Table 4. Simulated gate at τ=0.7, ASSISTments 2012 fold 0. False-advance rate (FAR)=P(y=0 | p≥τ) among N_advance advances; Miss among N_incorrect incorrect resp
+     H1 style=Table Grid size=7.0 w0=57.0
+     widths=['57.0', '56.9', '56.9', '56.9', '56.9', '57.0', '57.0', '57.0', '57.0'] sum=512.6
+TBL 6 rows=3 cols=7 prefW=100.0 auto=True capstyle=Table Title capsize=8.0 allcaps=0
+     CAP Table 5. Gate robustness at τ=0.7 on ASSISTments 2012. Five training runs (seeds 42, 2024, 2025, 2026, 2027) across four unique learner partitions (2025 and 202
+     H1 style=Table Grid size=7.0 w0=73.2
+     widths=['73.2', '73.2', '73.2', '73.2', '73.2', '73.2', '73.2'] sum=512.5
+TBL 7 rows=5 cols=4 prefW=100.0 auto=True capstyle=Table Title capsize=8.0 allcaps=0
+     CAP Table 6. Empirical observations, on these three datasets, of when a sparse-calibration contrast is estimable. These are not universal laws. Sparse mass: share o
+     H1 style=Table Grid size=7.0 w0=63.7
+     widths=['63.7', '63.6', '63.6', '63.6'] sum=254.4
+TBL 8 rows=6 cols=6 prefW=100.0 auto=True capstyle=Normal capsize=10.0 allcaps=0
+     CAP Table 7. Within-KC controlled sparsification (seed 42; 30 originally dense KCs per dataset). Delta ECE = reduced−full; positive means worse calibration after ke
+     H1 style=Table Grid size=7.0 w0=85.4
+     widths=['85.4', '85.4', '85.4', '85.4', '85.4', '85.5'] sum=512.6
+PIC 1 w=470.2 h=337.5 type=3
+--- FRONT ---
+P1 style=Text size=20.0 bold=0 italic=0 allcaps=0 | Sparse-Concept Calibration of Knowledge Tracing Models for Threshold-Based Educational Decisions
+P2 style=Style Author + (Asian) MS Mincho size=11.0 bold=0 italic=0 allcaps=0 | Khanh-Trinh Nguyen1, Tuan Dao Minh1, Duong Nguyen Tien1, Chi Thanh Nguyen2, and Van-Hau Nguyen1,*
+P3 style=Affiliation size=9.0 bold=0 italic=0 allcaps=0 | 1 Hung Yen University of Technology and Education, Hung Yen, Vietnam
+P4 style=Affiliation size=9.0 bold=0 italic=0 allcaps=0 | 2 Academy of Military Science and Technology, Ha Noi, Vietnam
+P5 style=Affiliation size=9.0 bold=0 italic=0 allcaps=0 | Email: trinhnk@utehy.edu.vn (K.-T.N.); tuanymc@utehy.edu.vn (T.D.M.); duongnt@utehy.edu.vn (D.N.T.); thanhnc@ioit.ai.vn (C.T.N.); haunv@uteh
+P6 style=Affiliation size=9.0 bold=0 italic=0 allcaps=0 | *Corresponding author
+P7 style=Text size=9.0 bold=0 italic=0 allcaps=0 | 
+P8 style=Authors size=11.0 bold=0 italic=0 allcaps=0 | 
+P9 style=Abstract size=9.0 bold=-1 italic=0 allcaps=0 | Abstract—Knowledge Tracing (KT) systems that skip, remediate, or advance practice typically consume a predicted probability rather than an a
+P10 style=Normal size=10.0 bold=0 italic=0 allcaps=0 | 
+P11 style=IndexTerms size=9.0 bold=9999999 italic=9999999 allcaps=0 | Keywords—knowledge tracing, calibration, sparse concepts, learning analytics, educational decision support, mastery threshold
+P12 style=Heading 1 size=10.0 bold=0 italic=0 allcaps=0 | Introduction
+P13 style=Text size=10.0 bold=0 italic=0 allcaps=0 | Adaptive practice platforms and intelligent tutoring systems use Knowledge Tracing (KT) to estimate a learner’s command of a skill and to de
+P14 style=Text size=10.0 bold=0 italic=0 allcaps=0 | KT evaluations typically report population AUC and accuracy [4], [5]. Those metrics rank models, but they can conceal miscalibration on low-
+--- H1 ---
+H1 i=12 size=10.0 bold=0 allcaps=0 | Introduction
+H1 i=18 size=10.0 bold=0 allcaps=0 | Literature Review
+H1 i=29 size=10.0 bold=0 allcaps=0 | Materials and Methods
+H1 i=131 size=10.0 bold=0 allcaps=0 | IV. RESULT
+H1 i=451 size=10.0 bold=0 allcaps=0 | V. DISCUSSION
+H1 i=460 size=10.0 bold=0 allcaps=0 | VI. CONCLUSION
+STYLE Table Title size=8.0 allcaps=0 bold=0
+STYLE equation exists size=10.0
+crop C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_SUBMISSION\audit\visual_qa_pages\fig1_from_pdf.png 1030x750

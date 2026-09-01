@@ -1,0 +1,10 @@
+gkt_train_only A1 occupancy: sparse N=444 flag=L strict_n=None -> no
+gkt_train_only A2 discrimination: sparse AUC 0.7829 vs DKT 0.7259 delta=+0.0570 -> still higher AUC
+gkt_train_only A3 calibration: sparse ECE 0.0981 vs DKT 0.2343 (AUC>=DKT and ECE worse, L/R) -> no
+gkt_full_log A1 occupancy: sparse N=444 flag=L strict_n=None -> no
+gkt_full_log A2 discrimination: sparse AUC 0.8004 vs DKT 0.7259 delta=+0.0745 -> still higher AUC
+gkt_full_log A3 calibration: sparse ECE 0.0706 vs DKT 0.2343 (AUC>=DKT and ECE worse, L/R) -> no
+cl4kt A1 occupancy: sparse N=444 flag=L strict_n=None -> no
+cl4kt A2 discrimination: sparse AUC 0.7612 vs DKT 0.7259 delta=+0.0352 -> still higher AUC
+cl4kt A3 calibration: sparse ECE 0.1188 vs DKT 0.2343 (AUC>=DKT and ECE worse, L/R) -> no
+Direction A punchline this run: NULL / not yet

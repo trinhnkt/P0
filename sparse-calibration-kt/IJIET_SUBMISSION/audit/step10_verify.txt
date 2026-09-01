@@ -1,0 +1,18 @@
+INSERTED_BEFORE_PARA=406 TABLES=8
+T7_SECTION=11 COLS=1
+results=True
+heading=True
+between=True
+within=True
+t7=True
+dkt_neg=True
+sk_zero=True
+not_universal=True
+not_causal=True
+auc_untouched=True
+ece_untouched=True
+no_old_figcap=True
+h1_results=True
+h1_conclusion=True
+PAGES=8 WORDS=5158 TABLES=8 PICS=1 SECTIONS=14
+PDF_EXISTS=True SIZE=492679

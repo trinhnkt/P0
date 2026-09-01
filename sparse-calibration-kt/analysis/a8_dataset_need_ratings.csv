@@ -1,0 +1,19 @@
+dataset,condition,need_level,evidence
+ASSISTments 2012,C1,High,18.9\% of KCs below sparse threshold
+ASSISTments 2012,C2,Moderate,sparse $N=403$ (L); very-sparse $N=19$ (I)
+ASSISTments 2012,C3,High,monotonic ECE $0.113\to0.158\to0.225$; $\bar\rho=-0.60$
+ASSISTments 2012,C4,Use-dependent,not measured in logs; High if probabilities are thresholded
+ASSISTments 2012,C5,Moderate,"27 strict KCs / 1,407 events; 85 temporal sparse-like KCs"
+ASSISTments 2012,OVERALL,High,"C1+C3 high, C2 Limited but estimable; sparse ECE claims are informative"
+Junyi Academy,C1,Low,0.0\% of KCs with $f_{\mathrm{train}}<100$
+Junyi Academy,C2,Low,0 sparse/very-sparse test events
+Junyi Academy,C3,Moderate,dense$\to$medium $\Delta$ECE$=+0.031$; sparse empty; $\bar\rho=-0.43$
+Junyi Academy,C4,Use-dependent,not measured in logs; High if probabilities are thresholded
+Junyi Academy,C5,Moderate,"4 strict KCs / 2,545 events; 10 temporal sparse-like KCs"
+Junyi Academy,OVERALL,Low (learner-based); Moderate (temporal),empty sparse buckets under learner-based split; temporal split still exposes a small tail
+XES3G5M,C1,High,22.5\% of KCs below sparse threshold
+XES3G5M,C2,High,"sparse $N=2{,}002$ (R); very-sparse $N=109$ (L)"
+XES3G5M,C3,Moderate,SimpleKT flat $0.115\to0.124$; model-heterogeneous; $\bar\rho=-0.23$
+XES3G5M,C4,Use-dependent,not measured in logs; High if probabilities are thresholded
+XES3G5M,C5,High,"117 strict KCs / 233,214 events (R); 273 temporal sparse-like KCs"
+XES3G5M,OVERALL,"High (reporting), Moderate (SimpleKT gradient)","mass and support require the check; the check shows a flat/inverted pattern, not ASSISTments-like degradation"

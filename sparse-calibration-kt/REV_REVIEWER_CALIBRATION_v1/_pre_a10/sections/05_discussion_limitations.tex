@@ -1,0 +1,130 @@
+\section{Discussion and Limitations}
+\label{sec:discussion}
+In this section, we discuss the broader implications of our diagnostic protocol for educational technology research and practice. We then define the scope boundaries of our work and address the primary limitations of the current study.
+
+\subsection{Implications}
+The protocol encourages KT evaluation to move beyond aggregate AUC in three concrete ways:
+\begin{itemize}
+    \item \textbf{For researchers:} Per-stratum reporting with reliability flags (Section 3.5) makes claims about sparse and cold-start KCs auditable. A reported gain on low-frequency concepts is interpretable only together with its stratum sample size, and the protocol makes that context mandatory rather than optional. Crucially, our results do not show a broadly different model choice across strata; for instance, DKT often remains the most discriminative model across frequency buckets. However, we did observe diagnostic disagreements where the best model by AUC is not always the best by Expected Calibration Error (e.g., SimpleKT outperforming DKT in calibration on the ASSISTments medium stratum). We emphasize that the value of the protocol lies in this granular diagnosis of predictive and probabilistic reliability, not in overturning aggregate model leaderboards.
+    \item \textbf{For developers of educational systems:} The calibration diagnostics speak directly to deployment practice. When predicted probabilities drive remediation, practice, or advancement decisions through fixed thresholds, a model whose ECE roughly doubles from dense to sparse strata (a Limited-reliability stratum)---as observed for SimpleKT on ASSISTments 2012 under our experimental conditions---may distort threshold-based intervention decisions, especially in low-frequency strata where instructional support is most sensitive to probability reliability. Threshold-based intervention logic should therefore be validated per stratum, not on population-level calibration alone.
+    \item \textbf{For the reviewing and benchmarking community:} We do not claim that L1--L7 are a new auditing methodology; they are an operational checklist of standard safeguards with named KT artifacts (Table~\ref{tab:leakage}). The empirical increment is L8. That channel caught a prediction--label misalignment that aggregate metrics would have misreported as a scientific finding about temporal cold-start difficulty (Section~\ref{sec:threats}; Appendix~\ref{app:alignment}). A controlled fault-injection validation (Appendix~\ref{app:l8_fault}) subsequently measured sensitivity on six injected fault classes: L8 detected identity-shifted labels and global row-index mismatch, but not adjacent-timestep prediction shifts. We do not claim it detects every bug. An operational checklist with predictive-sanity validation is inexpensive relative to the cost of a corrupted conclusion entering the literature.
+\end{itemize}
+
+\subsection{Calibration, Rather Than AUC, Is the Primary Sparse-Concept Vulnerability}
+Our results indicate that the most pronounced vulnerability on sparse concepts is not necessarily a loss of discriminative power (AUC), but a degradation in probabilistic calibration. In ASSISTments 2012, for example, SimpleKT's Expected Calibration Error (ECE) reliably worsens as concept frequency decreases (from $0.1131$ on dense to $0.2254$ on sparse strata, subject to sample-size reliability flags). However, this vulnerability is not universal across datasets; XES3G5M exhibits counter-patterns where calibration does not strictly worsen on sparser strata. This underscores the necessity of the diagnostic protocol: one cannot assume calibration transfers safely to sparse concepts, nor can one assume the degradation is universal.
+
+\subsection{What Explains Calibration Degradation Across KC-Frequency Strata?}
+\label{sec:a4_confounding}
+
+The reviewer correctly noted that the calibration pattern observed across KC-frequency strata may reflect differences in difficulty, curriculum position, item structure, or concept tagging rather than training frequency itself.
+To address this directly, we conducted a KC-level confounding analysis using exclusively training-split information to construct all explanatory variables, thereby preserving the no-leakage guarantee of the protocol.
+
+\subsubsection*{Covariates}
+For each KC, we extracted the following training-only characteristics: (i)~training frequency, $\log(1 + f_{\text{train}})$; (ii)~a difficulty proxy, $1 - \bar{c}_{\text{train}}$ (the complement of mean correctness on the training fold; this is an observational proxy and is \emph{not} a latent IRT difficulty estimate); (iii)~the number of distinct items associated with the KC in training ($N_{\text{items/KC}}$); (iv)~the number of distinct learners exposed in training ($N_{\text{learners}}$); and (v)~a curriculum-position proxy (median normalized sequence position across training interactions).
+
+\subsubsection*{Univariate Associations}
+Spearman correlations between $\log(1 + f_{\text{train}})$ and ECE at the KC level were consistently negative across all three datasets and all three models (all $p < 0.001$): ASSISTments 2012 ($\bar{\rho} = -0.60$, strong); Junyi Academy ($\bar{\rho} = -0.43$, moderate); XES3G5M ($\bar{\rho} = -0.23$, weak). The negative sign indicates that lower training frequency is associated with higher ECE. Difficulty (as proxied by $1 - \bar{c}_{\text{train}}$) also showed a consistently positive and significant correlation with ECE across datasets ($\bar{\rho} \in [0.19, 0.48]$), while curriculum position showed weaker and less consistent associations.
+
+\subsubsection*{Multivariable Adjustment}
+We fit weighted linear regressions (weights proportional to test-event count) with ECE as outcome and all five covariates entered simultaneously, estimated separately per dataset with SimpleKT as the primary model of interest. A sensitivity analysis with unweighted OLS confirmed robustness. After adjusting for difficulty, curriculum position, item structure, and number of learners, $\log(1 + f_{\text{train}})$ remained independently associated with calibration degradation in all three datasets (ASSISTments 2012: $\hat{\beta} = -0.079$, $p < 0.001$; Junyi Academy: $\hat{\beta} = -0.010$, $p < 0.001$; XES3G5M: $\hat{\beta} = -0.117$, $p < 0.001$, weighted). Difficulty was also independently associated ($p < 0.001$ in ASSISTments 2012 and Junyi Academy), confirming that both frequency and difficulty are contributing factors. In XES3G5M, the unweighted analysis attenuated the frequency coefficient ($p = 0.18$), suggesting that the frequency association in that dataset is partly driven by high-event KCs, consistent with the heterogeneous stratum patterns we report in Table~5.
+
+\subsubsection*{Matched Analysis Within Difficulty Strata}
+In the difficulty-stratified matched analysis, lower-frequency KCs had significantly higher ECE than higher-frequency KCs within the same difficulty tertile in 8 of 9 stratum comparisons across datasets (ASSISTments 2012: all 3 tertiles significant, $\Delta\text{ECE} \in [0.021, 0.131]$; Junyi Academy: all 3 tertiles significant, $\Delta\text{ECE} \in [0.003, 0.022]$; XES3G5M: 2 of 3 tertiles significant). This matched analysis controls for difficulty at the KC level and provides evidence that the frequency-ECE association is not merely an artefact of easier KCs having higher training frequency.
+
+\subsubsection*{Summary}
+Taken together, these analyses indicate that the calibration gradient observed across KC-frequency strata is not fully explained by observable KC characteristics such as difficulty, curriculum position, or item support. Training frequency ($\log f_{\text{train}}$) retains an independent association with calibration degradation after adjustment in all three datasets, though the magnitude varies (strongest in ASSISTments 2012 and XES3G5M, weaker in Junyi Academy). We therefore describe the observational calibration vulnerability as \emph{dataset-dependent and multi-factorial}: training frequency is a consistently significant contributing factor in the adjusted associations, but it is not the sole explanation, and difficulty plays an additional independent role. A controlled downsampling of training rows for the \emph{same} originally dense KCs (Appendix~\ref{app:a9_sparsify}) shows that a within-KC ECE increase is not universal: it is absent for DKT and SimpleKT on ASSISTments 2012, large for SimpleKT on Junyi Academy, and modest for SimpleKT on XES3G5M. The observational sparse-stratum pattern should not be read as a pure, dataset-wide frequency dose--response. Practitioners should apply the diagnostic protocol to their own datasets rather than assuming the pattern will generalise from any single dataset. The next subsection replaces the residual ``dataset-dependent'' clause with measurable structural conditions.
+
+\subsection{Why Sparse-Concept Calibration Vulnerability Is Dataset-Dependent}
+\label{sec:a5_dataset_dependent}
+
+Section~\ref{sec:a4_confounding} showed that $\log(1+f_{\mathrm{train}})$ remains independently associated with ECE after covariate adjustment, but that the strength of this association---and the visibility of a stratum-level ECE gradient---varies across datasets.
+The remaining question is not whether ``datasets differ,'' but whether those differences correspond to measurable structural conditions.
+Table~\ref{tab:a5_dataset_conditions} reports six such conditions, all computed from training-fold frequencies, training-only KC covariates, and the event-level SimpleKT ECE already reported in Table~\ref{tab:calibration_learner}.
+Each cell is a FINDING (a structural or metric observation).
+Explanations that would require KC ontologies, curriculum graphs, or item-text features---hierarchical placement, ceiling effects, item-feature richness, and tagging granularity---are labelled HYPOTHESIS and are not treated as established.
+
+\subsubsection*{ASSISTments 2012: why a calibration gradient is observable}
+Under the learner-based split, 18.9\% of ASSISTments KCs fall in sparse, very-sparse, or strict buckets, and the sparse stratum accumulates $N=403$ test events (Limited flag).
+Event-level SimpleKT ECE increases monotonically from $0.113$ (dense) to $0.158$ (medium) to $0.225$ (sparse).
+Two training-only couplings have the direction that would be expected if rarer concepts were also harder and later: frequency--difficulty $\rho=-0.227$ ($p<0.001$) and frequency--curriculum-position $\rho=-0.308$ ($p<0.001$).
+The frequency--ECE association is the strongest of the three datasets ($\bar{\rho}=-0.60$).
+These are jointly the conditions under which a sparse-KC calibration gradient is \emph{estimable and visible} in this dataset.
+
+They do not, however, identify a single cause.
+Item-support imbalance (median 205 items/KC in dense versus 1 in sparse) is partly mechanical: a KC with $f_{\mathrm{train}}<100$ cannot host hundreds of training items.
+The non-mechanical item fact is that ASSISTments KCs are item-rich overall (median $44.5$ items/KC; frequency--item $\rho=0.92$).
+\textbf{HYPOTHESIS:} the relatively small KC inventory ($n=265$) and right-skewed frequencies may reflect a coarse expert-tagged skill ontology in which low-frequency labels are genuinely rare or advanced skills.
+Confirming that claim would require external KC metadata, which we do not use.
+
+\subsubsection*{Junyi Academy: why learner-based sparse strata are inactive}
+Junyi has $1{,}326$ KCs, but $97.5\%$ are dense and $0.0\%$ are sparse or very sparse under the pre-registered thresholds $\{20,100,500\}$.
+Median training frequency is $7{,}074$---about seven times the ASSISTments median ($988$).
+Consequently the learner-based sparse and very-sparse ECE cells are empty, not because calibration is known to be stable, but because the protocol's buckets receive no mass.
+This is a FINDING about volume and thresholds, not about the absence of hard-to-calibrate concepts.
+The same protocol populates sparse-like groups under the temporal split ($10$ KCs with $f_{\mathrm{train}}<100$, and a SimpleKT sparse ECE of $0.1624$ versus dense $0.0889$ in Table~\ref{tab:calibration_temporal}).
+
+Where Junyi \emph{does} have contrast (dense versus medium), the direction matches ASSISTments: medium ECE is higher ($\Delta\mathrm{ECE}=+0.031$), frequency--difficulty coupling is present and in the expected direction ($\rho=-0.416$), and the frequency--ECE association is moderate ($\bar{\rho}=-0.43$).
+Junyi item support is unusually uniform (median $18$ items/KC, IQR $5$; frequency--item $\rho=0.026$, $p=0.34$), so item-count heterogeneity is not a plausible driver of the medium-stratum ECE rise.
+\textbf{HYPOTHESIS:} raising the dense threshold toward the Junyi frequency scale (for example $f_{\mathrm{train}}\ge 2000$) might reopen a sparse-like contrast under learner-based splits.
+That is a threshold-sensitivity question, not a result of this study.
+
+\subsubsection*{XES3G5M: why the pattern is not a second ASSISTments}
+XES3G5M rules out the two simplest explanations for a missing gradient.
+It has \emph{more} sparse-like mass than ASSISTments ($22.5\%$ of KCs) and \emph{better} sparse test support (sparse $N=2{,}002$, Reliable; very-sparse $N=109$, Limited).
+A flat or inverted pattern here is therefore not an artefact of empty buckets or of $N<100$ instability.
+
+What \emph{is} measurable and different:
+(i)~SimpleKT event-level ECE is essentially flat from dense to sparse ($0.115\to 0.112\to 0.124$), while IRT is inverted ($0.154\to 0.107$ dense-to-sparse) and DKT increases---so ``the XES3G5M gradient'' is model-heterogeneous, not a single dataset law;
+(ii)~the frequency--ECE association is the weakest of the three datasets ($\bar{\rho}=-0.23$);
+(iii)~frequency--difficulty coupling is weak and opposite-signed ($\rho=+0.087$, $p=0.012$), not a strong ``sparse KCs are easier'' effect;
+(iv)~KCs are easier overall (difficulty-proxy median $0.192$ versus $0.338$ on both other datasets);
+(v)~item support is thin (median $3$ items/KC) and interaction mass is concentrated (top $10\%$ of KCs hold $67.9\%$ of training interactions; the single most frequent KC holds $19.4\%$).
+
+\textbf{HYPOTHESIS:} a hierarchical KC tree, multi-skill expansion, a ceiling on advanced nodes, or item-side features could produce this combination.
+None of those mechanisms is identified by the covariates we can construct from the processed interaction schema, so we do not promote them to findings.
+
+\subsubsection*{Conditional conclusion}
+Across the three datasets, an \emph{observable} SimpleKT sparse-KC calibration gradient coincides with three measurable conditions: (1)~non-trivial sparse mass under the split and thresholds actually used; (2)~enough sparse test events to support at least a Limited-flag ECE; and (3)~a frequency--difficulty coupling that is not inverted.
+ASSISTments 2012 meets all three and shows a monotonic ECE rise.
+Junyi Academy fails (1) and (2) on the learner-based split, so the protocol correctly withholds a sparse ECE rather than imputing stability.
+XES3G5M meets (1) and (2) but not (3), and the SimpleKT gradient is flat; model-specific counter-patterns (inverted IRT, increasing DKT) further forbid a universal sparsity-to-miscalibration law.
+These are diagnostic pre-conditions that future studies can check with the same protocol.
+They are not a claim that training frequency causes miscalibration, nor that hierarchical curricula, ceiling effects, or tagging granularity have been demonstrated.
+
+\subsection{Controlled Reduction of Training Evidence}
+\label{sec:a9_sparsify}
+A4's adjusted associations still leave open the reviewer's composition concern: sparse KCs may differ in identity, tagging, and item structure, not only in $f_{\mathrm{train}}$.
+Appendix~\ref{app:a9_sparsify} therefore reduces training rows for 30 originally dense KCs per dataset---selected by a pre-registered rule that does not use ECE---while holding the test set, labels, KC identifiers, and all other KCs' training rows fixed. DKT and SimpleKT were retrained on ASSISTments 2012, Junyi Academy, and XES3G5M (learner-based fold 0, seed 42).
+
+The primary within-KC result is dataset- and model-dependent (Table~\ref{tab:a9_sparsification}). On ASSISTments 2012, mean $\Delta$ECE was negative for DKT at 500 and 100 kept rows (bootstrap CIs exclude 0) and indistinguishable from 0 for SimpleKT at 100 and 50 rows. On Junyi Academy, DKT showed the same pattern, but SimpleKT $\Delta$ECE was large and positive at every level ($0.101$ to $0.135$; CIs exclude 0; 93--100\% of selected KCs worse). On XES3G5M, SimpleKT $\Delta$ECE was smaller but positive at 100 and 50 rows; DKT increased only at 50 rows. Selected-KC discrimination fell in every cell (e.g.\ ASSISTments DKT AUC $0.690\to 0.627$; SimpleKT $0.679\to 0.607$ from full to 50 rows). Event-pooled SimpleKT ECE can move differently from the within-KC mean when a few high-volume KCs dominate; the pre-registered primary outcome remains the paired within-KC $\Delta$ECE/$\Delta$REL.
+
+We do not conclude that real-world sparsity always causes miscalibration. Reducing training rows for the same originally dense KCs can coincide with a within-KC ECE increase, but only in some dataset--model cells. The ASSISTments observational dense-to-sparse SimpleKT gradient ($0.113\to 0.225$ in Table~\ref{tab:calibration_learner}) was not recreated by sparsifying those ASSISTments KCs, so that particular observational pattern is still likely explained partly by KC composition rather than by training count alone.
+
+\subsection{When Are Sparse-Concept Diagnostics Necessary?}
+\label{sec:a8_when_needed}
+
+RQ3 answers when a sparse-stratum calibration gradient is \emph{estimable}. That is not the same question as whether every KT dataset needs the same intensity of sparse-concept analysis. We separate two layers.
+
+\paragraph{Universally useful reporting hygiene.}
+Train-only frequency occupancy, empty-bucket notes, and reliability flags (R/L/I) should be reported whenever KC-frequency strata are defined. An empty sparse stratum is an informative outcome: it tells the reader that sparse-ECE claims are not supported under the chosen split and thresholds. Junyi Academy under the learner-based split is the example in this paper. Hygiene of this kind does not require a calibration gradient, and it does not license the conclusion that probabilities are well calibrated on rare concepts.
+
+\paragraph{Empirically high-priority sparse diagnostics.}
+Claims about sparse-KC ECE, Brier reliability, or cold-start AUC become high-priority when the data can actually support them. Table~\ref{tab:a8_need_framework} states that condition as five checks (C1--C5). C1--C3 and C5 reuse the protocol's pre-registered sparse threshold ($f_{\mathrm{train}}<100$) and reliability flags; they are not new cutoffs fitted to these three datasets. C4 is qualitative intended use: it is High when predicted probabilities gate remediation, practice, or mastery, and Low when only rankings are consumed. We do not estimate C4 from the public logs.
+
+Table~\ref{tab:a8_dataset_need} applies the framework. ASSISTments 2012 is high priority for sparse-concept calibration claims: 18.9\% of KCs fall below the sparse threshold, the sparse stratum has Limited support ($N=403$), and SimpleKT ECE rises monotonically. Junyi Academy is low priority for learner-based sparse-stratum ECE (the buckets are empty) and only moderate under the temporal split, where 10 sparse-like KCs appear and sparse ECE is $0.1624$ versus dense $0.0889$. XES3G5M shows why need is not the same as vulnerability: sparse mass ($22.5\%$) and Reliable sparse support ($N=2{,}002$), plus 233{,}214 strict cold-start test events, make the diagnostics necessary as reporting; the same diagnostics show a flat SimpleKT ECE and an inverted IRT pattern, not an ASSISTments-like degradation. If probabilities were used as educational thresholds (C4), that reporting priority would rise on all three datasets alike.
+
+The conditional statement is therefore: sparse diagnostics are most informative when a dataset contains a meaningful low-frequency tail, those strata have sufficient evaluation support, and calibration reliability varies systematically with training evidence or deployment involves concept cold-start. They are not equally informative on every KT log, and occupancy hygiene remains useful even when the empirical priority is low.
+
+\subsection{Scope Boundaries}
+This paper is intentionally limited to evaluation diagnostics. It does not introduce a new KT model, a self-supervised learning (SSL) objective, a graph neural network (GNN), a graph augmentation strategy, a learning path recommender (LPR), or a distillation method. Those directions require separate methodological papers and should be evaluated using the protocol introduced here. A complementary line of work addresses leakage control in concept-graph construction for graph-augmented KT; such leakage-control protocols and the diagnostics proposed here are complementary and can be combined in future structure-aware KT studies.
+
+\subsection{Threats to Validity and Limitations}
+\label{sec:threats}
+We analyze the threats to the validity of our diagnostic protocol across standard dimensions:
+\begin{itemize}
+    \item \textbf{Internal Validity:} Risks to internal validity include potential preprocessing bugs, split leakage, sequence--label alignment errors, and implementation-specific training differences across the baselines. We mitigate these risks through a standardized interaction data schema, rigid validation-fold early stopping, and the L1--L8 reproducible audit workflow. Additionally, we note that our classical baseline (IRT) under learner-based splits acts as a base-rate reference due to the lack of ability estimates for unseen learners; developing a classical baseline that effectively exploits item difficulty for unseen learners would strengthen future comparative work.
+    \item \textbf{Temporal Alignment Validity:} Sequence modeling in KT is notoriously prone to ``silent bugs'' such as off-by-one prediction--label misalignments. Our protocol actively defends against this via the warm-cohort predictive sanity audit (L8). During validation, this automated check flagged an alignment discrepancy in the temporal evaluation pipeline that otherwise would have corrupted the evaluation. The subsequent fault-injection study (Appendix~\ref{app:l8_fault}) shows that L8 is sensitive to identity-shifted labels and row-index mismatch, but not to adjacent-timestep prediction shifts that remain autocorrelated; L8 is not claimed to catch every alignment bug.
+    \item \textbf{Construct Validity:} Construct validity refers to whether our metrics accurately capture latent learner mastery and concept calibration. In KT, KC definitions depend heavily on dataset annotation quality, Q-matrix provenance, and how multi-skill items are processed. For example, expert-tagged KCs in ASSISTments 2012 and Junyi Academy may introduce varying granularities, which directly impact strata boundaries.
+    \item \textbf{External Validity:} Section~\ref{sec:a5_dataset_dependent} shows that the three datasets differ for measurable structural reasons (sparse mass, test-event support, and frequency--difficulty coupling), not merely as an unexplained residual. Section~\ref{sec:a8_when_needed} turns those conditions into a use framework: sparse-concept diagnostic \emph{claims} are high-priority only when the tail, the evaluation support, and either a calibration association or cold-start exposure are present. Occupancy reporting remains universally useful. Those conditions are themselves dataset- and pipeline-specific, so models still cannot be assumed to share a sparsity-to-miscalibration law.
+    \item \textbf{Statistical Conclusion Validity:} very sparse buckets can contain few KCs and few evaluation events (as few as 3 to 10 events per seed in our instantiation), which inevitably produces metric instability and high variance; the reliability flags of Section 3.5 exist precisely to keep such estimates from being over-interpreted. Two further limitations belong under this heading. First, the temporal-split diagnostics are computed from a single corrected evaluation run at a fixed chronological cutoff (Section 4.1); they therefore characterize a fixed-cutoff stress test and do not estimate variance across temporal cut-points or neural initializations. Extending the temporal diagnostics to multiple seeds and multiple cutoffs is a direct avenue for future work. Second, because the Brier decomposition is computed from binned probabilities (Section 3.4), its components are empirical approximations and need not sum exactly to the directly computed Brier score; decomposition values should be read as diagnostic indicators rather than exact accounting identities.
+\end{itemize}

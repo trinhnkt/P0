@@ -1,0 +1,19 @@
+CSV=True
+APPLIED=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+pykt_36=True
+no_pykt_37=True
+xes_37=True
+park=True
+bhat_doi=True
+yan_arxiv=True
+no_yan_ecml=True
+assist_url=True
+junyi_kaggle=True
+guo_vol=True
+piech_vol=True
+corbett_doi=True
+end_matter=True
+auc_untouched=True
+ece_untouched=True
+PAGES=8 WORDS=5674 TABLES=8 PICS=1
+PDF_EXISTS=True SIZE=451226

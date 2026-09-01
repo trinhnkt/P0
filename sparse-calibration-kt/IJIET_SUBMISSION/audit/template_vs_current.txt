@@ -1,0 +1,123 @@
+===== CURRENT FULL =====
+pages=8 words=5651 sections=22 tables=8 figs=1
+  sec1 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=1 gutter=0 start=0
+    header='' footer=''
+  sec2 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=2 gutter=14.399999618530273 start=0
+    header='' footer=''
+  sec3 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=1 gutter=0 start=0
+    header='' footer=''
+  sec4 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=1 gutter=0 start=0
+    header='' footer=''
+  sec5 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=2 gutter=14.399999618530273 start=0
+    header='' footer=''
+  sec6 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=2 gutter=14.399999618530273 start=0
+    header='' footer=''
+  sec7 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=1 gutter=0 start=0
+    header='' footer=''
+  sec8 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=1 gutter=0 start=0
+    header='' footer=''
+--- front ---
+P1 Text sz=20.0 b=0 i=0 align=1 | Sparse-Concept Calibration of Knowledge Tracing Models for Threshold-Based Educational Decisions
+P2 Style Author + (Asian) MS Mincho sz=11.0 b=0 i=0 align=1 | Khanh-Trinh Nguyen1, Tuan Dao Minh1, Duong Nguyen Tien1, Chi Thanh Nguyen2, and Van-Hau Nguyen1,*
+P3 Affiliation sz=9.0 b=0 i=0 align=1 | 1 Hung Yen University of Technology and Education, Hung Yen, Vietnam
+P4 Affiliation sz=9.0 b=0 i=0 align=1 | 2 Academy of Military Science and Technology, Ha Noi, Vietnam
+P5 Affiliation sz=9.0 b=0 i=0 align=1 | Email: trinhnk@utehy.edu.vn (K.-T.N.); tuanymc@utehy.edu.vn (T.D.M.); duongnt@utehy.edu.vn (D.N.T.);
+P6 Affiliation sz=9.0 b=0 i=0 align=1 | *Corresponding author
+P7 Affiliation sz=9.0 b=0 i=0 align=1 | Manuscript received Month date, 2026; revised Month date, 2026; accepted Month date, 2026
+P8 Text sz=9.0 b=0 i=0 align=3 | 
+P9 Authors sz=11.0 b=0 i=0 align=1 | 
+P10 Abstract sz=9.0 b=9999999 i=-1 align=3 | Abstract—Knowledge Tracing (KT) systems that skip, remediate, or advance practice typically consume 
+P11 IndexTerms sz=9.0 b=9999999 i=-1 align=3 | Keywords—knowledge tracing, calibration, sparse concepts, learning analytics, educational decision s
+P12 Heading 1 sz=10.0 b=0 i=0 align=1 | I. INTRODUCTION
+P13 Text sz=10.0 b=0 i=0 align=3 | Adaptive practice platforms and intelligent tutoring systems use Knowledge Tracing (KT) to estimate 
+--- H1 ---
+('', 10.0, 0, 0, 'I. INTRODUCTION')
+('', 10.0, 0, 0, 'II. LITERATURE REVIEW')
+('', 10.0, 0, 0, 'III. MATERIALS AND METHODS')
+('', 10.0, 0, 0, 'IV. RESULT')
+('', 10.0, 0, 0, 'V. DISCUSSION')
+('', 10.0, 0, 0, 'VI. CONCLUSION')
+--- H2 sample ---
+('', -1, 'A. Knowledge Tracing and benchmark models')
+('', -1, 'B. Graph and self-supervised KT')
+('', -1, 'C. Sparse-data and cold-start problems')
+('', -1, 'D. Calibration and educational decision support')
+('', -1, 'A. Datasets')
+('', -1, 'B. Splits and seeds')
+('', -1, 'C. Model settings')
+('', -1, 'D. Train-only frequency strata')
+('', -1, '\x0c')
+('', -1, '\x0c')
+('', -1, 'E. Reliability flags')
+('', -1, 'F. Calibration')
+--- RH ---
+Conflict of Interest
+Author Contributions
+Ethical Statement
+Data and Code Availability
+Generative AI Statement
+Acknowledgment
+References
+--- CAP ---
+('Table Title', 8.0, 1, 'Table 1. Post-processing cohort statistics (learner-based split). Learner, knowl')
+('Table Title', 8.0, 1, 'Table 2. Recovered training settings for the main baselines. NOT RECOVERED cells')
+('figure caption', 8.0, 1, 'Fig. 1. Distribution of KCs across train-only frequency strata under learner-bas')
+('Table Title', 8.0, 1, 'Table 3. Overall learner-based area under the ROC curve (AUC) and accuracy (ACC)')
+('Table Title', 8.0, 1, 'Table 4. SimpleKT event-level expected calibration error (ECE) by train-only fre')
+('Table Title', 8.0, 1, 'Table 5. Simulated gate at τ=0.7, ASSISTments 2012 fold 0 (seed 42). FAR, Excess')
+('Table Title', 8.0, 1, 'Table 6. Gate robustness at τ=0.7 on ASSISTments 2012. Five training runs (seeds')
+('Table Title', 8.0, 1, 'Table 7. Empirical observations, on these three datasets, of when a sparse-calib')
+('Table Title', 8.0, 1, 'Table 8. Within-KC controlled sparsification (seed 42; 30 originally dense KCs p')
+--- EQ ---
+	ECE = Σ_m (n_m / N) |acc_m − conf_m|	(1)
+
+===== TEMPLATE =====
+pages=3 words=1871 sections=4 tables=2 figs=6
+  sec1 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=1 gutter=0 start=2
+    header='' footer=''
+  sec2 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=2 gutter=14.399999618530273 start=0
+    header='' footer=''
+  sec3 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=1 gutter=0 start=0
+    header='' footer=''
+  sec4 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=2 gutter=14.399999618530273 start=0
+    header='' footer=''
+--- front ---
+P1 Text sz=20.0 b=0 i=0 align=1 | Paper Title
+P2 Style Author + (Asian) MS Mincho sz=11.0 b=0 i=0 align=1 | Firstname A. Lastname 1,*, Firstname B. Lastname 2, and Firstname C. Lastname 2
+P3 Affiliation sz=9.0 b=0 i=0 align=1 | 1 Department, Faculty, University, City, Country
+P4 Affiliation sz=9.0 b=0 i=0 align=1 | 2 Department, Faculty, University, City, Country
+P5 Affiliation sz=9.0 b=0 i=0 align=1 | Email: first.author@hostname1.org (F.A.L.); second.author@hostname2.org (F.B.L.); third.author@hostn
+P6 Affiliation sz=9.0 b=0 i=0 align=1 | *Corresponding author
+P7 Affiliation sz=9.0 b=0 i=0 align=1 | Manuscript received January 27, 2026; revised November 22, 2026; accepted Month date, 2026
+P8 Text sz=9.0 b=0 i=0 align=3 | 
+P9 Authors sz=11.0 b=0 i=0 align=1 | 
+P10 Abstract sz=9.0 b=-1 i=9999999 align=3 | Abstract—A good abstract is a stand-alone summary of the paper, and should summarize the key compone
+P11 Normal sz=10.0 b=0 i=0 align=0 | 
+P12 IndexTerms sz=9.0 b=-1 i=9999999 align=3 | Keywords—first term, second term, third term, fourth term, fifth term, sixth term, seventh term 
+P13 Heading 1 sz=10.0 b=0 i=0 align=1 | Introduction 
+--- H1 ---
+('I.', 10.0, 0, 0, 'Introduction ')
+('II.', 10.0, 0, 0, 'Literature Review')
+('III.', 10.0, 0, 0, 'Materials and Methods')
+('IV.', 10.0, 0, 0, 'Result and Discussion')
+('V.', 10.0, 0, 0, 'Conclusion')
+--- H2 sample ---
+('A.', -1, 'Figures and Tables (Subsection Level 2)')
+('B.', -1, 'References')
+('C.', -1, 'Footnotes')
+('D.', -1, 'Abbreviations and Acronyms')
+('E.', -1, 'Equations')
+('F.', -1, 'Algorithm')
+('G.', -1, 'Other Recommendations')
+--- RH ---
+Appendix 
+Conflict of Interest
+Author Contributions
+Funding
+Acknowledgment
+References
+--- CAP ---
+('figure caption', 8.0, 1, 'Fig. 1. Note how the caption is centered in the column.')
+('figure caption', 8.0, 1, 'Table 1. Type sizes for final papers')
+--- EQ ---
+                                           (1)

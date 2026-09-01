@@ -1,0 +1,56 @@
+\subsection{Why Sparse-Concept Calibration Vulnerability Is Dataset-Dependent}
+\label{sec:a5_dataset_dependent}
+
+Section~\ref{sec:a4_confounding} showed that $\log(1+f_{\mathrm{train}})$ remains independently associated with ECE after covariate adjustment, but that the strength of this association---and the visibility of a stratum-level ECE gradient---varies across datasets.
+The remaining question is not whether ``datasets differ,'' but whether those differences correspond to measurable structural conditions.
+Table~\ref{tab:a5_dataset_conditions} reports six such conditions, all computed from training-fold frequencies, training-only KC covariates, and the event-level SimpleKT ECE already reported in Table~\ref{tab:calibration_learner}.
+Each cell is a FINDING (a structural or metric observation).
+Explanations that would require KC ontologies, curriculum graphs, or item-text features---hierarchical placement, ceiling effects, item-feature richness, and tagging granularity---are labelled HYPOTHESIS and are not treated as established.
+
+\subsubsection*{ASSISTments 2012: why a calibration gradient is observable}
+Under the learner-based split, 18.9\% of ASSISTments KCs fall in sparse, very-sparse, or strict buckets, and the sparse stratum accumulates $N=403$ test events (Limited flag).
+Event-level SimpleKT ECE increases monotonically from $0.113$ (dense) to $0.158$ (medium) to $0.225$ (sparse).
+Two training-only couplings have the direction that would be expected if rarer concepts were also harder and later: frequency--difficulty $\rho=-0.227$ ($p<0.001$) and frequency--curriculum-position $\rho=-0.308$ ($p<0.001$).
+The frequency--ECE association is the strongest of the three datasets ($\bar{\rho}=-0.60$).
+These are jointly the conditions under which a sparse-KC calibration gradient is \emph{estimable and visible} in this dataset.
+
+They do not, however, identify a single cause.
+Item-support imbalance (median 205 items/KC in dense versus 1 in sparse) is partly mechanical: a KC with $f_{\mathrm{train}}<100$ cannot host hundreds of training items.
+The non-mechanical item fact is that ASSISTments KCs are item-rich overall (median $44.5$ items/KC; frequency--item $\rho=0.92$).
+\textbf{HYPOTHESIS:} the relatively small KC inventory ($n=265$) and right-skewed frequencies may reflect a coarse expert-tagged skill ontology in which low-frequency labels are genuinely rare or advanced skills.
+Confirming that claim would require external KC metadata, which we do not use.
+
+\subsubsection*{Junyi Academy: why learner-based sparse strata are inactive}
+Junyi has $1{,}326$ KCs, but $97.5\%$ are dense and $0.0\%$ are sparse or very sparse under the pre-registered thresholds $\{20,100,500\}$.
+Median training frequency is $7{,}074$---about seven times the ASSISTments median ($988$).
+Consequently the learner-based sparse and very-sparse ECE cells are empty, not because calibration is known to be stable, but because the protocol's buckets receive no mass.
+This is a FINDING about volume and thresholds, not about the absence of hard-to-calibrate concepts.
+The same protocol populates sparse-like groups under the temporal split ($10$ KCs with $f_{\mathrm{train}}<100$, and a SimpleKT sparse ECE of $0.1624$ versus dense $0.0889$ in Table~\ref{tab:calibration_temporal}).
+
+Where Junyi \emph{does} have contrast (dense versus medium), the direction matches ASSISTments: medium ECE is higher ($\Delta\mathrm{ECE}=+0.031$), frequency--difficulty coupling is present and in the expected direction ($\rho=-0.416$), and the frequency--ECE association is moderate ($\bar{\rho}=-0.43$).
+Junyi item support is unusually uniform (median $18$ items/KC, IQR $5$; frequency--item $\rho=0.026$, $p=0.34$), so item-count heterogeneity is not a plausible driver of the medium-stratum ECE rise.
+\textbf{HYPOTHESIS:} raising the dense threshold toward the Junyi frequency scale (for example $f_{\mathrm{train}}\ge 2000$) might reopen a sparse-like contrast under learner-based splits.
+That is a threshold-sensitivity question, not a result of this study.
+
+\subsubsection*{XES3G5M: why the pattern is not a second ASSISTments}
+XES3G5M rules out the two simplest explanations for a missing gradient.
+It has \emph{more} sparse-like mass than ASSISTments ($22.5\%$ of KCs) and \emph{better} sparse test support (sparse $N=2{,}002$, Reliable; very-sparse $N=109$, Limited).
+A flat or inverted pattern here is therefore not an artefact of empty buckets or of $N<100$ instability.
+
+What \emph{is} measurable and different:
+(i)~SimpleKT event-level ECE is essentially flat from dense to sparse ($0.115\to 0.112\to 0.124$), while IRT is inverted ($0.154\to 0.107$ dense-to-sparse) and DKT increases---so ``the XES3G5M gradient'' is model-heterogeneous, not a single dataset law;
+(ii)~the frequency--ECE association is the weakest of the three datasets ($\bar{\rho}=-0.23$);
+(iii)~frequency--difficulty coupling is weak and opposite-signed ($\rho=+0.087$, $p=0.012$), not a strong ``sparse KCs are easier'' effect;
+(iv)~KCs are easier overall (difficulty-proxy median $0.192$ versus $0.338$ on both other datasets);
+(v)~item support is thin (median $3$ items/KC) and interaction mass is concentrated (top $10\%$ of KCs hold $67.9\%$ of training interactions; the single most frequent KC holds $19.4\%$).
+
+\textbf{HYPOTHESIS:} a hierarchical KC tree, multi-skill expansion, a ceiling on advanced nodes, or item-side features could produce this combination.
+None of those mechanisms is identified by the covariates we can construct from the processed interaction schema, so we do not promote them to findings.
+
+\subsubsection*{Conditional conclusion}
+Across the three datasets, an \emph{observable} SimpleKT sparse-KC calibration gradient coincides with three measurable conditions: (1)~non-trivial sparse mass under the split and thresholds actually used; (2)~enough sparse test events to support at least a Limited-flag ECE; and (3)~a frequency--difficulty coupling that is not inverted.
+ASSISTments 2012 meets all three and shows a monotonic ECE rise.
+Junyi Academy fails (1) and (2) on the learner-based split, so the protocol correctly withholds a sparse ECE rather than imputing stability.
+XES3G5M meets (1) and (2) but not (3), and the SimpleKT gradient is flat; model-specific counter-patterns (inverted IRT, increasing DKT) further forbid a universal sparsity-to-miscalibration law.
+These are diagnostic pre-conditions that future studies can check with the same protocol.
+They are not a claim that training frequency causes miscalibration, nor that hierarchical curricula, ceiling effects, or tagging granularity have been demonstrated.

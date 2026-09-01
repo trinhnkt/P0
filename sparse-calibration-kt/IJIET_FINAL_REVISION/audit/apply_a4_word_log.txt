@@ -1,0 +1,4 @@
+OK '(n=478, 2,645, and 1,263 KCs) is a between-KC association: it compares'
+OK 'Standardized log(1+f_train) coefficients are −0.079 [−0.097, −0.061] o'
+OK 'Learner exposure is independently associated only on ASSISTments (+0.0'
+saved

@@ -1,0 +1,23 @@
+% A6 classification table (identical to REV Table 1).
+% Channel / Standard safeguard / KT-specific operationalization / Empirical demonstration
+\begin{table*}[htbp]
+\caption{L1--L8 as a reproducible audit workflow, not a new auditing theory. L1--L7 operationalize standard evaluation safeguards for KT artifacts. L8 is the only channel with an empirical defect-detection case study in this paper (Appendix~F).}
+\label{tab:a6_audit_classification}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{1.15cm}>{\raggedright\arraybackslash}p{3.15cm}X>{\raggedright\arraybackslash}p{3.55cm}}
+\toprule
+\textbf{Ch.} & \textbf{Standard safeguard} & \textbf{KT-specific operationalization} & \textbf{Empirical demonstration} \\
+\midrule
+L1 & Disjoint units; no future-to-past leakage & User-overlap and timestamp-order checks on interaction sequences (\path{split_audit.csv}) & Preventative. PASS on the reported splits. \\
+L2 & Fit transforms on training data only & No global normalization of the full log before splitting (\path{preprocess.py}) & Preventative. PASS. \\
+L3 & No test-informed feature maps & Static dataset KC / Q-matrix mapping (\path{kc_map.json}) & Preventative. PASS. \\
+L4 & Do not define evaluation subgroups on the test set & Train-only $f_{\mathrm{train}}$ buckets, including an explicit strict cold-start group (\path{kc_strata.csv}) & Preventative. PASS. KT-specific encoding of a standard rule. \\
+L5 & No test-set metric tuning & ECE / Brier computed post-hoc from exported prediction files (\path{baseline_runner.py}) & Preventative. PASS. \\
+L6 & Validation-only model selection & Early stopping and selection on the validation fold only (\path{baseline_runner.py}) & Preventative. PASS. \\
+L7 & Group labels independent of test outcomes & Strict / k5 / k10 / warm defined from training-fold frequency only (\path{split_constructor.py}) & Preventative. PASS. KT-specific encoding of a standard rule. \\
+L8 & (Not a generic split-hygiene item) & Warm-cohort temporal AUC versus a static IRT reference; near-random deep-KT AUC on well-evidenced KCs is a pipeline warning (\path{temporal_audit.py}) & Empirical case. Flagged a prediction--label misalignment; warm-cohort deep-KT AUC recovered after correction (Appendix~F). \\
+\bottomrule
+\end{tabularx}
+\end{table*}

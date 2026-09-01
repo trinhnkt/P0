@@ -1,0 +1,267 @@
+﻿===== OFFICIAL TEMPLATE =====
+Path: C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_SUBMISSION\audit\IJIET_template.doc
+Pages: 3  Words: 1871
+Sections: 4  Tables: 2  InlineShapes: 6  Shapes: 0
+Section 1: paper=7 w=595.35 h=841.95 orient=0 start=2
+  margins T/B/L/R/Gutter: 50.45 / 50.45 / 46.8 / 46.8 / 0  headerDist=21.55 footerDist=21.55
+  cols=1 spacing=9999999 even=-1 widths=501.75
+  HEADER: []
+  FOOTER: []
+  DifferentFirstPage=0 OddEven=0
+Section 2: paper=7 w=595.35 h=841.95 orient=0 start=0
+  margins T/B/L/R/Gutter: 50.45 / 50.45 / 46.8 / 46.8 / 0  headerDist=21.55 footerDist=21.55
+  cols=2 spacing=14.4 even=-1 widths=243.65,243.65
+  HEADER: []
+  FOOTER: []
+  DifferentFirstPage=0 OddEven=0
+Section 3: paper=7 w=595.35 h=841.95 orient=0 start=0
+  margins T/B/L/R/Gutter: 50.45 / 50.45 / 46.8 / 46.8 / 0  headerDist=21.55 footerDist=21.55
+  cols=1 spacing=9999999 even=-1 widths=501.75
+  HEADER: []
+  FOOTER: []
+  DifferentFirstPage=0 OddEven=0
+Section 4: paper=7 w=595.35 h=841.95 orient=0 start=0
+  margins T/B/L/R/Gutter: 50.45 / 50.45 / 46.8 / 46.8 / 0  headerDist=21.55 footerDist=21.55
+  cols=2 spacing=14.4 even=-1 widths=243.65,243.65
+  HEADER: []
+  FOOTER: []
+  DifferentFirstPage=0 OddEven=0
+--- key paragraphs ---
+P1 style=Text list='' align=1 font=Times New Roman size=20 bold=0 italic=0 color=-16777216
+   spaceB=0 spaceA=20 line=12.6 lineRule=5 firstInd=0 leftInd=0 afterAuto=0
+   TEXT: Paper Title
+P2 style=Style Author + (Asian) MS Mincho list='' align=1 font=Times New Roman size=11 bold=0 italic=0 color=-16777216
+   spaceB=0 spaceA=6 line=12 lineRule=0 firstInd=0 leftInd=0 afterAuto=0
+   TEXT: Firstname A. Lastname 1,*, Firstname B. Lastname 2, and Firstname C. Lastname 2
+P3 style=Affiliation list='' align=1 font=Times New Roman size=9 bold=0 italic=0 color=-16777216
+   spaceB=0 spaceA=0 line=12 lineRule=0 firstInd=0 leftInd=0 afterAuto=0
+   TEXT: 1 Department, Faculty, University, City, Country
+P4 style=Affiliation list='' align=1 font=Times New Roman size=9 bold=0 italic=0 color=-16777216
+   spaceB=0 spaceA=0 line=12 lineRule=0 firstInd=0 leftInd=0 afterAuto=0
+   TEXT: 2 Department, Faculty, University, City, Country
+P5 style=Affiliation list='' align=1 font=Times New Roman size=9 bold=0 italic=0 color=-16777216
+   spaceB=0 spaceA=0 line=12 lineRule=0 firstInd=0 leftInd=0 afterAuto=0
+   TEXT: Email: first.author@hostname1.org (F.A.L.); second.author@hostname2.org (F.B.L.); third.au
+P6 style=Affiliation list='' align=1 font=Times New Roman size=9 bold=0 italic=0 color=-16777216
+   spaceB=0 spaceA=0 line=12 lineRule=0 firstInd=0 leftInd=0 afterAuto=0
+   TEXT: *Corresponding author
+P7 style=Affiliation list='' align=1 font=Times New Roman size=9 bold=0 italic=0 color=-16777216
+   spaceB=0 spaceA=0 line=12 lineRule=0 firstInd=0 leftInd=0 afterAuto=0
+   TEXT: Manuscript received January 27, 2026; revised November 22, 2026; accepted Month date, 2026
+P10 style=Abstract list='' align=3 font=Times New Roman size=9 bold=-1 italic=9999999 color=-16777216
+   spaceB=1 spaceA=0 line=12 lineRule=0 firstInd=10.1 leftInd=0 afterAuto=0
+   TEXT: Abstract—A good abstract is a stand-alone summary of the paper, and should summarize the k
+P12 style=IndexTerms list='' align=3 font=Times New Roman size=9 bold=-1 italic=9999999 color=-16777216
+   spaceB=0 spaceA=0 line=12 lineRule=0 firstInd=10.1 leftInd=0 afterAuto=0
+   TEXT: Keywords—first term, second term, third term, fourth term, fifth term, sixth term, seventh
+P13 style=Heading 1 list='I.' align=1 font=Times New Roman size=10 bold=0 italic=0 color=-16777216
+   spaceB=12 spaceA=4 line=12 lineRule=0 firstInd=0 leftInd=0 afterAuto=0
+   TEXT: Introduction
+P14 style=Text list='' align=3 font=Times New Roman size=10 bold=0 italic=0 color=-16777216
+   spaceB=0 spaceA=0 line=12.6 lineRule=5 firstInd=10.1 leftInd=0 afterAuto=0
+   TEXT: A well-written introduction will provide your study with a context and prompt the readers 
+P15 style=Text list='(1)' align=3 font=Times New Roman size=10 bold=0 italic=0 color=-16777216
+   spaceB=0 spaceA=0 line=12.6 lineRule=5 firstInd=-31.1 leftInd=31.1 afterAuto=0
+   TEXT: What is known about the broad topic?
+P16 style=Text list='(2)' align=3 font=Times New Roman size=10 bold=0 italic=0 color=-16777216
+   spaceB=0 spaceA=0 line=12.6 lineRule=5 firstInd=-14.2 leftInd=14.2 afterAuto=0
+   TEXT: What are the gaps or missing links that need to be addressed?
+P17 style=Text list='(3)' align=3 font=Times New Roman size=10 bold=0 italic=0 color=-16777216
+   spaceB=0 spaceA=0 line=12.6 lineRule=5 firstInd=-31.1 leftInd=31.1 afterAuto=0
+   TEXT: What is the significance of addressing those gaps?
+P18 style=Text list='' align=3 font=Times New Roman size=10 bold=0 italic=0 color=-16777216
+   spaceB=0 spaceA=0 line=12.6 lineRule=5 firstInd=10.1 leftInd=0 afterAuto=0
+   TEXT: The introduction should provide general information about the topic of your research and e
+P19 style=Heading 1 list='II.' align=1 font=Times New Roman size=10 bold=0 italic=0 color=-16777216
+   spaceB=12 spaceA=4 line=12 lineRule=0 firstInd=0 leftInd=0 afterAuto=0
+   TEXT: Literature Review
+P20 style=Text list='' align=3 font=Times New Roman size=10 bold=0 italic=0 color=-16777216
+   spaceB=0 spaceA=0 line=12.6 lineRule=5 firstInd=10.1 leftInd=0 afterAuto=0
+   TEXT: This section basically supports the background section by providing evidence for the propo
+--- body sample (first Heading1 Text para) ---
+BODY style=Text font=Times New Roman size=10 bold=0 italic=0 align=3
+   spaceB=0 spaceA=0 line=12.6 lineRule=5 firstInd=10.1 leftInd=0
+   TEXT: A well-written introduction will provide your study with a context and prompt the readers to read th
+--- Heading 1/2 samples ---
+H1 list='I.' font=Times New Roman size=10 bold=0 allcaps=0 align=1 spaceB=12 spaceA=4 | Introduction
+H1 list='II.' font=Times New Roman size=10 bold=0 allcaps=0 align=1 spaceB=12 spaceA=4 | Literature Review
+H1 list='III.' font=Times New Roman size=10 bold=0 allcaps=0 align=1 spaceB=12 spaceA=4 | Materials and Methods
+H2 list='A.' font=Times New Roman size=10 bold=0 italic=-1 align=3 spaceB=6 spaceA=3 | Figures and Tables (Subsection Level 2)
+H2 list='B.' font=Times New Roman size=10 bold=0 italic=-1 align=3 spaceB=6 spaceA=3 | References
+H2 list='C.' font=Times New Roman size=10 bold=0 italic=-1 align=3 spaceB=6 spaceA=3 | Footnotes
+--- captions / equations / refs ---
+CAP style=figure caption font=Times New Roman size=8 bold=0 italic=0 align=1 | Fig. 1. Note how the caption is centered in the column.
+CAP style=figure caption font=Times New Roman size=8 bold=0 italic=0 align=1 | Table 1. Type sizes for final papers
+CAP style=figure caption font=Times New Roman size=8 bold=0 italic=0 align=0 | 1 Tables may have a footer.
+EQ style=equation font=Times New Roman size=10 align=2 |                                            (1)
+RH font=Times New Roman size=10 bold=0 allcaps=0 align=1 | Appendix
+RH font=Times New Roman size=10 bold=0 allcaps=0 align=1 | Conflict of Interest
+RH font=Times New Roman size=10 bold=0 allcaps=0 align=1 | Author Contributions
+RH font=Times New Roman size=10 bold=0 allcaps=0 align=1 | Funding
+RH font=Times New Roman size=10 bold=0 allcaps=0 align=1 | Acknowledgment
+RH font=Times New Roman size=10 bold=0 allcaps=0 align=1 | References
+REF list='[1]' font=Times New Roman size=8 hanging=-18 | S. Chen, B. Mulgrew, and P. M. Grant, “A clustering technique for digital communications channel equ
+REF list='[2]' font=Times New Roman size=8 hanging=-18 | J. U. Duncombe, “Infrared navigation—Part I: An assessment of feasibility,” IEEE Trans. Electron Dev
+CAP style=Figure Caption font=Times New Roman size=8 bold=0 italic=0 align=3 | Copyright © 2026 by the authors. This is an open access article distributed under the Creative Commons Attribution Licen
+--- figures ---
+Inline 1 type=3 w=9.75pt h=9.75pt
+Inline 2 type=3 w=9.75pt h=9.75pt
+Inline 3 type=3 w=9.75pt h=9.75pt
+Inline 4 type=3 w=155.25pt h=132.75pt
+Inline 5 type=3 w=41.25pt h=18pt
+Inline 6 type=1 w=44.25pt h=14.25pt
+--- keyword hits ---
+HIT=False  INTERNATIONAL JOURNAL
+HIT=False  International Journal of Information
+HIT=False  ChatGPT
+HIT=False  generative
+HIT=False  Grammarly
+HIT=False  IRB
+HIT=False  GDPR
+HIT=False  FERPA
+HIT=False  de-identified
+HIT=False  public logs
+HIT=False  double-blind
+HIT=False  anonymous
+HIT=False  doi:
+HIT=False  10.18178
+HIT=True  Manuscript received
+HIT=True  Conflict of Interest
+HIT=True  Author Contributions
+HIT=True  Acknowledgment
+HIT=True  Funding
+HIT=True  Abstract
+HIT=True  Keywords
+HIT=False  ECE =
+HIT=True  (1)
+
+===== CURRENT MANUSCRIPT =====
+Path: C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\ijiet\Reproducible_Sparse_Concept_and_Calibration_Diagnostics_for_Knowledge_Tracing.docx
+Pages: 4  Words: 3242
+Sections: 4  Tables: 6  InlineShapes: 1  Shapes: 0
+Section 1: paper=7 w=595.35 h=841.95 orient=0 start=2
+  margins T/B/L/R/Gutter: 50.45 / 50.45 / 46.8 / 46.8 / 0  headerDist=21.55 footerDist=21.55
+  cols=1 spacing=9999999 even=-1 widths=501.75
+  HEADER: []
+  FOOTER: []
+  DifferentFirstPage=0 OddEven=0
+Section 2: paper=7 w=595.35 h=841.95 orient=0 start=0
+  margins T/B/L/R/Gutter: 50.45 / 50.45 / 46.8 / 46.8 / 0  headerDist=21.55 footerDist=21.55
+  cols=2 spacing=14.4 even=-1 widths=243.65,243.65
+  HEADER: []
+  FOOTER: []
+  DifferentFirstPage=0 OddEven=0
+Section 3: paper=7 w=595.35 h=841.95 orient=0 start=0
+  margins T/B/L/R/Gutter: 50.45 / 50.45 / 46.8 / 46.8 / 0  headerDist=21.55 footerDist=21.55
+  cols=1 spacing=9999999 even=-1 widths=501.75
+  HEADER: []
+  FOOTER: []
+  DifferentFirstPage=0 OddEven=0
+Section 4: paper=7 w=595.35 h=841.95 orient=0 start=0
+  margins T/B/L/R/Gutter: 50.45 / 50.45 / 46.8 / 46.8 / 0  headerDist=21.55 footerDist=21.55
+  cols=2 spacing=14.4 even=-1 widths=243.65,243.65
+  HEADER: []
+  FOOTER: []
+  DifferentFirstPage=0 OddEven=0
+--- key paragraphs ---
+P1 style=Text list='' align=1 font=Times New Roman size=20 bold=-1 italic=0 color=-16777216
+   spaceB=0 spaceA=20 line=12.6 lineRule=5 firstInd=0 leftInd=0 afterAuto=0
+   TEXT: Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing
+P2 style=Style Author + (Asian) MS Mincho list='' align=1 font=Times New Roman size=11 bold=0 italic=0 color=-16777216
+   spaceB=0 spaceA=6 line=12 lineRule=0 firstInd=0 leftInd=0 afterAuto=0
+   TEXT: Khanh-Trinh Nguyen1, Tuan Dao Minh1, Duong Nguyen Tien1, Chi Thanh Nguyen2, and Van-Hau Ng
+P3 style=Affiliation list='' align=1 font=Times New Roman size=9 bold=0 italic=0 color=-16777216
+   spaceB=0 spaceA=0 line=12 lineRule=0 firstInd=0 leftInd=0 afterAuto=0
+   TEXT: 1 Hung Yen University of Technology and Education, Hung Yen, Vietnam
+P4 style=Affiliation list='' align=1 font=Times New Roman size=9 bold=0 italic=0 color=-16777216
+   spaceB=0 spaceA=0 line=12 lineRule=0 firstInd=0 leftInd=0 afterAuto=0
+   TEXT: 2 Academy of Military Science and Technology, Ha Noi, Vietnam
+P5 style=Affiliation list='' align=1 font=Times New Roman size=9 bold=0 italic=0 color=-16777216
+   spaceB=0 spaceA=0 line=12 lineRule=0 firstInd=0 leftInd=0 afterAuto=0
+   TEXT: Email: trinhnk@utehy.edu.vn (K.-T.N.); tuanymc@utehy.edu.vn (T.D.M.); duongnt@utehy.edu.vn
+P6 style=Affiliation list='' align=1 font=Times New Roman size=9 bold=0 italic=0 color=-16777216
+   spaceB=0 spaceA=0 line=12 lineRule=0 firstInd=0 leftInd=0 afterAuto=0
+   TEXT: *Corresponding author
+P7 style=Affiliation list='' align=1 font=Times New Roman size=9 bold=0 italic=0 color=-16777216
+   spaceB=0 spaceA=0 line=12 lineRule=0 firstInd=0 leftInd=0 afterAuto=0
+   TEXT: Manuscript received Month date, 2026; revised Month date, 2026; accepted Month date, 2026
+P10 style=Abstract list='' align=3 font=Times New Roman size=9 bold=-1 italic=-1 color=-16777216
+   spaceB=1 spaceA=0 line=12 lineRule=0 firstInd=10.1 leftInd=0 afterAuto=0
+   TEXT: Abstract—Knowledge Tracing (KT) systems that drive practice, remediation, or advancement t
+P12 style=IndexTerms list='' align=3 font=Times New Roman size=9 bold=-1 italic=-1 color=-16777216
+   spaceB=0 spaceA=0 line=12 lineRule=0 firstInd=10.1 leftInd=0 afterAuto=0
+   TEXT: Keywords—knowledge tracing, learning analytics, calibration, sparse concepts, mastery thre
+P13 style=Heading 1 list='I.' align=1 font=Times New Roman size=10 bold=0 italic=0 color=-16777216
+   spaceB=12 spaceA=4 line=12 lineRule=0 firstInd=0 leftInd=0 afterAuto=0
+   TEXT: Introduction
+P14 style=Text list='' align=3 font=Times New Roman size=10 bold=0 italic=0 color=-16777216
+   spaceB=0 spaceA=0 line=12.6 lineRule=5 firstInd=10.1 leftInd=0 afterAuto=0
+   TEXT: Adaptive practice engines and intelligent tutoring systems increasingly use Knowledge Trac
+P15 style=Text list='' align=3 font=Times New Roman size=10 bold=0 italic=0 color=-16777216
+   spaceB=0 spaceA=0 line=12.6 lineRule=5 firstInd=10.1 leftInd=0 afterAuto=0
+   TEXT: KT papers typically report population AUC and accuracy [4], [5]. Those metrics are useful 
+P16 style=Text list='' align=3 font=Times New Roman size=10 bold=0 italic=0 color=-16777216
+   spaceB=0 spaceA=0 line=12.6 lineRule=5 firstInd=10.1 leftInd=0 afterAuto=0
+   TEXT: This paper treats that mismatch as an evaluation problem for educational technology, not a
+P17 style=Text list='' align=3 font=Times New Roman size=10 bold=0 italic=0 color=-16777216
+   spaceB=0 spaceA=0 line=12.6 lineRule=5 firstInd=10.1 leftInd=0 afterAuto=0
+   TEXT: The empirical story is bounded. Sparse training evidence does not universally degrade disc
+P18 style=Text list='' align=3 font=Times New Roman size=10 bold=0 italic=0 color=-16777216
+   spaceB=0 spaceA=0 line=12.6 lineRule=5 firstInd=10.1 leftInd=0 afterAuto=0
+   TEXT: Contributions, stated conservatively: (i) a train-only KC-frequency protocol with an expli
+P19 style=Heading 1 list='II.' align=1 font=Times New Roman size=10 bold=0 italic=0 color=-16777216
+   spaceB=12 spaceA=4 line=12 lineRule=0 firstInd=0 leftInd=0 afterAuto=0
+   TEXT: Literature Review
+P20 style=Text list='' align=3 font=Times New Roman size=10 bold=0 italic=0 color=-16777216
+   spaceB=0 spaceA=0 line=12.6 lineRule=5 firstInd=10.1 leftInd=0 afterAuto=0
+   TEXT: Classical KT uses Bayesian knowledge tracing or item-response models [1], [6]. Deep sequen
+--- body sample (first Heading1 Text para) ---
+BODY style=Text font=Times New Roman size=10 bold=0 italic=0 align=3
+   spaceB=0 spaceA=0 line=12.6 lineRule=5 firstInd=10.1 leftInd=0
+   TEXT: Adaptive practice engines and intelligent tutoring systems increasingly use Knowledge Tracing (KT) t
+--- Heading 1/2 samples ---
+H1 list='I.' font=Times New Roman size=10 bold=0 allcaps=0 align=1 spaceB=12 spaceA=4 | Introduction
+H1 list='II.' font=Times New Roman size=10 bold=0 allcaps=0 align=1 spaceB=12 spaceA=4 | Literature Review
+H1 list='III.' font=Times New Roman size=10 bold=0 allcaps=0 align=1 spaceB=12 spaceA=4 | Materials and Methods
+H2 list='A.' font=Times New Roman size=10 bold=0 italic=-1 align=3 spaceB=6 spaceA=3 | Datasets, Splits, and Models
+H2 list='B.' font=Times New Roman size=10 bold=0 italic=-1 align=3 spaceB=6 spaceA=3 | Train-Only Frequency Strata
+H2 list='C.' font=Times New Roman size=10 bold=0 italic=-1 align=3 spaceB=6 spaceA=3 | Calibration
+--- captions / equations / refs ---
+CAP style=Table Title font=Times New Roman size=8 bold=0 italic=0 align=1 | Table 1. Processed cohort statistics (learner-based split)
+CAP style=Figure Caption font=Times New Roman size=8 bold=-1 italic=0 align=1 | Dataset
+CAP style=Figure Caption font=Times New Roman size=8 bold=-1 italic=0 align=1 | Learners
+CAP style=Figure Caption font=Times New Roman size=8 bold=-1 italic=0 align=1 | KCs
+CAP style=Figure Caption font=Times New Roman size=8 bold=-1 italic=0 align=1 | Interactions
+CAP style=Figure Caption font=Times New Roman size=8 bold=-1 italic=0 align=1 | Test events
+RH font=Times New Roman size=10 bold=0 allcaps=0 align=1 | Conflict of Interest
+RH font=Times New Roman size=10 bold=0 allcaps=0 align=1 | Author Contributions
+RH font=Times New Roman size=10 bold=0 allcaps=0 align=1 | Acknowledgment
+RH font=Times New Roman size=10 bold=0 allcaps=0 align=1 | References
+REF list='[1]' font=Times New Roman size=8 hanging=-18 | A. T. Corbett and J. R. Anderson, “Knowledge Tracing: Modeling the acquisition of procedural knowled
+REF list='[2]' font=Times New Roman size=8 hanging=-18 | C. Piech, J. Bassen, J. Huang, S. Ganguli, M. Sahami, L. J. Guibas, and J. Sohl-Dickstein, “Deep Kno
+--- figures ---
+Inline 1 type=3 w=240pt h=72pt
+--- keyword hits ---
+HIT=False  INTERNATIONAL JOURNAL
+HIT=False  International Journal of Information
+HIT=False  ChatGPT
+HIT=False  generative
+HIT=False  Grammarly
+HIT=False  IRB
+HIT=False  GDPR
+HIT=False  FERPA
+HIT=True  de-identified
+HIT=True  public logs
+HIT=False  double-blind
+HIT=False  anonymous
+HIT=False  doi:
+HIT=False  10.18178
+HIT=True  Manuscript received
+HIT=True  Conflict of Interest
+HIT=True  Author Contributions
+HIT=True  Acknowledgment
+HIT=False  Funding
+HIT=True  Abstract
+HIT=True  Keywords
+HIT=True  ECE =
+HIT=True  (1)

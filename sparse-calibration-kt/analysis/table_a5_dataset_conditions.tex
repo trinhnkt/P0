@@ -1,0 +1,27 @@
+\begin{table*}[htbp]
+\caption{Dataset conditions associated with observable sparse-KC calibration vulnerability. All six rows are structural or metric observations computed from training-fold frequencies and published event-level SimpleKT ECE (Table~\ref{tab:calibration_learner}); they are FINDINGS, not causal claims. Hierarchical curriculum, ceiling effects, item-feature richness, and tagging granularity are \emph{not} listed here because they are untested (HYPOTHESIS; see text). Sparse mass $= $ share of KCs with $f_{\mathrm{train}}<100$ (sparse + very sparse + strict). Test support uses the protocol reliability flags (R/L/I). Coupling is Spearman $\rho$ between $\log(1+f_{\mathrm{train}})$ and the named training-only covariate.}
+\label{tab:a5_dataset_conditions}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.3cm}XXX}
+\toprule
+\textbf{Condition} & \textbf{ASSISTments 2012} & \textbf{Junyi Academy} & \textbf{XES3G5M} \\
+\midrule
+Meaningful sparse mass & Present (18.9% of KCs) & Absent (0.0% of KCs) & Present (22.5% of KCs) \\
+\midrule
+Sufficient test support & Partial (sparse $N=403$ L; very-sparse $N=19$ I) & Absent (0 sparse/very-sparse test events) & Present (sparse $N=2,002$ R; very-sparse $N=109$ L) \\
+\midrule
+Frequency--difficulty coupling & Present, expected dir.\ ($\rho=-0.227$; sparse harder) & Present, expected dir.\ ($\rho=-0.416$; sparse harder) & Weak, opposite-signed ($\rho=+0.087$) \\
+\midrule
+Curriculum-position coupling & Present ($\rho=-0.308$) & Present ($\rho=-0.324$) & Weak ($\rho=-0.125$) \\
+\midrule
+Item-support imbalance & High (dense 205.0 vs sparse 1.0 items/KC) & Median 18.0 items/KC (no sparse contrast) & High (dense 9.0 vs sparse 1.0 items/KC) \\
+\midrule
+Observed calibration gradient (SimpleKT, event-level) & Monotonic increase (0.113$\to$0.158$\to$0.225) & Dense$\to$medium only ($\Delta$ECE$=+0.031$); sparse empty & Flat dense$\to$sparse (0.115$\to$0.112$\to$0.124) \\
+\bottomrule
+\end{tabularx}
+
+\vspace{1ex}
+{\scriptsize \textbf{Note:} Event-level ECE matches Table~\ref{tab:calibration_learner}. XES3G5M IRT ECE \emph{decreases} from dense to sparse (inverted), whereas DKT increases; the SimpleKT row is therefore not a dataset-universal gradient. Junyi temporal splits do populate sparse strata (see Table~\ref{tab:temporal_strata}), so the learner-based empty-sparse pattern is threshold- and volume-dependent.\par}
+\end{table*}

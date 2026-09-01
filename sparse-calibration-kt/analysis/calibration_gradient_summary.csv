@@ -1,0 +1,42 @@
+Dataset,Model,Split,Stratum,ECE,REL,Brier,Events,Reliability_Flag
+ASSISTments 2012,IRT,learner,dense,0.0033,0.0000,0.2102,523395,R
+ASSISTments 2012,IRT,learner,medium,0.1711,0.0294,0.2787,6211,R
+ASSISTments 2012,IRT,learner,sparse,0.0708,0.0070,0.2393,403,L
+ASSISTments 2012,IRT,learner,very_sparse,0.2036,0.0429,0.2914,19,I
+ASSISTments 2012,DKT,learner,dense,0.0602,0.0053,0.1930,523395,R
+ASSISTments 2012,DKT,learner,medium,0.1658,0.0316,0.2358,6211,R
+ASSISTments 2012,DKT,learner,sparse,0.2320,0.0623,0.2481,403,L
+ASSISTments 2012,DKT,learner,very_sparse,0.2079,0.0952,0.1690,19,I
+ASSISTments 2012,SimpleKT,learner,dense,0.1131,0.0199,0.2114,523395,R
+ASSISTments 2012,SimpleKT,learner,medium,0.1578,0.0289,0.2336,6211,R
+ASSISTments 2012,SimpleKT,learner,sparse,0.2254,0.0587,0.2493,403,L
+ASSISTments 2012,SimpleKT,learner,very_sparse,0.2464,0.0830,0.2161,19,I
+Junyi Academy,IRT,learner,dense,0.0021,0.0000,0.2080,3230601,R
+Junyi Academy,IRT,learner,medium,0.1071,0.0116,0.2523,2496,R
+Junyi Academy,DKT,learner,dense,0.0390,0.0022,0.1806,3230601,R
+Junyi Academy,DKT,learner,medium,0.2588,0.0792,0.3114,2496,R
+Junyi Academy,SimpleKT,learner,dense,0.0788,0.0082,0.1879,3235313,R
+Junyi Academy,SimpleKT,learner,medium,0.1100,0.0160,0.2310,2689,R
+XES3G5M,IRT,learner,dense,0.1542,0.0238,0.1862,1269390,R
+XES3G5M,IRT,learner,medium,0.1416,0.0201,0.1898,12977,R
+XES3G5M,IRT,learner,sparse,0.1074,0.0116,0.1995,1959,R
+XES3G5M,IRT,learner,very_sparse,0.0772,0.0066,0.2080,106,L
+XES3G5M,DKT,learner,dense,0.0389,0.0027,0.1223,1268748,R
+XES3G5M,DKT,learner,medium,0.0906,0.0133,0.1229,13082,R
+XES3G5M,DKT,learner,sparse,0.1205,0.0197,0.1435,2002,R
+XES3G5M,DKT,learner,very_sparse,0.2009,0.0631,0.1954,109,L
+XES3G5M,SimpleKT,learner,dense,0.1146,0.0179,0.1550,1268748,R
+XES3G5M,SimpleKT,learner,medium,0.1117,0.0168,0.1349,13082,R
+XES3G5M,SimpleKT,learner,sparse,0.1244,0.0212,0.1484,2002,R
+XES3G5M,SimpleKT,learner,very_sparse,0.1951,0.0585,0.1854,109,L
+ASSISTments 2012,SimpleKT,temporal,dense,0.1454,0.0297,0.2260,521661,R
+ASSISTments 2012,SimpleKT,temporal,medium,0.2277,0.0677,0.2938,4558,R
+ASSISTments 2012,SimpleKT,temporal,sparse,0.3069,0.1120,0.3363,3030,R
+ASSISTments 2012,SimpleKT,temporal,very_sparse,0.3879,0.2322,0.4172,843,L
+Junyi Academy,SimpleKT,temporal,dense,0.0889,0.0102,0.1909,3072767,R
+Junyi Academy,SimpleKT,temporal,medium,0.1552,0.0299,0.2623,151597,R
+Junyi Academy,SimpleKT,temporal,sparse,0.1624,0.0324,0.2472,16206,R
+XES3G5M,SimpleKT,temporal,dense,0.1756,0.0532,0.2006,1191744,R
+XES3G5M,SimpleKT,temporal,medium,0.2855,0.1349,0.2994,129494,R
+XES3G5M,SimpleKT,temporal,sparse,0.1405,0.0391,0.1491,10079,R
+XES3G5M,SimpleKT,temporal,very_sparse,0.1002,0.0137,0.1423,26212,R

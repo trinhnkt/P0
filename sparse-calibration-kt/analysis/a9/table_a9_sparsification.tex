@@ -1,0 +1,30 @@
+\begin{table}[htbp]
+\caption{Controlled sparsification: within-KC change in primary calibration outcomes on the held-out test events of selected originally-dense KCs. $\Delta = $ reduced $-$ full. Positive values mean worse calibration after reducing training rows for the same KC. 95\% CIs are bootstrap over KCs. This is a validation experiment; it does not claim that real-world sparsity always causes miscalibration.}
+\label{tab:a9_sparsification}
+\centering
+\small
+\begin{tabular}{llcccc}
+\toprule
+Dataset & Model & Level & $\Delta$ECE [95\% CI] & $\Delta$REL [95\% CI] & Share ECE$\uparrow$ \\
+\midrule
+ASSISTments 2012 & dkt & t100 & -0.0244 [-0.0461, -0.0008] & -0.0080 [-0.0167, 0.0014] & 30\% \\
+ASSISTments 2012 & dkt & t50 & -0.0165 [-0.0341, 0.0018] & -0.0083 [-0.0156, -0.0016] & 43\% \\
+ASSISTments 2012 & dkt & t500 & -0.0465 [-0.0603, -0.0325] & -0.0154 [-0.0218, -0.0098] & 10\% \\
+ASSISTments 2012 & simplekt & t100 & 0.0019 [-0.0228, 0.0286] & 0.0000 [-0.0128, 0.0138] & 43\% \\
+ASSISTments 2012 & simplekt & t50 & 0.0022 [-0.0213, 0.0253] & 0.0007 [-0.0105, 0.0122] & 47\% \\
+ASSISTments 2012 & simplekt & t500 & -0.0256 [-0.0466, -0.0018] & -0.0078 [-0.0170, 0.0032] & 20\% \\
+Junyi Academy & dkt & t100 & -0.0096 [-0.0310, 0.0110] & -0.0033 [-0.0091, 0.0023] & 37\% \\
+Junyi Academy & dkt & t50 & -0.0038 [-0.0223, 0.0129] & -0.0021 [-0.0075, 0.0033] & 57\% \\
+Junyi Academy & dkt & t500 & -0.0208 [-0.0413, -0.0012] & -0.0068 [-0.0127, -0.0016] & 30\% \\
+Junyi Academy & simplekt & t100 & 0.1317 [0.1090, 0.1554] & 0.0608 [0.0475, 0.0767] & 100\% \\
+Junyi Academy & simplekt & t50 & 0.1350 [0.1103, 0.1611] & 0.0607 [0.0472, 0.0744] & 100\% \\
+Junyi Academy & simplekt & t500 & 0.1006 [0.0806, 0.1204] & 0.0476 [0.0353, 0.0601] & 93\% \\
+XES3G5M & dkt & t100 & 0.0009 [-0.0094, 0.0111] & -0.0010 [-0.0039, 0.0023] & 47\% \\
+XES3G5M & dkt & t50 & 0.0177 [0.0063, 0.0292] & 0.0027 [0.0001, 0.0055] & 77\% \\
+XES3G5M & dkt & t500 & -0.0080 [-0.0186, 0.0038] & -0.0024 [-0.0051, 0.0007] & 27\% \\
+XES3G5M & simplekt & t100 & 0.0153 [0.0018, 0.0304] & 0.0068 [0.0011, 0.0129] & 63\% \\
+XES3G5M & simplekt & t50 & 0.0319 [0.0210, 0.0433] & 0.0180 [0.0116, 0.0251] & 90\% \\
+XES3G5M & simplekt & t500 & 0.0144 [-0.0018, 0.0316] & 0.0112 [0.0015, 0.0231] & 57\% \\
+\bottomrule
+\end{tabular}
+\end{table}

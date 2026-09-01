@@ -1,0 +1,17 @@
+INTRO_BODY_PARAS=5
+rq1=True
+rq2=True
+rq3=True
+far=True
+y_not_mastery=True
+no_dirty=True
+no_dashboard=True
+no_bakeoff=True
+no_new_arch=True
+no_causal=True
+results=True
+gkt_exploratory=True
+no_fm_term=True
+n_intro_body=5
+PAGES=4 WORDS=3238 TABLES=6 PICS=1
+PDF_EXISTS=True SIZE=313607
