@@ -130,12 +130,12 @@ Hung Yen University of Technology and Education
 REVIEW_README_TEXT = """Anonymous code bundle for IJIET double-blind review
 
 This zip is the reviewer-facing code supplement. It does not contain:
-- _archive/ (withdrawn JEDM sources and conversion snapshots)
+- _archive/
 - named IJIET Word sources
 - multi-GB a2b data dumps or prediction files
 
 It does contain local training/evaluation scripts, table CSVs used by the
-8-page manuscript, and a2b Python (no processed logs). Public benchmarks
+9-page manuscript, and a2b Python (no processed logs). Public benchmarks
 must be obtained from the original providers (ASSISTments 2012, Junyi
 Academy, XES3G5M).
 
@@ -200,11 +200,6 @@ def patch_blind_data(doc, log: list[str]) -> None:
     n = 0
     for i in range(1, doc.Paragraphs.Count + 1):
         para = doc.Paragraphs(i)
-        try:
-            if para.Range.Tables.Count:
-                continue
-        except Exception:
-            pass
         inner = doc.Range(para.Range.Start, para.Range.End - 1)
         text = inner.Text
         if "github.com" in text or "Code, data-preprocessing scripts" in text:
@@ -251,6 +246,11 @@ def pack_review_zip(log: list[str]) -> None:
         HERE / "README.md",
         HERE / "compile_manuscript.py",
         HERE / "a4_cluster_regression.py",
+        HERE / "docs" / "how_to_reproduce.md",
+        root / "scripts" / "p0_rebuild_locked_tables.py",
+        root / "scripts" / "rebuild_locked_tables.sh",
+        root / "scripts" / "rebuild_locked_tables.ps1",
+        root / "scripts" / "p0_si_threecut.py",
     ]
     REVIEW_ZIP.parent.mkdir(parents=True, exist_ok=True)
     n = 0

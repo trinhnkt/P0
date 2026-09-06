@@ -53,7 +53,7 @@ def main() -> None:
     pdf.close()
     compact = "".join(text.split()).lower()
     checks = {
-        "pages_8": n_pages == 8,
+        "pages_8_to_10": 8 <= n_pages <= 10,
         "ece_1136": "0.1136" in text,
         "ece_2280": "0.2280" in text,
         "far_196": "0.196" in text,

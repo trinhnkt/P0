@@ -206,7 +206,7 @@ def token_present(text: str, token: str) -> bool:
 def lock_checks(text: str, n_pages: int) -> dict[str, bool]:
     c = compact(text).lower()
     return {
-        "pages_8": n_pages == 8,
+        "pages_8_to_10": 8 <= n_pages <= 10,
         "ece_1136": "0.1136" in text,
         "ece_2280": "0.2280" in text,
         "far_196": "0.196" in text,

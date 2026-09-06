@@ -12,7 +12,7 @@ Use **`IJIET_FINAL_REVISION/output/OJS_UPLOAD/`**.
 |------|------|
 | `main_ijiet_full.doc` / `.docx` / `.pdf` | Named manuscript (editor) |
 | `main_ijiet_blind.pdf` (optional `.doc`) | Double-blind review |
-| `supplementary.pdf` | Tables S1–S4 |
+| `supplementary.pdf` | Tables S1–S10 |
 | `code_for_review_anonymous.zip` | Anonymous code |
 | `cover_letter_ijiet.txt` | Editor only (records JEDM withdrawal) |
 
@@ -24,7 +24,7 @@ The same current Word/PDFs also sit in `IJIET_SUBMISSION/source/` and `IJIET_SUB
 
 | Path | Role |
 |------|------|
-| `IJIET_FINAL_REVISION/` | Living 8-page Word/PDF, figures, supplementary, locked analysis |
+| `IJIET_FINAL_REVISION/` | Living Word/PDF (9 pages; allowed 8–10), figures, supplementary, locked analysis |
 | `IJIET_SUBMISSION/` | Current OJS copies + official template |
 | `src/` `scripts/` `configs/` `tests/` | Training and evaluation code |
 | `analysis/` `results/` | Numeric artifacts for reproduction |

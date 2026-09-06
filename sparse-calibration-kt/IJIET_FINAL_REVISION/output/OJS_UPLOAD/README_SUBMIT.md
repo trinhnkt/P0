@@ -1,11 +1,11 @@
-# IJIET OJS upload (A29 manuscript, packed A30)
+# IJIET OJS upload (P0 protocol manuscript)
 
 **Journal:** International Journal of Information and Education Technology (www.ijiet.org)  
 **Title:** Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing  
-**Date packed:** 1 September 2026  
-**Length:** 8 pages named + 8 pages blind. Title 20 pt.
+**Date packed:** 6 September 2026  
+**Length:** 8–10 pages named + blind (current PDFs: 9). Title 20 pt.
 
-TSCDA is named in the abstract and contributions. It is **not** in the title.
+This is a protocol/diagnostic paper. TSCDA is **not** named. GKT/CL4KT are **not** scored.
 
 ## Upload these files
 
@@ -15,7 +15,7 @@ TSCDA is named in the abstract and contributions. It is **not** in the title.
 | Manuscript PDF (editor) | `main_ijiet_full.pdf` | Editorial office |
 | Review file (double-blind) | `main_ijiet_blind.pdf` | Reviewers |
 | Optional Word for review | `main_ijiet_blind.doc` | Reviewers if OJS asks for Word |
-| Supplementary | `supplementary.pdf` | Reviewers (S1–S4) |
+| Supplementary | `supplementary.pdf` | Reviewers (S1–S10) |
 | Code for review | `code_for_review_anonymous.zip` | Reviewers |
 | Cover letter | `cover_letter_ijiet.txt` | Editor only (names JEDM withdrawal) |
 

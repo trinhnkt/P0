@@ -1,0 +1,26 @@
+{
+  "dataset": "assist2012",
+  "split": "learner_based",
+  "fold": 4,
+  "seed": 2027,
+  "n": 515889,
+  "best_valid_auc": 0.7727692270374671,
+  "test_auc": 0.7683007316697127,
+  "p_unique": 492808,
+  "implementation": "pykt.models.simplekt.simpleKT",
+  "cfg": {
+    "d_model": 256,
+    "n_blocks": 2,
+    "dropout": 0.05,
+    "d_ff": 256,
+    "num_attn_heads": 8,
+    "final_fc_dim": 512,
+    "final_fc_dim2": 256,
+    "seq_len": 200,
+    "kq_same": 1,
+    "l2": 1e-05,
+    "emb_type": "qid"
+  },
+  "wrote": "C:\\TRINH\\Sparse-Concept and Calibration\\sparse-calibration-kt\\results\\predictions\\assist2012_learner_based_simplekt_official_seed2027.csv",
+  "note": "Learner-based fold, not the official pyKT 5-fold; \u00b12\u20133% vs published needs that split."
+}

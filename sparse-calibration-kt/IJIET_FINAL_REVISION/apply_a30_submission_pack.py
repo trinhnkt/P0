@@ -44,14 +44,14 @@ VERIFY = HERE / "audit" / "compile_verify.txt"
 WD_FORMAT_DOC = 0
 WD_SAVE = -1
 
-OJS_README = """# IJIET OJS upload (A29 manuscript, packed A30)
+OJS_README = """# IJIET OJS upload (P0 protocol manuscript)
 
 **Journal:** International Journal of Information and Education Technology (www.ijiet.org)  
 **Title:** Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing  
-**Date packed:** 1 September 2026  
-**Length:** 8 pages named + 8 pages blind. Title 20 pt.
+**Date packed:** 6 September 2026  
+**Length:** 8–10 pages named + blind (current PDFs: 9). Title 20 pt.
 
-TSCDA is named in the abstract and contributions. It is **not** in the title.
+This is a protocol/diagnostic paper. TSCDA is **not** named. GKT/CL4KT are **not** scored.
 
 ## Upload these files
 
@@ -61,7 +61,7 @@ TSCDA is named in the abstract and contributions. It is **not** in the title.
 | Manuscript PDF (editor) | `main_ijiet_full.pdf` | Editorial office |
 | Review file (double-blind) | `main_ijiet_blind.pdf` | Reviewers |
 | Optional Word for review | `main_ijiet_blind.doc` | Reviewers if OJS asks for Word |
-| Supplementary | `supplementary.pdf` | Reviewers (S1–S4) |
+| Supplementary | `supplementary.pdf` | Reviewers (S1–S10) |
 | Code for review | `code_for_review_anonymous.zip` | Reviewers |
 | Cover letter | `cover_letter_ijiet.txt` | Editor only (names JEDM withdrawal) |
 
@@ -154,7 +154,7 @@ def sync_submission_slots(log: list[str]) -> None:
         log.append(f"sync {dst.relative_to(SUB.parent)}")
     (dest_out / "CURRENT_A29.txt").write_text(
         "These main_ijiet_full/blind PDFs and source Word files were copied from "
-        "IJIET_FINAL_REVISION on 2026-09-01 (A29 title + A28 science). "
+        "IJIET_FINAL_REVISION on 2026-09-06 (P0 protocol pack; 8–10 pages). "
         "Submit from IJIET_FINAL_REVISION/output/OJS_UPLOAD/. Do not upload _archive/.\n",
         encoding="utf-8",
     )
